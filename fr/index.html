@@ -218,9 +218,9 @@ h1{font-family:'Syne',sans-serif;font-size:clamp(2rem,5.8vw,4.6rem);font-weight:
 .price-table th{text-align:left;padding:.8rem 1rem;color:var(--gray);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;font-weight:500;border-bottom:1px solid var(--border)}
 .price-table td{padding:.65rem 1rem;border-bottom:1px solid rgba(255,255,255,.04);color:var(--gray2)}.price-table tr:hover td{background:rgba(255,255,255,.02)}.price-table td:first-child{color:var(--white);font-weight:500}.otd{color:var(--orange)!important;font-weight:500}
 .addon-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1rem;margin-top:1.5rem}.addon{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.2rem}.addon h4{font-size:.9rem;font-weight:500;margin-bottom:.4rem}.addon p{font-size:.8rem;color:var(--gray);line-height:1.5}.addon .ph{color:var(--orange);font-size:.8rem;margin-top:.5rem;font-weight:500}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
-.val{display:flex;align-items:flex-start;gap:12px;padding:.9rem 1.1rem;background:var(--card);border-radius:12px;border:1px solid var(--border);margin-bottom:.8rem}.val h4{font-size:.88rem;font-weight:500;margin-bottom:.15rem}.val p{font-size:.81rem;color:var(--gray);line-height:1.5}
-.ss{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.2rem;text-align:center}.ss .n{font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;color:var(--orange)}.ss .l{font-size:.78rem;color:var(--gray);margin-top:3px}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:stretch}
+.val{display:flex;align-items:flex-start;gap:14px;padding:1.1rem;background:rgba(255,255,255,.02);border-radius:14px;border:1px solid var(--border);margin-bottom:.8rem;transition:border-color .2s}.val:hover{border-color:var(--bO)}.val h4{font-size:.95rem;font-weight:700;margin-bottom:.25rem;color:var(--white)}.val p{font-size:.84rem;color:var(--gray);line-height:1.55;margin:0}
+.ss{background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:12px;padding:1rem 1.2rem;text-align:left;transition:border-color .2s}.ss:hover{border-color:var(--bO)}.ss .n{font-family:'Syne',sans-serif;font-size:1.7rem;font-weight:800;color:var(--orange);line-height:1}.ss .l{font-size:.8rem;color:var(--gray2);margin-top:4px;font-weight:500}
 .cgrid{display:grid;grid-template-columns:1fr 1.3fr;gap:3rem;align-items:start}
 .cinfo-list{display:flex;flex-direction:column;gap:.9rem;margin-top:1.5rem}.cinfo{display:flex;align-items:flex-start;gap:13px;padding:1rem 1.2rem;background:var(--card);border-radius:12px;border:1px solid var(--border)}
 .cinfo-icon{width:38px;height:38px;border-radius:9px;background:var(--orange3);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}.cinfo h4{font-size:.87rem;font-weight:500;margin-bottom:.12rem}.cinfo p{font-size:.81rem;color:var(--gray);margin:0;line-height:1.4}.cinfo a{color:var(--orange);text-decoration:none}
@@ -265,7 +265,7 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:3rem 5
 @keyframes typing{0%,80%,100%{opacity:.3;transform:scale(.8)}40%{opacity:1;transform:scale(1)}}
 .chat-sugs{padding:.5rem 1rem;display:flex;gap:.4rem;flex-wrap:wrap;border-top:1px solid var(--border)}.sug{background:var(--navy2);border:1px solid var(--border);color:var(--gray2);font-size:.72rem;padding:.3rem .7rem;border-radius:50px;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;white-space:nowrap}.sug:hover{border-color:var(--orange);color:var(--orange)}
 .chat-inp-row{display:flex;gap:.5rem;padding:.8rem 1rem;border-top:1px solid var(--border)}.chat-inp{flex:1;background:rgba(255,255,255,.06);border:1px solid var(--border);border-radius:50px;padding:.55rem 1rem;color:var(--white);font-family:'DM Sans',sans-serif;font-size:.85rem;outline:none;transition:border-color .2s}.chat-inp:focus{border-color:var(--bO)}.chat-send{width:36px;height:36px;border-radius:50%;background:var(--orange);border:none;cursor:pointer;color:white;font-size:1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .2s}.chat-send:hover{background:var(--orange2)}
-@media(max-width:900px){.floats,.about-grid .rc{display:none}.about-grid,.cgrid,.det-grid,.form-row{grid-template-columns:1fr}.ctabox{margin:0 3% 4rem;padding:2.5rem 1.5rem}.nav-links{display:none}.hamburger{display:flex}.nav-cta{display:none}.footer-inner{grid-template-columns:1fr 1fr}.mincludes,.mwhy-grid{grid-template-columns:1fr}#chat-win{width:calc(100vw - 32px);right:16px;bottom:80px}}
+@media(max-width:900px){.floats{display:none}.about-grid,.cgrid,.det-grid,.form-row{grid-template-columns:1fr}.ctabox{margin:0 3% 4rem;padding:2.5rem 1.5rem}.nav-links{display:none}.hamburger{display:flex}.nav-cta{display:none}.footer-inner{grid-template-columns:1fr 1fr}.mincludes,.mwhy-grid{grid-template-columns:1fr}#chat-win{width:calc(100vw - 32px);right:16px;bottom:80px}}
 @media(max-width:500px){h1{font-size:clamp(1.75rem,7vw,2.3rem)!important;line-height:1.1!important}.hero{padding:75px 4% 1.5rem!important;min-height:auto!important}.ttl{font-size:clamp(1.4rem,5.5vw,2rem)!important}.footer-inner{grid-template-columns:1fr}}
 
 /* ── HIGH-END MOTION GRAPHICS & ANIMATION SUITE ── */
@@ -1140,31 +1140,150 @@ nav { top: 34px !important; }
 </div>
 
 <!-- POURQUOI CHOISIR OTIS & STATISTIQUES -->
-<section><div class="about-grid">
-<div>
-<h2 style="font-family:'Syne',sans-serif;font-size:1.7rem;font-weight:800;margin-bottom:1rem">Pourquoi Choisir OTIS ?</h2>
-<p style="color:var(--gray);line-height:1.8;font-size:.95rem;margin-bottom:1rem">Fondée en 2020 au cœur de la pandémie, OTIS est née de la conviction qu'un espace de travail propre, sain et sécuritaire est un service essentiel auquel chacun a droit.</p>
-<p style="color:var(--gray);line-height:1.8;font-size:.95rem;margin-bottom:1.5rem">Que vous ayez besoin d'un entretien quotidien, hebdomadaire, bimensuel ou mensuel, vous pouvez compter sur OTIS pour une qualité irréprochable. Nous bâtissons des relations durables fondées sur la communication, la fiabilité et la confiance.</p>
-<div class="val"><div style="font-size:1.2rem">🤝</div><div><h4>Fiabilité</h4><p>Nous sommes présents exactement comme prévu — à chaque visite, sans exception.</p></div></div>
-<div class="val"><div style="font-size:1.2rem">💬</div><div><h4>Communication Directe</h4><p>Transparence totale avec chaque client à toutes les étapes de la prestation.</p></div></div>
-<div class="val"><div style="font-size:1.2rem">⭐</div><div><h4>Constance Supérieure</h4><p>Le même standard rigoureux lors de votre premier et de votre cinquantième entretien.</p></div></div>
-<div class="val"><div style="font-size:1.2rem">🌿</div><div><h4>Éco-Responsable</h4><p>Produits certifiés UL et neutres — sécuritaires pour vos équipes et pour la planète.</p></div></div>
-</div>
-<div class="rc">
-<div style="background:linear-gradient(135deg,var(--orange),var(--orange2));color:white;border-radius:20px;padding:2rem;margin-bottom:1.2rem;text-align:center"><div style="font-family:'Syne',sans-serif;font-size:2.8rem;font-weight:800">2020</div><div style="font-size:.9rem;margin-top:4px;opacity:.9">Fondé à Montréal, QC</div></div>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
-<div class="ss"><div class="n">500+</div><div class="l">Clients Desservis</div></div>
-<div class="ss"><div class="n">ISSA</div><div class="l">Membre Certifié</div></div>
-<div class="ss"><div class="n">4,9★</div><div class="l">Note Vérifiée</div></div>
-<div class="ss"><div class="n">100%</div><div class="l">Satisfaction Garantie</div></div></div>
-<div style="margin-top:1rem;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.2rem">
-<div style="font-size:.75rem;color:var(--orange);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.6rem">Conformité & Certifications</div>
-<div style="display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap">
-<span style="font-size:0.85rem; font-weight:700; color:var(--white);">ISSA Canada</span>
-<span style="font-size:0.85rem; font-weight:700; color:var(--white);">Décret Paritaire CPEEP</span>
-<span style="font-size:0.85rem; font-weight:700; color:var(--white);">Conforme CNESST</span>
-<span style="font-size:0.85rem; font-weight:700; color:var(--white);">Éco-Certifié UL</span>
-</div></div></div></div></section>
+<section style="padding: 5rem 5%;">
+  <div style="max-width: 1200px; margin: 0 auto;">
+    
+    <!-- Section Header -->
+    <div style="text-align: center; max-width: 780px; margin: 0 auto 3.5rem;">
+      <div class="badge" style="display:inline-flex; align-items:center; gap:8px; background:rgba(247,148,29,0.12); border:1px solid var(--bO); border-radius:50px; padding:0.4rem 1.1rem; margin-bottom:1rem; font-size:0.8rem; font-weight:600; color:var(--orange);">
+        ⭐ Fiabilité Institutionnelle · Normes d'Entretien à Montréal
+      </div>
+      <h2 style="font-family:'Syne',sans-serif; font-size:clamp(1.9rem, 3.5vw, 2.5rem); font-weight:800; color:var(--white); line-height:1.15; margin-bottom:1rem;">
+        Pourquoi les Gestionnaires Immobiliers Choisissent OTIS
+      </h2>
+      <p style="color:var(--gray2); font-size:1.02rem; line-height:1.75;">
+        Fondée en 2020 au cœur de la pandémie, OTIS est née de la conviction qu'un environnement commercial impeccable repose sur une communication transparente, le respect strict du décret québécois et une constance sans faille à chaque quart de travail.
+      </p>
+    </div>
+
+    <!-- Balanced 2-Column Grid -->
+    <div class="about-grid">
+      
+      <!-- LEFT COLUMN: The 4 Operating Pillars / Values -->
+      <div style="background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 2.2rem; display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; padding-bottom: 1.2rem; border-bottom: 1px solid var(--border);">
+            <div>
+              <div style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange);">Nos Piliers Fondamentaux</div>
+              <h3 style="font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--white); margin-top: 0.2rem;">Les Valeurs Qui Guident Chaque Prestation</h3>
+            </div>
+            <span style="background: var(--orange3); border: 1px solid var(--bO); color: var(--orange); font-size: 0.75rem; font-weight: 700; padding: 0.35rem 0.85rem; border-radius: 50px;">4 Piliers</span>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 0.9rem;">
+            <!-- Reliability -->
+            <div class="val">
+              <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(247,148,29,0.12); border: 1px solid var(--bO); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0;">🤝</div>
+              <div>
+                <h4>Fiabilité Sans Compromis</h4>
+                <p>Présence garantie exactement aux horaires convenus — 100% du temps. Protocole de relève immédiat pour éliminer toute absence non couverte.</p>
+              </div>
+            </div>
+
+            <!-- Communication -->
+            <div class="val">
+              <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(247,148,29,0.12); border: 1px solid var(--bO); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0;">💬</div>
+              <div>
+                <h4>Communication Directe & Réactive</h4>
+                <p>Gestionnaire de compte attitré, registre numérique de passage à chaque quart, délai de réponse SLA sous 15 minutes et accès direct à la direction.</p>
+              </div>
+            </div>
+
+            <!-- Consistency -->
+            <div class="val">
+              <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(247,148,29,0.12); border: 1px solid var(--bO); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0;">⭐</div>
+              <div>
+                <h4>Constance de Qualité Auditée</h4>
+                <p>Listes de contrôle standardisées en 30 points pour que votre 50e entretien égale la minutie et l'éclat de votre tout premier jour.</p>
+              </div>
+            </div>
+
+            <!-- Eco-Friendly -->
+            <div class="val">
+              <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(34,197,94,0.12); border: 1px solid rgba(34,197,94,0.3); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0;">🌿</div>
+              <div>
+                <h4>Formulations Éco-Certifiées UL & SIMDUT</h4>
+                <p>Produits neutres et homologués sécuritaires pour les occupants, les animaux, la qualité de l'air intérieur et les matériaux nobles de vos immeubles.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN: Montreal Track Record, Heritage & Accreditations -->
+      <div class="rc" style="background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 2.2rem; display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; padding-bottom: 1.2rem; border-bottom: 1px solid var(--border);">
+            <div>
+              <div style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange);">Performance Éprouvée</div>
+              <h3 style="font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--white); margin-top: 0.2rem;">Indicateurs Vérifiés à Montréal</h3>
+            </div>
+            <span style="background: rgba(34,197,94,0.12); border: 1px solid rgba(34,197,94,0.3); color: var(--green2); font-size: 0.75rem; font-weight: 700; padding: 0.35rem 0.85rem; border-radius: 50px;">● En Règle</span>
+          </div>
+
+          <!-- Refined Heritage & Insurance Badge (Replaces giant orange card) -->
+          <div style="background: linear-gradient(135deg, rgba(247,148,29,0.14) 0%, rgba(20,28,46,0.9) 100%); border: 1px solid var(--bO); border-radius: 14px; padding: 1.2rem 1.4rem; margin-bottom: 1.1rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem;">
+            <div style="display: flex; align-items: center; gap: 14px;">
+              <div style="font-family: 'Syne', sans-serif; font-size: 2.3rem; font-weight: 800; color: var(--orange); line-height: 1;">2020</div>
+              <div>
+                <div style="font-size: 0.95rem; font-weight: 700; color: var(--white);">Fondé à Montréal, QC</div>
+                <div style="font-size: 0.78rem; color: var(--gray2); margin-top: 2px;">5+ Ans d'Excellence en Entretien Commercial</div>
+              </div>
+            </div>
+            <div style="text-align: right; border-left: 1px solid rgba(255,255,255,0.1); padding-left: 1.2rem; flex-shrink: 0;">
+              <div style="font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 800; color: var(--white); line-height: 1;">5 M$</div>
+              <div style="font-size: 0.7rem; color: var(--gray); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 3px;">Assurance & Caution</div>
+            </div>
+          </div>
+
+          <!-- 4 Stats in 2x2 Grid -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; margin-bottom: 1.2rem;">
+            <div class="ss">
+              <div class="n">500+</div>
+              <div class="l">Clients & Espaces Desservis</div>
+            </div>
+            <div class="ss">
+              <div class="n" style="color: #60a5fa;">ISSA</div>
+              <div class="l">Membre Actif Canada #102438</div>
+            </div>
+            <div class="ss">
+              <div class="n" style="color: #facc15;">4,9★</div>
+              <div class="l">Satisfaction Clientèle Vérifiée</div>
+            </div>
+            <div class="ss">
+              <div class="n" style="color: var(--green2);">100%</div>
+              <div class="l">Conforme Décret CPEEP</div>
+            </div>
+          </div>
+
+          <!-- Certifications & Compliance Badges in 2x2 Grid -->
+          <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 14px; padding: 1.1rem 1.3rem;">
+            <div style="font-size: 0.72rem; font-weight: 700; color: var(--orange); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; display: flex; align-items: center; justify-content: space-between;">
+              <span>Conformité & Certifications au Québec</span>
+              <span style="color: var(--gray); font-size: 0.68rem; font-weight: 500; text-transform: none;">Vérifié Registre Officiel</span>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem;">
+              <div style="display: flex; align-items: center; gap: 8px; padding: 0.55rem 0.75rem; background: rgba(247,148,29,0.08); border: 1px solid var(--bO); border-radius: 8px; font-size: 0.78rem; font-weight: 600; color: var(--white);">
+                <span style="color: var(--orange); font-size: 0.9rem;">🏛️</span> ISSA Canada
+              </div>
+              <div style="display: flex; align-items: center; gap: 8px; padding: 0.55rem 0.75rem; background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.3); border-radius: 8px; font-size: 0.78rem; font-weight: 600; color: var(--white);">
+                <span style="color: var(--green2); font-size: 0.9rem;">⚖️</span> Décret Paritaire CPEEP
+              </div>
+              <div style="display: flex; align-items: center; gap: 8px; padding: 0.55rem 0.75rem; background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.3); border-radius: 8px; font-size: 0.78rem; font-weight: 600; color: var(--white);">
+                <span style="color: #60a5fa; font-size: 0.9rem;">🛡️</span> Conforme CNESST
+              </div>
+              <div style="display: flex; align-items: center; gap: 8px; padding: 0.55rem 0.75rem; background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.3); border-radius: 8px; font-size: 0.78rem; font-weight: 600; color: var(--white);">
+                <span style="color: var(--green2); font-size: 0.9rem;">🍃</span> Éco-Certifié UL
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 <!-- 4 PILIERS OPÉRATIONNELS -->
 <section style="background: var(--navy2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 5rem 5%;">

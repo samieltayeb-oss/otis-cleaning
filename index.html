@@ -218,9 +218,9 @@ h1{font-family:'Syne',sans-serif;font-size:clamp(2rem,5.8vw,4.6rem);font-weight:
 .price-table th{text-align:left;padding:.8rem 1rem;color:var(--gray);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;font-weight:500;border-bottom:1px solid var(--border)}
 .price-table td{padding:.65rem 1rem;border-bottom:1px solid rgba(255,255,255,.04);color:var(--gray2)}.price-table tr:hover td{background:rgba(255,255,255,.02)}.price-table td:first-child{color:var(--white);font-weight:500}.otd{color:var(--orange)!important;font-weight:500}
 .addon-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1rem;margin-top:1.5rem}.addon{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.2rem}.addon h4{font-size:.9rem;font-weight:500;margin-bottom:.4rem}.addon p{font-size:.8rem;color:var(--gray);line-height:1.5}.addon .ph{color:var(--orange);font-size:.8rem;margin-top:.5rem;font-weight:500}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
-.val{display:flex;align-items:flex-start;gap:12px;padding:.9rem 1.1rem;background:var(--card);border-radius:12px;border:1px solid var(--border);margin-bottom:.8rem}.val h4{font-size:.88rem;font-weight:500;margin-bottom:.15rem}.val p{font-size:.81rem;color:var(--gray);line-height:1.5}
-.ss{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.2rem;text-align:center}.ss .n{font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;color:var(--orange)}.ss .l{font-size:.78rem;color:var(--gray);margin-top:3px}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:stretch}
+.val{display:flex;align-items:flex-start;gap:14px;padding:1.1rem;background:rgba(255,255,255,.02);border-radius:14px;border:1px solid var(--border);margin-bottom:.8rem;transition:border-color .2s}.val:hover{border-color:var(--bO)}.val h4{font-size:.95rem;font-weight:700;margin-bottom:.25rem;color:var(--white)}.val p{font-size:.84rem;color:var(--gray);line-height:1.55;margin:0}
+.ss{background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:12px;padding:1rem 1.2rem;text-align:left;transition:border-color .2s}.ss:hover{border-color:var(--bO)}.ss .n{font-family:'Syne',sans-serif;font-size:1.7rem;font-weight:800;color:var(--orange);line-height:1}.ss .l{font-size:.8rem;color:var(--gray2);margin-top:4px;font-weight:500}
 .cgrid{display:grid;grid-template-columns:1fr 1.3fr;gap:3rem;align-items:start}
 .cinfo-list{display:flex;flex-direction:column;gap:.9rem;margin-top:1.5rem}.cinfo{display:flex;align-items:flex-start;gap:13px;padding:1rem 1.2rem;background:var(--card);border-radius:12px;border:1px solid var(--border)}
 .cinfo-icon{width:38px;height:38px;border-radius:9px;background:var(--orange3);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}.cinfo h4{font-size:.87rem;font-weight:500;margin-bottom:.12rem}.cinfo p{font-size:.81rem;color:var(--gray);margin:0;line-height:1.4}.cinfo a{color:var(--orange);text-decoration:none}
@@ -265,7 +265,7 @@ footer{background:var(--navy2);border-top:1px solid var(--border);padding:3rem 5
 @keyframes typing{0%,80%,100%{opacity:.3;transform:scale(.8)}40%{opacity:1;transform:scale(1)}}
 .chat-sugs{padding:.5rem 1rem;display:flex;gap:.4rem;flex-wrap:wrap;border-top:1px solid var(--border)}.sug{background:var(--navy2);border:1px solid var(--border);color:var(--gray2);font-size:.72rem;padding:.3rem .7rem;border-radius:50px;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;white-space:nowrap}.sug:hover{border-color:var(--orange);color:var(--orange)}
 .chat-inp-row{display:flex;gap:.5rem;padding:.8rem 1rem;border-top:1px solid var(--border)}.chat-inp{flex:1;background:rgba(255,255,255,.06);border:1px solid var(--border);border-radius:50px;padding:.55rem 1rem;color:var(--white);font-family:'DM Sans',sans-serif;font-size:.85rem;outline:none;transition:border-color .2s}.chat-inp:focus{border-color:var(--bO)}.chat-send{width:36px;height:36px;border-radius:50%;background:var(--orange);border:none;cursor:pointer;color:white;font-size:1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .2s}.chat-send:hover{background:var(--orange2)}
-@media(max-width:900px){.floats,.about-grid .rc{display:none}.about-grid,.cgrid,.det-grid,.form-row{grid-template-columns:1fr}.ctabox{margin:0 3% 4rem;padding:2.5rem 1.5rem}.nav-links{display:none}.hamburger{display:flex}.nav-cta{display:none}.footer-inner{grid-template-columns:1fr 1fr}.mincludes,.mwhy-grid{grid-template-columns:1fr}#chat-win{width:calc(100vw - 32px);right:16px;bottom:80px}}
+@media(max-width:900px){.floats{display:none}.about-grid,.cgrid,.det-grid,.form-row{grid-template-columns:1fr}.ctabox{margin:0 3% 4rem;padding:2.5rem 1.5rem}.nav-links{display:none}.hamburger{display:flex}.nav-cta{display:none}.footer-inner{grid-template-columns:1fr 1fr}.mincludes,.mwhy-grid{grid-template-columns:1fr}#chat-win{width:calc(100vw - 32px);right:16px;bottom:80px}}
 @media(max-width:500px){h1{font-size:clamp(1.75rem,7vw,2.3rem)!important;line-height:1.1!important}.hero{padding:75px 4% 1.5rem!important;min-height:auto!important}.ttl{font-size:clamp(1.4rem,5.5vw,2rem)!important}.footer-inner{grid-template-columns:1fr}}
 
 /* ── HIGH-END MOTION GRAPHICS & ANIMATION SUITE ── */
@@ -1136,31 +1136,150 @@ nav { top: 34px !important; }
 </div>
 
 <!-- WHY CHOOSE OTIS & STATS -->
-<section><div class="about-grid">
-<div>
-<h2 style="font-family:'Syne',sans-serif;font-size:1.7rem;font-weight:800;margin-bottom:1rem">Why Choose OTIS?</h2>
-<p style="color:var(--gray);line-height:1.8;font-size:.95rem;margin-bottom:1rem">Founded in 2020 during the pandemic, OTIS was built on the belief that a clean home, property, business, or workspace is an essential service everyone deserves.</p>
-<p style="color:var(--gray);line-height:1.8;font-size:.95rem;margin-bottom:1.5rem">Whether you need cleaning daily, weekly, bi-weekly, or monthly, you can rely on OTIS for high-quality service. We build strong customer relationships founded on communication, reliability, and trust.</p>
-<div class="val"><div style="font-size:1.2rem">🤝</div><div><h4>Reliability</h4><p>We show up when we say we will — every single time.</p></div></div>
-<div class="val"><div style="font-size:1.2rem">💬</div><div><h4>Communication</h4><p>Open and transparent with every client, every step of the way.</p></div></div>
-<div class="val"><div style="font-size:1.2rem">⭐</div><div><h4>Consistency</h4><p>The same high standard on your first clean and your fiftieth.</p></div></div>
-<div class="val"><div style="font-size:1.2rem">🌿</div><div><h4>Eco-Friendly</h4><p>UL-certified products — safe for your people and the planet.</p></div></div>
-</div>
-<div class="rc">
-<div style="background:linear-gradient(135deg,var(--orange),var(--orange2));color:white;border-radius:20px;padding:2rem;margin-bottom:1.2rem;text-align:center"><div style="font-family:'Syne',sans-serif;font-size:2.8rem;font-weight:800">2020</div><div style="font-size:.9rem;margin-top:4px;opacity:.9">Founded in Montreal, QC</div></div>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
-<div class="ss"><div class="n">500+</div><div class="l">Clients Served</div></div>
-<div class="ss"><div class="n">ISSA</div><div class="l">Certified Member</div></div>
-<div class="ss"><div class="n">4.9★</div><div class="l">Avg Rating</div></div>
-<div class="ss"><div class="n">100%</div><div class="l">Satisfaction</div></div></div>
-<div style="margin-top:1rem;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.2rem">
-<div style="font-size:.75rem;color:var(--orange);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.6rem">Certifications & Compliance</div>
-<div style="display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap">
-<span style="font-size:0.85rem; font-weight:700; color:var(--white);">ISSA Canada</span>
-<span style="font-size:0.85rem; font-weight:700; color:var(--white);">CPEEP Decreed Wage</span>
-<span style="font-size:0.85rem; font-weight:700; color:var(--white);">CNESST Conforme</span>
-<span style="font-size:0.85rem; font-weight:700; color:var(--white);">UL Eco-Certified</span>
-</div></div></div></div></section>
+<section style="padding: 5rem 5%;">
+  <div style="max-width: 1200px; margin: 0 auto;">
+    
+    <!-- Section Header -->
+    <div style="text-align: center; max-width: 780px; margin: 0 auto 3.5rem;">
+      <div class="badge" style="display:inline-flex; align-items:center; gap:8px; background:rgba(247,148,29,0.12); border:1px solid var(--bO); border-radius:50px; padding:0.4rem 1.1rem; margin-bottom:1rem; font-size:0.8rem; font-weight:600; color:var(--orange);">
+        ⭐ Institutional Reliability · Montreal Facility Standards
+      </div>
+      <h2 style="font-family:'Syne',sans-serif; font-size:clamp(1.9rem, 3.5vw, 2.5rem); font-weight:800; color:var(--white); line-height:1.15; margin-bottom:1rem;">
+        Why Montreal Facility Leaders Choose OTIS
+      </h2>
+      <p style="color:var(--gray2); font-size:1.02rem; line-height:1.75;">
+        Founded in 2020 during the pandemic, OTIS was built on the belief that pristine commercial spaces require transparent communication, strict Quebec decree compliance, and uncompromising consistency across every shift.
+      </p>
+    </div>
+
+    <!-- Balanced 2-Column Grid -->
+    <div class="about-grid">
+      
+      <!-- LEFT COLUMN: The 4 Operating Pillars / Values -->
+      <div style="background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 2.2rem; display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; padding-bottom: 1.2rem; border-bottom: 1px solid var(--border);">
+            <div>
+              <div style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange);">Our Core Pillars</div>
+              <h3 style="font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--white); margin-top: 0.2rem;">Values That Drive Every Clean</h3>
+            </div>
+            <span style="background: var(--orange3); border: 1px solid var(--bO); color: var(--orange); font-size: 0.75rem; font-weight: 700; padding: 0.35rem 0.85rem; border-radius: 50px;">4 Pillars</span>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 0.9rem;">
+            <!-- Reliability -->
+            <div class="val">
+              <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(247,148,29,0.12); border: 1px solid var(--bO); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0;">🤝</div>
+              <div>
+                <h4>Uncompromising Reliability</h4>
+                <p>We show up exactly when scheduled — every single time. Backed by standby dispatch protocols to ensure zero missed shifts.</p>
+              </div>
+            </div>
+
+            <!-- Communication -->
+            <div class="val">
+              <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(247,148,29,0.12); border: 1px solid var(--bO); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0;">💬</div>
+              <div>
+                <h4>Direct Executive Communication</h4>
+                <p>Open, transparent communication with single-point contact, rapid 15-minute response SLA, and direct management access.</p>
+              </div>
+            </div>
+
+            <!-- Consistency -->
+            <div class="val">
+              <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(247,148,29,0.12); border: 1px solid var(--bO); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0;">⭐</div>
+              <div>
+                <h4>Rigorous Quality Consistency</h4>
+                <p>Standardized 30-point inspection checklists ensure your 50th clean matches the meticulous standard of your first.</p>
+              </div>
+            </div>
+
+            <!-- Eco-Friendly -->
+            <div class="val">
+              <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(34,197,94,0.12); border: 1px solid rgba(34,197,94,0.3); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0;">🌿</div>
+              <div>
+                <h4>UL EcoLogo & WHMIS Formulations</h4>
+                <p>Certified neutral products safe for facility occupants, pets, indoor air quality, and high-specification architectural surfaces.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN: Montreal Track Record, Heritage & Accreditations -->
+      <div class="rc" style="background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 2.2rem; display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; padding-bottom: 1.2rem; border-bottom: 1px solid var(--border);">
+            <div>
+              <div style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange);">Proven Performance</div>
+              <h3 style="font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--white); margin-top: 0.2rem;">Montreal Verified Track Record</h3>
+            </div>
+            <span style="background: rgba(34,197,94,0.12); border: 1px solid rgba(34,197,94,0.3); color: var(--green2); font-size: 0.75rem; font-weight: 700; padding: 0.35rem 0.85rem; border-radius: 50px;">● Active Standing</span>
+          </div>
+
+          <!-- Refined Heritage & Insurance Badge (Replaces giant orange card) -->
+          <div style="background: linear-gradient(135deg, rgba(247,148,29,0.14) 0%, rgba(20,28,46,0.9) 100%); border: 1px solid var(--bO); border-radius: 14px; padding: 1.2rem 1.4rem; margin-bottom: 1.1rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem;">
+            <div style="display: flex; align-items: center; gap: 14px;">
+              <div style="font-family: 'Syne', sans-serif; font-size: 2.3rem; font-weight: 800; color: var(--orange); line-height: 1;">2020</div>
+              <div>
+                <div style="font-size: 0.95rem; font-weight: 700; color: var(--white);">Founded in Montreal, QC</div>
+                <div style="font-size: 0.78rem; color: var(--gray2); margin-top: 2px;">5+ Years Commercial Facility Excellence</div>
+              </div>
+            </div>
+            <div style="text-align: right; border-left: 1px solid rgba(255,255,255,0.1); padding-left: 1.2rem; flex-shrink: 0;">
+              <div style="font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 800; color: var(--white); line-height: 1;">$5M</div>
+              <div style="font-size: 0.7rem; color: var(--gray); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 3px;">Liability Bonded</div>
+            </div>
+          </div>
+
+          <!-- 4 Stats in 2x2 Grid -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; margin-bottom: 1.2rem;">
+            <div class="ss">
+              <div class="n">500+</div>
+              <div class="l">Clients & Workspaces</div>
+            </div>
+            <div class="ss">
+              <div class="n" style="color: #60a5fa;">ISSA</div>
+              <div class="l">Canada Member #102438</div>
+            </div>
+            <div class="ss">
+              <div class="n" style="color: #facc15;">4.9★</div>
+              <div class="l">Verified Client Rating</div>
+            </div>
+            <div class="ss">
+              <div class="n" style="color: var(--green2);">100%</div>
+              <div class="l">CPEEP Decreed Wages</div>
+            </div>
+          </div>
+
+          <!-- Certifications & Compliance Badges in 2x2 Grid -->
+          <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 14px; padding: 1.1rem 1.3rem;">
+            <div style="font-size: 0.72rem; font-weight: 700; color: var(--orange); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; display: flex; align-items: center; justify-content: space-between;">
+              <span>Certifications & Quebec Compliance</span>
+              <span style="color: var(--gray); font-size: 0.68rem; font-weight: 500; text-transform: none;">Official Registry Verified</span>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem;">
+              <div style="display: flex; align-items: center; gap: 8px; padding: 0.55rem 0.75rem; background: rgba(247,148,29,0.08); border: 1px solid var(--bO); border-radius: 8px; font-size: 0.78rem; font-weight: 600; color: var(--white);">
+                <span style="color: var(--orange); font-size: 0.9rem;">🏛️</span> ISSA Canada
+              </div>
+              <div style="display: flex; align-items: center; gap: 8px; padding: 0.55rem 0.75rem; background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.3); border-radius: 8px; font-size: 0.78rem; font-weight: 600; color: var(--white);">
+                <span style="color: var(--green2); font-size: 0.9rem;">⚖️</span> CPEEP Decreed Wage
+              </div>
+              <div style="display: flex; align-items: center; gap: 8px; padding: 0.55rem 0.75rem; background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.3); border-radius: 8px; font-size: 0.78rem; font-weight: 600; color: var(--white);">
+                <span style="color: #60a5fa; font-size: 0.9rem;">🛡️</span> CNESST Conforme
+              </div>
+              <div style="display: flex; align-items: center; gap: 8px; padding: 0.55rem 0.75rem; background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.3); border-radius: 8px; font-size: 0.78rem; font-weight: 600; color: var(--white);">
+                <span style="color: var(--green2); font-size: 0.9rem;">🍃</span> UL Eco-Certified
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 <!-- 4 OPERATIONAL PILLARS -->
 <section style="background: var(--navy2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 5rem 5%;">
