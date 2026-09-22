@@ -206,8 +206,8 @@
     <div class="nav-item" onclick="window.location.href='qa_engine.html'">
       <div class="nav-icon">🛡️</div> QA Inspection
     </div>
-    <div class="nav-item" onclick="window.location.href='invoice_generator.html'">
-      <div class="nav-icon">💳</div> Invoice Generator
+    <div class="nav-item" onclick="window.location.href='invoice_engine.html'">
+      <div class="nav-icon">💳</div> Invoice Engine
     </div>
     <div class="nav-item" onclick="window.location.href='restock_engine.html'">
       <div class="nav-icon">📦</div> Restock Engine
@@ -238,7 +238,7 @@
   <div class="top-bar">
     <h1 id="top-title">Tri-State Command Console</h1>
     <div style="display:flex; gap:12px; align-items:center;">
-      <button id="odoo-sync-btn" style="background:rgba(168, 85, 247, 0.15); border:1px solid rgba(168, 85, 247, 0.4); color:var(--purple); padding:6px 14px; border-radius:20px; font-size:0.75rem; font-weight:700; cursor:pointer; transition:0.2s;" onclick="syncOdooData()">🔄 Sync Odoo Data</button>
+      <button id="OTIS-sync-btn" style="background:rgba(168, 85, 247, 0.15); border:1px solid rgba(168, 85, 247, 0.4); color:var(--purple); padding:6px 14px; border-radius:20px; font-size:0.75rem; font-weight:700; cursor:pointer; transition:0.2s;" onclick="syncOdooData()">🔄 Sync Firebase Data</button>
       <div class="live-indicator" id="live-indicator-badge">
         <div class="pulse"></div> AI System Fully Automated
       </div>
@@ -365,8 +365,8 @@
         </div>
         <div class="card">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
-            <div class="card-title" style="margin-bottom:0;">Recent Invoices (Odoo)</div>
-            <a href="invoice_generator.html" target="_blank" style="font-size:0.75rem; color:var(--blue); text-decoration:none; font-weight:700;">+ Manual Generate</a>
+            <div class="card-title" style="margin-bottom:0;">Master Invoices Ledger</div>
+            <a href="invoice_engine.html" target="_blank" style="font-size:0.75rem; color:var(--blue); text-decoration:none; font-weight:700;">+ Create Invoice</a>
           </div>
           <table class="invoice-table">
             <thead>
@@ -378,17 +378,17 @@
             </thead>
             <tbody id="invoices-tbody">
               <tr>
-                <td><a href="invoice_generator.html" target="_blank" style="color:var(--white); text-decoration:none;">Placements Sergakis</a></td>
+                <td><a href="invoice_engine.html" target="_blank" style="color:var(--white); text-decoration:none;">Placements Sergakis</a></td>
                 <td style="font-weight:700;">$1,379.70</td>
                 <td><span class="status-badge status-paid">Paid</span></td>
               </tr>
               <tr>
-                <td><a href="invoice_generator.html" target="_blank" style="color:var(--white); text-decoration:none;">Epic Quebec</a></td>
+                <td><a href="invoice_engine.html" target="_blank" style="color:var(--white); text-decoration:none;">Epic Quebec</a></td>
                 <td style="font-weight:700;">$2,471.93</td>
                 <td><span class="status-badge status-paid">Paid</span></td>
               </tr>
               <tr>
-                <td><a href="invoice_generator.html" target="_blank" style="color:var(--white); text-decoration:none;">Clinique Dentaire NDG</a></td>
+                <td><a href="invoice_engine.html" target="_blank" style="color:var(--white); text-decoration:none;">Clinique Dentaire NDG</a></td>
                 <td style="font-weight:700;">$1,250.00</td>
                 <td><span class="status-badge status-pending">Net 30</span></td>
               </tr>
@@ -752,19 +752,19 @@ Suite à notre analyse de vos locaux, nous avons remarqué l'impact sévère du 
     showToast('🔒 Executive console locked.', false);
   }
 
-  // Odoo XML-RPC Synchronization
+  // OTIS XML-RPC Synchronization
   async function syncOdooData() {
-    const btn = document.getElementById('odoo-sync-btn');
+    const btn = document.getElementById('OTIS-sync-btn');
     const badge = document.getElementById('live-indicator-badge');
     const oldBtnText = btn.innerHTML;
 
-    btn.innerHTML = '⏳ Syncing Odoo XML-RPC...';
+    btn.innerHTML = '⏳ Syncing OTIS XML-RPC...';
     btn.disabled = true;
     btn.style.opacity = '0.7';
 
     try {
       const token = sessionStorage.getItem('otis_erp_token');
-      const res = await fetch('/api/odoo_sync', {
+      const res = await fetch('/api/ledger_sync', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -775,19 +775,19 @@ Suite à notre analyse de vos locaux, nous avons remarqué l'impact sévère du 
 
       if (result.status === 'success' && result.data_synced) {
         const d = result.data_synced;
-        showToast(`✅ Odoo Synced: ${d.clients} Clients, ${d.invoices} Invoices ($${d.total_mrr.toLocaleString('en-CA')} MRR)`);
+        showToast(`✅ OTIS Synced: ${d.clients} Clients, ${d.invoices} Invoices ($${d.total_mrr.toLocaleString('en-CA')} MRR)`);
         
         // Update Finance Cards
         document.getElementById('finance-mrr-val').innerText = `$${d.total_mrr.toLocaleString('en-CA')}.00`;
         document.getElementById('finance-receivables-val').innerText = `$${d.outstanding_receivables.toLocaleString('en-CA')}.00`;
-        document.getElementById('finance-mrr-delta').innerHTML = `↑ Odoo Synced (${result.mode === 'live_odoo_xmlrpc' ? 'Live' : 'Simulation'})`;
+        document.getElementById('finance-mrr-delta').innerHTML = `↑ OTIS Synced (${result.mode === 'live_odoo_xmlrpc' ? 'Live' : 'Simulation'})`;
 
         // Update Invoices Table
         if (Array.isArray(d.recent_invoices) && d.recent_invoices.length > 0) {
           const tbody = document.getElementById('invoices-tbody');
           tbody.innerHTML = d.recent_invoices.map(inv => `
             <tr>
-              <td><span style="color:var(--white);">${inv.client}</span></td>
+              <td><a href="invoice_engine.html" target="_blank" style="color:var(--white); text-decoration:none;">${inv.client}</a></td>
               <td style="font-weight:700;">$${inv.amount.toLocaleString('en-CA', { minimumFractionDigits: 2 })}</td>
               <td><span class="status-badge ${inv.status === 'paid' ? 'status-paid' : 'status-pending'}">${inv.status}</span></td>
             </tr>
@@ -801,7 +801,7 @@ Suite à notre analyse de vos locaux, nous avons remarqué l'impact sévère du 
             <div class="deal-card" style="border-left-color:var(--green);">
               <div class="deal-name">${c.name}</div>
               <div class="deal-val">$${c.mrr || 2150}/mo</div>
-              <div class="deal-agent">🏢 Odoo Partner #${c.id} (${c.city || 'Montreal'})</div>
+              <div class="deal-agent">🏢 OTIS Partner #${c.id} (${c.city || 'Montreal'})</div>
             </div>
           `).join('');
           document.getElementById('count-closed').innerText = d.recent_clients.length;
@@ -813,12 +813,12 @@ Suite à notre analyse de vos locaux, nous avons remarqué l'impact sévère du 
           mrrChartInstance.update();
         }
 
-        badge.innerHTML = `<div class="pulse"></div> Odoo Active (${d.clients} Clients)`;
+        badge.innerHTML = `<div class="pulse"></div> OTIS Active (${d.clients} Clients)`;
       } else {
-        showToast('⚠️ Odoo sync completed with fallback.', false);
+        showToast('⚠️ OTIS sync completed with fallback.', false);
       }
     } catch (e) {
-      showToast('❌ Odoo connection error: ' + e.message, false);
+      showToast('❌ OTIS connection error: ' + e.message, false);
     } finally {
       btn.innerHTML = oldBtnText;
       btn.disabled = false;

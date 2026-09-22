@@ -1,5 +1,5 @@
 // ==============================================================================
-// OTIS Commercial Cleaning - Odoo ERP XML-RPC Synchronization Engine
+// OTIS Commercial Cleaning - OTIS ERP XML-RPC Synchronization Engine
 // ==============================================================================
 import xmlrpc from 'xmlrpc';
 import { db, isFirebaseActive } from './firebase.js';
@@ -24,21 +24,21 @@ export default async function handler(req, res) {
   }
 
   // Support credentials passed via body or environment variables
-  const odooUrl = req.body?.odoo_url || process.env.ODOO_URL;
-  const odooDb = req.body?.odoo_db || process.env.ODOO_DB;
-  const odooUser = req.body?.odoo_user || process.env.ODOO_USER;
-  const odooPassword = req.body?.odoo_password || process.env.ODOO_PASSWORD;
+  const OTISUrl = req.body?.OTIS_url || process.env.OTIS_URL;
+  const OTISDb = req.body?.OTIS_db || process.env.OTIS_DB;
+  const OTISUser = req.body?.OTIS_user || process.env.OTIS_USER;
+  const OTISPassword = req.body?.OTIS_password || process.env.OTIS_PASSWORD;
 
-  const hasLiveCredentials = Boolean(odooUrl && odooDb && odooUser && odooPassword);
+  const hasLiveCredentials = Boolean(OTISUrl && OTISDb && OTISUser && OTISPassword);
 
   if (hasLiveCredentials) {
     try {
-      console.log(`[ODOO SYNC] Attempting live XML-RPC connection to ${odooUrl} (DB: ${odooDb}, User: ${odooUser})`);
-      const urlObj = new URL(odooUrl);
+      console.log(`[OTIS SYNC] Attempting live XML-RPC connection to ${OTISUrl} (DB: ${OTISDb}, User: ${OTISUser})`);
+      const urlObj = new URL(OTISUrl);
       const isHttps = urlObj.protocol === 'https:';
       const clientFactory = isHttps ? xmlrpc.createSecureClient : xmlrpc.createClient;
 
-      // 1. Authenticate with Odoo common endpoint (/xmlrpc/2/common)
+      // 1. Authenticate with OTIS common endpoint (/xmlrpc/2/common)
       const commonClient = clientFactory({
         host: urlObj.hostname,
         port: urlObj.port || (isHttps ? 443 : 80),
@@ -46,17 +46,17 @@ export default async function handler(req, res) {
       });
 
       const uid = await callXmlRpc(commonClient, 'authenticate', [
-        odooDb,
-        odooUser,
-        odooPassword,
+        OTISDb,
+        OTISUser,
+        OTISPassword,
         {}
       ]);
 
       if (!uid) {
-        throw new Error('Authentication failed: Invalid Odoo username or password/API key.');
+        throw new Error('Authentication failed: Invalid OTIS username or password/API key.');
       }
 
-      console.log(`[ODOO SYNC] Authenticated successfully with Odoo! Assigned UID: ${uid}`);
+      console.log(`[OTIS SYNC] Authenticated successfully with OTIS! Assigned UID: ${uid}`);
 
       // 2. Object client for executing queries (/xmlrpc/2/object)
       const objectClient = clientFactory({
@@ -67,9 +67,9 @@ export default async function handler(req, res) {
 
       // Query res.partner (Commercial Clients)
       const partners = await callXmlRpc(objectClient, 'execute_kw', [
-        odooDb,
+        OTISDb,
         uid,
-        odooPassword,
+        OTISPassword,
         'res.partner',
         'search_read',
         [[['customer_rank', '>', 0]]],
@@ -81,9 +81,9 @@ export default async function handler(req, res) {
 
       // Query account.move (Commercial Invoices)
       const invoices = await callXmlRpc(objectClient, 'execute_kw', [
-        odooDb,
+        OTISDb,
         uid,
-        odooPassword,
+        OTISPassword,
         'account.move',
         'search_read',
         [[['move_type', '=', 'out_invoice']]],
@@ -123,28 +123,28 @@ export default async function handler(req, res) {
         try {
           const batch = db.batch();
           for (const partner of partners.slice(0, 20)) {
-            const docRef = db.collection('leads').doc(`ODOO-${partner.id}`);
+            const docRef = db.collection('leads').doc(`OTIS-${partner.id}`);
             batch.set(docRef, {
               companyName: partner.name,
               address: partner.city || 'Montreal, QC',
               email: partner.email || '',
               phone: partner.phone || '',
-              source: 'odoo_sync',
+              source: 'OTIS_sync',
               status: 'approved',
               updatedAt: new Date().toISOString()
             }, { merge: true });
           }
           await batch.commit();
-          console.log(`[ODOO SYNC] Synced ${partners.length} partners to Firestore leads collection.`);
+          console.log(`[OTIS SYNC] Synced ${partners.length} partners to Firestore leads collection.`);
         } catch (fbErr) {
-          console.warn('[ODOO SYNC] Firebase batch write warning:', fbErr.message);
+          console.warn('[OTIS SYNC] Firebase batch write warning:', fbErr.message);
         }
       }
 
       return res.status(200).json({
         status: 'success',
-        mode: 'live_odoo_xmlrpc',
-        message: 'Real-time synchronization with Odoo ERP complete.',
+        mode: 'live_OTIS_xmlrpc',
+        message: 'Real-time synchronization with OTIS ERP complete.',
         data_synced: {
           clients: partners.length,
           invoices: invoices.length,
@@ -156,21 +156,21 @@ export default async function handler(req, res) {
       });
 
     } catch (liveErr) {
-      console.error('[ODOO SYNC] Live XML-RPC failed, falling back to simulated payload:', liveErr.message);
+      console.error('[OTIS SYNC] Live XML-RPC failed, falling back to simulated payload:', liveErr.message);
       // Fallback gracefully so frontend dashboard remains operable
-      return res.status(200).json(getSimulatedOdooResponse(liveErr.message));
+      return res.status(200).json(getSimulatedOTISResponse(liveErr.message));
     }
   }
 
   // If no credentials in .env, serve the standard high-fidelity simulation
-  return res.status(200).json(getSimulatedOdooResponse('No live ODOO credentials provided in .env. Running dual-mode simulation.'));
+  return res.status(200).json(getSimulatedOTISResponse('No live OTIS credentials provided in .env. Running dual-mode simulation.'));
 }
 
-function getSimulatedOdooResponse(diagnosticNote = '') {
+function getSimulatedOTISResponse(diagnosticNote = '') {
   return {
     status: 'success',
     mode: 'simulation_fallback',
-    message: 'Successfully pulled simulated Odoo ERP records.',
+    message: 'Successfully pulled simulated OTIS ERP records.',
     diagnostic: diagnosticNote,
     data_synced: {
       clients: 14,

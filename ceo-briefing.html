@@ -1061,7 +1061,7 @@
           <span class="card-badge red">Initial Audit Findings (Remediated)</span>
           <h3 class="audit-title">The 5 Baseline Bottlenecks (Solved in V2)</h3>
           <ul class="audit-list neg">
-            <li><strong style="text-decoration: line-through; opacity: 0.85;">Live Odoo Staging Look:</strong> Features typos like <em>"Shops & Buisnesses"</em> and staging badges. <span style="color: #4ade80; font-weight: 700;">➔ Replaced by V2 Enterprise Website.</span></li>
+            <li><strong style="text-decoration: line-through; opacity: 0.85;">Live OTIS Staging Look:</strong> Features typos like <em>"Shops & Buisnesses"</em> and staging badges. <span style="color: #4ade80; font-weight: 700;">➔ Replaced by V2 Enterprise Website.</span></li>
             <li><strong style="text-decoration: line-through; opacity: 0.85;">Disconnected Backend:</strong> Initial HTML prototype had no working backend and dropped quote submissions. <span style="color: #4ade80; font-weight: 700;">➔ Fixed: Wired to SendGrid, Gemini &amp; Firestore.</span></li>
             <li><strong style="text-decoration: line-through; opacity: 0.85;">Statutory Bill 96 Risk:</strong> English-only site in Quebec risked OQLF fines up to $30,000/day. <span style="color: #4ade80; font-weight: 700;">➔ Fixed: Native Quebec French parity across all touchpoints.</span></li>
             <li><strong style="text-decoration: line-through; opacity: 0.85;">"WCB" Out-of-Province Error:</strong> WCB does not exist in Quebec. <span style="color: #4ade80; font-weight: 700;">➔ Fixed: Replaced with CNESST &amp; CPEEP Decree ($23/h floor).</span></li>
@@ -2234,7 +2234,7 @@
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 10px;">
           <div>
             <h3 style="font-family: 'Syne', sans-serif; font-size: 1.3rem; color: var(--white); margin: 0 0 0.25rem;">Current Production Audit vs. Target Enterprise Standard</h3>
-            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Forensic analysis of <code>https://www.otiscc.ca/</code> (Odoo backend) and local prototype.</p>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Forensic analysis of <code>https://www.otiscc.ca/</code> (OTIS backend) and local prototype.</p>
           </div>
           <span style="font-size: 0.8rem; background: rgba(239, 68, 68, 0.2); border: 1px solid #f87171; color: #f87171; padding: 0.4rem 0.85rem; border-radius: 20px; font-weight: 700;">
             3 Critical Bottlenecks Found
@@ -2247,10 +2247,10 @@
             <div style="font-size: 0.75rem; font-weight: 800; color: #f87171; text-transform: uppercase; margin-bottom: 0.35rem;">CRITICAL ERROR #1</div>
             <h4 style="color: var(--white); font-size: 1rem; margin-bottom: 0.5rem;">The Canonical Self-Sabotage</h4>
             <p style="font-size: 0.82rem; color: var(--text-body); line-height: 1.5; margin-bottom: 0.75rem;">
-              Production HTML contains: <code>&lt;link rel="canonical" href="https://otis.odoo.com/"/&gt;</code>.
+              Production HTML contains: <code>&lt;link rel="canonical" href="https://otis.OTIS.com/"/&gt;</code>.
             </p>
             <div style="font-size: 0.78rem; color: #f87171; background: rgba(239,68,68,0.1); padding: 8px 10px; border-radius: 6px; line-height: 1.4;">
-              <strong>The Damage:</strong> Tells Google and AI bots <em>not</em> to index <code>www.otiscc.ca</code>. 100% of domain ranking power is being thrown away to Odoo's staging domain.
+              <strong>The Damage:</strong> Tells Google and AI bots <em>not</em> to index <code>www.otiscc.ca</code>. 100% of domain ranking power is being thrown away to OTIS's staging domain.
             </div>
           </div>
 
@@ -2438,7 +2438,7 @@
           <div class="timeline-col m1">
             <div class="timeline-month">Days 1–30</div>
             <div class="timeline-theme">Technical Hygiene &amp; Entity Setup</div>
-            <div class="timeline-step">Fix production canonical tag (kill redirect to <code>otis.odoo.com</code>).</div>
+            <div class="timeline-step">Fix production canonical tag (kill redirect to <code>otis.OTIS.com</code>).</div>
             <div class="timeline-step">Deploy native bilingual architecture with bidirectional <code>hreflang</code> (<code>en-CA</code> / <code>fr-CA</code>).</div>
             <div class="timeline-step">Inject verified JSON-LD structured data (<code>LocalBusiness</code>, <code>CleaningService</code>).</div>
             <div class="timeline-step">Optimize Google Business Profile categories, Madison Ave NAP, and UTM tracking links.</div>
