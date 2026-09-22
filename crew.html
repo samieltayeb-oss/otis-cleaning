@@ -2,226 +2,614 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>OTIS Crew Portal | Field Operative App</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Syne:wght@700;800&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #050d14; --surface: #0a192f; --border: #1e3a5f; --text: #C2D3E5; --white: #FFF;
-      --brand-orange: #F7941D; --green: #10b981; --red: #ef4444; --blue: #38bdf8;
+      --bg: #050d14; --surface: #0a192f; --surface-card: #0f243e; --surface-hover: #142d4d;
+      --border: #1e3a5f; --text: #C2D3E5; --white: #FFF;
+      --brand-orange: #F7941D; --green: #10b981; --red: #ef4444; --blue: #38bdf8; --purple: #a855f7;
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'DM Sans', sans-serif; }
-    body { background: #000; color: var(--text); display: flex; justify-content: center; min-height: 100vh; }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'DM Sans', sans-serif; -webkit-tap-highlight-color: transparent; }
     
-    /* Mobile App Container */
-    .app-container {
-      width: 100%;
-      max-width: 400px; /* Mobile phone width */
-      background: var(--bg);
-      border-left: 1px solid var(--border);
-      border-right: 1px solid var(--border);
+    body {
+      background: radial-gradient(circle at 50% 15%, rgba(247, 148, 29, 0.06) 0%, #03080d 100%);
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
       min-height: 100vh;
+      padding: 1.5rem 0;
+    }
+    
+    /* Responsive Chassis: Phone Frame on Desktop, Edge-to-Edge on Mobile */
+    .app-chassis {
+      width: 100%;
+      max-width: 460px;
+      min-height: 92vh;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.05);
       display: flex;
       flex-direction: column;
       position: relative;
+      overflow: hidden;
+    }
+
+    @media (max-width: 600px) {
+      body { padding: 0; background: var(--bg); }
+      .app-chassis {
+        max-width: 100%;
+        min-height: 100vh;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+      }
     }
 
     /* Header */
     .header {
-      padding: 1.5rem;
-      background: var(--surface);
+      padding: 1.2rem 1.5rem;
+      background: rgba(10, 25, 47, 0.95);
       border-bottom: 1px solid var(--border);
       display: flex;
       justify-content: space-between;
       align-items: center;
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 50;
+      backdrop-filter: blur(12px);
     }
-    .header img { height: 24px; filter: brightness(0) invert(1); }
-    .lang-toggle { font-size: 0.75rem; font-weight: 700; color: var(--brand-orange); background: rgba(247, 148, 29, 0.1); padding: 4px 10px; border-radius: 20px; border: 1px solid rgba(247, 148, 29, 0.3); }
+    .header-left { display: flex; align-items: center; gap: 10px; }
+    .header-left img { height: 26px; filter: brightness(0) invert(1); }
+    .header-badge { font-size: 0.65rem; font-weight: 800; color: var(--brand-orange); letter-spacing: 1px; text-transform: uppercase; background: rgba(247, 148, 29, 0.12); padding: 3px 8px; border-radius: 12px; border: 1px solid rgba(247,148,29,0.3); }
+    
+    .lang-toggle {
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--white);
+      background: rgba(255,255,255,0.08);
+      padding: 6px 12px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .lang-toggle:hover { background: var(--brand-orange); color: #000; border-color: var(--brand-orange); }
 
-    /* Welcome Area */
-    .welcome-area { padding: 2rem 1.5rem 1rem; }
-    .date-text { font-size: 0.8rem; color: var(--brand-gray); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 0.5rem; }
-    .greeting { font-family: 'Syne', sans-serif; font-size: 1.6rem; color: var(--white); margin-bottom: 0.5rem; }
-    .wage-badge { display: inline-flex; align-items: center; gap: 5px; background: rgba(16, 185, 129, 0.1); color: var(--green); padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; }
+    /* Content Pane */
+    .content-pane { flex: 1; overflow-y: auto; padding-bottom: 80px; }
 
-    /* Route Card */
-    .route-section { padding: 1rem 1.5rem; }
-    .section-title { font-size: 0.85rem; color: var(--white); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; }
-    
-    .job-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 1rem; }
-    .job-hdr { padding: 1rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: flex-start; }
-    .job-time { font-family: 'Syne', sans-serif; color: var(--brand-orange); font-size: 1.2rem; font-weight: 700; }
-    .job-status { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; background: rgba(255,255,255,0.1); padding: 3px 8px; border-radius: 4px; }
-    
-    .job-body { padding: 1rem; }
-    .job-client { font-size: 1.1rem; color: var(--white); font-weight: 700; margin-bottom: 0.2rem; }
-    .job-address { font-size: 0.85rem; color: var(--brand-gray); margin-bottom: 1rem; }
-    
-    .job-details { background: rgba(0,0,0,0.3); border-radius: 6px; padding: 0.8rem; font-size: 0.8rem; display: grid; gap: 0.5rem; margin-bottom: 1rem; }
+    /* Views */
+    .view-tab { display: none; animation: fadeIn 0.25s ease; padding: 1.5rem; }
+    .view-tab.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Welcome Banner */
+    .welcome-area { margin-bottom: 1.5rem; }
+    .date-text { font-size: 0.75rem; color: #8FA6BE; text-transform: uppercase; letter-spacing: 1.2px; font-weight: 700; margin-bottom: 0.4rem; }
+    .greeting { font-family: 'Syne', sans-serif; font-size: 1.7rem; color: var(--white); margin-bottom: 0.5rem; }
+    .wage-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(16, 185, 129, 0.12); color: var(--green); border: 1px solid rgba(16, 185, 129, 0.3); padding: 5px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; }
+
+    /* Shift Cards */
+    .section-title { font-size: 0.8rem; color: #8FA6BE; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.8rem; display: flex; justify-content: space-between; align-items: center; }
+    .job-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; margin-bottom: 1.2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.25); }
+    .job-hdr { padding: 1rem 1.2rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.02); }
+    .job-time { font-family: 'Syne', sans-serif; color: var(--brand-orange); font-size: 1.15rem; font-weight: 800; }
+    .job-status-pill { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; background: rgba(247, 148, 29, 0.15); color: var(--brand-orange); border: 1px solid rgba(247,148,29,0.3); padding: 3px 10px; border-radius: 20px; }
+
+    .job-body { padding: 1.2rem; }
+    .job-client { font-size: 1.2rem; color: var(--white); font-weight: 700; margin-bottom: 0.3rem; }
+    .job-address { font-size: 0.85rem; color: #8FA6BE; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 6px; }
+    .job-address a { color: var(--blue); text-decoration: none; font-weight: 600; font-size: 0.8rem; margin-left: auto; }
+    .job-address a:hover { text-decoration: underline; }
+
+    .job-details { background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.04); border-radius: 8px; padding: 1rem; font-size: 0.82rem; display: grid; gap: 0.6rem; margin-bottom: 1.2rem; }
     .detail-row { display: flex; justify-content: space-between; }
-    .detail-lbl { color: var(--brand-gray); }
+    .detail-lbl { color: #8FA6BE; }
     .detail-val { color: var(--white); font-weight: 600; }
 
     /* Action Buttons */
-    .btn-block { display: block; width: 100%; padding: 1rem; text-align: center; border-radius: 8px; font-weight: 700; font-size: 0.95rem; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.2s; }
-    .btn-green { background: var(--green); color: #000; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3); }
-    .btn-gray { background: var(--border); color: var(--text); }
-    .btn-blue { background: var(--blue); color: #000; margin-bottom: 0.8rem; }
+    .btn-block { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 1rem; text-align: center; border-radius: 10px; font-weight: 800; font-size: 0.95rem; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.2s; }
+    .btn-green { background: var(--green); color: #050d14; box-shadow: 0 4px 20px rgba(16, 185, 129, 0.35); }
+    .btn-green:hover { filter: brightness(1.1); transform: translateY(-1px); }
+    .btn-gray { background: var(--border); color: #8FA6BE; cursor: not-allowed; }
+    .btn-blue { background: rgba(56, 189, 248, 0.15); border: 1px solid var(--blue); color: var(--blue); margin-bottom: 0.8rem; }
+    .btn-blue:hover { background: rgba(56, 189, 248, 0.25); }
 
-    /* Hidden Sections (Revealed on Clock In) */
+    /* Active Job Clocked-in Section */
     #active-job-area { display: none; }
-    
-    .security-box { border: 1px solid var(--brand-orange); background: rgba(247, 148, 29, 0.05); padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem; text-align: center; }
-    .sec-title { font-size: 0.75rem; color: var(--brand-orange); text-transform: uppercase; font-weight: 700; margin-bottom: 0.5rem; }
-    .sec-code { font-family: 'Syne', sans-serif; font-size: 2rem; color: var(--white); letter-spacing: 5px; }
+    .timer-badge { display: flex; align-items: center; gap: 8px; font-family: monospace; font-size: 1.1rem; color: var(--green); background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16,185,129,0.3); padding: 4px 12px; border-radius: 20px; font-weight: 700; }
+    .pulse-dot { width: 8px; height: 8px; background: var(--green); border-radius: 50%; box-shadow: 0 0 10px var(--green); animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(1.4); } 100% { opacity: 1; transform: scale(1); } }
+
+    .security-box { border: 1px solid var(--brand-orange); background: rgba(247, 148, 29, 0.08); padding: 1.2rem; border-radius: 10px; margin-bottom: 1.5rem; text-align: center; }
+    .sec-title { font-size: 0.75rem; color: var(--brand-orange); text-transform: uppercase; font-weight: 800; letter-spacing: 1px; margin-bottom: 0.5rem; }
+    .sec-code { font-family: 'Syne', sans-serif; font-size: 2.2rem; color: var(--white); letter-spacing: 6px; font-weight: 800; }
+    .sec-note { font-size: 0.72rem; color: #8FA6BE; margin-top: 6px; }
 
     /* QA Checklist */
-    .qa-list { margin-bottom: 1.5rem; }
-    .qa-item { display: flex; align-items: center; gap: 12px; padding: 1rem; border-bottom: 1px solid var(--border); background: var(--surface); }
-    .qa-item:first-child { border-top-left-radius: 8px; border-top-right-radius: 8px; }
-    .qa-item:last-child { border-bottom: none; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; }
-    .qa-checkbox { width: 22px; height: 22px; border: 2px solid var(--brand-gray); border-radius: 4px; display: flex; align-items: center; justify-content: center; color: transparent; cursor: pointer; transition: 0.2s; }
-    .qa-checkbox.checked { background: var(--green); border-color: var(--green); color: #fff; }
-    .qa-text { font-size: 0.85rem; color: var(--white); font-weight: 500; flex: 1; }
-    .qa-req { font-size: 0.65rem; color: var(--brand-orange); font-weight: 700; text-transform: uppercase; }
+    .qa-list { margin-bottom: 1.5rem; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
+    .qa-item { display: flex; align-items: center; gap: 12px; padding: 1rem; border-bottom: 1px solid var(--border); background: var(--surface); cursor: pointer; transition: 0.2s; }
+    .qa-item:last-child { border-bottom: none; }
+    .qa-item:hover { background: var(--surface-hover); }
+    .qa-checkbox { width: 24px; height: 24px; border: 2px solid #8FA6BE; border-radius: 6px; display: flex; align-items: center; justify-content: center; color: transparent; font-weight: 900; font-size: 0.9rem; transition: 0.2s; flex-shrink: 0; }
+    .qa-checkbox.checked { background: var(--green); border-color: var(--green); color: #000; }
+    .qa-text { font-size: 0.85rem; color: var(--white); font-weight: 500; flex: 1; line-height: 1.4; }
+    .qa-req { font-size: 0.65rem; color: var(--brand-orange); font-weight: 800; text-transform: uppercase; background: rgba(247,148,29,0.1); padding: 2px 6px; border-radius: 4px; }
 
-    /* Bottom Nav */
-    .bottom-nav { margin-top: auto; background: var(--surface); border-top: 1px solid var(--border); display: flex; justify-content: space-around; padding: 1rem 0; position: sticky; bottom: 0; }
-    .nav-btn { display: flex; flex-direction: column; align-items: center; gap: 5px; color: var(--brand-gray); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; cursor: pointer; }
+    /* EARNINGS TAB STYLES */
+    .metric-hero { background: linear-gradient(135deg, var(--surface), #081a33); border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem; margin-bottom: 1.5rem; position: relative; overflow: hidden; }
+    .metric-hero::after { content: ''; position: absolute; top: -50%; right: -20%; width: 200px; height: 200px; background: radial-gradient(circle, rgba(16,185,129,0.15) 0%, transparent 70%); pointer-events: none; }
+    .metric-hero-label { font-size: 0.75rem; color: #8FA6BE; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 0.4rem; }
+    .metric-hero-val { font-family: 'Syne', sans-serif; font-size: 2.5rem; color: var(--white); font-weight: 800; margin-bottom: 0.4rem; }
+    .metric-hero-sub { font-size: 0.82rem; color: var(--green); font-weight: 600; }
+
+    .grid-2-mini { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+    .mini-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1rem; }
+    .mini-card-title { font-size: 0.7rem; color: #8FA6BE; text-transform: uppercase; font-weight: 700; margin-bottom: 0.3rem; }
+    .mini-card-val { font-family: 'Syne', sans-serif; font-size: 1.3rem; color: var(--white); font-weight: 700; }
+
+    .history-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 1.2rem; margin-bottom: 1.5rem; }
+    .history-item { display: flex; justify-content: space-between; align-items: center; padding: 0.85rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .history-item:last-child { border-bottom: none; }
+    .history-name { font-weight: 700; color: var(--white); font-size: 0.9rem; }
+    .history-meta { font-size: 0.75rem; color: #8FA6BE; margin-top: 2px; }
+    .history-pay { font-family: 'Syne', sans-serif; font-size: 1.05rem; color: var(--green); font-weight: 700; text-align: right; }
+    .history-qa { font-size: 0.7rem; color: #8FA6BE; text-align: right; }
+
+    /* SETTINGS TAB STYLES */
+    .profile-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 15px; }
+    .avatar { width: 55px; height: 55px; border-radius: 50%; background: linear-gradient(135deg, var(--brand-orange), #d97706); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 800; color: #050d14; flex-shrink: 0; }
+    .profile-info h3 { font-size: 1.1rem; color: var(--white); font-weight: 700; margin-bottom: 3px; }
+    .profile-info p { font-size: 0.75rem; color: #8FA6BE; }
+    .profile-tag { display: inline-block; font-size: 0.68rem; font-weight: 700; color: var(--brand-orange); background: rgba(247,148,29,0.12); padding: 2px 8px; border-radius: 10px; margin-top: 5px; }
+
+    .setting-group { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; margin-bottom: 1.5rem; }
+    .setting-item { padding: 1.1rem 1.3rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+    .setting-item:last-child { border-bottom: none; }
+    .setting-label { font-size: 0.88rem; font-weight: 600; color: var(--white); }
+    .setting-desc { font-size: 0.75rem; color: #8FA6BE; margin-top: 2px; }
+
+    .protocol-card { background: rgba(56, 189, 248, 0.05); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 12px; padding: 1.2rem; margin-bottom: 1.2rem; font-size: 0.85rem; line-height: 1.5; color: var(--text); }
+    .protocol-card h4 { color: var(--blue); font-size: 0.95rem; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+
+    /* Bottom Nav (Sticky Footer) */
+    .bottom-nav {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 70px;
+      background: rgba(10, 25, 47, 0.98);
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      z-index: 100;
+      backdrop-filter: blur(16px);
+    }
+    .nav-btn {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      height: 100%;
+      color: #8FA6BE;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .nav-btn span { font-size: 1.25rem; transition: 0.2s; }
+    .nav-btn:hover { color: var(--white); }
     .nav-btn.active { color: var(--brand-orange); }
-    .nav-btn span { font-size: 1.2rem; }
-
+    .nav-btn.active span { transform: scale(1.15); }
   </style>
 </head>
 <body>
 
-  <div class="app-container">
-    <div class="header">
-      <img src="/imgs/otis-logo.png" alt="OTIS">
-      <div class="lang-toggle">FR / EN</div>
-    </div>
+  <div class="app-chassis">
+    
+    <!-- TOP HEADER -->
+    <header class="header">
+      <div class="header-left">
+        <img src="/imgs/otis-logo.png" alt="OTIS">
+        <span class="header-badge" id="app-badge">CREW OS</span>
+      </div>
+      <button class="lang-toggle" id="lang-btn" onclick="toggleLanguage()">FR / EN</button>
+    </header>
 
-    <div class="welcome-area">
-      <div class="date-text" id="current-date">MONDAY, SEPT 21 • 18:45</div>
-      <h1 class="greeting">Hi, Marco.</h1>
-      <div class="wage-badge">✓ CPEEP Compliance: $23.00/hr</div>
-    </div>
-
-    <div class="route-section" id="pre-shift-area">
-      <div class="section-title">Tonight's Assigned Route</div>
+    <!-- SCROLLABLE CONTENT PANE -->
+    <div class="content-pane">
       
-      <div class="job-card">
-        <div class="job-hdr">
-          <div class="job-time">19:00 - 21:00</div>
-          <div class="job-status">Scheduled</div>
+      <!-- ================================================================= -->
+      <!-- TAB 1: SHIFTS VIEW -->
+      <!-- ================================================================= -->
+      <div id="view-shifts" class="view-tab active">
+        
+        <div class="welcome-area">
+          <div class="date-text" id="current-date">MONDAY, SEPT 21 • 18:45</div>
+          <h1 class="greeting" id="greeting-text">Hi, Marco.</h1>
+          <div class="wage-badge" id="wage-badge-text">✓ CPEEP Compliance: $23.00/hr</div>
         </div>
-        <div class="job-body">
-          <div class="job-client">Epic Quebec Headquarters</div>
-          <div class="job-address">📍 450 Rue de la Gauchetière O, Montreal</div>
-          
-          <div class="job-details">
-            <div class="detail-row"><span class="detail-lbl">Sq Footage:</span> <span class="detail-val">4,200 sq ft</span></div>
-            <div class="detail-row"><span class="detail-lbl">Est. Duration:</span> <span class="detail-val">2.0 Hours</span></div>
-            <div class="detail-row"><span class="detail-lbl">Job Type:</span> <span class="detail-val">Standard Commercial</span></div>
+
+        <!-- Pre-Shift State (Before Clock In) -->
+        <div id="pre-shift-area">
+          <div class="section-title">
+            <span id="route-title-text">Tonight's Assigned Route</span>
+            <span style="font-size:0.7rem; color:var(--brand-orange);" id="route-count-text">1 Site Scheduled</span>
           </div>
           
-          <button class="btn-block btn-green" id="btn-clockin" onclick="clockIn()">📍 Slide to Clock In (GPS)</button>
+          <div class="job-card">
+            <div class="job-hdr">
+              <div class="job-time">19:00 - 21:00</div>
+              <div class="job-status-pill" id="status-scheduled-text">Scheduled</div>
+            </div>
+            <div class="job-body">
+              <div class="job-client">Epic Quebec Headquarters</div>
+              <div class="job-address">
+                <span>📍 450 Rue de la Gauchetière O, Montreal</span>
+                <a href="https://maps.google.com/?q=450+Rue+de+la+Gauchetiere+O+Montreal" target="_blank" id="maps-link-text">Open Maps ↗</a>
+              </div>
+              
+              <div class="job-details">
+                <div class="detail-row">
+                  <span class="detail-lbl" id="lbl-sqft">Square Footage:</span>
+                  <span class="detail-val">4,200 sq ft</span>
+                </div>
+                <div class="detail-row">
+                  <span class="detail-lbl" id="lbl-duration">Est. Duration:</span>
+                  <span class="detail-val">2.0 Hours</span>
+                </div>
+                <div class="detail-row">
+                  <span class="detail-lbl" id="lbl-type">Service Type:</span>
+                  <span class="detail-val">Standard Commercial Clean</span>
+                </div>
+                <div class="detail-row">
+                  <span class="detail-lbl" id="lbl-equip">Equip Required:</span>
+                  <span class="detail-val" style="color:var(--brand-orange)">Tennant Scrubber & Mops</span>
+                </div>
+              </div>
+              
+              <button class="btn-block btn-green" id="btn-clockin" onclick="clockIn()">
+                📍 <span id="btn-clockin-text">Slide to Clock In (GPS)</span>
+              </button>
+            </div>
+          </div>
         </div>
+
+        <!-- Active Shift State (After Clock In) -->
+        <div id="active-job-area">
+          <div class="job-card" style="border-color: var(--green);">
+            <div class="job-hdr" style="background: rgba(16, 185, 129, 0.1);">
+              <div class="timer-badge">
+                <div class="pulse-dot"></div>
+                <span id="shift-timer">00:00:00</span>
+              </div>
+              <div class="job-status-pill" style="background:var(--green); color:#000; border-color:var(--green);" id="status-clockedin-text">Clocked In</div>
+            </div>
+            
+            <div class="job-body">
+              <!-- Security Keybox Code Revealed -->
+              <div class="security-box">
+                <div class="sec-title" id="sec-title-text">🔑 Keybox Access Code (Back Alley Door)</div>
+                <div class="sec-code">4 1 9 2</div>
+                <div class="sec-note" id="sec-note-text">Code active. Deactivates automatically at 21:30.</div>
+              </div>
+
+              <div class="job-details" style="margin-bottom:1.5rem;">
+                <div class="detail-row">
+                  <span class="detail-lbl" id="lbl-notes">Facility Instructions:</span>
+                  <span class="detail-val" style="color:var(--blue);">Alarm code #8842 off until 22h</span>
+                </div>
+              </div>
+              
+              <div class="section-title" style="color:var(--brand-orange);" id="qa-title-text">Mandatory 5-Point QA Audit</div>
+              <p style="font-size:0.75rem; color:#8FA6BE; margin-bottom:1rem; line-height:1.4;" id="qa-subtitle-text">
+                Check off all 5 inspection points before clocking out to verify completion.
+              </p>
+              
+              <!-- 5-Point QA Checklist -->
+              <div class="qa-list">
+                <div class="qa-item" onclick="toggleQa(this)">
+                  <div class="qa-checkbox">✓</div>
+                  <div class="qa-text" id="qa-item-1">All trash emptied & new liners installed in bins</div>
+                  <div class="qa-req">REQ</div>
+                </div>
+                <div class="qa-item" onclick="toggleQa(this)">
+                  <div class="qa-checkbox">✓</div>
+                  <div class="qa-text" id="qa-item-2">Restrooms disinfected (toilets, urinals, sinks, mirrors)</div>
+                  <div class="qa-req">REQ</div>
+                </div>
+                <div class="qa-item" onclick="toggleQa(this)">
+                  <div class="qa-checkbox">✓</div>
+                  <div class="qa-text" id="qa-item-3">Dispensers restocked (Toilet paper, hand soap, roll towels)</div>
+                  <div class="qa-req">REQ</div>
+                </div>
+                <div class="qa-item" onclick="toggleQa(this)">
+                  <div class="qa-checkbox">✓</div>
+                  <div class="qa-text" id="qa-item-4">Floors mopped with neutral cleaner & scrubbed</div>
+                  <div class="qa-req">REQ</div>
+                </div>
+                <div class="qa-item" onclick="toggleQa(this)">
+                  <div class="qa-checkbox">✓</div>
+                  <div class="qa-text" id="qa-item-5">Perimeter doors locked & night security alarm set</div>
+                  <div class="qa-req">REQ</div>
+                </div>
+              </div>
+              
+              <input type="file" id="photo-picker" accept="image/*" style="display:none" onchange="handlePhotoUpload(this)">
+              <button class="btn-block btn-blue" id="btn-photo" onclick="document.getElementById('photo-picker').click()">
+                📸 <span id="btn-photo-text">Take Proof Photo (Optional)</span>
+              </button>
+              
+              <button class="btn-block btn-gray" id="btn-clockout" onclick="clockOut()">
+                <span id="btn-clockout-text">Submit QA & Clock Out (0/5)</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
       </div>
+
+      <!-- ================================================================= -->
+      <!-- TAB 2: EARNINGS VIEW -->
+      <!-- ================================================================= -->
+      <div id="view-earnings" class="view-tab">
+        
+        <div class="metric-hero">
+          <div class="metric-hero-label" id="lbl-earn-week">This Week's Net Pay</div>
+          <div class="metric-hero-val">$322.00</div>
+          <div class="metric-hero-sub" id="sub-earn-rate">↑ 14.0 hrs @ $23.00/h Legal Parity</div>
+        </div>
+
+        <div class="grid-2-mini">
+          <div class="mini-card">
+            <div class="mini-card-title" id="lbl-next-pay">Next Direct Deposit</div>
+            <div class="mini-card-val" style="color:var(--brand-orange)">Fri, Oct 3</div>
+          </div>
+          <div class="mini-card">
+            <div class="mini-card-title" id="lbl-ytd-gross">YTD Gross Logged</div>
+            <div class="mini-card-val">$4,140.00</div>
+          </div>
+        </div>
+
+        <!-- CPEEP Decree Protection Banner -->
+        <div class="protocol-card" style="border-color: rgba(16,185,129,0.4); background: rgba(16,185,129,0.06);">
+          <h4 style="color:var(--green)">⚖️ <span id="banner-cpeep-title">CPEEP Legal Decree Protected</span></h4>
+          <p style="font-size:0.8rem; color:#C2D3E5; margin-top:4px;" id="banner-cpeep-desc">
+            All OTIS cleaners are guaranteed statutory wage parity of $23.00/hr, with full CNESST liability and injury coverage across Greater Montreal.
+          </p>
+        </div>
+
+        <div class="history-card">
+          <div class="section-title" style="margin-bottom:1rem;" id="title-recent-shifts">Recent Paid Shifts</div>
+          
+          <div class="history-item">
+            <div>
+              <div class="history-name">Epic Quebec Headquarters</div>
+              <div class="history-meta">Mon, Sept 21 • 2.0 hrs</div>
+            </div>
+            <div>
+              <div class="history-pay">+$46.00</div>
+              <div class="history-qa" style="color:var(--green)">QA: 100% ✓</div>
+            </div>
+          </div>
+
+          <div class="history-item">
+            <div>
+              <div class="history-name">Placements Sergakis</div>
+              <div class="history-meta">Sun, Sept 20 • 3.0 hrs</div>
+            </div>
+            <div>
+              <div class="history-pay">+$69.00</div>
+              <div class="history-qa" style="color:var(--green)">QA: 98% ✓</div>
+            </div>
+          </div>
+
+          <div class="history-item">
+            <div>
+              <div class="history-name">Clinique Dentaire NDG</div>
+              <div class="history-meta">Fri, Sept 18 • 2.5 hrs</div>
+            </div>
+            <div>
+              <div class="history-pay">+$57.50</div>
+              <div class="history-qa" style="color:var(--green)">QA: 100% ✓</div>
+            </div>
+          </div>
+
+          <div class="history-item">
+            <div>
+              <div class="history-name">Tech Hub Mile End</div>
+              <div class="history-meta">Thu, Sept 17 • 3.5 hrs</div>
+            </div>
+            <div>
+              <div class="history-pay">+$80.50</div>
+              <div class="history-qa" style="color:var(--green)">QA: 100% ✓</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mini-card" style="display:flex; justify-content:space-between; align-items:center;">
+          <div>
+            <div class="mini-card-title" id="lbl-deposit-account">Direct Deposit Account</div>
+            <div style="font-size:0.85rem; color:#FFF; font-weight:600;">BMO Bank Transit ••••-129</div>
+          </div>
+          <span style="font-size:0.75rem; color:var(--green); font-weight:700;">● Active</span>
+        </div>
+
+      </div>
+
+      <!-- ================================================================= -->
+      <!-- TAB 3: SETTINGS & PROTOCOLS VIEW -->
+      <!-- ================================================================= -->
+      <div id="view-settings" class="view-tab">
+        
+        <div class="profile-card">
+          <div class="avatar">MV</div>
+          <div class="profile-info">
+            <h3>Marco Valiquette</h3>
+            <p>Senior Operative • Cleaner ID #CR-04</p>
+            <span class="profile-tag">OTIS Alpha Fleet Van #2</span>
+          </div>
+        </div>
+
+        <!-- Language Preference -->
+        <div class="setting-group">
+          <div class="setting-item">
+            <div>
+              <div class="setting-label" id="lbl-pref-lang">Interface Language</div>
+              <div class="setting-desc" id="desc-pref-lang">Français québécois ou English (Canada)</div>
+            </div>
+            <button class="lang-toggle" onclick="toggleLanguage()" id="settings-lang-pill">FR / EN</button>
+          </div>
+        </div>
+
+        <!-- Emergency Protocols -->
+        <div class="protocol-card">
+          <h4>🚨 <span id="title-proto-lockbox">Lockbox / Access Trouble</span></h4>
+          <p id="desc-proto-lockbox">If the physical lockbox is jammed or the code fails, call Bruno (Crew Dispatch) immediately at <strong>(514) 555-OTIS</strong>. Never force lockbox dials.</p>
+        </div>
+
+        <div class="protocol-card" style="border-color: rgba(247,148,29,0.3); background: rgba(247,148,29,0.05);">
+          <h4 style="color:var(--brand-orange)">🧪 <span id="title-proto-chem">WHMIS &amp; Chemical Ratios</span></h4>
+          <p id="desc-proto-chem">Neutral Floor Cleaner: 1:64 ratio (cold water only). Use Anti-Foam / Defoamer in the Tennant auto-scrubber recovery tank for all heavy salt extractions.</p>
+        </div>
+
+        <div class="setting-group">
+          <div class="setting-item" style="cursor:pointer;" onclick="window.location.href='tel:5145556847'">
+            <div>
+              <div class="setting-label" id="lbl-call-dispatch">Call Bruno (Dispatch)</div>
+              <div class="setting-desc">(514) 555-OTIS • 24/7 Field Support</div>
+            </div>
+            <span style="color:var(--green); font-size:1.2rem;">📞</span>
+          </div>
+          <div class="setting-item" style="cursor:pointer;" onclick="window.location.href='/internal/command-center'">
+            <div>
+              <div class="setting-label" id="lbl-back-hub">Executive ERP Hub</div>
+              <div class="setting-desc">Switch to Zan Command Console</div>
+            </div>
+            <span style="color:var(--brand-orange); font-size:1.2rem;">⚡</span>
+          </div>
+        </div>
+
+        <div style="text-align:center; padding:1rem; font-size:0.75rem; color:#8FA6BE;">
+          OTIS Field Operative Mobile OS v2.6.4<br>
+          Connected to Montreal Edge Node
+        </div>
+
+      </div>
+
     </div>
 
-    <div class="route-section" id="active-job-area">
-      <div class="job-card" style="border-color: var(--green);">
-        <div class="job-hdr" style="background: rgba(16, 185, 129, 0.1);">
-          <div class="job-time" style="color:var(--green);">Active Shift</div>
-          <div class="job-status" style="background:var(--green); color:#000;">Clocked In: 18:52</div>
-        </div>
-        <div class="job-body">
-          <div class="security-box">
-            <div class="sec-title">Keybox Access Code (Back Door)</div>
-            <div class="sec-code">4 1 9 2</div>
-            <div style="font-size:0.7rem; color:var(--brand-gray); margin-top:5px;">Code expires at 21:15 automatically.</div>
-          </div>
-          
-          <div class="section-title" style="color:var(--brand-orange);">Mandatory QA Audit</div>
-          <p style="font-size:0.75rem; color:var(--brand-gray); margin-bottom:1rem; line-height:1.4;">Submit the 5-point room audit before clocking out to clear the invoice for payment.</p>
-          
-          <div class="qa-list">
-            <div class="qa-item" onclick="toggleQa(this)">
-              <div class="qa-checkbox">✓</div>
-              <div class="qa-text">Trash removed & new liners installed in all bins</div>
-              <div class="qa-req">REQ</div>
-            </div>
-            <div class="qa-item" onclick="toggleQa(this)">
-              <div class="qa-checkbox">✓</div>
-              <div class="qa-text">Restrooms fully disinfected (sinks, toilets, mirrors)</div>
-              <div class="qa-req">REQ</div>
-            </div>
-            <div class="qa-item" onclick="toggleQa(this)">
-              <div class="qa-checkbox">✓</div>
-              <div class="qa-text">Toilet paper, paper towels, and soap restocked</div>
-              <div class="qa-req">REQ</div>
-            </div>
-            <div class="qa-item" onclick="toggleQa(this)">
-              <div class="qa-checkbox">✓</div>
-              <div class="qa-text">All hard floors mopped with neutral cleaner</div>
-              <div class="qa-req">REQ</div>
-            </div>
-            <div class="qa-item" onclick="toggleQa(this)">
-              <div class="qa-checkbox">✓</div>
-              <div class="qa-text">Alarm activated and front door securely locked</div>
-              <div class="qa-req">REQ</div>
-            </div>
-          </div>
-          
-          <button class="btn-block btn-blue" onclick="uploadPhoto()">📸 Upload Proof Photo (Optional)</button>
-          <button class="btn-block btn-gray" id="btn-clockout" onclick="clockOut()">Submit QA & Clock Out</button>
-        </div>
+    <!-- BOTTOM STICKY NAVIGATION BAR -->
+    <nav class="bottom-nav">
+      <div class="nav-btn active" id="btn-nav-shifts" onclick="switchCrewTab('shifts')">
+        <span>📋</span>
+        <span id="nav-lbl-shifts">Shifts</span>
       </div>
-    </div>
+      <div class="nav-btn" id="btn-nav-earnings" onclick="switchCrewTab('earnings')">
+        <span>💰</span>
+        <span id="nav-lbl-earnings">Earnings</span>
+      </div>
+      <div class="nav-btn" id="btn-nav-settings" onclick="switchCrewTab('settings')">
+        <span>⚙️</span>
+        <span id="nav-lbl-settings">Settings</span>
+      </div>
+    </nav>
 
-    <div class="bottom-nav">
-      <div class="nav-btn active">
-        <span>📋</span> Shifts
-      </div>
-      <div class="nav-btn">
-        <span>💰</span> Earnings
-      </div>
-      <div class="nav-btn">
-        <span>⚙️</span> Settings
-      </div>
-    </div>
   </div>
 
+  <!-- SCRIPT ENGINE -->
   <script>
-    // Set dynamic date
-    const d = new Date();
-    const days = ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"];
-    const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
-    document.getElementById('current-date').innerText = `${days[d.getDay()]}, ${months[d.getMonth()]} ${d.getDate()} • ${d.getHours().toString().padStart(2,'0')}:${d.getMinutes().toString().padStart(2,'0')}`;
+    // State management
+    let currentLang = 'en';
+    let checkedCount = 0;
+    let timerInterval = null;
+    let elapsedSeconds = 0;
 
+    // Date & Clock initialization
+    function updateClock() {
+      const d = new Date();
+      const daysEN = ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"];
+      const daysFR = ["DIMANCHE", "LUNDI", "MARDI", "MERCREDI", "JEUDI", "VENDREDI", "SAMEDI"];
+      const monthsEN = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+      const monthsFR = ["JAN", "FÉV", "MAR", "AVR", "MAI", "JUIN", "JUIL", "AOÛT", "SEP", "OCT", "NOV", "DÉC"];
+
+      const dayStr = currentLang === 'fr' ? daysFR[d.getDay()] : daysEN[d.getDay()];
+      const monthStr = currentLang === 'fr' ? monthsFR[d.getMonth()] : monthsEN[d.getMonth()];
+      const timeStr = `${d.getHours().toString().padStart(2,'0')}:${d.getMinutes().toString().padStart(2,'0')}`;
+
+      document.getElementById('current-date').innerText = `${dayStr}, ${d.getDate()} ${monthStr} • ${timeStr}`;
+    }
+    updateClock();
+    setInterval(updateClock, 30000);
+
+    // Tab Switching
+    function switchCrewTab(tabName) {
+      // Remove active class from all tabs & buttons
+      document.querySelectorAll('.view-tab').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
+
+      // Activate selected view
+      const targetView = document.getElementById('view-' + tabName);
+      const targetNav = document.getElementById('btn-nav-' + tabName);
+      if (targetView) targetView.classList.add('active');
+      if (targetNav) targetNav.classList.add('active');
+
+      // Scroll top
+      document.querySelector('.content-pane').scrollTop = 0;
+    }
+
+    // Shift Clock-In
     function clockIn() {
-      // Simulate GPS check
       const btn = document.getElementById('btn-clockin');
-      btn.innerText = "Verifying Location...";
+      btn.innerText = currentLang === 'fr' ? "Validation GPS en cours..." : "Verifying GPS Location...";
       btn.style.background = "var(--border)";
       btn.style.color = "#FFF";
-      
+
       setTimeout(() => {
         document.getElementById('pre-shift-area').style.display = 'none';
         document.getElementById('active-job-area').style.display = 'block';
-        
-        // Notify Bruno in the backend (simulation)
-        console.log("Bruno Notified: Marco clocked into Epic Quebec. Keycode dispatched.");
-      }, 1200);
+
+        // Start Elapsed Shift Timer
+        elapsedSeconds = 0;
+        clearInterval(timerInterval);
+        timerInterval = setInterval(() => {
+          elapsedSeconds++;
+          const hrs = Math.floor(elapsedSeconds / 3600).toString().padStart(2, '0');
+          const mins = Math.floor((elapsedSeconds % 3600) / 60).toString().padStart(2, '0');
+          const secs = (elapsedSeconds % 60).toString().padStart(2, '0');
+          document.getElementById('shift-timer').innerText = `${hrs}:${mins}:${secs}`;
+        }, 1000);
+
+        // Notify Bruno Dispatch API
+        try {
+          fetch('/api/leads', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              companyName: 'Epic Quebec Headquarters',
+              status: 'clocked_in',
+              cleaner: 'Marco Valiquette (#CR-04)',
+              timestamp: new Date().toISOString()
+            })
+          });
+        } catch (e) {}
+
+      }, 1000);
     }
 
-    let checkedCount = 0;
+    // Toggle QA Checkboxes
     function toggleQa(elem) {
       const box = elem.querySelector('.qa-checkbox');
       if (box.classList.contains('checked')) {
@@ -231,38 +619,217 @@
         box.classList.add('checked');
         checkedCount++;
       }
-      
+
       const outBtn = document.getElementById('btn-clockout');
+      const textSpan = document.getElementById('btn-clockout-text');
+
       if (checkedCount === 5) {
         outBtn.classList.remove('btn-gray');
         outBtn.classList.add('btn-green');
+        textSpan.innerText = currentLang === 'fr' ? "✓ Soumettre QA & Terminer le Quart" : "✓ Submit QA & Clock Out";
       } else {
         outBtn.classList.remove('btn-green');
         outBtn.classList.add('btn-gray');
+        textSpan.innerText = currentLang === 'fr' ? `Valider les 5 points QA (${checkedCount}/5)` : `Submit QA & Clock Out (${checkedCount}/5)`;
       }
     }
 
-    function uploadPhoto() {
-      alert("Camera API would open here to take a photo of the completed job.");
+    function handlePhotoUpload(input) {
+      if (input.files && input.files[0]) {
+        const btnText = document.getElementById('btn-photo-text');
+        btnText.innerText = currentLang === 'fr' ? "✓ Photo de preuve ajoutée !" : "✓ Proof Photo Attached!";
+        document.getElementById('btn-photo').style.borderColor = "var(--green)";
+        document.getElementById('btn-photo').style.color = "var(--green)";
+      }
     }
 
     function clockOut() {
       if (checkedCount < 5) {
-        alert("You must check off all mandatory QA items before clocking out.");
+        alert(currentLang === 'fr' ? "Veuillez cocher les 5 points obligatoires du protocole QA avant de terminer." : "You must check off all 5 mandatory QA inspection items before clocking out.");
         return;
       }
-      
+
+      clearInterval(timerInterval);
+
       document.getElementById('active-job-area').innerHTML = `
         <div style="padding: 3rem 1.5rem; text-align:center;">
-          <div style="font-size:4rem; margin-bottom:1rem;">✅</div>
-          <h2 style="color:var(--white); font-family:'Syne', sans-serif; margin-bottom:0.5rem;">Shift Completed</h2>
-          <p style="color:var(--brand-gray); font-size:0.9rem; margin-bottom:2rem;">Your 2.0 hours have been logged at $23.00/hr. Sophie has recorded your 100% QA score.</p>
-          <div style="background:rgba(16, 185, 129, 0.1); border:1px solid rgba(16, 185, 129, 0.3); padding:1rem; border-radius:8px; color:var(--green); font-weight:700;">
-            Earned: $46.00
+          <div style="font-size:3.5rem; margin-bottom:1rem;">🎉</div>
+          <h2 style="color:var(--white); font-family:'Syne', sans-serif; font-size:1.5rem; margin-bottom:0.5rem;">
+            ${currentLang === 'fr' ? 'Quart de travail complété !' : 'Shift Completed!'}
+          </h2>
+          <p style="color:#8FA6BE; font-size:0.88rem; margin-bottom:1.5rem; line-height:1.5;">
+            ${currentLang === 'fr' ? 'Vos heures ont été transmises au décret CPEEP (23,00 $/h). Sophie a enregistré votre score QA de 100%.' : 'Your 2.0 hours have been recorded under the CPEEP Decree ($23.00/hr). Sophie has logged your 100% QA score.'}
+          </p>
+          <div style="background:rgba(16, 185, 129, 0.12); border:1px solid rgba(16, 185, 129, 0.3); padding:1.2rem; border-radius:12px; color:var(--green); font-weight:800; font-size:1.2rem; margin-bottom:1.5rem;">
+            ${currentLang === 'fr' ? 'Rémunération : 46,00 $' : 'Earned: $46.00 CAD'}
           </div>
+          <button class="btn-block btn-blue" onclick="location.reload()">
+            ${currentLang === 'fr' ? 'Retour aux quarts' : 'Back to Shifts'}
+          </button>
         </div>
       `;
     }
+
+    // Bilingual Toggle Logic
+    const translations = {
+      en: {
+        appBadge: "CREW OS",
+        greeting: "Hi, Marco.",
+        wageBadge: "✓ CPEEP Compliance: $23.00/hr",
+        routeTitle: "Tonight's Assigned Route",
+        routeCount: "1 Site Scheduled",
+        scheduled: "Scheduled",
+        mapsLink: "Open Maps ↗",
+        sqft: "Square Footage:",
+        duration: "Est. Duration:",
+        type: "Service Type:",
+        equip: "Equip Required:",
+        clockInBtn: "Slide to Clock In (GPS)",
+        clockedIn: "Clocked In",
+        secTitle: "🔑 Keybox Access Code (Back Alley Door)",
+        secNote: "Code active. Deactivates automatically at 21:30.",
+        notes: "Facility Instructions:",
+        qaTitle: "Mandatory 5-Point QA Audit",
+        qaSubtitle: "Check off all 5 inspection points before clocking out to verify completion.",
+        qa1: "All trash emptied & new liners installed in bins",
+        qa2: "Restrooms disinfected (toilets, urinals, sinks, mirrors)",
+        qa3: "Dispensers restocked (Toilet paper, hand soap, roll towels)",
+        qa4: "Floors mopped with neutral cleaner & scrubbed",
+        qa5: "Perimeter doors locked & night security alarm set",
+        photoBtn: "Take Proof Photo (Optional)",
+        clockOutBtn: `Submit QA & Clock Out (${checkedCount}/5)`,
+        navShifts: "Shifts",
+        navEarnings: "Earnings",
+        navSettings: "Settings",
+        earnWeek: "This Week's Net Pay",
+        earnRate: "↑ 14.0 hrs @ $23.00/h Legal Parity",
+        nextPay: "Next Direct Deposit",
+        ytdGross: "YTD Gross Logged",
+        cpeepTitle: "CPEEP Legal Decree Protected",
+        cpeepDesc: "All OTIS cleaners are guaranteed statutory wage parity of $23.00/hr, with full CNESST liability and injury coverage across Greater Montreal.",
+        recentShifts: "Recent Paid Shifts",
+        depositAccount: "Direct Deposit Account",
+        prefLang: "Interface Language",
+        descPrefLang: "Français québécois or English (Canada)",
+        protoLockboxTitle: "Lockbox / Access Trouble",
+        protoLockboxDesc: "If the physical lockbox is jammed or the code fails, call Bruno (Crew Dispatch) immediately at (514) 555-OTIS. Never force lockbox dials.",
+        protoChemTitle: "WHMIS & Chemical Ratios",
+        protoChemDesc: "Neutral Floor Cleaner: 1:64 ratio (cold water only). Use Anti-Foam / Defoamer in the Tennant auto-scrubber recovery tank for all heavy salt extractions.",
+        callDispatch: "Call Bruno (Dispatch)",
+        backHub: "Executive ERP Hub"
+      },
+      fr: {
+        appBadge: "ÉQUIPE OS",
+        greeting: "Bonjour Marco.",
+        wageBadge: "✓ Décret CPEEP respecté : 23,00 $/h",
+        routeTitle: "Itinéraire assigné ce soir",
+        routeCount: "1 Établissement prévu",
+        scheduled: "Prévu",
+        mapsLink: "Ouvrir Maps ↗",
+        sqft: "Superficie :",
+        duration: "Durée estimée :",
+        type: "Type de service :",
+        equip: "Équipement requis :",
+        clockInBtn: "Glisser pour Débuter (GPS)",
+        clockedIn: "En Service",
+        secTitle: "🔑 Code Boîte à Clé (Porte ruelle arrière)",
+        secNote: "Code actif. Se désactive automatiquement à 21h30.",
+        notes: "Consignes de l'édifice :",
+        qaTitle: "Protocole QA obligatoire (5 points)",
+        qaSubtitle: "Cochez les 5 points d'inspection avant de terminer le quart.",
+        qa1: "Poubelles vidées et sacs neufs installés dans tous les bacs",
+        qa2: "Salles de bain désinfectées (toilettes, lavabos, miroirs)",
+        qa3: "Distributeurs réapprovisionnés (papier hygiénique, savon, essuie-mains)",
+        qa4: "Planchers récurés et lavés au détergent neutre",
+        qa5: "Portes extérieures verrouillées et alarme nocturne activée",
+        photoBtn: "Prendre photo de preuve (Optionnel)",
+        clockOutBtn: `Valider les 5 points QA (${checkedCount}/5)`,
+        navShifts: "Quarts",
+        navEarnings: "Paie",
+        navSettings: "Options",
+        earnWeek: "Paie nette cette semaine",
+        earnRate: "↑ 14,0 h @ 23,00 $/h Parité légale",
+        nextPay: "Prochain dépôt direct",
+        ytdGross: "Total cumulé cette année",
+        cpeepTitle: "Protégé par le Décret CPEEP",
+        cpeepDesc: "Tous les préposés OTIS bénéficient de la parité légale stricte de 23,00 $/h et de la couverture intégrale CNESST dans le Grand Montréal.",
+        recentShifts: "Derniers quarts rémunérés",
+        depositAccount: "Compte de dépôt direct",
+        prefLang: "Langue de l'interface",
+        descPrefLang: "Français québécois ou English (Canada)",
+        protoLockboxTitle: "Problème de boîte à clé / Accès",
+        protoLockboxDesc: "Si la boîte à clé est coincée ou si le code ne fonctionne pas, contactez immédiatement Bruno (Répartition) au (514) 555-OTIS.",
+        protoChemTitle: "SIMDUT & Dilution des produits",
+        protoChemDesc: "Nettoyant neutre à plancher : dilution 1:64 (eau froide). Mettre de l'anti-mousse dans le bac de récupération de l'autolaveuse Tennant.",
+        callDispatch: "Appeler Bruno (Répartition)",
+        backHub: "Console Exécutive ERP"
+      }
+    };
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'en' ? 'fr' : 'en';
+      const t = translations[currentLang];
+
+      document.getElementById('lang-btn').innerText = currentLang === 'fr' ? 'FR' : 'EN';
+      const settingPill = document.getElementById('settings-lang-pill');
+      if (settingPill) settingPill.innerText = currentLang === 'fr' ? 'Français' : 'English';
+
+      document.getElementById('app-badge').innerText = t.appBadge;
+      document.getElementById('greeting-text').innerText = t.greeting;
+      document.getElementById('wage-badge-text').innerText = t.wageBadge;
+      document.getElementById('route-title-text').innerText = t.routeTitle;
+      document.getElementById('route-count-text').innerText = t.routeCount;
+      document.getElementById('status-scheduled-text').innerText = t.scheduled;
+      document.getElementById('maps-link-text').innerText = t.mapsLink;
+      document.getElementById('lbl-sqft').innerText = t.sqft;
+      document.getElementById('lbl-duration').innerText = t.duration;
+      document.getElementById('lbl-type').innerText = t.type;
+      document.getElementById('lbl-equip').innerText = t.equip;
+      document.getElementById('btn-clockin-text').innerText = t.clockInBtn;
+
+      document.getElementById('status-clockedin-text').innerText = t.clockedIn;
+      document.getElementById('sec-title-text').innerText = t.secTitle;
+      document.getElementById('sec-note-text').innerText = t.secNote;
+      document.getElementById('lbl-notes').innerText = t.notes;
+      document.getElementById('qa-title-text').innerText = t.qaTitle;
+      document.getElementById('qa-subtitle-text').innerText = t.qaSubtitle;
+      document.getElementById('qa-item-1').innerText = t.qa1;
+      document.getElementById('qa-item-2').innerText = t.qa2;
+      document.getElementById('qa-item-3').innerText = t.qa3;
+      document.getElementById('qa-item-4').innerText = t.qa4;
+      document.getElementById('qa-item-5').innerText = t.qa5;
+      document.getElementById('btn-photo-text').innerText = t.photoBtn;
+      if (checkedCount === 5) {
+        document.getElementById('btn-clockout-text').innerText = currentLang === 'fr' ? "✓ Soumettre QA & Terminer" : "✓ Submit QA & Clock Out";
+      } else {
+        document.getElementById('btn-clockout-text').innerText = currentLang === 'fr' ? `Valider les 5 points QA (${checkedCount}/5)` : `Submit QA & Clock Out (${checkedCount}/5)`;
+      }
+
+      document.getElementById('nav-lbl-shifts').innerText = t.navShifts;
+      document.getElementById('nav-lbl-earnings').innerText = t.navEarnings;
+      document.getElementById('nav-lbl-settings').innerText = t.navSettings;
+
+      document.getElementById('lbl-earn-week').innerText = t.earnWeek;
+      document.getElementById('sub-earn-rate').innerText = t.earnRate;
+      document.getElementById('lbl-next-pay').innerText = t.nextPay;
+      document.getElementById('lbl-ytd-gross').innerText = t.ytdGross;
+      document.getElementById('banner-cpeep-title').innerText = t.cpeepTitle;
+      document.getElementById('banner-cpeep-desc').innerText = t.cpeepDesc;
+      document.getElementById('title-recent-shifts').innerText = t.recentShifts;
+      document.getElementById('lbl-deposit-account').innerText = t.depositAccount;
+
+      document.getElementById('lbl-pref-lang').innerText = t.prefLang;
+      document.getElementById('desc-pref-lang').innerText = t.descPrefLang;
+      document.getElementById('title-proto-lockbox').innerText = t.protoLockboxTitle;
+      document.getElementById('desc-proto-lockbox').innerText = t.protoLockboxDesc;
+      document.getElementById('title-proto-chem').innerText = t.protoChemTitle;
+      document.getElementById('desc-proto-chem').innerText = t.protoChemDesc;
+      document.getElementById('lbl-call-dispatch').innerText = t.callDispatch;
+      document.getElementById('lbl-back-hub').innerText = t.backHub;
+
+      updateClock();
+    }
   </script>
+
 </body>
 </html>

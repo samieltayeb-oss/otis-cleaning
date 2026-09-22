@@ -20,6 +20,76 @@
       "source": "/otis-final-v2_11.html",
       "destination": "/",
       "permanent": true
+    },
+    {
+      "source": "/agent_hub.html",
+      "destination": "/internal/command-center",
+      "permanent": true
+    },
+    {
+      "source": "/agent_hub",
+      "destination": "/internal/command-center",
+      "permanent": true
+    },
+    {
+      "source": "/internal/agent_hub.html",
+      "destination": "/internal/command-center",
+      "permanent": true
+    },
+    {
+      "source": "/internal/agent_hub",
+      "destination": "/internal/command-center",
+      "permanent": true
+    },
+    {
+      "source": "/crm.html",
+      "destination": "/internal/crm",
+      "permanent": true
+    },
+    {
+      "source": "/crm",
+      "destination": "/internal/crm",
+      "permanent": true
+    },
+    {
+      "source": "/erp.html",
+      "destination": "/internal/erp",
+      "permanent": true
+    },
+    {
+      "source": "/erp",
+      "destination": "/internal/erp",
+      "permanent": true
+    },
+    {
+      "source": "/leads.html",
+      "destination": "/internal/leads",
+      "permanent": true
+    },
+    {
+      "source": "/leads",
+      "destination": "/internal/leads",
+      "permanent": true
+    },
+    {
+      "source": "/equipment.html",
+      "destination": "/internal/equipment",
+      "permanent": true
+    },
+    {
+      "source": "/equipment",
+      "destination": "/internal/equipment",
+      "permanent": true
+    },
+    {
+      "source": "/erp-report.html",
+      "destination": "/internal/erp-report",
+      "permanent": true
+    },
+    {
+      "source": "/erp-report",
+      "destination": "/internal/erp-report",
+      "permanent": true
     }
   ],
   "headers": [
