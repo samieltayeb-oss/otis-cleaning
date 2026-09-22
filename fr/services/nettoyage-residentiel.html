@@ -625,7 +625,127 @@ footer {
   transform: translateY(0) !important;
 }
 
+
+/* ── OTIS EXECUTIVE LOGO MOTION GRAPHICS & SQUEEGEE GLINT ── */
+.nav-logo {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  overflow: visible;
+  padding: 4px 6px;
+  border-radius: 12px;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  text-decoration: none;
+}
+.nav-logo img {
+  height: 38px;
+  object-fit: contain;
+  display: block;
+  transition: filter 0.35s ease, transform 0.35s ease;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+}
+.nav-logo::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -130%;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 20%,
+    rgba(255, 255, 255, 0.85) 50%,
+    rgba(34, 197, 94, 0.6) 75%,
+    transparent 100%
+  );
+  transform: skewX(-25deg);
+  pointer-events: none;
+  z-index: 5;
+  mix-blend-mode: color-dodge;
+  animation: logoCleanSweep 7s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+@keyframes logoCleanSweep {
+  0% { left: -130%; opacity: 0; }
+  10% { opacity: 1; }
+  30% { left: 160%; opacity: 0; }
+  100% { left: 160%; opacity: 0; }
+}
+.nav-logo:hover {
+  transform: translateY(-2px) scale(1.04);
+}
+.nav-logo:hover img {
+  filter: drop-shadow(0 0 12px rgba(247, 148, 29, 0.65)) drop-shadow(0 0 20px rgba(34, 197, 94, 0.5));
+}
+.nav-logo:hover::before {
+  animation: logoHoverSweep 0.85s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+@keyframes logoHoverSweep {
+  0% { left: -100%; opacity: 0.9; }
+  100% { left: 160%; opacity: 0; }
+}
+.logo-sparkle {
+  position: absolute;
+  right: -2px;
+  top: 48%;
+  transform: translateY(-50%) scale(0);
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+  z-index: 6;
+  opacity: 0;
+  animation: logoGlintFlash 7s infinite;
+}
+.logo-sparkle svg {
+  width: 100%;
+  height: 100%;
+  fill: #FFFFFF;
+  filter: drop-shadow(0 0 4px #22c55e) drop-shadow(0 0 10px #f7941d);
+  animation: sparkleSpin 4s linear infinite;
+}
+@keyframes sparkleSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes logoGlintFlash {
+  0%, 19% { transform: translateY(-50%) scale(0); opacity: 0; }
+  23% { transform: translateY(-50%) scale(1.4) rotate(45deg); opacity: 1; }
+  27% { transform: translateY(-50%) scale(0.9) rotate(90deg); opacity: 0.8; }
+  33% { transform: translateY(-50%) scale(0) rotate(135deg); opacity: 0; }
+  100% { transform: translateY(-50%) scale(0); opacity: 0; }
+}
+.nav-logo:hover .logo-sparkle {
+  animation: logoHoverGlint 0.85s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+@keyframes logoHoverGlint {
+  0% { transform: translateY(-50%) scale(0); opacity: 0; }
+  45% { transform: translateY(-50%) scale(1.6) rotate(90deg); opacity: 1; }
+  100% { transform: translateY(-50%) scale(0) rotate(180deg); opacity: 0; }
+}
+.burst-particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff 20%, #f7941d 60%, transparent 100%);
+  box-shadow: 0 0 8px #22c55e, 0 0 14px #f7941d;
+  pointer-events: none;
+  z-index: 10;
+  animation: burstFly 0.65s cubic-bezier(0.1, 0.8, 0.2, 1) forwards;
+}
+@keyframes burstFly {
+  0% { transform: translate(0, 0) scale(1); opacity: 1; }
+  100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
+}
+
 </style>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#080D1A">
 </head>
 <body>
 
@@ -633,7 +753,7 @@ footer {
 <nav>
   <a href="/fr/" class="nav-logo">
     <img src="/imgs/otis-logo.png" alt="OTIS Commercial Cleaning">
-  </a>
+  <span class="logo-sparkle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 0L14.5 9.5L24 12L14.5 14.5L12 24L9.5 14.5L0 12L9.5 9.5L12 0Z"/></svg></span></a>
   
   <ul class="nav-links">
     <li><a href="/fr/">Accueil</a></li>
@@ -895,5 +1015,38 @@ function toggleMob() {
 })();
 </script>
 
+<script>
+// Interactive Logo Sparkle Burst on Hover
+(function() {
+  function initLogoSparkle() {
+    var logos = document.querySelectorAll('.nav-logo');
+    logos.forEach(function(logo) {
+      function burstSparkles() {
+        var rect = logo.getBoundingClientRect();
+        for (var i = 0; i < 4; i++) {
+          var spark = document.createElement('span');
+          spark.className = 'burst-particle';
+          spark.style.left = (rect.width - 10) + 'px';
+          spark.style.top = (rect.height / 2) + 'px';
+          var angle = (Math.random() * Math.PI) - (Math.PI / 2);
+          var dist = 20 + Math.random() * 25;
+          var tx = Math.cos(angle) * dist;
+          var ty = Math.sin(angle) * dist;
+          spark.style.setProperty('--tx', tx + 'px');
+          spark.style.setProperty('--ty', ty + 'px');
+          logo.appendChild(spark);
+          setTimeout(function(s) { s.remove(); }, 650, spark);
+        }
+      }
+      logo.addEventListener('mouseenter', burstSparkles);
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initLogoSparkle);
+  } else {
+    initLogoSparkle();
+  }
+})();
+</script>
 </body>
 </html>
