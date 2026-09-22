@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OTIS Invoice Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0B1B2B; --surface: #102438; --border: #1E3D5C; --text: #C2D3E5; --white: #FFF;
+      --pdf-navy: #0B1B2B; --pdf-gray: #64748b; --pdf-orange: #F7941D; --pdf-table-head: #051324;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); display: flex; height: 100vh; overflow: hidden; }
+    
+    /* Left Panel: Inputs */
+    .sidebar { width: 400px; background: var(--surface); border-right: 1px solid var(--border); padding: 2rem; display: flex; flex-direction: column; gap: 1.25rem; overflow-y: auto; }
+    .sidebar h2 { color: var(--white); font-size: 1.2rem; margin-bottom: 1rem; }
+    .form-group label { display: block; font-size: 0.75rem; font-weight: 700; color: #8FA6BE; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 1px; }
+    .form-control { width: 100%; padding: 0.85rem; border-radius: 4px; border: 1px solid var(--border); background: rgba(0,0,0,0.2); color: var(--white); font-family: inherit; font-size: 0.95rem; }
+    .form-control:focus { outline: none; border-color: var(--pdf-orange); }
+    
+    .btn { padding: 1rem; border-radius: 4px; font-weight: 700; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; text-align: center; border: none; font-size: 0.85rem; width: 100%; }
+    .btn-primary { background: var(--pdf-orange); color: #FFF; margin-top: 1rem; }
+    .btn-primary:hover { background: #e68010; }
+    .btn-print { background: transparent; color: #38bdf8; border: 1px solid #38bdf8; margin-top: 0.5rem; }
+    .btn-small { padding: 0.5rem 1rem; font-size: 0.75rem; background: rgba(255,255,255,0.1); color: #fff; margin-top: 0.5rem; border-radius: 4px; }
+    
+    /* Right Panel: Preview */
+    .preview-pane { flex: 1; background: #cbd5e1; padding: 3rem; overflow-y: auto; display: flex; justify-content: center; }
+    
+    /* EXACT PDF STYLING */
+    .document { 
+      background: #FFF; width: 100%; max-width: 850px; min-height: 1100px; 
+      padding: 3rem 4rem; color: #334155; font-family: 'Inter', sans-serif; 
+      line-height: 1.6; box-shadow: 0 20px 40px rgba(0,0,0,0.3); position: relative; 
+    }
+    
+    .pdf-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem; }
+    
+    .pdf-logo-sec { max-width: 65%; }
+    .pdf-logo-sec h1 { font-size: 2.1rem; font-weight: 800; color: var(--pdf-navy); letter-spacing: -0.5px; margin-bottom: 0.5rem; }
+    .pdf-logo-sec .subtitle { font-size: 0.85rem; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.75rem; }
+    .pdf-logo-sec .meta { font-size: 0.75rem; color: #64748b; }
+    
+    .pdf-dark-box { background: var(--pdf-navy); color: #fff; padding: 1rem 1.5rem; text-align: right; border-radius: 4px; }
+    .pdf-dark-box div { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.8; }
+    
+    .pdf-orange-line { height: 3px; background: var(--pdf-orange); width: 100%; margin-bottom: 2.5rem; }
+
+    /* Client Info */
+    .bill-to { display: flex; justify-content: space-between; margin-bottom: 2rem; }
+    .bill-col h3 { font-size: 1.2rem; font-weight: 800; color: var(--pdf-navy); text-transform: uppercase; margin-bottom: 0.5rem; }
+    .bill-col p { font-size: 0.9rem; color: #334155; line-height: 1.6; }
+    
+    /* Invoice Table EXACT PDF STYLE */
+    .inv-table { width: 100%; border-collapse: collapse; margin-bottom: 2.5rem; }
+    .inv-table th { background: var(--pdf-table-head); color: #fff; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 0.75rem 1rem; text-align: left; }
+    .inv-table th:last-child { text-align: right; }
+    .inv-table td { padding: 1rem; border-bottom: 1px solid #e2e8f0; font-size: 0.9rem; color: #0f172a; vertical-align: top; }
+    .inv-table td:last-child { text-align: right; font-weight: 600; }
+    
+    .item-title { font-weight: 600; color: var(--pdf-navy); margin-bottom: 0.25rem; }
+    .item-desc { font-size: 0.85rem; color: #64748b; }
+
+    /* Totals Box */
+    .totals-wrapper { display: flex; justify-content: flex-end; }
+    .totals-box { width: 350px; background: #f8fafc; border: 1px solid #e2e8f0; padding: 1.5rem; border-radius: 4px; }
+    .t-row { display: flex; justify-content: space-between; margin-bottom: 0.75rem; font-size: 0.9rem; color: #475569; }
+    .t-row.grand-total { border-top: 1px solid #cbd5e1; padding-top: 1rem; margin-top: 0.5rem; font-size: 1.2rem; font-weight: 800; color: var(--pdf-navy); margin-bottom: 0; }
+    
+    /* Footer */
+    .doc-footer { margin-top: 4rem; font-size: 0.8rem; color: #64748b; line-height: 1.6; }
+    .doc-footer strong { color: var(--pdf-navy); }
+    
+    @media print {
+      body { background: #FFF; overflow: visible; display: block; }
+      .sidebar { display: none; }
+      .preview-pane { padding: 0; background: none; display: block; }
+      .document { box-shadow: none; max-width: 100%; padding: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="sidebar">
+  <div style="display:flex; justify-content:space-between; align-items:center;">
+    <h2>Invoice Engine</h2>
+    <a href="execution.html" style="color:var(--pdf-orange); text-decoration:none; font-size:0.8rem; font-weight:700;">◀ BACK</a>
+  </div>
+  
+  <div class="form-group">
+    <label>Invoice Number</label>
+    <input type="text" id="inp-inv" class="form-control" value="INV-2026-1042">
+  </div>
+  
+  <div class="form-group">
+    <label>Client Corporate Name</label>
+    <input type="text" id="inp-client" class="form-control" placeholder="e.g. Centre Dentaire Lakeshore">
+  </div>
+  
+  <div class="form-group">
+    <label>Client Address</label>
+    <input type="text" id="inp-addr" class="form-control" placeholder="123 Main St, Westmount, QC">
+  </div>
+
+  <div style="border-top:1px solid var(--border); margin:0.5rem 0; padding-top:1rem;">
+    <h3 style="color:#fff; font-size:0.9rem; margin-bottom:1rem;">Line Items</h3>
+    <div id="line-items-container">
+      <div class="item-entry" style="background:rgba(255,255,255,0.05); padding:1rem; border-radius:4px; margin-bottom:1rem;">
+        <input type="text" class="form-control inp-desc" placeholder="Description" value="Monthly Commercial Cleaning" style="margin-bottom:0.5rem;">
+        <input type="text" class="form-control inp-sub" placeholder="Details" value="October 2026 - 3x/week Service" style="margin-bottom:0.5rem;">
+        <div style="display:flex; gap:10px;">
+          <input type="number" class="form-control inp-qty" placeholder="Qty" value="1">
+          <input type="number" class="form-control inp-price" placeholder="Price" value="1500.00">
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-small" onclick="addLineItem()">+ Add Another Item</button>
+  </div>
+
+  <button class="btn btn-primary" onclick="generate()">Update PDF</button>
+  <button class="btn btn-print" onclick="window.print()">🖨️ Print to PDF</button>
+</div>
+
+<div class="preview-pane">
+  <div class="document">
+    
+    <!-- EXACT PDF HEADER -->
+    <div class="pdf-header">
+      <div class="pdf-logo-sec">
+        <img src="imgs/otis-logo.png" alt="OTIS COMMERCIAL CLEANING" style="height:48px; filter: brightness(0); margin-bottom:0.75rem;">
+        <div class="subtitle">OFFICIAL COMMERCIAL TAX INVOICE</div>
+        <div class="meta">
+          Headquarters: 2447 Avenue Madison, Montreal, QC H4B 2T5 · Phone: +1 (438) 935-9725 · Web: otiscc.ca<br>
+          TPS/GST: 123456789 RT0001 · TVQ/QST: 1234567890 TQ0001
+        </div>
+      </div>
+      <div class="pdf-dark-box">
+        <div>INVOICE <span id="out-inv">#INV-2026-1042</span></div>
+        <div>PREPARED FOR: <span id="out-client-box">CLIENT</span></div>
+        <div>DATE: <span id="out-date">OCTOBER 2026</span></div>
+      </div>
+    </div>
+    <div class="pdf-orange-line"></div>
+    
+    <!-- 1. BILL TO SECTION -->
+    <div class="bill-to">
+      <div class="bill-col">
+        <h3>1. BILLED TO</h3>
+        <p><strong style="color:var(--pdf-navy);" id="out-client">CENTRE DENTAIRE LAKESHORE</strong><br>
+        <span id="out-addr">123 Main St, Westmount, QC</span></p>
+      </div>
+      <div class="bill-col" style="text-align:right;">
+        <h3>PAYMENT TERMS</h3>
+        <p><strong style="color:var(--pdf-navy);">NET 15 DAYS</strong><br>
+        Due Date: <span id="out-due">OCTOBER 16, 2026</span></p>
+      </div>
+    </div>
+    
+    <!-- 2. LINE ITEMS -->
+    <h3 style="font-size:1.2rem; font-weight:800; color:var(--pdf-navy); text-transform:uppercase; margin-bottom:1rem;">2. ITEMIZED SERVICES</h3>
+    <table class="inv-table">
+      <thead>
+        <tr>
+          <th style="width:55%">SERVICE DESCRIPTION</th>
+          <th style="width:15%; text-align:center;">QUANTITY</th>
+          <th style="width:15%; text-align:center;">RATE</th>
+          <th style="width:15%">TOTAL</th>
+        </tr>
+      </thead>
+      <tbody id="out-tbody">
+      </tbody>
+    </table>
+    
+    <div class="totals-wrapper">
+      <div class="totals-box">
+        <div class="t-row">
+          <span>Subtotal</span>
+          <span id="out-sub">$1,500.00</span>
+        </div>
+        <div class="t-row">
+          <span>GST (5.00%)</span>
+          <span id="out-gst">$75.00</span>
+        </div>
+        <div class="t-row">
+          <span>QST (9.975%)</span>
+          <span id="out-qst">$149.63</span>
+        </div>
+        <div class="t-row grand-total">
+          <span>TOTAL CAD</span>
+          <span id="out-total">$1,724.63</span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Footer -->
+    <div class="doc-footer">
+      <strong>PAYMENT INSTRUCTIONS:</strong><br>
+      Please remit payment via Interac e-Transfer to <strong>billing@otiscc.ca</strong>. For Electronic Funds Transfer (EFT) or direct deposit, please reference Invoice <span id="out-inv-foot">INV-2026-1042</span> on your remittance. Late payments are subject to a 2% monthly interest charge.<br><br>
+      Thank you for trusting OTIS Commercial Cleaning.
+    </div>
+
+  </div>
+</div>
+
+<script>
+  function addLineItem() {
+    const cont = document.getElementById('line-items-container');
+    const div = document.createElement('div');
+    div.className = 'item-entry';
+    div.style.cssText = 'background:rgba(255,255,255,0.05); padding:1rem; border-radius:4px; margin-bottom:1rem;';
+    div.innerHTML = `
+      <input type="text" class="form-control inp-desc" placeholder="Description" style="margin-bottom:0.5rem;">
+      <input type="text" class="form-control inp-sub" placeholder="Details" style="margin-bottom:0.5rem;">
+      <div style="display:flex; gap:10px;">
+        <input type="number" class="form-control inp-qty" placeholder="Qty" value="1">
+        <input type="number" class="form-control inp-price" placeholder="Price">
+      </div>
+    `;
+    cont.appendChild(div);
+  }
+
+  function generate() {
+    const inv = document.getElementById('inp-inv').value || 'INV-0000';
+    const client = document.getElementById('inp-client').value || 'CLIENT NAME';
+    const addr = document.getElementById('inp-addr').value || 'Client Address';
+    
+    const today = new Date();
+    const due = new Date(today);
+    due.setDate(due.getDate() + 15);
+    
+    const opts = { month: 'long', day: 'numeric', year: 'numeric' };
+    const dateStr = today.toLocaleDateString('en-US', opts).toUpperCase();
+    const dueStr = due.toLocaleDateString('en-US', opts).toUpperCase();
+
+    document.getElementById('out-inv').innerText = '#' + inv;
+    document.getElementById('out-inv-foot').innerText = inv;
+    document.getElementById('out-client').innerText = client.toUpperCase();
+    document.getElementById('out-client-box').innerText = client.toUpperCase().substring(0, 20);
+    document.getElementById('out-addr').innerText = addr;
+    document.getElementById('out-date').innerText = dateStr;
+    document.getElementById('out-due').innerText = dueStr;
+    
+    const entries = document.querySelectorAll('.item-entry');
+    const tbody = document.getElementById('out-tbody');
+    tbody.innerHTML = '';
+    
+    let subtotal = 0;
+    
+    entries.forEach(ent => {
+      const desc = ent.querySelector('.inp-desc').value;
+      const sub = ent.querySelector('.inp-sub').value;
+      const qty = parseFloat(ent.querySelector('.inp-qty').value) || 0;
+      const price = parseFloat(ent.querySelector('.inp-price').value) || 0;
+      
+      if (!desc && price === 0) return;
+      
+      const amt = qty * price;
+      subtotal += amt;
+      
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>
+          <div class="item-title">${desc.toUpperCase()}</div>
+          <div class="item-desc">${sub}</div>
+        </td>
+        <td style="text-align:center;">${qty}</td>
+        <td style="text-align:center;">$${price.toLocaleString('en-US', {minimumFractionDigits:2})}</td>
+        <td>$${amt.toLocaleString('en-US', {minimumFractionDigits:2})}</td>
+      `;
+      tbody.appendChild(tr);
+    });
+    
+    const gst = subtotal * 0.05;
+    const qst = subtotal * 0.09975;
+    const total = subtotal + gst + qst;
+    
+    document.getElementById('out-sub').innerText = '$' + subtotal.toLocaleString('en-US', {minimumFractionDigits:2});
+    document.getElementById('out-gst').innerText = '$' + gst.toLocaleString('en-US', {minimumFractionDigits:2});
+    document.getElementById('out-qst').innerText = '$' + qst.toLocaleString('en-US', {minimumFractionDigits:2});
+    document.getElementById('out-total').innerText = '$' + total.toLocaleString('en-US', {minimumFractionDigits:2});
+  }
+  
+  generate();
+</script>
+
+</body>
+</html>

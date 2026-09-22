@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>OTIS Crew Portal | Field Operative App</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Syne:wght@700;800&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #050d14; --surface: #0a192f; --border: #1e3a5f; --text: #C2D3E5; --white: #FFF;
+      --brand-orange: #F7941D; --green: #10b981; --red: #ef4444; --blue: #38bdf8;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'DM Sans', sans-serif; }
+    body { background: #000; color: var(--text); display: flex; justify-content: center; min-height: 100vh; }
+    
+    /* Mobile App Container */
+    .app-container {
+      width: 100%;
+      max-width: 400px; /* Mobile phone width */
+      background: var(--bg);
+      border-left: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    /* Header */
+    .header {
+      padding: 1.5rem;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .header img { height: 24px; filter: brightness(0) invert(1); }
+    .lang-toggle { font-size: 0.75rem; font-weight: 700; color: var(--brand-orange); background: rgba(247, 148, 29, 0.1); padding: 4px 10px; border-radius: 20px; border: 1px solid rgba(247, 148, 29, 0.3); }
+
+    /* Welcome Area */
+    .welcome-area { padding: 2rem 1.5rem 1rem; }
+    .date-text { font-size: 0.8rem; color: var(--brand-gray); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 0.5rem; }
+    .greeting { font-family: 'Syne', sans-serif; font-size: 1.6rem; color: var(--white); margin-bottom: 0.5rem; }
+    .wage-badge { display: inline-flex; align-items: center; gap: 5px; background: rgba(16, 185, 129, 0.1); color: var(--green); padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; }
+
+    /* Route Card */
+    .route-section { padding: 1rem 1.5rem; }
+    .section-title { font-size: 0.85rem; color: var(--white); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; }
+    
+    .job-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 1rem; }
+    .job-hdr { padding: 1rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: flex-start; }
+    .job-time { font-family: 'Syne', sans-serif; color: var(--brand-orange); font-size: 1.2rem; font-weight: 700; }
+    .job-status { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; background: rgba(255,255,255,0.1); padding: 3px 8px; border-radius: 4px; }
+    
+    .job-body { padding: 1rem; }
+    .job-client { font-size: 1.1rem; color: var(--white); font-weight: 700; margin-bottom: 0.2rem; }
+    .job-address { font-size: 0.85rem; color: var(--brand-gray); margin-bottom: 1rem; }
+    
+    .job-details { background: rgba(0,0,0,0.3); border-radius: 6px; padding: 0.8rem; font-size: 0.8rem; display: grid; gap: 0.5rem; margin-bottom: 1rem; }
+    .detail-row { display: flex; justify-content: space-between; }
+    .detail-lbl { color: var(--brand-gray); }
+    .detail-val { color: var(--white); font-weight: 600; }
+
+    /* Action Buttons */
+    .btn-block { display: block; width: 100%; padding: 1rem; text-align: center; border-radius: 8px; font-weight: 700; font-size: 0.95rem; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.2s; }
+    .btn-green { background: var(--green); color: #000; box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3); }
+    .btn-gray { background: var(--border); color: var(--text); }
+    .btn-blue { background: var(--blue); color: #000; margin-bottom: 0.8rem; }
+
+    /* Hidden Sections (Revealed on Clock In) */
+    #active-job-area { display: none; }
+    
+    .security-box { border: 1px solid var(--brand-orange); background: rgba(247, 148, 29, 0.05); padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem; text-align: center; }
+    .sec-title { font-size: 0.75rem; color: var(--brand-orange); text-transform: uppercase; font-weight: 700; margin-bottom: 0.5rem; }
+    .sec-code { font-family: 'Syne', sans-serif; font-size: 2rem; color: var(--white); letter-spacing: 5px; }
+
+    /* QA Checklist */
+    .qa-list { margin-bottom: 1.5rem; }
+    .qa-item { display: flex; align-items: center; gap: 12px; padding: 1rem; border-bottom: 1px solid var(--border); background: var(--surface); }
+    .qa-item:first-child { border-top-left-radius: 8px; border-top-right-radius: 8px; }
+    .qa-item:last-child { border-bottom: none; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; }
+    .qa-checkbox { width: 22px; height: 22px; border: 2px solid var(--brand-gray); border-radius: 4px; display: flex; align-items: center; justify-content: center; color: transparent; cursor: pointer; transition: 0.2s; }
+    .qa-checkbox.checked { background: var(--green); border-color: var(--green); color: #fff; }
+    .qa-text { font-size: 0.85rem; color: var(--white); font-weight: 500; flex: 1; }
+    .qa-req { font-size: 0.65rem; color: var(--brand-orange); font-weight: 700; text-transform: uppercase; }
+
+    /* Bottom Nav */
+    .bottom-nav { margin-top: auto; background: var(--surface); border-top: 1px solid var(--border); display: flex; justify-content: space-around; padding: 1rem 0; position: sticky; bottom: 0; }
+    .nav-btn { display: flex; flex-direction: column; align-items: center; gap: 5px; color: var(--brand-gray); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; cursor: pointer; }
+    .nav-btn.active { color: var(--brand-orange); }
+    .nav-btn span { font-size: 1.2rem; }
+
+  </style>
+</head>
+<body>
+
+  <div class="app-container">
+    <div class="header">
+      <img src="imgs/otis-logo.png" alt="OTIS">
+      <div class="lang-toggle">FR / EN</div>
+    </div>
+
+    <div class="welcome-area">
+      <div class="date-text" id="current-date">MONDAY, SEPT 21 • 18:45</div>
+      <h1 class="greeting">Hi, Marco.</h1>
+      <div class="wage-badge">✓ CPEEP Compliance: $23.00/hr</div>
+    </div>
+
+    <div class="route-section" id="pre-shift-area">
+      <div class="section-title">Tonight's Assigned Route</div>
+      
+      <div class="job-card">
+        <div class="job-hdr">
+          <div class="job-time">19:00 - 21:00</div>
+          <div class="job-status">Scheduled</div>
+        </div>
+        <div class="job-body">
+          <div class="job-client">Epic Quebec Headquarters</div>
+          <div class="job-address">📍 450 Rue de la Gauchetière O, Montreal</div>
+          
+          <div class="job-details">
+            <div class="detail-row"><span class="detail-lbl">Sq Footage:</span> <span class="detail-val">4,200 sq ft</span></div>
+            <div class="detail-row"><span class="detail-lbl">Est. Duration:</span> <span class="detail-val">2.0 Hours</span></div>
+            <div class="detail-row"><span class="detail-lbl">Job Type:</span> <span class="detail-val">Standard Commercial</span></div>
+          </div>
+          
+          <button class="btn-block btn-green" id="btn-clockin" onclick="clockIn()">📍 Slide to Clock In (GPS)</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="route-section" id="active-job-area">
+      <div class="job-card" style="border-color: var(--green);">
+        <div class="job-hdr" style="background: rgba(16, 185, 129, 0.1);">
+          <div class="job-time" style="color:var(--green);">Active Shift</div>
+          <div class="job-status" style="background:var(--green); color:#000;">Clocked In: 18:52</div>
+        </div>
+        <div class="job-body">
+          <div class="security-box">
+            <div class="sec-title">Keybox Access Code (Back Door)</div>
+            <div class="sec-code">4 1 9 2</div>
+            <div style="font-size:0.7rem; color:var(--brand-gray); margin-top:5px;">Code expires at 21:15 automatically.</div>
+          </div>
+          
+          <div class="section-title" style="color:var(--brand-orange);">Mandatory QA Audit</div>
+          <p style="font-size:0.75rem; color:var(--brand-gray); margin-bottom:1rem; line-height:1.4;">Submit the 5-point room audit before clocking out to clear the invoice for payment.</p>
+          
+          <div class="qa-list">
+            <div class="qa-item" onclick="toggleQa(this)">
+              <div class="qa-checkbox">✓</div>
+              <div class="qa-text">Trash removed & new liners installed in all bins</div>
+              <div class="qa-req">REQ</div>
+            </div>
+            <div class="qa-item" onclick="toggleQa(this)">
+              <div class="qa-checkbox">✓</div>
+              <div class="qa-text">Restrooms fully disinfected (sinks, toilets, mirrors)</div>
+              <div class="qa-req">REQ</div>
+            </div>
+            <div class="qa-item" onclick="toggleQa(this)">
+              <div class="qa-checkbox">✓</div>
+              <div class="qa-text">Toilet paper, paper towels, and soap restocked</div>
+              <div class="qa-req">REQ</div>
+            </div>
+            <div class="qa-item" onclick="toggleQa(this)">
+              <div class="qa-checkbox">✓</div>
+              <div class="qa-text">All hard floors mopped with neutral cleaner</div>
+              <div class="qa-req">REQ</div>
+            </div>
+            <div class="qa-item" onclick="toggleQa(this)">
+              <div class="qa-checkbox">✓</div>
+              <div class="qa-text">Alarm activated and front door securely locked</div>
+              <div class="qa-req">REQ</div>
+            </div>
+          </div>
+          
+          <button class="btn-block btn-blue" onclick="uploadPhoto()">📸 Upload Proof Photo (Optional)</button>
+          <button class="btn-block btn-gray" id="btn-clockout" onclick="clockOut()">Submit QA & Clock Out</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-nav">
+      <div class="nav-btn active">
+        <span>📋</span> Shifts
+      </div>
+      <div class="nav-btn">
+        <span>💰</span> Earnings
+      </div>
+      <div class="nav-btn">
+        <span>⚙️</span> Settings
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Set dynamic date
+    const d = new Date();
+    const days = ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"];
+    const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+    document.getElementById('current-date').innerText = `${days[d.getDay()]}, ${months[d.getMonth()]} ${d.getDate()} • ${d.getHours().toString().padStart(2,'0')}:${d.getMinutes().toString().padStart(2,'0')}`;
+
+    function clockIn() {
+      // Simulate GPS check
+      const btn = document.getElementById('btn-clockin');
+      btn.innerText = "Verifying Location...";
+      btn.style.background = "var(--border)";
+      btn.style.color = "#FFF";
+      
+      setTimeout(() => {
+        document.getElementById('pre-shift-area').style.display = 'none';
+        document.getElementById('active-job-area').style.display = 'block';
+        
+        // Notify Bruno in the backend (simulation)
+        console.log("Bruno Notified: Marco clocked into Epic Quebec. Keycode dispatched.");
+      }, 1200);
+    }
+
+    let checkedCount = 0;
+    function toggleQa(elem) {
+      const box = elem.querySelector('.qa-checkbox');
+      if (box.classList.contains('checked')) {
+        box.classList.remove('checked');
+        checkedCount--;
+      } else {
+        box.classList.add('checked');
+        checkedCount++;
+      }
+      
+      const outBtn = document.getElementById('btn-clockout');
+      if (checkedCount === 5) {
+        outBtn.classList.remove('btn-gray');
+        outBtn.classList.add('btn-green');
+      } else {
+        outBtn.classList.remove('btn-green');
+        outBtn.classList.add('btn-gray');
+      }
+    }
+
+    function uploadPhoto() {
+      alert("Camera API would open here to take a photo of the completed job.");
+    }
+
+    function clockOut() {
+      if (checkedCount < 5) {
+        alert("You must check off all mandatory QA items before clocking out.");
+        return;
+      }
+      
+      document.getElementById('active-job-area').innerHTML = `
+        <div style="padding: 3rem 1.5rem; text-align:center;">
+          <div style="font-size:4rem; margin-bottom:1rem;">✅</div>
+          <h2 style="color:var(--white); font-family:'Syne', sans-serif; margin-bottom:0.5rem;">Shift Completed</h2>
+          <p style="color:var(--brand-gray); font-size:0.9rem; margin-bottom:2rem;">Your 2.0 hours have been logged at $23.00/hr. Sophie has recorded your 100% QA score.</p>
+          <div style="background:rgba(16, 185, 129, 0.1); border:1px solid rgba(16, 185, 129, 0.3); padding:1rem; border-radius:8px; color:var(--green); font-weight:700;">
+            Earned: $46.00
+          </div>
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>

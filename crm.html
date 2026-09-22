@@ -1,0 +1,2089 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Autonomous AI Workforce & Zan Command Console — OTIS Commercial Cleaning</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0B1B2B;
+      --navy-surface: #102438;
+      --navy-light: #162E47;
+      --navy-border: #1E3D5C;
+      --orange: #F7941D;
+      --orange-light: #FFA940;
+      --green: #1E7B34;
+      --green-light: #28A745;
+      --white: #FFFFFF;
+      --text-muted: #8FA6BE;
+      --text-body: #C2D3E5;
+      --card: #0F2337;
+      --border: rgba(255, 255, 255, 0.08);
+      --red: #EF4444;
+      --blue: #38BDF8;
+      --purple: #A855F7;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--navy);
+      color: var(--text-body);
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      padding-top: 0;
+      min-height: 100vh;
+    }
+    /* Sticky Top Navigation Bar */
+    .top-bar {
+      position: sticky;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(11, 27, 43, 0.96);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.65rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .brand-logo img {
+      height: 32px;
+      max-width: 140px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+    }
+    .badge-pill {
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.2rem 0.65rem;
+      border-radius: 50px;
+      letter-spacing: 0.04em;
+      background: rgba(247, 148, 29, 0.15);
+      border: 1px solid rgba(247, 148, 29, 0.35);
+      color: var(--orange);
+      white-space: nowrap;
+    }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: nowrap;
+    }
+    .btn-nav {
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 0.4rem 0.75rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: var(--text-body);
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.04);
+      white-space: nowrap;
+    }
+    .btn-nav:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--white);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+    .btn-nav.active {
+      background: rgba(247, 148, 29, 0.2);
+      border-color: var(--orange);
+      color: var(--orange);
+      font-weight: 700;
+    }
+    .btn-prototype {
+      background: linear-gradient(135deg, var(--orange), #d97706);
+      color: var(--navy) !important;
+      font-weight: 700;
+      border: none;
+    }
+    .btn-prototype:hover {
+      background: linear-gradient(135deg, #fb923c, var(--orange));
+      transform: translateY(-1px);
+    }
+    .nav-hamburger {
+      display: none;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border);
+      color: var(--white);
+      font-size: 1.25rem;
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+    .nav-hamburger:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: var(--orange);
+      color: var(--orange);
+    }
+    .mobile-nav-drawer {
+      display: none;
+      position: fixed;
+      top: 54px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(8, 13, 26, 0.98);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      z-index: 999;
+      padding: 1.5rem 2rem 2.5rem;
+      overflow-y: auto;
+      flex-direction: column;
+      gap: 0.65rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .mobile-nav-drawer.open {
+      display: flex;
+    }
+    .mobile-nav-drawer .mobile-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.8rem 1.1rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text-body);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+    .mobile-nav-drawer .mobile-link:hover,
+    .mobile-nav-drawer .mobile-link.active {
+      background: rgba(247, 148, 29, 0.15);
+      border-color: var(--orange);
+      color: var(--white);
+    }
+    .mobile-nav-drawer .mobile-link.prototype-link {
+      background: linear-gradient(135deg, var(--orange), #d97706);
+      color: var(--navy) !important;
+      font-weight: 700;
+      border: none;
+    }
+    @media (max-width: 1100px) {
+      .nav-actions { display: none; }
+      .nav-hamburger { display: inline-flex; }
+    }
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    .badge-pill {
+      font-size: 0.75rem;
+      background: rgba(247, 148, 29, 0.15);
+      border: 1px solid var(--orange);
+      color: var(--orange);
+      padding: 0.25rem 0.65rem;
+      border-radius: 20px;
+      font-weight: 700;
+    }
+    .hero-banner {
+      background: linear-gradient(135deg, rgba(16,36,56,0.9) 0%, rgba(11,27,43,0.95) 100%);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.5rem;
+      margin-bottom: 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-banner::after {
+      content: "";
+      position: absolute;
+      top: -50%; right: -10%;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(247,148,29,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .section-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.3rem;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+    }
+    .tri-options-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+      margin: 1.8rem 0 1rem;
+    }
+    .tri-card {
+      background: var(--navy);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.4rem;
+      position: relative;
+    }
+    .tri-card.opt-yes { border-top: 4px solid var(--green-light); }
+    .tri-card.opt-no { border-top: 4px solid var(--red); }
+    .tri-card.opt-how { border-top: 4px solid var(--orange); }
+
+    .tri-tag {
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+    .tri-tag.yes { background: rgba(30,123,52,0.25); color: var(--green-light); }
+    .tri-tag.no { background: rgba(239,68,68,0.25); color: #f87171; }
+    .tri-tag.how { background: rgba(247,148,29,0.25); color: var(--orange); }
+
+    .tri-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 0.6rem 1.1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+    .tri-btn.btn-yes {
+      background: var(--green-light);
+      color: var(--navy);
+    }
+    .tri-btn.btn-yes:hover {
+      background: #34d399;
+      transform: translateY(-1px);
+    }
+    .tri-btn.btn-no {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid #ef4444;
+      color: #fca5a5;
+    }
+    .tri-btn.btn-no:hover {
+      background: rgba(239, 68, 68, 0.3);
+    }
+    .tri-btn.btn-how {
+      background: linear-gradient(135deg, var(--orange), #d97706);
+      color: var(--navy);
+      box-shadow: 0 4px 14px rgba(247, 148, 29, 0.3);
+    }
+    .tri-btn.btn-how:hover {
+      background: #fbbf24;
+      transform: translateY(-1px);
+    }
+
+    /* Decision Queue Cards */
+    .queue-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    .dossier-card {
+      background: var(--navy-surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.8rem;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+    .dossier-card:hover {
+      border-color: rgba(255, 255, 255, 0.18);
+    }
+    .dossier-card.state-approved {
+      border-color: var(--green-light);
+      background: linear-gradient(135deg, rgba(16,36,56,0.95), rgba(30,123,52,0.12));
+    }
+    .dossier-card.state-rejected {
+      border-color: #ef4444;
+      opacity: 0.65;
+    }
+    .dossier-card.state-customized {
+      border-color: var(--orange);
+      background: linear-gradient(135deg, rgba(16,36,56,0.95), rgba(247,148,29,0.12));
+    }
+
+    .staff-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 3rem;
+    }
+    .staff-card {
+      background: var(--navy-surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+    .staff-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 1rem;
+    }
+    .staff-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      background: var(--navy);
+      border: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .staff-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--white);
+    }
+    .staff-role {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 700;
+    }
+    .staff-body {
+      font-size: 0.83rem;
+      color: var(--text-body);
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+    .staff-body li {
+      list-style: none;
+      position: relative;
+      padding-left: 14px;
+      margin-bottom: 4px;
+    }
+    .staff-body li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--orange);
+    }
+    .staff-pulse {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--green-light);
+      padding-top: 0.75rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green-light);
+      box-shadow: 0 0 8px var(--green-light);
+      animation: blink 1.8s infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(5, 12, 20, 0.85);
+      backdrop-filter: blur(12px);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+    .modal-card {
+      background: var(--navy-surface);
+      border: 1px solid var(--orange);
+      border-radius: 20px;
+      max-width: 720px;
+      width: 100%;
+      padding: 2.2rem;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+      position: relative;
+      animation: modalSlide 0.25s ease-out;
+    }
+    @keyframes modalSlide {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .preset-pill {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      color: var(--text-body);
+      font-size: 0.78rem;
+      padding: 0.5rem 0.9rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: left;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .preset-pill:hover {
+      background: rgba(247, 148, 29, 0.15);
+      border-color: var(--orange);
+      color: var(--white);
+    }
+    .directive-textarea {
+      width: 100%;
+      background: var(--navy);
+      border: 1px solid var(--navy-border);
+      border-radius: 10px;
+      color: var(--white);
+      padding: 0.9rem 1rem;
+      font-size: 0.9rem;
+      font-family: inherit;
+      resize: vertical;
+      min-height: 100px;
+      outline: none;
+      margin: 1rem 0;
+    }
+    .directive-textarea:focus {
+      border-color: var(--orange);
+    }
+
+    /* Workflow Pipeline */
+    .flowchart-wrap {
+      background: var(--navy-surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 2rem;
+      margin-bottom: 3rem;
+      overflow-x: auto;
+    }
+    .flow-steps {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 900px;
+    }
+    .flow-step {
+      flex: 1;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.1rem;
+      text-align: center;
+    }
+    .flow-arrow {
+      font-size: 1.3rem;
+      color: var(--orange);
+      flex-shrink: 0;
+    }
+
+    /* ── GOOGLE MAPS FREE B2B LEAD RADAR & EXTRACTION ENGINE ── */
+    .radar-module {
+      margin: 3.5rem 0 2rem;
+      background: linear-gradient(180deg, rgba(16,36,56,0.95) 0%, rgba(11,27,43,0.98) 100%);
+      border: 1px solid rgba(247, 148, 29, 0.25);
+      border-radius: 18px;
+      padding: 2rem;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+      position: relative;
+    }
+    .radar-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-bottom: 1.8rem;
+    }
+    .cost-comp-pill {
+      background: rgba(34, 197, 94, 0.12);
+      border: 1px solid rgba(34, 197, 94, 0.35);
+      border-radius: 12px;
+      padding: 0.8rem 1.2rem;
+      font-size: 0.8rem;
+      color: var(--text-body);
+      max-width: 420px;
+    }
+    .radar-filter-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 1.2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .radar-tab {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 0.45rem 0.9rem;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .radar-tab:hover, .radar-tab.active {
+      background: rgba(247, 148, 29, 0.2);
+      border-color: var(--orange);
+      color: var(--white);
+    }
+    .radar-query-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.8rem 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+    .radar-table-wrap {
+      overflow-x: auto;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--navy-surface);
+    }
+    .radar-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.84rem;
+      text-align: left;
+    }
+    .radar-table th {
+      background: rgba(255,255,255,0.04);
+      padding: 0.85rem 1rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    .radar-table td {
+      padding: 0.9rem 1rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-body);
+      vertical-align: middle;
+    }
+    .radar-table tr:hover td {
+      background: rgba(247,148,29,0.03);
+    }
+    .btn-req-lookup {
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      color: #38bdf8;
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.3rem 0.65rem;
+      border-radius: 6px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.2s;
+    }
+    .btn-req-lookup:hover {
+      background: rgba(56, 189, 248, 0.3);
+      color: #fff;
+    }
+    .btn-gmaps-link {
+      background: rgba(247, 148, 29, 0.15);
+      border: 1px solid rgba(247, 148, 29, 0.4);
+      color: var(--orange);
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.3rem 0.65rem;
+      border-radius: 6px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.2s;
+    }
+    .btn-gmaps-link:hover {
+      background: var(--orange);
+      color: #fff;
+    }
+    .btn-add-queue {
+      background: rgba(34, 197, 94, 0.15);
+      border: 1px solid rgba(34, 197, 94, 0.4);
+      color: var(--green-light);
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.3rem 0.65rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-add-queue:hover {
+      background: var(--green-light);
+      color: #fff;
+    }
+    .playbook-card {
+      margin-top: 1.5rem;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.4rem;
+    }
+    .playbook-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .p-step-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem;
+      position: relative;
+    }
+    .p-step-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--orange);
+      margin-bottom: 0.3rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Top Navigation Bar -->
+  <header class="top-bar">
+    <a href="/" class="brand-logo">
+      <img src="/imgs/otis-logo.png" alt="OTIS Commercial Cleaning">
+      <span class="badge-pill">AI Staff &amp; Console</span>
+    </a>
+    
+    <nav class="nav-actions">
+      <a href="/" class="btn-nav"><span>🏠 Home</span></a>
+      <a href="/#execution-phases" class="btn-nav" style="background: rgba(34, 197, 94, 0.2); border-color: rgba(34, 197, 94, 0.5); color: #4ade80; font-weight: 700;"><span>🚀 4 Phases</span></a>
+      <a href="/leads.html" class="btn-nav"><span>📋 37 Leads</span></a>
+      <a href="/crm.html" class="btn-nav active"><span>🤖 AI Staff</span></a>
+      <a href="/erp.html" class="btn-nav"><span>📊 ERP</span></a>
+      <a href="/zan-review.html" class="btn-nav"><span>⚖️ Zan Audit</span></a>
+      <a href="/equipment.html" class="btn-nav"><span>🛠️ Equipment</span></a>
+      <a href="/discovery.html" class="btn-nav"><span>🔍 Discovery</span></a>
+      <a href="/otis-final-v2_11.html" class="btn-nav btn-prototype" target="_blank"><span>Prototype →</span></a>
+    </nav>
+
+    <button class="nav-hamburger" id="nav-toggle" aria-label="Toggle navigation" onclick="toggleNavMenu()">☰</button>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav-drawer" id="mobile-nav-drawer">
+    <div style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.25rem;">
+      Command Center Navigation
+    </div>
+    <a href="/" class="mobile-link"><span>🏠 Executive Home</span> <span>→</span></a>
+    <a href="/leads.html" class="mobile-link"><span>📋 37 Accounts Master Tracker</span> <span>37 Verified</span></a>
+    <a href="/crm.html" class="mobile-link active"><span>🤖 AI Staff & Zan Command Console</span> <span style="color:var(--orange);">Active</span></a>
+    <a href="/erp.html" class="mobile-link"><span>📊 OTIS ERP Master System</span> <span>8 Modules</span></a>
+    <a href="/zan-review.html" class="mobile-link"><span>⚖️ Honest Zan Review & Audit</span> <span>5.5 vs 9.6</span></a>
+    <a href="/equipment.html" class="mobile-link"><span>🛠️ Operational Equipment Truth</span> <span>Verified</span></a>
+    <a href="/discovery.html" class="mobile-link"><span>🔍 Montreal SEO + AEO + GEO Engine</span> <span>Live</span></a>
+    <div style="height: 1px; background: var(--border); margin: 0.4rem 0;"></div>
+    <a href="/OTIS_EXECUTIVE_ERP_REPORT_2026.pdf" class="mobile-link" target="_blank" style="border-color: rgba(34, 160, 69, 0.4); color: var(--green-light);">
+      <span>📄 Download Master PDF Report</span> <span>564 KB ↗</span>
+    </a>
+    <a href="/otis-final-v2_11.html" class="mobile-link prototype-link" target="_blank">
+      <span>🚀 Open Customer-Facing Prototype</span> <span>↗</span>
+    </a>
+  </div>
+
+  <main class="container">
+    
+    <!-- Hero Banner: Zero Friction Executive OS -->
+    <div class="hero-banner">
+      <div class="section-tag" style="background: rgba(247,148,29,0.2); color: var(--orange);">
+        Autonomous Operations Engine · Zero Operational Friction
+      </div>
+      <h1 class="section-title">The Fully Autonomous OTIS Workforce &amp; Zan's Tri-State Command Console</h1>
+      <p style="color: var(--text-body); max-width: 920px; font-size: 1.05rem; line-height: 1.6;">
+        The entire operational machinery of OTIS — prospect discovery, registry scraping, CASL validation, Bill 96 French compliance, equipment feasibility checks, quote generation, walkthrough dispatch, and crew assignment — runs <strong>100% autonomously across 8 specialized AI staff</strong>.
+      </p>
+      <p style="color: var(--orange); font-weight: 700; margin-top: 0.5rem; font-size: 1rem;">
+        Zan and the CEO never touch manual data entry, cold emails, or rate cards. The AI workforce presents completed action dossiers where Zan has exactly 3 options:
+      </p>
+
+      <!-- The 3 Options Tri-State Cards -->
+      <div class="tri-options-grid">
+        <div class="tri-card opt-yes">
+          <span class="tri-tag yes">Option 1</span>
+          <h3 style="font-family:'Syne',sans-serif; color:var(--white); font-size:1.15rem; margin-bottom:0.4rem;">✅ YES / APPROVED</h3>
+          <p style="font-size:0.83rem; color:var(--text-muted); line-height:1.5;">
+            Instant execution. Clara sends the bilingual proposal via <code>quotes@otiscc.ca</code>, Alex reserves the walkthrough in Max's calendar, Bruno assigns the crew, and Marcus confirms chemical staging.
+          </p>
+          <div style="margin-top:0.8rem; font-size:0.75rem; color:var(--green-light); font-weight:700;">Zero follow-up needed. Handled automatically.</div>
+        </div>
+
+        <div class="tri-card opt-no">
+          <span class="tri-tag no">Option 2</span>
+          <h3 style="font-family:'Syne',sans-serif; color:var(--white); font-size:1.15rem; margin-bottom:0.4rem;">❌ NOT APPROVED</h3>
+          <p style="font-size:0.83rem; color:var(--text-muted); line-height:1.5;">
+            Instant shutdown. The lead or action is permanently killed and archived. No email sent, zero time wasted by Max, and zero legal or reputational exposure.
+          </p>
+          <div style="margin-top:0.8rem; font-size:0.75rem; color:#f87171; font-weight:700;">Clean rejection audit log recorded.</div>
+        </div>
+
+        <div class="tri-card opt-how">
+          <span class="tri-tag how">Option 3</span>
+          <h3 style="font-family:'Syne',sans-serif; color:var(--white); font-size:1.15rem; margin-bottom:0.4rem;">✏️ DO IT THIS WAY &amp; WHY</h3>
+          <p style="font-size:0.83rem; color:var(--text-muted); line-height:1.5;">
+            Executive override with rationale. Zan inputs strategic guidance (e.g. <em>"Lead with Tennant auto-scrubber demo on entrance tiles only; adjust trial quote to $650"</em>). The 8 agents immediately re-draft copy, adjust economics, and execute.
+          </p>
+          <div style="margin-top:0.8rem; font-size:0.75rem; color:var(--orange); font-weight:700;">Staff dynamically adapts in &lt;15 seconds.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Live Executive Action Queue -->
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:1.5rem; flex-wrap:wrap; gap:12px;">
+      <div>
+        <div class="section-tag" style="background:rgba(56,189,248,0.18); color:#38bdf8;">Real-Time Executive Feed</div>
+        <h2 style="font-family:'Syne',sans-serif; font-size:1.6rem; color:var(--white); font-weight:800;">
+          Zan's Executive Decision Queue (Action Required)
+        </h2>
+        <p style="font-size:0.88rem; color:var(--text-muted);">
+          Pre-vetted commercial opportunities fully researched by the 8 AI staff. Click one of the 3 buttons on any dossier to test the autonomous execution engine.
+        </p>
+      </div>
+      <div style="display:flex; align-items:center; gap:8px;">
+        <button onclick="resetAllDecisions()" style="background:rgba(255,255,255,0.06); border:1px solid var(--border); color:var(--text-muted); font-size:0.75rem; padding:0.4rem 0.8rem; border-radius:6px; cursor:pointer;">
+          ↺ Reset Decision Queue
+        </button>
+        <span id="queue-status-badge" style="background:rgba(247,148,29,0.15); border:1px solid var(--orange); color:var(--orange); font-size:0.75rem; font-weight:700; padding:0.4rem 0.8rem; border-radius:20px;">
+          4 Accounts Awaiting Zan
+        </span>
+      </div>
+    </div>
+
+    <!-- Dossier Cards Container (Injected & Rendered via JS) -->
+    <div class="queue-grid" id="decisions-container">
+      <!-- Injected via JavaScript -->
+    </div>
+
+    <!-- ── ZAN'S 4 EXECUTION PHASES STATUS & ROADMAP ── -->
+    <div style="margin: 2.5rem 0 1rem; background: linear-gradient(135deg, rgba(20,28,46,0.95), rgba(15,22,40,0.95)); border: 1px solid rgba(34,197,94,0.35); border-radius: 16px; padding: 1.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:1.2rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:0.8rem;">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <span style="background:#22c55e; color:#080d1a; font-size:0.75rem; font-weight:800; padding:3px 10px; border-radius:20px; text-transform:uppercase;">
+            OPERATOR EXECUTION ROADMAP
+          </span>
+          <h3 style="font-family:'Syne',sans-serif; font-size:1.3rem; color:var(--white); margin:0;">
+            Zan's 4 Phases: What to Start &amp; Execution Sequence
+          </h3>
+        </div>
+        <a href="/#execution-phases" style="color:#4ade80; font-size:0.82rem; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:4px;">
+          View Full Strategic Briefing &amp; Numbers →
+        </a>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:1rem;">
+        <div style="background:rgba(34,197,94,0.12); border:1.5px solid #22c55e; border-radius:12px; padding:1rem;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+            <span style="font-size:0.7rem; font-weight:800; color:#4ade80; text-transform:uppercase;">Phase 1 · Week 1 (Days 1–7)</span>
+            <span style="background:#22c55e; color:#080d1a; font-size:0.65rem; font-weight:800; padding:1px 6px; border-radius:10px;">START TODAY</span>
+          </div>
+          <div style="font-weight:700; color:var(--white); font-size:0.95rem; margin-bottom:4px;">Pre-Winter Wedge &amp; Lead Radar</div>
+          <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.4;">Use Google Maps radar below ($0 vs $2,500). Call 5 Priority A accounts. Sell pre-winter strip &amp; wax before Nov 1.</div>
+        </div>
+
+        <div style="background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:12px; padding:1rem;">
+          <div style="font-size:0.7rem; font-weight:700; color:var(--orange); text-transform:uppercase; margin-bottom:4px;">Phase 2 · Weeks 2–4 (Days 8–30)</div>
+          <div style="font-weight:700; color:var(--white); font-size:0.95rem; margin-bottom:4px;">Lock in Contracts &amp; Decree Shield</div>
+          <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.4;">Convert existing $6,100 MRR to 6/10-mo contracts + present Article 14 Decree compliance package + 25 reviews.</div>
+        </div>
+
+        <div style="background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:12px; padding:1rem;">
+          <div style="font-size:0.7rem; font-weight:700; color:#38bdf8; text-transform:uppercase; margin-bottom:4px;">Phase 3 · Month 2 (Days 31–60)</div>
+          <div style="font-weight:700; color:var(--white); font-size:0.95rem; margin-bottom:4px;">Route Density &amp; Bidding</div>
+          <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.4;">On-site walkthroughs ($0.15–$0.30/sq ft). Target 3–5 recurring contracts (+$4,500–$9,000 MRR) within 15-min cluster.</div>
+        </div>
+
+        <div style="background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:12px; padding:1rem;">
+          <div style="font-size:0.7rem; font-weight:700; color:#c084fc; text-transform:uppercase; margin-bottom:4px;">Phase 4 · Month 3+ (Days 61–90+)</div>
+          <div style="font-weight:700; color:var(--white); font-size:0.95rem; margin-bottom:4px;">Restock Distribution &amp; Scale</div>
+          <div style="font-size:0.78rem; color:var(--text-muted); line-height:1.4;">Restroom supplies at 20% margin ($150–$300/mo net profit per client) + Tennant machine floor maintenance cycles.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── GOOGLE MAPS FREE B2B LEAD RADAR & PLAYBOOK FOR ZAN ── -->
+    <div class="radar-module" id="gmaps-lead-radar">
+      <div class="radar-top-row">
+        <div>
+          <div class="section-tag" style="background:rgba(247,148,29,0.18); color:var(--orange);">100% Free Montreal B2B Sourcing</div>
+          <h2 style="font-family:'Syne',sans-serif; font-size:1.65rem; color:var(--white); font-weight:800; margin-bottom:0.4rem;">
+            Google Maps Free B2B Lead Radar &amp; Playbook for Zan
+          </h2>
+          <p style="font-size:0.88rem; color:var(--text-muted); max-width:760px;">
+            Apollo.ai charges $1,188/yr for outdated emails that bounce and violate Quebec Law 25. LinkedIn Sales Navigator costs $1,320/yr. 
+            <strong>Google Maps + the Quebec Enterprise Register (REQ)</strong> is 100% free, gives exact physical addresses for route density (saving travel time &amp; gas), verified phone lines, and real owner names in 30 seconds.
+          </p>
+        </div>
+        <div class="cost-comp-pill">
+          <div style="font-weight:700; color:var(--green-light); margin-bottom:4px; font-size:0.85rem;">💰 Free Lead Gen vs. Paid Software</div>
+          <div>• Apollo / LinkedIn: <strong>$2,508 / year</strong> (Zero physical facility verification)</div>
+          <div>• <strong>OTIS Google Maps + REQ Engine: $0.00 / Free</strong> (100% route-dense &amp; active)</div>
+        </div>
+      </div>
+
+      <!-- Quick 1-Click Montreal Google Maps Search Launchers -->
+      <div class="radar-query-bar">
+        <span style="font-size:0.75rem; font-weight:700; color:var(--orange); text-transform:uppercase; letter-spacing:0.06em;">1-Click Maps Queries:</span>
+        <a href="https://www.google.com/maps/search/clinique+dentaire+NDG+Montreal/" target="_blank" class="btn-gmaps-link">🦷 Dental Clinics (NDG/Westmount) ↗</a>
+        <a href="https://www.google.com/maps/search/garderie+subventionnee+CPE+Montreal/" target="_blank" class="btn-gmaps-link">👶 Daycares &amp; CPE (Plateau/Sud-Ouest) ↗</a>
+        <a href="https://www.google.com/maps/search/cabinet+avocats+comptables+Vieux-Montreal/" target="_blank" class="btn-gmaps-link">⚖️ Corporate &amp; Law HQs (Downtown) ↗</a>
+        <a href="https://www.google.com/maps/search/concessionnaire+automobile+Saint-Laurent+Montreal/" target="_blank" class="btn-gmaps-link">🚗 Auto Showrooms (Decarie/VSL) ↗</a>
+        <a href="https://www.quebec.ca/entreprises-et-travailleurs-autonomes/registre-des-entreprises/rechercher-une-entreprise-au-registre" target="_blank" class="btn-req-lookup">🏛️ Open Free REQ Registry Search ↗</a>
+      </div>
+
+      <!-- Sector & Borough Filter Tabs -->
+      <div class="radar-filter-bar">
+        <span style="font-size:0.75rem; font-weight:700; color:var(--text-muted); margin-right:6px;">FILTER NICHE:</span>
+        <button class="radar-tab active" onclick="filterGmapsLeads('all', this)">All Sectors (12)</button>
+        <button class="radar-tab" onclick="filterGmapsLeads('medical', this)">🏥 Medical &amp; Dental (4)</button>
+        <button class="radar-tab" onclick="filterGmapsLeads('daycare', this)">👶 Daycares &amp; CPE (3)</button>
+        <button class="radar-tab" onclick="filterGmapsLeads('corporate', this)">🏢 Corporate &amp; Tech (3)</button>
+        <button class="radar-tab" onclick="filterGmapsLeads('auto', this)">🚗 Showrooms &amp; Gyms (2)</button>
+      </div>
+
+      <!-- Verified Montreal Leads Table -->
+      <div class="radar-table-wrap">
+        <table class="radar-table" id="gmaps-leads-table">
+          <thead>
+            <tr>
+              <th>Business &amp; Category</th>
+              <th>Montreal Location &amp; Route</th>
+              <th>Direct Phone &amp; Rating</th>
+              <th>Est. Sq Ft &amp; MRR</th>
+              <th>Free Owner Lookup</th>
+              <th>Executive Action</th>
+            </tr>
+          </thead>
+          <tbody id="gmaps-leads-body">
+            <!-- Populated via JavaScript -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Zan's 5-Step Operator Protocol & Call Script Guide -->
+      <div class="playbook-card">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+          <div>
+            <h3 style="font-family:'Syne',sans-serif; color:var(--white); font-size:1.15rem; margin-bottom:0.2rem;">
+              📖 Zan's 5-Step Google Maps Acquisition Protocol (How to Land $2,500/mo Contracts for $0)
+            </h3>
+            <p style="font-size:0.8rem; color:var(--text-muted);">
+              A complete operational checklist for Zan and his team. Follow these exact steps daily to build high-density routes without spending $1 on marketing.
+            </p>
+          </div>
+          <span style="background:rgba(247,148,29,0.15); border:1px solid var(--orange); color:var(--orange); font-size:0.72rem; font-weight:700; padding:0.3rem 0.75rem; border-radius:50px;">
+            Route Radius Rule: &lt; 15 Min from Madison Ave
+          </span>
+        </div>
+
+        <div class="playbook-steps">
+          <div class="p-step-box">
+            <div class="p-step-num">01</div>
+            <strong style="color:var(--white); font-size:0.85rem; display:block; margin-bottom:4px;">Google Maps Discovery</strong>
+            <p style="font-size:0.78rem; color:var(--text-muted); line-height:1.45;">
+              Search high-traffic commercial categories in NDG, Westmount, or Downtown. Target businesses with <strong>4.2+ stars</strong> and physical client reception desks.
+            </p>
+          </div>
+
+          <div class="p-step-box">
+            <div class="p-step-num">02</div>
+            <strong style="color:var(--white); font-size:0.85rem; display:block; margin-bottom:4px;">Extract Address &amp; Phone</strong>
+            <p style="font-size:0.78rem; color:var(--text-muted); line-height:1.45;">
+              Copy the business phone and street address directly from Google Maps. Check photos to inspect their floor type (tile, laminate, or carpet).
+            </p>
+          </div>
+
+          <div class="p-step-box">
+            <div class="p-step-num">03</div>
+            <strong style="color:var(--white); font-size:0.85rem; display:block; margin-bottom:4px;">Free REQ Owner Lookup</strong>
+            <p style="font-size:0.78rem; color:var(--text-muted); line-height:1.45;">
+              Click the <strong>REQ Lookup</strong> button. Paste the business name into the free Quebec Enterprise Register. Find the President / Director's real name in 30 seconds.
+            </p>
+          </div>
+
+          <div class="p-step-box">
+            <div class="p-step-num">04</div>
+            <strong style="color:var(--white); font-size:0.85rem; display:block; margin-bottom:4px;">The Compliance Wedge Call</strong>
+            <p style="font-size:0.78rem; color:var(--text-muted); line-height:1.45;">
+              Call reception: <em>"Bonjour, je communique avec la direction au sujet de la conformité du décret CPEEP 2026 et de l'inspection de plancher. Puis-je parler à [Nom du Propriétaire]?"</em>
+            </p>
+          </div>
+
+          <div class="p-step-box">
+            <div class="p-step-num">05</div>
+            <strong style="color:var(--white); font-size:0.85rem; display:block; margin-bottom:4px;">Lock in the Agreement</strong>
+            <p style="font-size:0.78rem; color:var(--text-muted); line-height:1.45;">
+              Offer the 10-minute on-site walkthrough. Present the <strong>6-Month Commercial Service Agreement</strong> or <strong>10-Month Preferred Agreement</strong> with Tennant machine scrubbing.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- The 8 AI Agent Staff Section -->
+    <div style="margin: 3.5rem 0 1.5rem;">
+      <div class="section-tag" style="background:rgba(168,85,247,0.18); color:#a855f7;">Organizational Chart</div>
+      <h2 style="font-family:'Syne',sans-serif; font-size:1.7rem; color:var(--white); font-weight:800; margin-bottom:0.4rem;">
+        The 8 Specialized AI Staff Members Running OTIS
+      </h2>
+      <p style="font-size:0.95rem; color:var(--text-muted); max-width:850px;">
+        Every operational step is owned by a specialized autonomous agent. If an edge case appears, the agents coordinate together, verify Quebec compliance, and present the final action to Zan.
+      </p>
+    </div>
+
+    <div class="staff-grid">
+      <!-- 1. Hunter -->
+      <div class="staff-card" style="border-top:3px solid #38bdf8;">
+        <div>
+          <div class="staff-header">
+            <div class="staff-avatar">🎯</div>
+            <div>
+              <div class="staff-name">Hunter</div>
+              <div class="staff-role" style="color:#38bdf8;">Sourcing &amp; Registry Intelligence</div>
+            </div>
+          </div>
+          <div class="staff-body">
+            <ul>
+              <li>Scrapes SEAO public tenders and West Island commercial leases daily.</li>
+              <li>Extracts decision-maker names, direct lines, and facility roles.</li>
+              <li>Validates CASL 66(1) B2B conspicuous publication URLs.</li>
+              <li>Tracks pre-winter trigger deadlines (closes Nov 1).</li>
+            </ul>
+          </div>
+        </div>
+        <div class="staff-pulse">
+          <div class="pulse-dot"></div>
+          <span>ACTIVE · 37 Commercial Accounts Verified</span>
+        </div>
+      </div>
+
+      <!-- 2. Clara -->
+      <div class="staff-card" style="border-top:3px solid var(--orange);">
+        <div>
+          <div class="staff-header">
+            <div class="staff-avatar">💬</div>
+            <div>
+              <div class="staff-name">Clara</div>
+              <div class="staff-role" style="color:var(--orange);">Bilingual Inbound Concierge &amp; SDR</div>
+            </div>
+          </div>
+          <div class="staff-body">
+            <ul>
+              <li>Monitors website quote forms and incoming phone transcripts 24/7.</li>
+              <li>Responds to commercial inquiries in &lt;3 minutes in native English or QC French.</li>
+              <li>Scores leads (0–100) based on sq ft, sector, and contract viability.</li>
+              <li>Dispatches outreach through verified <code>quotes@otiscc.ca</code>.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="staff-pulse">
+          <div class="pulse-dot"></div>
+          <span>ACTIVE · Listening on Port 3456 &amp; Form Webhooks</span>
+        </div>
+      </div>
+
+      <!-- 3. Émile -->
+      <div class="staff-card" style="border-top:3px solid #f87171;">
+        <div>
+          <div class="staff-header">
+            <div class="staff-avatar">⚖️</div>
+            <div>
+              <div class="staff-name">Émile</div>
+              <div class="staff-role" style="color:#f87171;">Quebec Legal &amp; Compliance Sentinel</div>
+            </div>
+          </div>
+          <div class="staff-body">
+            <ul>
+              <li>Enforces Bill 96 French-first priority for all Quebec CPEs &amp; daycares.</li>
+              <li>Maintains Law 25 confidentiality registries and opt-out mechanisms.</li>
+              <li>Validates CPEEP Parity Decree wage floors (23/h base rate).</li>
+              <li>Verifies $5M general liability and CNESST clearance certs.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="staff-pulse">
+          <div class="pulse-dot"></div>
+          <span>ACTIVE · 100% Quebec Legal Compliance Guard</span>
+        </div>
+      </div>
+
+      <!-- 4. Marcus -->
+      <div class="staff-card" style="border-top:3px solid var(--green-light);">
+        <div>
+          <div class="staff-header">
+            <div class="staff-avatar">🛠️</div>
+            <div>
+              <div class="staff-name">Marcus</div>
+              <div class="staff-role" style="color:var(--green-light);">Equipment Operations &amp; Cost Estimator</div>
+            </div>
+          </div>
+          <div class="staff-body">
+            <ul>
+              <li><strong>Owner Truth Guard:</strong> Restricts in-house machinery strictly to the confirmed Tennant auto-scrubber, mop kits, and neutral chemistries.</li>
+              <li>Flags specialized jobs (high-rise windows, carpet extraction) for rental bridge or approved subcontractor routing.</li>
+              <li>Calculates labor hours, chemical dosages, and chemical defoamer ratios.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="staff-pulse">
+          <div class="pulse-dot"></div>
+          <span>ACTIVE · Equipment Registry Verified</span>
+        </div>
+      </div>
+
+      <!-- 5. Alex -->
+      <div class="staff-card" style="border-top:3px solid #eab308;">
+        <div>
+          <div class="staff-header">
+            <div class="staff-avatar">📅</div>
+            <div>
+              <div class="staff-name">Alex</div>
+              <div class="staff-role" style="color:#eab308;">Field Walkthrough &amp; Calendar Coordinator</div>
+            </div>
+          </div>
+          <div class="staff-body">
+            <ul>
+              <li>Coordinates walkthrough appointments between clients and Max.</li>
+              <li>Generates digital site assessment forms (substrate, sq ft, water access).</li>
+              <li>Sends automated SMS reminders and parking instructions to clients.</li>
+              <li>Routes optimized driving schedules across the West Island corridor.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="staff-pulse">
+          <div class="pulse-dot"></div>
+          <span>ACTIVE · Calendar Sync Armed</span>
+        </div>
+      </div>
+
+      <!-- 6. Valérie -->
+      <div class="staff-card" style="border-top:3px solid #38bdf8;">
+        <div>
+          <div class="staff-header">
+            <div class="staff-avatar">📑</div>
+            <div>
+              <div class="staff-name">Valérie</div>
+              <div class="staff-role" style="color:#38bdf8;">Proposal Architect &amp; Commercial Closer</div>
+            </div>
+          </div>
+          <div class="staff-body">
+            <ul>
+              <li>Drafts customized bilingual proposals in under 12 minutes.</li>
+              <li>Structures the Door 1 Paid Trial ($500–$2,600) vs Door 2 On-Call Backup.</li>
+              <li>Calculates profitable commercial margins (38%–48% gross margin).</li>
+              <li>Prepares digital signature-ready service agreements with Net 15/30 terms.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="staff-pulse">
+          <div class="pulse-dot"></div>
+          <span>ACTIVE · Rate Card Configured ($0.15–$0.45/sq ft)</span>
+        </div>
+      </div>
+
+      <!-- 7. Bruno -->
+      <div class="staff-card" style="border-top:3px solid #10b981;">
+        <div>
+          <div class="staff-header">
+            <div class="staff-avatar">🚛</div>
+            <div>
+              <div class="staff-name">Bruno</div>
+              <div class="staff-role" style="color:#10b981;">Crew Logistics &amp; Shift Dispatch Controller</div>
+            </div>
+          </div>
+          <div class="staff-body">
+            <ul>
+              <li>Assigns vetted cleaning crews based on security clearance and location.</li>
+              <li>Issues site access codes, alarm bypass instructions, and key protocols.</li>
+              <li>Dispatches digital equipment manifests (verifies Tennant scrubber is loaded).</li>
+              <li>Monitors real-time shift clock-ins and departure geotags.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="staff-pulse">
+          <div class="pulse-dot"></div>
+          <span>ACTIVE · Shift Logistics Armed</span>
+        </div>
+      </div>
+
+      <!-- 8. Sophie -->
+      <div class="staff-card" style="border-top:3px solid #a855f7;">
+        <div>
+          <div class="staff-header">
+            <div class="staff-avatar">⭐</div>
+            <div>
+              <div class="staff-name">Sophie</div>
+              <div class="staff-role" style="color:#a855f7;">Quality Assurance, CSAT &amp; Retention Chief</div>
+            </div>
+          </div>
+          <div class="staff-body">
+            <ul>
+              <li>Sends automated morning-after satisfaction surveys to facility managers.</li>
+              <li>Acquires Google 5-Star reviews immediately following flawless paid trials.</li>
+              <li>Monitors consumable inventory levels (paper towels, soaps) for 20% margin restock.</li>
+              <li>Drives the Door 1 Trial-to-Annual Contract conversion engine.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="staff-pulse">
+          <div class="pulse-dot"></div>
+          <span>ACTIVE · 98.4% Retention Target Monitored</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- End-to-End Autonomous Workflow Diagram -->
+    <div class="flowchart-wrap">
+      <div style="font-size:0.75rem; color:var(--orange); font-weight:800; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:0.4rem;">
+        Autonomous Information Flow
+      </div>
+      <h3 style="font-family:'Syne',sans-serif; color:var(--white); font-size:1.25rem; margin-bottom:1.2rem;">
+        How the 8 Staff Execute Without Bottlenecks (Zan Engaged Only at Gate 4)
+      </h3>
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div style="font-size:1.4rem;">🔍</div>
+          <strong style="color:var(--white); font-size:0.85rem;">1. Lead Recon</strong>
+          <div style="font-size:0.72rem; color:var(--text-muted); margin-top:3px;">Hunter &amp; Clara</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <div style="font-size:1.4rem;">⚖️</div>
+          <strong style="color:var(--white); font-size:0.85rem;">2. Compliance Check</strong>
+          <div style="font-size:0.72rem; color:var(--text-muted); margin-top:3px;">Émile (Bill 96 / CASL)</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <div style="font-size:1.4rem;">🛠️</div>
+          <strong style="color:var(--white); font-size:0.85rem;">3. Scope &amp; Pricing</strong>
+          <div style="font-size:0.72rem; color:var(--text-muted); margin-top:3px;">Marcus &amp; Valérie</div>
+        </div>
+        <div class="flow-arrow" style="color:var(--green-light); font-weight:800;">→</div>
+        <div class="flow-step" style="border-color:var(--orange); background:rgba(247,148,29,0.08);">
+          <div style="font-size:1.4rem;">👑</div>
+          <strong style="color:var(--orange); font-size:0.85rem;">4. Zan's Decision Gate</strong>
+          <div style="font-size:0.72rem; color:var(--white); font-weight:700; margin-top:3px;">[Yes / No / Direct]</div>
+        </div>
+        <div class="flow-arrow" style="color:var(--green-light); font-weight:800;">→</div>
+        <div class="flow-step">
+          <div style="font-size:1.4rem;">🚀</div>
+          <strong style="color:var(--white); font-size:0.85rem;">5. Dispatch &amp; Walkthrough</strong>
+          <div style="font-size:0.72rem; color:var(--text-muted); margin-top:3px;">Clara &amp; Alex</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step">
+          <div style="font-size:1.4rem;">⭐</div>
+          <strong style="color:var(--white); font-size:0.85rem;">6. Clean &amp; Expand</strong>
+          <div style="font-size:0.72rem; color:var(--text-muted); margin-top:3px;">Bruno &amp; Sophie</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Live Automated Pipeline Kanban -->
+    <div style="background:var(--navy-surface); border:1px solid var(--border); border-radius:18px; padding:2rem;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem; flex-wrap:wrap; gap:12px;">
+        <div>
+          <h3 style="font-family:'Syne',sans-serif; font-size:1.3rem; color:var(--white); margin-bottom:0.25rem;">
+            Live Autonomous CRM Pipeline (Active Accounts)
+          </h3>
+          <p style="font-size:0.85rem; color:var(--text-muted); margin:0;">
+            Real-time pipeline tracking all 37 researched outbound commercial leads and live web inbound quotes.
+          </p>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+          <button onclick="simulateInboundLead()" style="background:rgba(247, 148, 29, 0.2); border:1px solid var(--orange); color:var(--orange); cursor:pointer; padding:0.45rem 0.9rem; border-radius:20px; font-weight:700; font-size:0.8rem;">
+            ⚡ Simulate Inbound Lead
+          </button>
+          <a href="/view?p=quote" target="_blank" style="background:rgba(56, 189, 248, 0.2); border:1px solid #38bdf8; color:#38bdf8; text-decoration:none; padding:0.45rem 0.9rem; border-radius:20px; font-weight:700; font-size:0.8rem;">
+            🌐 Open Web Quote Form
+          </a>
+          <div id="live-leads-pill" style="font-size:0.8rem; background:rgba(30,123,52,0.25); border:1px solid var(--green-light); color:var(--green-light); padding:0.45rem 0.9rem; border-radius:20px; font-weight:700;">
+            Active Pipeline: 37 Accounts
+          </div>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(175px, 1fr)); gap:1rem;" id="kanban-columns">
+        <!-- Col 1 -->
+        <div style="background:var(--card); border:1px solid var(--border); border-radius:12px; padding:1rem;">
+          <div style="display:flex; justify-content:space-between; font-size:0.8rem; font-weight:700; color:#38bdf8; margin-bottom:0.75rem; text-transform:uppercase;">
+            <span>1. Sourced</span>
+            <span style="background:rgba(56,189,248,0.2); padding:1px 6px; border-radius:10px;">32</span>
+          </div>
+          <div style="background:var(--navy); border:1px solid var(--border); border-radius:8px; padding:0.75rem; margin-bottom:0.5rem; font-size:0.8rem;">
+            <div style="font-weight:700; color:var(--white);">32 West Island SMBs</div>
+            <div style="color:var(--text-muted); font-size:0.75rem; margin-top:0.25rem;">DDO, Pointe-Claire, Kirkland</div>
+            <div style="margin-top:0.4rem; font-size:0.7rem; color:#38bdf8;">Staff: Hunter (Sourcing)</div>
+          </div>
+          <div id="dynamic-col-1"></div>
+        </div>
+
+        <!-- Col 2 -->
+        <div style="background:var(--card); border:1px solid var(--border); border-radius:12px; padding:1rem;">
+          <div style="display:flex; justify-content:space-between; font-size:0.8rem; font-weight:700; color:var(--orange); margin-bottom:0.75rem; text-transform:uppercase;">
+            <span>2. Floor Trigger</span>
+            <span style="background:rgba(247,148,29,0.2); padding:1px 6px; border-radius:10px;">5 A</span>
+          </div>
+          <div style="background:var(--navy); border:1px solid var(--border); border-radius:8px; padding:0.75rem; margin-bottom:0.5rem; font-size:0.8rem;">
+            <div style="font-weight:700; color:var(--white);">5 Priority A Accounts</div>
+            <div style="color:var(--orange); font-size:0.75rem; margin-top:0.25rem;">⏳ Nov 1 Floor Window</div>
+            <div style="margin-top:0.4rem; font-size:0.7rem; color:var(--orange);">Clinique PC, Sergakis, Dentaire</div>
+          </div>
+          <div id="dynamic-col-2"></div>
+        </div>
+
+        <!-- Col 3 -->
+        <div style="background:var(--card); border:1px solid var(--border); border-radius:12px; padding:1rem;">
+          <div style="display:flex; justify-content:space-between; font-size:0.8rem; font-weight:700; color:#eab308; margin-bottom:0.75rem; text-transform:uppercase;">
+            <span>3. Outreach</span>
+            <span style="background:rgba(234,179,8,0.2); padding:1px 6px; border-radius:10px;">Active</span>
+          </div>
+          <div style="background:var(--navy); border:1px solid var(--border); border-radius:8px; padding:0.75rem; margin-bottom:0.5rem; font-size:0.8rem;">
+            <div style="font-weight:700; color:var(--white);">Bilingual Branch Logic</div>
+            <div style="color:var(--text-muted); font-size:0.75rem; margin-top:0.25rem;">EN to Clinics · QC FR to CPEs</div>
+            <div style="margin-top:0.4rem; font-size:0.7rem; color:#eab308;">Staff: Clara &amp; Émile</div>
+          </div>
+          <div id="dynamic-col-3"></div>
+        </div>
+
+        <!-- Col 4 -->
+        <div style="background:var(--card); border:1px solid var(--border); border-radius:12px; padding:1rem;">
+          <div style="display:flex; justify-content:space-between; font-size:0.8rem; font-weight:700; color:#a855f7; margin-bottom:0.75rem; text-transform:uppercase;">
+            <span>4. Walkthrough</span>
+            <span style="background:rgba(168,85,247,0.2); padding:1px 6px; border-radius:10px;">Scheduled</span>
+          </div>
+          <div style="background:var(--navy); border:1px solid var(--border); border-radius:8px; padding:0.75rem; margin-bottom:0.5rem; font-size:0.8rem;">
+            <div style="font-weight:700; color:var(--white);">On-Site Assessment</div>
+            <div style="color:var(--text-muted); font-size:0.75rem; margin-top:0.25rem;">Sq ft count &amp; floor test</div>
+            <div style="margin-top:0.4rem; font-size:0.7rem; color:#a855f7;">Staff: Alex &amp; Marcus</div>
+          </div>
+          <div id="dynamic-col-4"></div>
+        </div>
+
+        <!-- Col 5 -->
+        <div style="background:var(--card); border:1px solid var(--border); border-radius:12px; padding:1rem;">
+          <div style="display:flex; justify-content:space-between; font-size:0.8rem; font-weight:700; color:var(--green-light); margin-bottom:0.75rem; text-transform:uppercase;">
+            <span>5. One-Off Trial</span>
+            <span style="background:rgba(30,123,52,0.2); padding:1px 6px; border-radius:10px;">Paid</span>
+          </div>
+          <div style="background:var(--navy); border:1px solid var(--border); border-radius:8px; padding:0.75rem; margin-bottom:0.5rem; font-size:0.8rem;">
+            <div style="font-weight:700; color:var(--white);">Auto-Scrubber Test</div>
+            <div style="color:var(--green-light); font-size:0.75rem; margin-top:0.25rem;">$500–$2,600 Paid Trial</div>
+            <div style="margin-top:0.4rem; font-size:0.7rem; color:var(--green-light);">Staff: Marcus &amp; Bruno</div>
+          </div>
+          <div id="dynamic-col-5"></div>
+        </div>
+
+        <!-- Col 6 -->
+        <div style="background:var(--card); border:1px solid var(--border); border-radius:12px; padding:1rem;">
+          <div style="display:flex; justify-content:space-between; font-size:0.8rem; font-weight:700; color:#10b981; margin-bottom:0.75rem; text-transform:uppercase;">
+            <span>6. Recurring MRR</span>
+            <span style="background:rgba(16,185,129,0.2); padding:1px 6px; border-radius:10px;">Goal</span>
+          </div>
+          <div style="background:var(--navy); border:1px solid var(--border); border-radius:8px; padding:0.75rem; margin-bottom:0.5rem; font-size:0.8rem;">
+            <div style="font-weight:700; color:#10b981;">Signed Commercial MRR</div>
+            <div style="color:var(--white); font-size:0.75rem; margin-top:0.25rem;">$1,650/mo + Consumables</div>
+            <div style="margin-top:0.4rem; font-size:0.7rem; color:#10b981;">Staff: Valérie &amp; Sophie</div>
+          </div>
+          <div id="dynamic-col-6"></div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Directive Modal: "Do It This Way & Why" -->
+  <div class="modal-overlay" id="directive-modal" onclick="if(event.target===this)closeDirectiveModal()">
+    <div class="modal-card">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+        <span class="tri-tag how">Executive Override &amp; Directive</span>
+        <button onclick="closeDirectiveModal()" style="background:none; border:none; color:var(--text-muted); font-size:1.5rem; cursor:pointer;">&times;</button>
+      </div>
+
+      <h2 style="font-family:'Syne',sans-serif; color:var(--white); font-size:1.4rem; margin-bottom:0.3rem;" id="modal-business-title">
+        Custom Directive for Account
+      </h2>
+      <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:1.2rem;">
+        Give specific strategic instructions and explain why. The 8 AI staff members will immediately re-draft copy, recalculate costs, and adjust the operational plan.
+      </p>
+
+      <div style="font-size:0.78rem; font-weight:700; color:var(--orange); text-transform:uppercase; margin-bottom:0.5rem;">
+        Quick Executive Presets (Click to insert):
+      </div>
+      <div style="display:flex; flex-direction:column; gap:6px; margin-bottom:1rem;">
+        <button type="button" class="preset-pill" onclick="applyPreset('Emphasize the Tennant auto-scrubber demonstration on entrance vinyl tiles only; charge $650 test price to minimize friction.')">
+          ⚡ <strong>Wedge Override:</strong> Emphasize Tennant auto-scrubber on entrance tiles only ($650 trial)
+        </button>
+        <button type="button" class="preset-pill" onclick="applyPreset('Ensure 100% Quebec French-first copy with formal phrasing to strictly comply with Bill 96 and Ministry standards.')">
+          ⚜️ <strong>Language Override:</strong> Strictly 100% Quebec French-first copy (Bill 96 / Ministry)
+        </button>
+        <button type="button" class="preset-pill" onclick="applyPreset('Quote $2,400/mo instead of $1,800/mo because evening weekend shift requires CPEEP decree premium pay.')">
+          💰 <strong>Pricing Override:</strong> Increase quote to cover CPEEP Decree weekend shift differential
+        </button>
+        <button type="button" class="preset-pill" onclick="applyPreset('Switch approach from Email to In-Person Walk-in: Have Max visit on Wednesday 10:30 AM with sample floor pad.')">
+          🤝 <strong>Channel Override:</strong> Change to In-Person Walk-in for Max with sample floor pad
+        </button>
+        <button type="button" class="preset-pill" onclick="applyPreset('Offer Door 2 On-Call Backup provider agreement ($0 upfront commitment) to secure contract wedge.')">
+          🛡️ <strong>Door 2 Wedge:</strong> Position purely as on-call backup cleaner ($0 commitment)
+        </button>
+      </div>
+
+      <label style="font-size:0.8rem; font-weight:700; color:var(--white);">
+        Zan's Custom Instructions &amp; Rationale ("Why"):
+      </label>
+      <textarea id="directive-text" class="directive-textarea" placeholder="Explain how you want the staff to do it and why (e.g. 'Pitch our Tennant auto-scrubber for a Saturday morning test clean because their floors look heavily worn in Google reviews...')"></textarea>
+
+      <div style="display:flex; justify-content:flex-end; gap:10px;">
+        <button onclick="closeDirectiveModal()" style="background:rgba(255,255,255,0.08); border:1px solid var(--border); color:var(--text-body); font-weight:600; padding:0.6rem 1.2rem; border-radius:8px; cursor:pointer;">
+          Cancel
+        </button>
+        <button onclick="submitDirective()" class="tri-btn btn-how" style="padding:0.6rem 1.4rem;">
+          🚀 Submit Directive &amp; Re-Execute
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    var currentDecisions = [];
+    var activeModalId = null;
+
+    // Fetch decisions from API or fallback
+    function loadDecisions() {
+      fetch('/api/decisions')
+        .then(function(res) { return res.json(); })
+        .then(function(data) {
+          currentDecisions = data;
+          renderDecisions();
+        })
+        .catch(function(err) {
+          console.warn('Could not reach /api/decisions, using local data', err);
+        });
+    }
+
+    function renderDecisions() {
+      var container = document.getElementById('decisions-container');
+      if (!container) return;
+      container.innerHTML = '';
+
+      var pendingCount = 0;
+
+      currentDecisions.forEach(function(item) {
+        if (item.status === 'pending') pendingCount++;
+
+        var card = document.createElement('div');
+        card.className = 'dossier-card state-' + item.status;
+        card.id = 'card-' + item.id;
+
+        var isApproved = item.status === 'approved';
+        var isRejected = item.status === 'rejected';
+        var isCustomized = item.status === 'customized';
+
+        var statusBadge = '';
+        if (isApproved) {
+          statusBadge = '<span class="tri-tag yes" style="font-size:0.8rem; padding:0.3rem 0.75rem;">' + (item.statusLabel || '✅ Approved & Dispatched') + '</span>';
+        } else if (isRejected) {
+          statusBadge = '<span class="tri-tag no" style="font-size:0.8rem; padding:0.3rem 0.75rem;">' + (item.statusLabel || '❌ Not Approved') + '</span>';
+        } else if (isCustomized) {
+          statusBadge = '<span class="tri-tag how" style="font-size:0.8rem; padding:0.3rem 0.75rem;">' + (item.statusLabel || '✏️ Modified by Zan') + '</span>';
+        } else {
+          statusBadge = '<span class="tri-tag" style="background:rgba(255,255,255,0.08); color:var(--text-body); font-size:0.8rem; padding:0.3rem 0.75rem;">' + (item.statusLabel || '⏳ Awaiting Zan') + '</span>';
+        }
+
+        var buttonsHtml = '';
+        if (item.status === 'pending') {
+          buttonsHtml = 
+            '<div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:1.4rem; padding-top:1.2rem; border-top:1px solid rgba(255,255,255,0.08); align-items:center;">' +
+              '<div style="font-size:0.8rem; font-weight:700; color:var(--white); margin-right:auto;">ZAN EXECUTIVE DECISION:</div>' +
+              '<button onclick="handleDecision(\'' + item.id + '\', \'approved\')" class="tri-btn btn-yes">✅ YES / APPROVED</button>' +
+              '<button onclick="handleDecision(\'' + item.id + '\', \'rejected\')" class="tri-btn btn-no">❌ NOT APPROVED</button>' +
+              '<button onclick="openDirectiveModal(\'' + item.id + '\')" class="tri-btn btn-how">✏️ DO IT THIS WAY &amp; WHY</button>' +
+            '</div>';
+        } else {
+          var auditText = item.decisionTimestamp ? 'Action recorded at ' + item.decisionTimestamp : 'Decision recorded.';
+          var directiveSnippet = item.executiveDirective ? '<div style="margin-top:0.5rem; font-size:0.82rem; color:var(--orange); background:rgba(247,148,29,0.1); padding:0.5rem 0.8rem; border-radius:6px; border-left:3px solid var(--orange);"><strong>Zan Directive:</strong> "' + item.executiveDirective + '"</div>' : '';
+          
+          buttonsHtml = 
+            '<div style="margin-top:1.2rem; padding-top:1rem; border-top:1px solid rgba(255,255,255,0.08); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">' +
+              '<div>' +
+                '<span style="font-size:0.78rem; color:var(--text-muted);">' + auditText + '</span>' +
+                directiveSnippet +
+              '</div>' +
+              '<button onclick="resetSingleDecision(\'' + item.id + '\')" style="background:none; border:1px solid var(--border); color:var(--text-muted); font-size:0.72rem; padding:3px 8px; border-radius:4px; cursor:pointer;">Change Decision ↺</button>' +
+            '</div>';
+        }
+
+        var agentTags = item.agentBreakdown.map(function(ab) {
+          return '<div style="background:var(--navy); padding:0.75rem 1rem; border-radius:10px; border:1px solid var(--border);">' +
+                   '<div style="font-size:0.72rem; font-weight:800; color:var(--orange); text-transform:uppercase;">🤖 ' + ab.agent + ' (' + ab.badge + ')</div>' +
+                   '<div style="font-size:0.8rem; color:var(--text-body); margin-top:3px; line-height:1.4;">' + ab.note + '</div>' +
+                 '</div>';
+        }).join('');
+
+        card.innerHTML = 
+          '<div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:10px; margin-bottom:1.2rem;">' +
+            '<div>' +
+              '<div style="display:flex; align-items:center; gap:8px; margin-bottom:0.3rem;">' +
+                statusBadge +
+                '<span style="font-size:0.75rem; color:var(--text-muted); font-weight:700;">' + item.id + ' · ' + item.leadId + '</span>' +
+              '</div>' +
+              '<h3 style="font-family:Syne,sans-serif; font-size:1.4rem; color:var(--white); font-weight:800;">' + item.businessName + '</h3>' +
+              '<div style="color:var(--text-muted); font-size:0.85rem;">' + item.sector + ' · ' + item.location + '</div>' +
+            '</div>' +
+            '<div style="text-align:right;">' +
+              '<div style="font-family:Syne,sans-serif; font-size:1.2rem; font-weight:800; color:var(--green-light);">' + item.proposedPricing + '</div>' +
+              '<div style="font-size:0.75rem; color:var(--text-muted); text-transform:uppercase;">Floor Area: ' + item.sqFt + '</div>' +
+            '</div>' +
+          '</div>' +
+
+          '<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:10px; margin-bottom:1.2rem;">' +
+            agentTags +
+          '</div>' +
+
+          '<div style="background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:10px; padding:1rem; margin-bottom:1rem;">' +
+            '<div style="font-size:0.75rem; font-weight:800; color:var(--white); text-transform:uppercase; margin-bottom:0.3rem;">Drafted Outreach Preview (Clara &amp; Émile):</div>' +
+            '<p style="font-size:0.83rem; color:var(--text-body); white-space:pre-line; line-height:1.5;">' + item.draftPreview + '</p>' +
+          '</div>' +
+
+          '<div style="font-size:0.85rem; color:#38bdf8; background:rgba(56,189,248,0.08); padding:0.6rem 0.9rem; border-radius:8px; border-left:3px solid #38bdf8;">' +
+            '<strong>AI STAFF RECOMMENDATION:</strong> ' + item.aiRecommendation +
+          '</div>' +
+
+          buttonsHtml;
+
+        container.appendChild(card);
+      });
+
+      var badge = document.getElementById('queue-status-badge');
+      if (badge) {
+        badge.textContent = pendingCount > 0 ? pendingCount + ' Accounts Awaiting Zan' : 'All Decisions Complete ✅';
+        badge.style.background = pendingCount > 0 ? 'rgba(247,148,29,0.15)' : 'rgba(30,123,52,0.2)';
+        badge.style.borderColor = pendingCount > 0 ? 'var(--orange)' : 'var(--green-light)';
+        badge.style.color = pendingCount > 0 ? 'var(--orange)' : 'var(--green-light)';
+      }
+    }
+
+    function handleDecision(id, decision) {
+      fetch('/api/decisions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: id, decision: decision })
+      })
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
+        if (data.decisions) {
+          currentDecisions = data.decisions;
+          renderDecisions();
+        }
+      })
+      .catch(function(err) {
+        // Fallback local update
+        currentDecisions.forEach(function(d) {
+          if (d.id === id) {
+            d.status = decision;
+            d.statusLabel = decision === 'approved' ? '✅ Approved & Dispatched by Zan' : '❌ Not Approved (Archived)';
+            d.decisionTimestamp = new Date().toLocaleTimeString();
+          }
+        });
+        renderDecisions();
+      });
+    }
+
+    function openDirectiveModal(id) {
+      activeModalId = id;
+      var item = currentDecisions.find(function(d) { return d.id === id; });
+      if (item) {
+        document.getElementById('modal-business-title').textContent = 'Directive for: ' + item.businessName;
+        document.getElementById('directive-text').value = '';
+        document.getElementById('directive-modal').style.display = 'flex';
+      }
+    }
+
+    function closeDirectiveModal() {
+      document.getElementById('directive-modal').style.display = 'none';
+      activeModalId = null;
+    }
+
+    function applyPreset(text) {
+      document.getElementById('directive-text').value = text;
+    }
+
+    function submitDirective() {
+      if (!activeModalId) return;
+      var text = document.getElementById('directive-text').value.trim();
+      if (!text) {
+        alert('Please enter your executive instructions or click a preset.');
+        return;
+      }
+
+      fetch('/api/decisions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          id: activeModalId,
+          decision: 'customized',
+          directive: text
+        })
+      })
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
+        closeDirectiveModal();
+        if (data.decisions) {
+          currentDecisions = data.decisions;
+          renderDecisions();
+        }
+      })
+      .catch(function() {
+        currentDecisions.forEach(function(d) {
+          if (d.id === activeModalId) {
+            d.status = 'customized';
+            d.statusLabel = '✏️ Modified per Zan Directive';
+            d.executiveDirective = text;
+            d.decisionTimestamp = new Date().toLocaleTimeString();
+          }
+        });
+        closeDirectiveModal();
+        renderDecisions();
+      });
+    }
+
+    function resetSingleDecision(id) {
+      handleDecision(id, 'pending');
+    }
+
+    function resetAllDecisions() {
+      currentDecisions.forEach(function(d) {
+        d.status = 'pending';
+        d.statusLabel = '⏳ Awaiting Zan Review';
+        d.executiveDecision = null;
+        d.decisionTimestamp = null;
+        d.executiveDirective = null;
+      });
+      renderDecisions();
+    }
+
+    // Live Leads & Inbound Simulation
+    function fetchLeads() {
+      fetch('/api/leads')
+        .then(function(res) { return res.json(); })
+        .then(function(leads) {
+          renderLeads(leads);
+        })
+        .catch(function(err) {
+          console.log('Using local leads fallback', err);
+        });
+    }
+
+    function renderLeads(leads) {
+      for(var i = 1; i <= 6; i++) {
+        var el = document.getElementById('dynamic-col-' + i);
+        if (el) el.innerHTML = '';
+      }
+
+      var totalLeads = 37 + (leads ? leads.length : 0);
+      var pill = document.getElementById('live-leads-pill');
+      if (pill) pill.textContent = 'Active Pipeline: ' + totalLeads + ' Accounts (' + (leads ? leads.length : 0) + ' Web Inbound)';
+
+      if (!leads) return;
+      leads.forEach(function(lead) {
+        var card = document.createElement('div');
+        card.style.cssText = 'background: rgba(30,123,52,0.12); border: 1px solid var(--green-light); border-radius: 8px; padding: 0.75rem; margin-bottom: 0.5rem; font-size: 0.8rem;';
+        
+        var targetCol = 3;
+        if (lead.status && lead.status.toLowerCase().indexOf('walkthrough') !== -1) targetCol = 4;
+        else if (lead.status && lead.status.toLowerCase().indexOf('trial') !== -1) targetCol = 5;
+        else if (lead.status && (lead.status.toLowerCase().indexOf('contract') !== -1 || lead.status.toLowerCase().indexOf('recurring') !== -1)) targetCol = 6;
+
+        var est = lead.estValue || '$1,650 / mo';
+        card.innerHTML = 
+          '<div style="display:flex; justify-content:space-between; align-items:flex-start;">' +
+            '<strong style="color:var(--white); font-size:0.8rem;">' + (lead.business || lead.name) + '</strong>' +
+            '<span style="background:var(--green-light); color:var(--navy); font-size:0.65rem; font-weight:800; padding:1px 5px; border-radius:4px;">WEB</span>' +
+          '</div>' +
+          '<div style="color:var(--text-muted); font-size:0.75rem; margin-top:0.2rem;">' + (lead.service || 'Commercial Clean') + ' (' + (lead.size || '3,000 sq ft') + ')</div>' +
+          '<div style="color:var(--green-light); font-weight:700; font-size:0.75rem; margin-top:0.25rem;">' + est + '</div>' +
+          '<div style="color:#38bdf8; font-size:0.7rem; margin-top:0.3rem;">Staff: ' + (lead.assignedAgent || 'Clara (Inbound Concierge)') + '</div>' +
+          '<div style="margin-top:0.35rem; font-size:0.68rem; color:var(--text-body); background:rgba(0,0,0,0.25); padding:4px 6px; border-radius:4px; line-height:1.3;">' + (lead.notes || 'Inbound request processed.') + '</div>';
+
+        var colEl = document.getElementById('dynamic-col-' + targetCol);
+        if (colEl) colEl.appendChild(card);
+      });
+    }
+
+    var sampleIndex = 0;
+    var samplePool = [
+      {
+        name: "Dr. Marc-André Lévesque",
+        business: "Centre Médical Westmount",
+        email: "dr.levesque@westmountsante.ca",
+        phone: "514-555-0482",
+        service: "Medical Clinic Disinfection & Corridors",
+        size: "3,800 sq ft",
+        type: "Medical Clinic",
+        assignedAgent: "Clara & Marcus",
+        estValue: "$2,950 / mo ($35,400 / yr)",
+        notes: "Hospital-grade terminal sanitization & Tennant auto-scrubbing. Clara sent bilingual quote in 12 min."
+      },
+      {
+        name: "Élodie Gauthier",
+        business: "Studio Mile End Architecture",
+        email: "elodie@studiomileend.ca",
+        phone: "514-555-0619",
+        service: "Creative Studio & Concrete Auto-Scrubbing",
+        size: "2,400 sq ft",
+        type: "Studio / Office",
+        assignedAgent: "Alex & Marcus",
+        estValue: "$1,350 / mo ($16,200 / yr)",
+        notes: "Marcus confirmed Tennant scrubber safe on polished concrete. Walkthrough set for Thursday 2 PM."
+      }
+    ];
+
+    function simulateInboundLead() {
+      var sample = samplePool[sampleIndex % samplePool.length];
+      sampleIndex++;
+      var newLead = {
+        id: "SIM-" + Math.floor(1000 + Math.random() * 9000),
+        name: sample.name,
+        business: sample.business,
+        email: sample.email,
+        phone: sample.phone,
+        service: sample.service,
+        size: sample.size,
+        type: sample.type,
+        timestamp: new Date().toISOString(),
+        status: "Quote Sent",
+        assignedAgent: sample.assignedAgent,
+        estValue: sample.estValue,
+        notes: sample.notes
+      };
+
+      fetch('/api/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newLead)
+      }).then(function() { fetchLeads(); });
+    }
+
+    // ── GOOGLE MAPS LEADS DATASET & RENDERING ──
+    var gmapsLeadsData = [
+      {
+        id: "GMAP-01",
+        name: "Clinique Dentaire Dr. David Côté",
+        category: "Dental Clinic",
+        sector: "medical",
+        address: "4055 Ste-Catherine Ouest #120, Westmount",
+        borough: "Westmount / NDG Hub",
+        phone: "(514) 937-2331",
+        stars: 4.9,
+        reviews: 142,
+        sqft: "2,800 sq ft",
+        mrr: "$1,680 / mo",
+        proposedOffer: "6-Month Service Agreement @ $1,680/mo (3x/wk + Medical Disinfection)",
+        notes: "Front reception desk, 6 operatories, tile floors requiring low-speed buffing."
+      },
+      {
+        id: "GMAP-02",
+        name: "Garderie Éducative Les Petits Génies",
+        category: "Subsidized Daycare (CPE)",
+        sector: "daycare",
+        address: "6505 Somerled Ave, NDG",
+        borough: "NDG (5 min from Madison)",
+        phone: "(514) 487-1234",
+        stars: 4.8,
+        reviews: 89,
+        sqft: "3,500 sq ft",
+        mrr: "$1,850 / mo",
+        proposedOffer: "10-Month Preferred Agreement @ $1,850/mo (Daily Sanitization + Eco-Products)",
+        notes: "MFA sanitization standards, high winter salt tracking in entrance foyer."
+      },
+      {
+        id: "GMAP-03",
+        name: "Clinique Médicale Monkland",
+        category: "Medical Clinic / GMF",
+        sector: "medical",
+        address: "5845 Monkland Ave #200, NDG",
+        borough: "NDG Village",
+        phone: "(514) 482-1212",
+        stars: 4.7,
+        reviews: 210,
+        sqft: "4,200 sq ft",
+        mrr: "$2,520 / mo",
+        proposedOffer: "6-Month Commercial Agreement @ $2,520/mo (5x/wk Night Janitorial)",
+        notes: "12 examination rooms, waiting hall with commercial VCT tile."
+      },
+      {
+        id: "GMAP-04",
+        name: "Cabinet d'Avocats Bélanger & Associés",
+        category: "Corporate Legal Counsel",
+        sector: "corporate",
+        address: "407 Rue McGill #700, Vieux-Montréal",
+        borough: "Old Montreal / Downtown",
+        phone: "(514) 845-4422",
+        stars: 5.0,
+        reviews: 64,
+        sqft: "3,200 sq ft",
+        mrr: "$1,920 / mo",
+        proposedOffer: "6-Month Commercial Service Agreement @ $1,920/mo (3x/wk Night Clean)",
+        notes: "Hardwood executive boardrooms, confidential shredding zones."
+      },
+      {
+        id: "GMAP-05",
+        name: "Studio Tech & Effets Visuels Framestore",
+        category: "VFX / Gaming Studio HQ",
+        sector: "corporate",
+        address: "5455 Avenue de Gaspé, Mile End",
+        borough: "Mile End Tech Hub",
+        phone: "(514) 667-2000",
+        stars: 4.6,
+        reviews: 178,
+        sqft: "9,500 sq ft",
+        mrr: "$4,750 / mo",
+        proposedOffer: "10-Month Preferred Service Agreement @ $4,750/mo (Tennant Machine Scrub Included)",
+        notes: "Open loft concrete floors, heavy dust accumulation around server racks."
+      },
+      {
+        id: "GMAP-06",
+        name: "Centre Dentaire Saint-Laurent",
+        category: "Dental & Orthodontics Center",
+        sector: "medical",
+        address: "800 Boulevard Décarie #200, Saint-Laurent",
+        borough: "Ville Saint-Laurent",
+        phone: "(514) 747-4444",
+        stars: 4.8,
+        reviews: 312,
+        sqft: "5,000 sq ft",
+        mrr: "$3,000 / mo",
+        proposedOffer: "6-Month Service Agreement @ $3,000/mo (Daily Medical Janitorial)",
+        notes: "Large commercial suite, sterilization center, heavy patient traffic."
+      },
+      {
+        id: "GMAP-07",
+        name: "Centre de Physiothérapie Kinatex",
+        category: "Sports Physio & Rehab Clinic",
+        sector: "medical",
+        address: "4150 Ste-Catherine Ouest, Westmount",
+        borough: "Westmount",
+        phone: "(514) 937-1114",
+        stars: 4.9,
+        reviews: 195,
+        sqft: "2,400 sq ft",
+        mrr: "$1,440 / mo",
+        proposedOffer: "6-Month Service Agreement @ $1,440/mo (3x/wk Sanitization)",
+        notes: "Gym treatment mats, private consult rooms, synthetic anti-slip flooring."
+      },
+      {
+        id: "GMAP-08",
+        name: "CPE Le Petit Chaperon Rouge",
+        category: "Subsidized Daycare Center",
+        sector: "daycare",
+        address: "4450 Rue Saint-Denis, Plateau",
+        borough: "Plateau-Mont-Royal",
+        phone: "(514) 524-1188",
+        stars: 4.7,
+        reviews: 76,
+        sqft: "4,000 sq ft",
+        mrr: "$2,100 / mo",
+        proposedOffer: "10-Month Preferred Agreement @ $2,100/mo (Daily Floor Reset)",
+        notes: "Ministry compliance inspections twice annually, strict green chemistry requirements."
+      },
+      {
+        id: "GMAP-09",
+        name: "Concessionnaire Gabriel BMW / MINI",
+        category: "Automotive Showroom & Offices",
+        sector: "auto",
+        address: "6125 Côte-de-Liesse, Saint-Laurent",
+        borough: "Côte-de-Liesse / VSL",
+        phone: "(514) 731-7821",
+        stars: 4.5,
+        reviews: 430,
+        sqft: "14,000 sq ft",
+        mrr: "$5,600 / mo",
+        proposedOffer: "10-Month Preferred Agreement @ $5,600/mo (Daily Tennant Auto-Scrubbing)",
+        notes: "High-gloss showroom ceramic tile, grease transfer from service bays."
+      },
+      {
+        id: "GMAP-10",
+        name: "Clinique Chiropratique Notre-Dame",
+        category: "Chiropratique & Santé",
+        sector: "medical",
+        address: "1800 Rue Notre-Dame Ouest, Griffintown",
+        borough: "Griffintown / Sud-Ouest",
+        phone: "(514) 933-5500",
+        stars: 4.9,
+        reviews: 110,
+        sqft: "2,100 sq ft",
+        mrr: "$1,260 / mo",
+        proposedOffer: "6-Month Flexible Agreement @ $1,260/mo (2x/wk Night Clean)",
+        notes: "Ground-floor street access, salt tracking during winter months."
+      },
+      {
+        id: "GMAP-11",
+        name: "Bureau Comptable Mallette SENCRL",
+        category: "Accounting & Tax HQ",
+        sector: "corporate",
+        address: "1000 Rue De La Gauchetière Ouest #1400",
+        borough: "Downtown Financial Core",
+        phone: "(514) 871-1200",
+        stars: 4.8,
+        reviews: 92,
+        sqft: "6,800 sq ft",
+        mrr: "$3,400 / mo",
+        proposedOffer: "6-Month Service Agreement @ $3,400/mo (3x/wk Full Facility Maintenance)",
+        notes: "Class-A tower floor, security badge clearance required for janitors."
+      },
+      {
+        id: "GMAP-12",
+        name: "Garderie Académie Montessori Westmount",
+        category: "Private Montessori Daycare",
+        sector: "daycare",
+        address: "4855 Boulevard De Maisonneuve Ouest",
+        borough: "Westmount",
+        phone: "(514) 935-4321",
+        stars: 4.9,
+        reviews: 105,
+        sqft: "3,800 sq ft",
+        mrr: "$2,280 / mo",
+        proposedOffer: "10-Month Preferred Agreement @ $2,280/mo (Daily Evening Sanitization)",
+        notes: "Premium clientele, zero-chemical natural disinfection policy."
+      }
+    ];
+
+    function renderGmapsLeads(filter) {
+      var tbody = document.getElementById('gmaps-leads-body');
+      if (!tbody) return;
+      tbody.innerHTML = '';
+
+      var filtered = gmapsLeadsData.filter(function(item) {
+        if (!filter || filter === 'all') return true;
+        return item.sector === filter;
+      });
+
+      filtered.forEach(function(item) {
+        var gmapsUrl = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(item.name + ' ' + item.address);
+        var reqUrl = 'https://www.quebec.ca/entreprises-et-travailleurs-autonomes/registre-des-entreprises/rechercher-une-entreprise-au-registre';
+
+        var tr = document.createElement('tr');
+        tr.innerHTML = 
+          '<td>' +
+            '<div style="font-weight:700; color:var(--white);">' + item.name + '</div>' +
+            '<div style="font-size:0.75rem; color:var(--orange);">' + item.category + '</div>' +
+          '</td>' +
+          '<td>' +
+            '<div style="font-size:0.8rem; color:var(--text-body);">' + item.address + '</div>' +
+            '<span style="background:rgba(255,255,255,0.06); border:1px solid var(--border); font-size:0.7rem; padding:0.15rem 0.5rem; border-radius:4px; color:var(--text-muted);">' + item.borough + '</span>' +
+          '</td>' +
+          '<td>' +
+            '<a href="tel:' + item.phone.replace(/[^0-9]/g, '') + '" style="color:#38bdf8; text-decoration:none; font-weight:600; font-size:0.82rem; display:block;">' + item.phone + '</a>' +
+            '<span style="color:#eab308; font-size:0.75rem; font-weight:700;">★ ' + item.stars + '</span> <span style="font-size:0.72rem; color:var(--text-muted);">(' + item.reviews + ' reviews)</span>' +
+          '</td>' +
+          '<td>' +
+            '<div style="font-weight:700; color:var(--green-light); font-size:0.85rem;">' + item.mrr + '</div>' +
+            '<div style="font-size:0.72rem; color:var(--text-muted);">' + item.sqft + '</div>' +
+          '</td>' +
+          '<td>' +
+            '<div style="display:flex; flex-direction:column; gap:4px;">' +
+              '<a href="' + reqUrl + '" target="_blank" class="btn-req-lookup" title="Search Quebec Enterprise Register for Owner Legal Name">🏛️ REQ Owner Search</a>' +
+              '<a href="' + gmapsUrl + '" target="_blank" class="btn-gmaps-link" title="Open in Google Maps">📍 Google Maps</a>' +
+            '</div>' +
+          '</td>' +
+          '<td>' +
+            '<button class="btn-add-queue" onclick="addGmapLeadToDecisionQueue(\'' + item.id + '\')">+ Send to Zan</button>' +
+            '<button onclick="generateAIPitch(\'' + item.name.replace("'", "\\'") + '\', \'' + item.category.replace("'", "\\'") + '\', \'' + item.address.replace("'", "\\'") + '\')" style="margin-top:6px; width:100%; font-size:0.75rem; background:linear-gradient(135deg, #6366f1, #a855f7); border:none; padding:5px; border-radius:4px; color:white; font-weight:700; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:4px;"><span style="font-size:0.9rem">🤖</span> Draft Pitch</button>' +
+          '</td>';
+
+        tbody.appendChild(tr);
+      });
+    }
+
+    function filterGmapsLeads(sector, btn) {
+      document.querySelectorAll('.radar-tab').forEach(function(t) { t.classList.remove('active'); });
+      if (btn) btn.classList.add('active');
+      renderGmapsLeads(sector);
+    }
+
+    function addGmapLeadToDecisionQueue(leadId) {
+      var item = gmapsLeadsData.find(function(l) { return l.id === leadId; });
+      if (!item) return;
+
+      var newDossier = {
+        id: 'DOSS-' + (currentDecisions.length + 1).toString().padStart(2, '0'),
+        leadId: item.id,
+        businessName: item.name,
+        sector: item.category,
+        location: item.address,
+        priority: 'Priority A (Google Maps Free Lead)',
+        score: '5 / 5',
+        contactName: 'Directeur / Direction (via REQ)',
+        contactRole: 'Owner / Property Manager',
+        email: 'info@' + item.name.toLowerCase().replace(/[^a-z0-9]/g, '').slice(0, 12) + '.ca',
+        phone: item.phone,
+        proposedOffer: item.proposedOffer,
+        rationale: 'Sourced from Google Maps (' + item.stars + '★, ' + item.reviews + ' reviews). Located in high-density cluster ' + item.borough + '. ' + item.notes,
+        status: 'pending',
+        statusLabel: 'Pending Zan Review',
+        executiveDecision: null,
+        executiveDirective: null,
+        decisionTimestamp: null
+      };
+
+      currentDecisions.unshift(newDossier);
+
+      // Persist to server
+      fetch('/api/decisions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          id: newDossier.id,
+          decision: 'pending',
+          directive: ''
+        })
+      }).catch(function(e) { console.log('Notice: decision sync', e); });
+
+      renderDecisions();
+      window.scrollTo({ top: document.getElementById('decisions-container').offsetTop - 90, behavior: 'smooth' });
+
+      var badge = document.getElementById('queue-status-badge');
+      if (badge) {
+        var pending = currentDecisions.filter(function(d) { return d.status === 'pending'; }).length;
+        badge.textContent = pending + ' Accounts Awaiting Zan';
+      }
+    }
+
+    function toggleNavMenu() {
+      var drawer = document.getElementById('mobile-nav-drawer');
+      var btn = document.getElementById('nav-toggle');
+      if (!drawer) return;
+      var isOpen = drawer.classList.contains('open');
+      if (isOpen) {
+        drawer.classList.remove('open');
+        if (btn) btn.innerHTML = '☰';
+        document.body.style.overflow = '';
+      } else {
+        drawer.classList.add('open');
+        if (btn) btn.innerHTML = '✕';
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      loadDecisions();
+      fetchLeads();
+      renderGmapsLeads('all');
+      setInterval(fetchLeads, 12000);
+    });
+  </script>
+<!-- AI Pitch Modal -->
+<div id="ai-pitch-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:999999; justify-content:center; align-items:center; font-family:'Inter',sans-serif;">
+  <div style="background:#0f172a; border:1px solid rgba(255,255,255,0.1); width:600px; max-width:90%; border-radius:12px; overflow:hidden; box-shadow:0 25px 50px rgba(0,0,0,0.8);">
+    <div style="padding:15px 20px; background:rgba(255,255,255,0.05); border-bottom:1px solid rgba(255,255,255,0.05); display:flex; justify-content:space-between; align-items:center;">
+      <h3 style="color:white; font-size:1rem; margin:0; display:flex; align-items:center; gap:8px;">🤖 OTIS AI Pitch Drafter</h3>
+      <button onclick="document.getElementById('ai-pitch-modal').style.display='none'" style="background:none; border:none; color:white; font-size:1.5rem; cursor:pointer;">&times;</button>
+    </div>
+    <div style="padding:20px;">
+      <div style="margin-bottom:15px; display:flex; gap:10px;">
+        <select id="ai-lang-select" style="background:rgba(0,0,0,0.3); color:white; border:1px solid rgba(255,255,255,0.2); padding:8px; border-radius:6px; font-size:0.85rem;">
+          <option value="fr">French (Quebec / CPEEP Decree)</option>
+          <option value="en">English (Pre-Winter Wedge)</option>
+        </select>
+        <button id="ai-draft-btn" style="background:#3b82f6; color:white; border:none; padding:8px 15px; border-radius:6px; font-weight:600; cursor:pointer; font-size:0.85rem;">Regenerate Pitch</button>
+      </div>
+      <div id="ai-pitch-output" style="background:rgba(0,0,0,0.4); border:1px solid rgba(255,255,255,0.05); border-radius:8px; padding:15px; color:#e2e8f0; font-size:0.9rem; line-height:1.6; min-height:150px; white-space:pre-wrap;">Loading AI Draft...</div>
+      <div style="margin-top:15px; display:flex; justify-content:flex-end;">
+        <button onclick="copyAIPitch()" style="background:#10b981; color:white; border:none; padding:8px 15px; border-radius:6px; font-weight:600; cursor:pointer; font-size:0.85rem;">📋 Copy to Clipboard</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  let currentAITarget = {};
+  
+  async function generateAIPitch(name, category, address) {
+    currentAITarget = { leadName: name, industry: category, address: address };
+    document.getElementById('ai-pitch-modal').style.display = 'flex';
+    fetchAIDraft();
+  }
+
+  document.getElementById('ai-draft-btn').addEventListener('click', fetchAIDraft);
+
+  async function fetchAIDraft() {
+    const output = document.getElementById('ai-pitch-output');
+    const lang = document.getElementById('ai-lang-select').value;
+    output.innerHTML = '<span style="color:#94a3b8; font-style:italic;">OTIS AI is drafting a compliant outreach pitch...</span>';
+    
+    try {
+      const res = await fetch('/api/draft', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...currentAITarget, language: lang })
+      });
+      const data = await res.json();
+      if (res.ok && data.draft) {
+        output.textContent = data.draft;
+      } else {
+        output.textContent = "Error: " + (data.error || "Missing GEMINI_API_KEY in Vercel settings.");
+      }
+    } catch (e) {
+      output.textContent = "Network Error. Are you running on Vercel?";
+    }
+  }
+
+  function copyAIPitch() {
+    const text = document.getElementById('ai-pitch-output').textContent;
+    navigator.clipboard.writeText(text);
+    alert('Copied to clipboard!');
+  }
+</script>
+
+</body>
+</html>

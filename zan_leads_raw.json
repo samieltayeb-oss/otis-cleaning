@@ -1,0 +1,7468 @@
+[
+  {
+    "A": "BLUE = the skill fills this",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "AMBER = YOU fill this by hand",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "GREY = automatic, never type here",
+    "J": "",
+    "K": "",
+    "L": ""
+  },
+  {
+    "A": "A \u00b7 WHO",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "B \u00b7 CURRENT CLEANER",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "C \u00b7 WHY NOW",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "D \u00b7 CONTACT",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "E \u00b7 CASL EVIDENCE",
+    "AB": "",
+    "AC": "F \u00b7 PIPELINE",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "G \u00b7 CASH",
+    "AO": "",
+    "AP": "",
+    "AQ": "H \u00b7 PATH TO CONTRACT",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "Business name",
+    "B": "Sector",
+    "C": "Neighbourhood",
+    "D": "Language",
+    "E": "Approx sq ft",
+    "F": "Public or private",
+    "G": "Property manager (if any)",
+    "H": "Has a cleaner?",
+    "I": "Who",
+    "J": "How we know",
+    "K": "Contract value (public)",
+    "L": "Award date",
+    "M": "Est. renewal window",
+    "N": "SEAO ref",
+    "O": "Trigger",
+    "P": "Trigger live until",
+    "Q": "Hard floors?",
+    "R": "Best-fit offer",
+    "S": "Score",
+    "T": "Priority",
+    "U": "Contact name",
+    "V": "Role",
+    "W": "Phone",
+    "X": "Email",
+    "Y": "Best approach",
+    "Z": "Referred by",
+    "AA": "Source URL",
+    "AB": "Date collected",
+    "AC": "Date approached",
+    "AD": "Status",
+    "AE": "Walkthrough booked",
+    "AF": "Walkthrough done",
+    "AG": "Proposal sent",
+    "AH": "Days to proposal",
+    "AI": "Quote value $",
+    "AJ": "Payment terms",
+    "AK": "Compliance pack sent?",
+    "AL": "Job date",
+    "AM": "Follow-up date",
+    "AN": "Invoiced date",
+    "AO": "Paid date",
+    "AP": "Amount paid $",
+    "AQ": "On backup list?",
+    "AR": "Contract stage",
+    "AS": "Contract value $/mo",
+    "AT": "Notes"
+  },
+  {
+    "A": "Cromwell Management",
+    "B": "Property manager",
+    "C": "Kirkland",
+    "D": "EN",
+    "E": "25000.0",
+    "F": "Private",
+    "G": "\u2014",
+    "H": "Unknown",
+    "I": "",
+    "J": "Not yet known",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "Pre-winter floors",
+    "P": "46327.0",
+    "Q": "Unknown",
+    "R": "One-off - Strip & wax",
+    "S": "4",
+    "T": "B - worth it",
+    "U": "Michael Doroshenko",
+    "V": "Director of Commercial Leasing",
+    "W": "514-824-2278",
+    "X": "",
+    "Y": "Call",
+    "Z": "",
+    "AA": "https://cromwellmgt.ca/en/contact/",
+    "AB": "46281.0",
+    "AC": "",
+    "AD": "Not started",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "Not yet raised",
+    "AS": "",
+    "AT": "CALL ONLY - a placeholder email was removed on 16 Sept 2026. No published address verified, so there is no CASL basis. Michael Doroshenko, Director of Commercial Leasing, is a named contact found on a commercial property listing - phone him."
+  },
+  {
+    "A": "Groupe Shapiro",
+    "B": "Property manager",
+    "C": "Pointe-Claire",
+    "D": "Bilingual",
+    "E": "",
+    "F": "Private",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "New tenancy / move",
+    "P": "46327.0",
+    "Q": "Unknown",
+    "R": "One-off - Strip & wax",
+    "S": "4",
+    "T": "B - worth it",
+    "U": "Matthew Krantzberg",
+    "V": "Leasing - 225 Hymus",
+    "W": "514-833-6208",
+    "X": "",
+    "Y": "Call",
+    "Z": "",
+    "AA": "https://www.loopnet.ca/Listing/225-Boul-Hymus-Pointe-claire-QC/28602128/",
+    "AB": "46281.0",
+    "AC": "",
+    "AD": "Not started",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "Not yet raised",
+    "AS": "",
+    "AT": "TIER 1. Manages 225 Boul Hymus, Pointe-Claire - offices 100-2,000 sq ft, newly renovated, COMMON WASHROOMS (shared areas = the cleaning contract). Multi-tenant, so new tenants arrive constantly. Other contacts: Steven Glazer 514-933-5112 x262, Gregory Depatie 514-951-8587. $30/sq ft/yr asking."
+  },
+  {
+    "A": "TRAMS Property Management",
+    "B": "Property manager",
+    "C": "Other - in corridor",
+    "D": "EN",
+    "E": "",
+    "F": "Private",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "Pre-winter floors",
+    "P": "46327.0",
+    "Q": "Unknown",
+    "R": "One-off - Strip & wax",
+    "S": "3",
+    "T": "B - worth it",
+    "U": "",
+    "V": "Reception - ask for property manager",
+    "W": "514-341-8600",
+    "X": "info@tramsmgmt.com",
+    "Y": "Call",
+    "Z": "",
+    "AA": "https://tramsmgmt.com/",
+    "AB": "46281.0",
+    "AC": "",
+    "AD": "Not started",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "Not yet raised",
+    "AS": "",
+    "AT": "TIER 1. COMMERCIAL properties in Dollard-des-Ormeaux, Kirkland and Anjou - all corridor. Office 5151 de la Savane. No named contact published - get one on the call."
+  },
+  {
+    "A": "VS Property Management / VS Gestion Immobiliere",
+    "B": "Property manager",
+    "C": "Lachine",
+    "D": "Bilingual",
+    "E": "24746.0",
+    "F": "Private",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "Pre-winter floors",
+    "P": "46327.0",
+    "Q": "Unknown",
+    "R": "One-off - Strip & wax",
+    "S": "3",
+    "T": "B - worth it",
+    "U": "",
+    "V": "Reception - ask for property manager",
+    "W": "438-265-1855",
+    "X": "info@vsgestionimmo.com",
+    "Y": "Call",
+    "Z": "",
+    "AA": "https://www.vsgestionimmo.com/",
+    "AB": "46281.0",
+    "AC": "",
+    "AD": "Not started",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "Not yet raised",
+    "AS": "",
+    "AT": "TIER 1. Commercial/retail/industrial. Corridor property: 9960-9970 Cote-de-Liesse, Lachine (24,746 sq ft). Head office is Brossard - lead with the Lachine building, not the company."
+  },
+  {
+    "A": "World Gym Dollard-des-Ormeaux",
+    "B": "Gym / Studio",
+    "C": "Dollard-des-Ormeaux",
+    "D": "Bilingual",
+    "E": "42000.0",
+    "F": "Private",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "Pre-winter floors",
+    "P": "46327.0",
+    "Q": "Yes",
+    "R": "One-off - Strip & wax",
+    "S": "4",
+    "T": "B - worth it",
+    "U": "",
+    "V": "Reception - ask for club manager",
+    "W": "438-600-2100",
+    "X": "",
+    "Y": "Walk-in",
+    "Z": "",
+    "AA": "https://wgq.ca/en/world-gym-dollard-des-ormeaux/",
+    "AB": "46281.0",
+    "AC": "",
+    "AD": "Not started",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "Not yet raised",
+    "AS": "",
+    "AT": "42,000 SQ FT - largest in this batch. 3237 Des Sources Blvd. Open 24h Tue-Thu, so floor work needs planning - but high traffic plus winter salt makes this the strongest floor-care case here. No email published: CALL OR WALK IN ONLY."
+  },
+  {
+    "A": "GYM Fit Forme Pointe-Claire",
+    "B": "Gym / Studio",
+    "C": "Pointe-Claire",
+    "D": "Bilingual",
+    "E": "",
+    "F": "Private",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "Pre-winter floors",
+    "P": "46327.0",
+    "Q": "Yes",
+    "R": "One-off - Strip & wax",
+    "S": "4",
+    "T": "B - worth it",
+    "U": "",
+    "V": "Reception - ask for manager",
+    "W": "514-643-1888",
+    "X": "",
+    "Y": "Walk-in",
+    "Z": "",
+    "AA": "https://gymfitforme.com/en/west-island/",
+    "AB": "46281.0",
+    "AC": "",
+    "AD": "Not started",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "Not yet raised",
+    "AS": "",
+    "AT": "2375 Trans-Canada Hwy, Pointe-Claire. ONE OF FOUR BRANCHES - a win here could become four sites. Showers and saunas add wet-area work. 24h for premium members. No email published: CALL OR WALK IN ONLY."
+  },
+  {
+    "A": "Energie EnCorps",
+    "B": "Gym / Studio",
+    "C": "Pointe-Claire",
+    "D": "Bilingual",
+    "E": "",
+    "F": "Private",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "Pre-winter floors",
+    "P": "46327.0",
+    "Q": "Yes",
+    "R": "One-off - Deep clean",
+    "S": "4",
+    "T": "B - worth it",
+    "U": "",
+    "V": "Reception - ask for owner",
+    "W": "514-505-9642",
+    "X": "",
+    "Y": "Walk-in",
+    "Z": "",
+    "AA": "https://energieencorps.com/contact/",
+    "AB": "46281.0",
+    "AC": "",
+    "AD": "Not started",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "Not yet raised",
+    "AS": "",
+    "AT": "18 Place de la Triade #230, Pointe-Claire. Yoga, fitness and holistic health - 35+ classes a week plus massage, osteopathy, reiki. Treatment rooms mean hygiene matters more than in a normal gym. No email published: CALL OR WALK IN ONLY."
+  },
+  {
+    "A": "The Learning Tree Daycare",
+    "B": "Daycare / CPE",
+    "C": "Dollard-des-Ormeaux",
+    "D": "EN",
+    "E": "",
+    "F": "Private",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "Pre-winter floors",
+    "P": "46327.0",
+    "Q": "Unknown",
+    "R": "One-off - Deep clean",
+    "S": "3",
+    "T": "B - worth it",
+    "U": "",
+    "V": "Reception - ask for director",
+    "W": "514-683-8426",
+    "X": "",
+    "Y": "Call",
+    "Z": "",
+    "AA": "https://thelearningtree.ca/contact-us/",
+    "AB": "46281.0",
+    "AC": "",
+    "AD": "Not started",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "Not yet raised",
+    "AS": "",
+    "AT": "16 Rue de Seville, DDO. ANGLOPHONE daycare serving Kirkland, Pierrefonds, Pointe-Claire, DDO. Regulation angle applies: equipment must be disinfected outside childrens presence - which means evenings, which means a contract. No email published: CALL ONLY."
+  },
+  {
+    "A": "Garderie Bebe et Cie",
+    "B": "Daycare / CPE",
+    "C": "Other - in corridor",
+    "D": "Bilingual",
+    "E": "",
+    "F": "Private",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "Pre-winter floors",
+    "P": "46327.0",
+    "Q": "Unknown",
+    "R": "One-off - Deep clean",
+    "S": "3",
+    "T": "B - worth it",
+    "U": "",
+    "V": "Reception - ask for director",
+    "W": "514-583-8309",
+    "X": "info@bebeetcie.com",
+    "Y": "Call",
+    "Z": "",
+    "AA": "http://bebeetcie.com/",
+    "AB": "46281.0",
+    "AC": "",
+    "AD": "Not started",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "Not yet raised",
+    "AS": "",
+    "AT": "4830 Boul St-Jean, Pierrefonds. Ages 3 months to 5 years. Closed weekends = clean access Sat/Sun. Same regulation angle as any daycare: disinfection outside childrens presence."
+  },
+  {
+    "A": "Clinique Dentaire Pointe-Claire",
+    "B": "Medical clinic",
+    "C": "Pointe-Claire",
+    "D": "Bilingual",
+    "E": "",
+    "F": "Private",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "New tenancy / move",
+    "P": "46327.0",
+    "Q": "Yes",
+    "R": "One-off - Strip & wax",
+    "S": "5",
+    "T": "A - go now",
+    "U": "Catalina Zambrano",
+    "V": "Privacy Officer - route to office manager",
+    "W": "514-697-7391",
+    "X": "info@cliniquedentairepointeclaire.com",
+    "Y": "Call",
+    "Z": "",
+    "AA": "https://cliniquedentairepointeclaire.com/about-us/",
+    "AB": "46281.0",
+    "AC": "",
+    "AD": "Not started",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "Not yet raised",
+    "AS": "",
+    "AT": "1 Ave Holiday #250, Pointe-Claire. TWO TRIGGERS: recently relocated to Holiday Ave (new premises) AND pre-winter floors. 30+ yrs in the West Island. Multiple operatories. Closed weekends = clean access. Hard floors inferred from clinical norms; confirm at walkthrough."
+  },
+  {
+    "A": "Centre Dentaire Lakeshore",
+    "B": "Medical clinic",
+    "C": "Kirkland",
+    "D": "EN",
+    "E": "",
+    "F": "Private",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "Pre-winter floors",
+    "P": "46327.0",
+    "Q": "Yes",
+    "R": "One-off - Strip & wax",
+    "S": "5",
+    "T": "A - go now",
+    "U": "Dr Sochea Da Lung-Tor",
+    "V": "Principal dentist",
+    "W": "514-694-5716",
+    "X": "",
+    "Y": "Call",
+    "Z": "",
+    "AA": "https://centredentairelakeshore.com/get-in-touch/",
+    "AB": "46281.0",
+    "AC": "",
+    "AD": "Not started",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "Not yet raised",
+    "AS": "",
+    "AT": "22 Canvin St, Kirkland. 3 dentists, 8 staff. Behind Lakeshore General Hospital. Second dentist: Dr Duc-Minh Lam-Do. NO EMAIL PUBLISHED - CALL ONLY, no CASL basis to email. Hard floors inferred from clinical norms."
+  },
+  {
+    "A": "Beaconsfield Dentistry",
+    "B": "Medical clinic",
+    "C": "Kirkland",
+    "D": "EN",
+    "E": "",
+    "F": "Private",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "Pre-winter floors",
+    "P": "46327.0",
+    "Q": "Yes",
+    "R": "One-off - Strip & wax",
+    "S": "5",
+    "T": "A - go now",
+    "U": "Dr Mark Reich",
+    "V": "Principal dentist",
+    "W": "514-697-7107",
+    "X": "contact@beaconsfielddentistry.com",
+    "Y": "Call",
+    "Z": "",
+    "AA": "https://beaconsfielddentistry.com/contact.php",
+    "AB": "46281.0",
+    "AC": "",
+    "AD": "Not started",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "Not yet raised",
+    "AS": "",
+    "AT": "2969 Saint Charles Blvd, Kirkland. 50+ yrs in the West Island. Second dentist: Dr Paul Deep. Closes 3pm Fridays - good weekend access. Hard floors inferred from clinical norms."
+  },
+  {
+    "A": "Beaconsfield Medical Clinic",
+    "B": "Medical clinic",
+    "C": "Beaconsfield",
+    "D": "EN",
+    "E": "",
+    "F": "Private",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "Pre-winter floors",
+    "P": "46327.0",
+    "Q": "Yes",
+    "R": "One-off - Strip & wax",
+    "S": "4",
+    "T": "B - worth it",
+    "U": "",
+    "V": "Reception - ask for clinic manager",
+    "W": "514-375-5342",
+    "X": "",
+    "Y": "Call",
+    "Z": "",
+    "AA": "https://www.cmbeaconsfield.com/en/contact-us",
+    "AB": "46281.0",
+    "AC": "",
+    "AD": "Not started",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "Not yet raised",
+    "AS": "",
+    "AT": "Doctors, nurse practitioners AND an on-site pharmacy - bigger footprint than a dental practice. Serves Beaconsfield, Pierrefonds, Pointe-Claire, Kirkland. NO EMAIL PUBLISHED - CALL ONLY. Get the clinic managers name on the call."
+  },
+  {
+    "A": "Placements Sergakis Inc. (181 Hymus + portfolio)",
+    "B": "Office",
+    "C": "Pointe-Claire",
+    "D": "EN",
+    "E": "",
+    "F": "Private",
+    "G": "Self-managed",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "Pre-winter floors",
+    "P": "46327.0",
+    "Q": "Yes",
+    "R": "One-off - Strip & wax",
+    "S": "5",
+    "T": "A - go now",
+    "U": "Sylvie Filion",
+    "V": "Supervisor, Repairs and Maintenance",
+    "W": "514-937-6137 ext 225",
+    "X": "Sylvie.fillion@sergakis.com",
+    "Y": "Email",
+    "Z": "",
+    "AA": "https://en.sergakis.com/contactez-nous",
+    "AB": "46281.0",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": "BEST OF BATCH. Multi-building commercial + residential landlord, head office LaSalle. Publishes a named maintenance supervisor with direct email on its own contact page - that is the cleaning buyer, published, CASL-clean. Second contact: Mark Bedard, Commercial Real Estate Director, mbedard@sergakis.com, 514-803-0011. 181 Hymus Pointe-Claire office listed 1,660-13,260 sq ft. One relationship covers a portfolio."
+  },
+  {
+    "A": "Michael White Realties Inc. (271 Labrosse)",
+    "B": "Office",
+    "C": "Pointe-Claire",
+    "D": "EN",
+    "E": "",
+    "F": "Private",
+    "G": "Michael White Realties",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "Pre-winter floors",
+    "P": "46327.0",
+    "Q": "Yes",
+    "R": "One-off - Strip & wax",
+    "S": "4",
+    "T": "B - worth it",
+    "U": "",
+    "V": "",
+    "W": "514-488-5111",
+    "X": "mwr@whiteinc.ca",
+    "Y": "Email",
+    "Z": "",
+    "AA": "https://www.mwr.ca/contact-us/",
+    "AB": "46281.0",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": "Commercial/industrial brokerage and manager, office at 6800 Cote-de-Liesse Saint-Laurent. Manages 271 Av Labrosse Pointe-Claire, 1,000-10,000 sq ft office. General published email only - ask for whoever handles building services."
+  },
+  {
+    "A": "Groupe Petra (1 Holiday Ave)",
+    "B": "Office",
+    "C": "Pointe-Claire",
+    "D": "EN",
+    "E": "19508.0",
+    "F": "Private",
+    "G": "Groupe Petra Ltd",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "Pre-winter floors",
+    "P": "46327.0",
+    "Q": "Yes",
+    "R": "One-off - Strip & wax",
+    "S": "4",
+    "T": "B - worth it",
+    "U": "",
+    "V": "",
+    "W": "514-321-7515",
+    "X": "info@groupepetra.com",
+    "Y": "Email",
+    "Z": "",
+    "AA": "https://groupepetra.com/",
+    "AB": "46281.0",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": "Manages 1 Av Holiday Pointe-Claire, 994-19,508 sq ft office building. Head office 8000 Langelier, Saint-Leonard. Large portfolio incl. 1000 de la Gauchetiere. General published email only."
+  },
+  {
+    "A": "Epic Quebec Inc. (6000 Trans-Canada, Dorval)",
+    "B": "Office",
+    "C": "Dorval",
+    "D": "EN",
+    "E": "218338.0",
+    "F": "Private",
+    "G": "Epic Quebec / Epic Investment Services",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "Pre-winter floors",
+    "P": "46327.0",
+    "Q": "Yes",
+    "R": "One-off - Strip & wax",
+    "S": "5",
+    "T": "A - go now",
+    "U": "Sabrina Grassi",
+    "V": "Leasing contact",
+    "W": "438-812-7878",
+    "X": "ldragu@epicquebec.com",
+    "Y": "Email",
+    "Z": "",
+    "AA": "https://ia.ca/business/office-space/6000-trans-canada-highway",
+    "AB": "46281.0",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": "Manages 6000 Trans-Canada for iA Financial Group. Building is 218,338 sq ft, expanded 2010 and 2014 - industrial/office mix with 18 docks, so likely ABOVE Otis capacity for a full contract; work it for one-off floor care and the backup list, not a recurring bid. Published email is on the landlord's leasing page."
+  },
+  {
+    "A": "BGI - 6600 Trans-Canada, Pointe-Claire",
+    "B": "Office",
+    "C": "Pointe-Claire",
+    "D": "EN",
+    "E": "85454.0",
+    "F": "Private",
+    "G": "BGI",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "Pre-winter floors",
+    "P": "46327.0",
+    "Q": "Yes",
+    "R": "One-off - Strip & wax",
+    "S": "4",
+    "T": "B - worth it",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "Walk-in",
+    "Z": "",
+    "AA": "https://www.loopnet.ca/Listing/6600-Rte-Transcanadienne-Pointe-claire-QC/26089956/",
+    "AB": "46281.0",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": "CALL ONLY / WALK-IN - no published email found. 85,454 sq ft multi-tenant office, built 1975, listing states 'Property Manager on Site'. Older building with a new interior restaurant fit-out = live renovation signal. On-site manager means a walk-in is realistic. Suites 450-6,582 sq ft."
+  },
+  {
+    "A": "Plaza Pointe Claire Inc. (245-325 St-Jean)",
+    "B": "Office",
+    "C": "Pointe-Claire",
+    "D": "EN",
+    "E": "16807.0",
+    "F": "Private",
+    "G": "Plaza Pointe Claire Inc.",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "Pre-winter floors",
+    "P": "46327.0",
+    "Q": "Yes",
+    "R": "One-off - Strip & wax",
+    "S": "4",
+    "T": "B - worth it",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "Call",
+    "Z": "",
+    "AA": "https://www.loopnet.ca/search/office-space/pointe-claire-qc--canada/for-lease/",
+    "AB": "46281.0",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": "CALL ONLY - no published email found. Office space 657-16,807 sq ft across 245-325 Boul Saint-Jean. Owner-managed. Needs a name before it is workable."
+  },
+  {
+    "A": "Kells Academy (3 campuses)",
+    "B": "School",
+    "C": "NDG",
+    "D": "EN",
+    "E": "",
+    "F": "Private",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "Pre-winter floors",
+    "P": "46327.0",
+    "Q": "Yes",
+    "R": "One-off - Strip & wax",
+    "S": "4",
+    "T": "B - worth it",
+    "U": "",
+    "V": "",
+    "W": "514-487-2345",
+    "X": "kadmin@kells.ca",
+    "Y": "Email",
+    "Z": "",
+    "AA": "https://kells.ca/index.php?Itemid=203",
+    "AB": "46281.0",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": "STRONGEST SCHOOL LEAD. Three campuses, all H4B - the same postcode district as Otis at 2447 Madison Ave. Elementary 2290 Cavendish; High School 6865 De Maisonneuve W; Grade 12 6645 De Maisonneuve W. ~300 students total so each site is mid-size, inside capacity. Three buildings under one administration = contract-shaped from the first conversation. Published general admin email."
+  },
+  {
+    "A": "Hebrew Foundation School",
+    "B": "School",
+    "C": "Dollard-des-Ormeaux",
+    "D": "EN",
+    "E": "",
+    "F": "Private",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "Pre-winter floors",
+    "P": "46327.0",
+    "Q": "Yes",
+    "R": "One-off - Strip & wax",
+    "S": "4",
+    "T": "B - worth it",
+    "U": "",
+    "V": "",
+    "W": "514-684-6270",
+    "X": "communication@hfs.qc.ca",
+    "Y": "Email",
+    "Z": "",
+    "AA": "https://www.hfs.qc.ca/",
+    "AB": "46281.0",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": "2 rue Hope, DDO H9A 2V5. Bilingual, preschool to grade 6 plus a separate high school division - two buildings. Published general email. Note: preschool division on site means the disinfection-outside-children's-presence angle applies here too."
+  },
+  {
+    "A": "West Island College",
+    "B": "School",
+    "C": "Dollard-des-Ormeaux",
+    "D": "EN",
+    "E": "",
+    "F": "Private",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "Pre-winter floors",
+    "P": "46327.0",
+    "Q": "Yes",
+    "R": "One-off - Strip & wax",
+    "S": "4",
+    "T": "B - worth it",
+    "U": "",
+    "V": "",
+    "W": "514-683-4660",
+    "X": "",
+    "Y": "Call",
+    "Z": "",
+    "AA": "https://wicmtl.ca/",
+    "AB": "46281.0",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": "CALL ONLY - site obfuscates its email address, so no CASL basis. 851 Tecumseh, DDO H9B 2L2. Independent school, FEEP member. Ask for the business manager or director general."
+  },
+  {
+    "A": "Emmanuel Christian School",
+    "B": "School",
+    "C": "Dollard-des-Ormeaux",
+    "D": "EN",
+    "E": "",
+    "F": "Private",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "Pre-winter floors",
+    "P": "46327.0",
+    "Q": "Yes",
+    "R": "One-off - Strip & wax",
+    "S": "4",
+    "T": "B - worth it",
+    "U": "",
+    "V": "",
+    "W": "514-696-6430",
+    "X": "",
+    "Y": "Call",
+    "Z": "",
+    "AA": "https://ville.ddo.qc.ca/en/live/community-and-institutions/educational-institutions/",
+    "AB": "46281.0",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": "CALL ONLY - site blocked to automated fetch, no published email verified. 4698 rue St-Jean, DDO. Listed on the City of DDO educational institutions page."
+  },
+  {
+    "A": "Montreal Confucius School",
+    "B": "School",
+    "C": "Dollard-des-Ormeaux",
+    "D": "EN",
+    "E": "",
+    "F": "Private",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "Pre-winter floors",
+    "P": "46327.0",
+    "Q": "Yes",
+    "R": "One-off - Deep clean",
+    "S": "4",
+    "T": "B - worth it",
+    "U": "",
+    "V": "",
+    "W": "514-691-0412",
+    "X": "",
+    "Y": "Call",
+    "Z": "",
+    "AA": "https://ville.ddo.qc.ca/en/live/community-and-institutions/educational-institutions/",
+    "AB": "46281.0",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": "CALL ONLY - no published email verified. 851 Tecumseh, DDO - shares an address with West Island College, so likely a tenant in that building. Ask who cleans before pitching: this may be the landlord's decision. Weekend/supplementary school, so lower volume."
+  },
+  {
+    "A": "St. George's School of Montreal",
+    "B": "School",
+    "C": "Westmount",
+    "D": "EN",
+    "E": "",
+    "F": "Private",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "Pre-winter floors",
+    "P": "46327.0",
+    "Q": "Yes",
+    "R": "One-off - Strip & wax",
+    "S": "4",
+    "T": "B - worth it",
+    "U": "",
+    "V": "",
+    "W": "514-937-9289",
+    "X": "",
+    "Y": "Call",
+    "Z": "",
+    "AA": "https://www.stgeorges.qc.ca/",
+    "AB": "46281.0",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": "CALL ONLY on purpose. Two Westmount campuses - 3685 The Boulevard and 3100 Le Boulevard - K to 12, founded 1930. Only admissions@stgeorges.qc.ca is published, which is not the facilities buyer, so there is no role-relevant CASL basis. Phone and ask for the business manager."
+  },
+  {
+    "A": "English Montreal School Board / Lester B. Pearson School Board",
+    "B": "School",
+    "C": "Other - in corridor",
+    "D": "EN",
+    "E": "",
+    "F": "Public",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "Contract expiring",
+    "P": "",
+    "Q": "Yes",
+    "R": "Recurring contract",
+    "S": "4",
+    "T": "B - worth it",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "Property manager",
+    "Z": "",
+    "AA": "https://ville.ddo.qc.ca/en/live/community-and-institutions/educational-institutions/",
+    "AB": "46281.0",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": "DO NOT COLD-APPROACH. Both are public bodies - their cleaning is tendered through SEAO, so a call to a principal goes nowhere. LBPSB 514-422-3000. This row exists as a standing watch item: the SEAO feed is the route, on the contract-expiry trigger. Loaded as a reminder, not a lead - set Status accordingly."
+  },
+  {
+    "A": "Beaurepaire Preschool",
+    "B": "Kindergarten / preschool",
+    "C": "Beaconsfield",
+    "D": "EN",
+    "E": "",
+    "F": "Private",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "Pre-winter floors",
+    "P": "46327.0",
+    "Q": "Yes",
+    "R": "One-off - Deep clean",
+    "S": "4",
+    "T": "B - worth it",
+    "U": "",
+    "V": "Registrar",
+    "W": "514-695-4609",
+    "X": "registrar@beaurepairepreschool.com",
+    "Y": "Email",
+    "Z": "",
+    "AA": "https://westislandmommies.com/directory/preschools-2/",
+    "AB": "46281.0",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": "25 Fieldfare, Beaconsfield. Published email. Likely a co-op or small independent - decision may sit with a volunteer parent board, so expect a slower yes. Verify who owns the building before scoring as live."
+  },
+  {
+    "A": "Magic Circle Preschool",
+    "B": "Kindergarten / preschool",
+    "C": "Beaconsfield",
+    "D": "EN",
+    "E": "",
+    "F": "Private",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "Pre-winter floors",
+    "P": "46327.0",
+    "Q": "Yes",
+    "R": "One-off - Deep clean",
+    "S": "4",
+    "T": "B - worth it",
+    "U": "",
+    "V": "",
+    "W": "514-608-9956",
+    "X": "info@magiccirclepreschool.com",
+    "Y": "Email",
+    "Z": "",
+    "AA": "https://westislandmommies.com/directory/preschools-2/",
+    "AB": "46281.0",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": "313 Windermere Road, Beaconsfield H9W 1W1. Published email and own website. Appears to be a standalone operator rather than a co-op, which makes the decision faster."
+  },
+  {
+    "A": "Montessori School of Pointe-Claire",
+    "B": "Kindergarten / preschool",
+    "C": "Pointe-Claire",
+    "D": "EN",
+    "E": "",
+    "F": "Private",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "Pre-winter floors",
+    "P": "46327.0",
+    "Q": "Yes",
+    "R": "One-off - Deep clean",
+    "S": "4",
+    "T": "B - worth it",
+    "U": "",
+    "V": "",
+    "W": "514-697-3792",
+    "X": "montessori.school.pc@gmail.com",
+    "Y": "Email",
+    "Z": "",
+    "AA": "https://westislandmommies.com/directory/preschools-2/",
+    "AB": "46281.0",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": "116 Sunderland Ave, Pointe-Claire. Published email. Montessori settings use extensive floor-level materials and hard floors, which makes the disinfection-outside-children's-presence angle unusually strong here."
+  },
+  {
+    "A": "Coolbrooke Park Preschool",
+    "B": "Kindergarten / preschool",
+    "C": "Dollard-des-Ormeaux",
+    "D": "EN",
+    "E": "",
+    "F": "Private",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "Pre-winter floors",
+    "P": "46327.0",
+    "Q": "Yes",
+    "R": "One-off - Deep clean",
+    "S": "4",
+    "T": "B - worth it",
+    "U": "",
+    "V": "",
+    "W": "438-936-7671",
+    "X": "coolbrookepreschool@gmail.com",
+    "Y": "Email",
+    "Z": "",
+    "AA": "https://ville.ddo.qc.ca/en/live/community-and-institutions/educational-institutions/",
+    "AB": "46281.0",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": "260 Spring Garden, DDO. Published on the City of DDO page. Small site - check whether the premises are municipally owned before treating it as a live prospect."
+  },
+  {
+    "A": "Westpark Cooperative Preschool",
+    "B": "Kindergarten / preschool",
+    "C": "Dollard-des-Ormeaux",
+    "D": "EN",
+    "E": "",
+    "F": "Private",
+    "G": "City of Dollard-des-Ormeaux (probable)",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "Pre-winter floors",
+    "P": "46327.0",
+    "Q": "Yes",
+    "R": "Backup list",
+    "S": "4",
+    "T": "B - worth it",
+    "U": "",
+    "V": "",
+    "W": "514-400-8133",
+    "X": "westparkpreschool@hotmail.com",
+    "Y": "Email",
+    "Z": "",
+    "AA": "https://westislandmommies.com/directory/preschools-2/",
+    "AB": "46281.0",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": "Operates from the Terry Fox park chalet, 100 Fairview, DDO (also listed at 85 Hemingway). BUILDING IS PROBABLY CITY-OWNED - the municipality may already clean it, so confirm before pitching a contract. Backup list is the right first ask here. Parent co-op, volunteer board."
+  },
+  {
+    "A": "Dorval Preschool Co-op",
+    "B": "Kindergarten / preschool",
+    "C": "Dorval",
+    "D": "EN",
+    "E": "",
+    "F": "Private",
+    "G": "City of Dorval (probable)",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "Pre-winter floors",
+    "P": "46327.0",
+    "Q": "Yes",
+    "R": "Backup list",
+    "S": "4",
+    "T": "B - worth it",
+    "U": "",
+    "V": "",
+    "W": "514-633-4000",
+    "X": "DorvalPreschoolCoopSDCC@gmail.com",
+    "Y": "Email",
+    "Z": "",
+    "AA": "https://westislandmommies.com/directory/preschools-2/",
+    "AB": "46281.0",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": "Inside the Sarto Desnoyers Community Centre, 1335 Lakeshore Drive, Dorval. BUILDING IS MUNICIPAL - City of Dorval very likely cleans it. Worth a call to confirm; if the City does clean it, the real lead is the City's facilities team, not the co-op."
+  },
+  {
+    "A": "Prematernelle Parksites Preschool",
+    "B": "Kindergarten / preschool",
+    "C": "Pointe-Claire",
+    "D": "EN",
+    "E": "",
+    "F": "Private",
+    "G": "St. Columba Church (probable)",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "Pre-winter floors",
+    "P": "46327.0",
+    "Q": "Yes",
+    "R": "Backup list",
+    "S": "4",
+    "T": "B - worth it",
+    "U": "",
+    "V": "",
+    "W": "438-989-7908",
+    "X": "info@parksites.ca",
+    "Y": "Email",
+    "Z": "",
+    "AA": "https://westislandmommies.com/directory/preschools-2/",
+    "AB": "46281.0",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": "Operates from St. Columba Church, 11 Rodney Ave, Pointe-Claire. CHURCH-OWNED BUILDING - the parish may already clean it. If so the church itself is the better lead. Confirm on the call."
+  },
+  {
+    "A": "Garderie educative Ange gardien",
+    "B": "Daycare / CPE",
+    "C": "Dollard-des-Ormeaux",
+    "D": "EN",
+    "E": "",
+    "F": "Private",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "Pre-winter floors",
+    "P": "46327.0",
+    "Q": "Yes",
+    "R": "One-off - Deep clean",
+    "S": "4",
+    "T": "B - worth it",
+    "U": "",
+    "V": "",
+    "W": "514-685-2032",
+    "X": "",
+    "Y": "Call",
+    "Z": "",
+    "AA": "https://ville.ddo.qc.ca/en/live/community-and-institutions/educational-institutions/",
+    "AB": "46281.0",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": "CALL ONLY - no published email. 3869 Sources Blvd #100, DDO. Private garderie rather than a subsidised CPE, so it buys its own services directly - better odds than a CPE."
+  },
+  {
+    "A": "Or-Maimonide Day Care",
+    "B": "Daycare / CPE",
+    "C": "Dollard-des-Ormeaux",
+    "D": "EN",
+    "E": "",
+    "F": "Private",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "Pre-winter floors",
+    "P": "46327.0",
+    "Q": "Yes",
+    "R": "One-off - Deep clean",
+    "S": "4",
+    "T": "B - worth it",
+    "U": "",
+    "V": "",
+    "W": "514-676-1531",
+    "X": "",
+    "Y": "Call",
+    "Z": "",
+    "AA": "https://ville.ddo.qc.ca/en/live/community-and-institutions/educational-institutions/",
+    "AB": "46281.0",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": "CALL ONLY - no published email. 96 Fredmir, DDO. Likely linked to the Or-Maimonide school network, which could open a larger relationship."
+  },
+  {
+    "A": "CPE Les Bois Verts",
+    "B": "Daycare / CPE",
+    "C": "Dollard-des-Ormeaux",
+    "D": "FR",
+    "E": "",
+    "F": "Public",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "Pre-winter floors",
+    "P": "46327.0",
+    "Q": "Yes",
+    "R": "Backup list",
+    "S": "4",
+    "T": "B - worth it",
+    "U": "",
+    "V": "",
+    "W": "514-684-7712",
+    "X": "",
+    "Y": "Call",
+    "Z": "",
+    "AA": "https://ville.ddo.qc.ca/en/live/community-and-institutions/educational-institutions/",
+    "AB": "46281.0",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": "CALL ONLY - no published email. 50 Seville, DDO. Subsidised CPE, so purchasing may run through a group arrangement - unverified. French-named operator, outside the anglophone rule strictly speaking; loaded for completeness of the DDO sweep, deprioritise."
+  },
+  {
+    "A": "CPE Dollard",
+    "B": "Daycare / CPE",
+    "C": "Dollard-des-Ormeaux",
+    "D": "FR",
+    "E": "",
+    "F": "Public",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "Pre-winter floors",
+    "P": "46327.0",
+    "Q": "Yes",
+    "R": "Backup list",
+    "S": "4",
+    "T": "B - worth it",
+    "U": "",
+    "V": "",
+    "W": "514-683-7366",
+    "X": "",
+    "Y": "Call",
+    "Z": "",
+    "AA": "https://ville.ddo.qc.ca/en/live/community-and-institutions/educational-institutions/",
+    "AB": "46281.0",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": "CALL ONLY - no published email. 2000 De Salaberry Blvd, DDO. Subsidised CPE, same caveat as Les Bois Verts. Deprioritise under the anglophone rule."
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "A": "",
+    "B": "",
+    "C": "",
+    "D": "",
+    "E": "",
+    "F": "",
+    "G": "",
+    "H": "",
+    "I": "",
+    "J": "",
+    "K": "",
+    "L": "",
+    "M": "",
+    "N": "",
+    "O": "",
+    "P": "",
+    "Q": "",
+    "R": "",
+    "S": "",
+    "T": "",
+    "U": "",
+    "V": "",
+    "W": "",
+    "X": "",
+    "Y": "",
+    "Z": "",
+    "AA": "",
+    "AB": "",
+    "AC": "",
+    "AD": "",
+    "AE": "",
+    "AF": "",
+    "AG": "",
+    "AH": "",
+    "AI": "",
+    "AJ": "",
+    "AK": "",
+    "AL": "",
+    "AM": "",
+    "AN": "",
+    "AO": "",
+    "AP": "",
+    "AQ": "",
+    "AR": "",
+    "AS": "",
+    "AT": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  },
+  {
+    "B": ""
+  }
+]

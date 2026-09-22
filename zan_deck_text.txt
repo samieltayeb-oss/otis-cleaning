@@ -1,0 +1,316 @@
+Total pages in deck: 14
+=== SLIDE 1 ===
+GOLDEN THREAD SOLUTIONS
+Otis Commercial Cleaning
+The job, how we do it, what we need from you, and where it goes
+Entretien Menager Otis Inc.  ·  Montreal  ·  16 September 2026
+01
+The job
+02
+How we do it
+03
+What we need from you
+04
+Where it goes
+=== SLIDE 2 ===
+PART 01   ·   THE JOB
+Two converted clients, as fast as possible
+That is the whole job right now. Not a pipeline, not a brand, not a marketing programme - two businesses that were not Otis clients 
+before, and are Otis clients after. Everything after Part One is the plan for what happens next.
+WHAT COUNTS AS CONVERTED
+• A job booked, delivered and invoiced - not a quote issued or a 
+promising conversation
+• A place on a backup list counts as a foothold, not as a client, until 
+the first call-out lands
+WHY TWO, AND NOT TWENTY
+• Capacity is 3-5 medium recurring contracts, or 2 large daily 
+facilities, plus unlimited one-off
+• Selling more than can be delivered costs reviews - and reviews are 
+the constraint on everything else
+Why the rest of this exists.  Two clients won by luck repeat nothing. Two clients won by a method can be repeated next month, and the month 
+after - which is the difference between a good week and a business that grows.
+Parts two, three and four: how it is done, what is needed from Otis to start, and what it turns into.
+=== SLIDE 3 ===
+PART 01   ·   THE JOB  ·  THE RAW MATERIAL
+Thirty-seven businesses are already lined up
+Not a target list to be built - a list that exists, researched, scored and loaded. The two clients come out of these.
+37
+leads live
+5
+rated A - go now
+32
+rated B
+0
+stale
+5
+capacity left
+WHERE THEY ARE
+• Dollard-des-Ormeaux 12 and Pointe-Claire 11 carry most of it, then 
+Kirkland, Beaconsfield and Dorval
+• Eight sectors: schools 7, kindergartens 7, daycares 6, offices 6, 
+property managers 4, clinics 4, gyms 3
+THE CLOCK ON IT
+• 36 of the 37 run on pre-winter floor care, and that reason to buy 
+expires on 1 November
+• After that the list has to be re-sourced against new reasons. That is 
+the real deadline on the two clients
+=== SLIDE 4 ===
+PART 02   ·   HOW WE DO IT  ·  THE WAY IN
+Nobody wins a cleaning contract cold
+Most businesses already have a cleaner. Winning a contract cold means displacing them, which needs a trigger nobody can 
+manufacture. So we go in sideways - through two doors that need no displacement at all.
+ROUTE 1
+The one-off job
+Strip and wax, post-construction, deep clean, move-out. Additive work 
+the current cleaner does not do, so nobody has to be sacked for Otis to 
+be hired.
+It is a paid trial in both directions. The buyer risks nothing, and Otis gets 
+inside the building where the standard is watched rather than claimed.
+ROUTE 2
+The backup list
+"Put us on your list for when your cleaner does not turn up." No 
+budget, no decision, no displacement - the easiest yes in the industry.
+When the current cleaner no-shows, Otis is the call. The comparison gets 
+made for the buyer instead of argued at them.
+A one-off job is never the end of the story. Every completed job opens the contract conversation - see Part Four.
+=== SLIDE 5 ===
+PART 02   ·   HOW WE DO IT  ·  THE OFFER
+Four one-off services, ranked by how well they convert cold
+1 Floor stripping, waxing and sealing
+THE LEAD OFFER
+Montreal salt destroys hard floors, and the window to seal is before the season, not after. It 
+gives a cold approach a real reason to act now - and Otis does floor care in-house where a lot 
+of competitors subcontract.
+2 Post-construction and post-renovation
+DEADLINE-DRIVEN
+A site must be clean for handover, so the urgency is real and the buyer is a contractor rather 
+than a facilities manager.
+3 Deep clean and high-dusting
+SEASONAL
+Post-summer timing. The natural fit for schools, kindergartens and daycares.
+4 Commercial move-in / move-out
+TRIGGERED
+New tenancy. Commercial only.
+No deposit. Net-30 is the commercial norm, and asking for one marks Otis as unusual at the moment it needs to look standard.   No price before a walkthrough. The 
+market runs 15-30 cents per square foot; the published floor of 6 cents sits below it and anchors a buyer low.
+=== SLIDE 6 ===
+PART 02   ·   HOW WE DO IT  ·  THE TRACKER
+One sheet, five tabs, forty-six columns
+Otis-Lead-Tracker is the single source of truth for the pipeline. A Google Sheet, because Otis already pay for Workspace - so it costs 
+nothing more and opens on any device.
+Read me
+The strategy in one page, so 
+anyone opening it cold 
+understands what they are 
+looking at
+Compliance pack
+What must be true before a 
+quote can close - insurance, 
+CNESST, the decret
+Where to look
+The ranked source list, so 
+the next sourcing run never 
+starts from scratch
+Leads
+The 37 rows, and every 
+column below
+Pipeline
+The scoreboard, calculated. 
+Nobody reports anything by 
+hand
+NOBODY HAS TO REMEMBER WHOSE JOB A FIELD IS
+• Blue columns are filled by the sourcing run
+• Amber columns are filled by hand, after a call
+• Grey columns are calculated by the sheet itself
+IT SCORES AND POLICES ITSELF
+• Six points decide the grade: hard floors, a live trigger, in-scope sector, 
+inside the corridor, a named contact with a direct phone, the right size
+• A lead flips to STALE - refresh the day its reason to buy expires
+Open the live tracker  →
+=== SLIDE 7 ===
+PART 02   ·   HOW WE DO IT  ·  WHAT IS IN THE TRACKER TODAY
+Thirty-seven rows, and what they add up to
+WHAT THE ROWS SAY
+• Offer: strip and wax 21, deep clean 10, backup list 5, recurring 
+contract 1
+• Route in: call 19, email 13, walk-in 4, via a property manager 1
+• Evidence: 37 of 37 rows carry a source and a date collected. The 
+legal position is complete, with no exceptions
+• 18 leads have a published email. 19 do not, so they are phone or 
+walk-in only - correct, not a gap
+• Only 7 rows name a person, and 16 more name a role. Turning 
+roles into names is the fastest lift available, and it happens on 
+the first call
+Read live from the tracker, 16 September 2026.
+=== SLIDE 8 ===
+PART 02   ·   HOW WE DO IT  ·  THE REST OF THE MACHINE
+Three tools keeping it honest, three more ways in
+The tracker holds the pipeline. These keep filling it, and keep it from rotting - all of them at no running cost.
+The sourcing skill
+Turns "source Otis leads" into a full run across all 
+eight sectors with minimums, a dated reason to 
+buy per lead, scoring, evidence and the outreach 
+copy
+The chasers
+A script on the sheet. Daily it flags expiring 
+reasons to buy, untouched A-leads and rows 
+missing evidence. Weekly it emails a digest
+The SEAO watch
+Public tender data - the only place you can see 
+who currently cleans a public body, for how 
+much, and when that contract was awarded
+Referrals
+One ask to each of the three existing site 
+managers. Daycare and school administrators 
+know each other, so the reach is wider than 
+three conversations
+Local groups
+"Can anyone recommend a commercial cleaner" 
+posts in West Island Facebook groups. That is 
+inbound, not cold - the highest-priority lead type 
+there is
+Event partnerships
+Event companies produce repeat, scheduled 
+demand with no cleaner to displace. One agency 
+relationship yields many jobs
+The partners work the phone - B2B cold calls in Quebec are exempt from the National DNCL. Email is the follow-up and the paper trail; the phone is the closer.
+=== SLIDE 9 ===
+PART 02   ·   HOW WE DO IT  ·  THE RULES WE WORK INSIDE
+Three regimes, and one of them sells for you
+CASL
+$1M / $10M PENALTIES
+The burden of proof sits on the sender. No 
+lead is emailed without a traceable source and 
+a date. If the address cannot be traced to a 
+page the business published, it is phone-only - 
+19 of the 37 are.
+Competition Act s.74.011
+SENDER IDENTITY
+A false or misleading sender name is 
+reviewable conduct, and the defence that 
+nobody was actually deceived has been 
+removed. Mail goes from a real address under 
+a real name.
+CNESST and the decret
+YOUR BEST ARGUMENT
+The joint-liability rule makes the CLIENT 
+responsible for an underpriced rival's unpaid 
+wages. That is not a burden - it is the strongest 
+line against a cheaper competitor, and it opens 
+on their exposure, not on Otis.
+Two working rules that follow from this: contact-data brokers are never a source, because they sell addresses the business never published - and a published address 
+that is not the facilities buyer, like an admissions inbox, is a call rather than an email.
+Every row in the tracker carries where the contact came from and the date it was collected, so the position holds up without anybody having to reconstruct it later.
+=== SLIDE 10 ===
+PART 03   ·   WHAT WE NEED FROM YOU
+Five things, and outreach can start
+Most of this is under an hour in total. Nothing goes out until it lands.
+1 A dedicated sending address
+quotes@ on your own domain
+Role-based, so it transfers and stays yours. It also keeps the results separate from 
+info@, the address your paying clients already use.
+$0 as an alias
+2 DKIM enabled
+In Google Workspace
+No key is published today, and unauthenticated cold mail lands in spam. Free, 15 minutes
+3 DMARC published
+At p=none
+No record exists. This is what protects the deliverability of the address your 
+existing clients write to.
+Free, 15 minutes
+4 Your rate card for one-off work
+Strip and wax, deep clean, post-construction, 
+high-dusting
+We cannot quote without it, and we will not guess at it. Free
+5 Written authorisation
+Plus an approved signature block
+The law requires every message to say who it is sent on behalf of. Free, 10 minutes
+The clock starts when these land - not when this deck is delivered.
+=== SLIDE 11 ===
+PART 03   ·   WHAT WE NEED FROM YOU  ·  TO CLOSE, AND TO BE BELIEVED
+Six to close a job, five to be taken seriously
+A JOB CANNOT CLOSE WITHOUT
+• Proof of insurance, with the limits stated - facilities managers ask 
+before letting anyone into a building
+• CNESST standing, and whether you hold an attestation de conformite
+• Your weekly capacity for one-off work, and how fast you can mobilise
+• Who issues quotes, and how quickly
+• A named person who answers when a prospect calls back
+• Crew composition under decret article 2.03(2)
+AND TO BE BELIEVED ON THE DOORSTEP
+• Before and after photos - there are none visible anywhere today, and 
+they are the strongest proof one-off work has
+• Permission and introductions to ask your three existing sites for 
+referrals
+• Sign-off on a referral thank-you - a discount on that site's next month
+• A list of every past and present client, for the review push in Part 
+Four
+• Your availability for on-site assessments
+One open question needs a single phone call: whether post-renovation work inside a public building is covered by the decret. Worth roughly $7 an hour on your cost basis. CPEEP , 514 384-6640.
+=== SLIDE 12 ===
+PART 04   ·   WHERE IT GOES  ·  THE NEXT SIX WEEKS
+Turning jobs into contracts, and nine reviews into twenty
+EVERY COMPLETED JOB OPENS A CONTRACT
+• The conversation is with somebody who has already watched the 
+standard happen in their own building
+• It is written into the outreach as a step, not left to whoever 
+remembers - a job delivered and never followed by that conversation 
+is a job done, not a client won
+• The tracker records contract stage and monthly value, so the number 
+is visible rather than hoped for
+• Recurring work is retention and expansion. It is where this leads, not 
+where it starts
+THE REVIEW PUSH - NINE TOWARD TWENTY
+• Every review is five stars already - the hard part is done. The gap is 
+volume, not quality
+• Ask every past and present client, systematically, and ask at 
+completion every time from now on
+• Not staff, friends or family: Google prohibits reviews from anyone 
+with a conflict of interest, and removals are visible at this volume
+• Never attach the referral discount to a review - an incentive in 
+exchange for one is prohibited outright
+• Steer the wording toward commercial: janitorial, contract, our 
+building
+=== SLIDE 13 ===
+PART 04   ·   WHERE IT GOES  ·  REVENUE WORTH TALKING ABOUT
+Four streams, none of them decided yet
+None of these is in the current pipeline. They are raised here so the choice is yours rather than left unsaid.
+Event venues and agencies
+Repeat, scheduled work with no cleaner to displace. The closest to what is 
+already running, and the first worth opening.
+Contractor relationships
+Post-construction as a standing arrangement rather than job by job. One 
+contractor produces recurring one-off work indefinitely.
+Specialist add-ons
+Windows, carpet extraction, pressure washing, waste. Expansion revenue 
+from clients already won - no acquisition at all.
+Residential
+Open, and not yet discussed. Your existing reviews already describe residential 
+work, so the demand is there without any marketing. It is kept out of the 
+commercial pipeline for now only so the commercial positioning lands cleanly 
+- not because anyone has ruled it out.
+=== SLIDE 14 ===
+PART 04   ·   WHERE IT GOES  ·  THE LONGER GAME
+Where this is in six to twelve months
+A direction, not a promise - and every line of it has a number today to be measured against.
+THE BASELINE WE START FROM
+• Google sent 65 visitors to the website in twelve months - about five a 
+month. That search position is unclaimed rather than lost
+• Nearly a third of the recorded "visitors" are automated, and the 
+admin logins count too, so the real audience is roughly one person a 
+day
+• Nine reviews, and a Services section on the profile that is still empty
+• These are not failings. They are the numbers everything from here 
+gets compared against
+WHAT IT LOOKS LIKE IF THE HABITS HOLD
+• Two or three recurring contracts against a ceiling of five, with the 
+one-off work still running alongside
+• Reviews near twenty, reading commercial, and a profile that is being 
+found rather than only existing
+• A named person on most rows instead of seven, because every call 
+adds one
+• Work arriving from referrals and local groups, not only from the 
+phone
+• And the argument for building inbound properly made with numbers 
+instead of instinct
+Outbound is not only how the first clients are won. It is the research that makes everything after it work.

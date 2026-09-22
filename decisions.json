@@ -1,0 +1,190 @@
+[
+  {
+    "id": "DOSS-01",
+    "leadId": "LEAD-10",
+    "businessName": "Clinique Dentaire Pointe-Claire",
+    "sector": "Medical / Dental Clinic",
+    "location": "1 Ave Holiday #250, Pointe-Claire",
+    "priority": "Priority A (Go Now)",
+    "score": "5 / 5",
+    "contactName": "Catalina Zambrano",
+    "role": "Privacy Officer (Route to Office Manager)",
+    "phone": "514-697-7391",
+    "email": "info@cliniquedentairepointeclaire.com",
+    "sqFt": "3,400 sq ft",
+    "trigger": "Relocated to new Holiday Ave premises & Pre-Winter floor protection window (Nov 1)",
+    "status": "pending",
+    "statusLabel": "⏳ Awaiting Zan Review",
+    "proposedOffer": "Pre-Winter Tennant Machine Scrub & Operatory Disinfection Trial",
+    "proposedPricing": "$1,480 Paid Trial → $2,100 / mo Recurring",
+    "dispatchChannel": "quotes@otiscc.ca + Direct Phone Call from Max",
+    "agentBreakdown": [
+      {
+        "agent": "Hunter",
+        "badge": "Recon",
+        "note": "Verified Catalina Zambrano via published LoopNet & clinic about page. Source URL logged for CASL 66(1) B2B exemption."
+      },
+      {
+        "agent": "Marcus",
+        "badge": "Ops / Equipment",
+        "note": "Audited floor substrate: Vinyl composition tile in operatories. Tennant auto scrubber confirmed 100% in-house. Neutral sanitizing solution selected."
+      },
+      {
+        "agent": "Émile",
+        "badge": "Compliance",
+        "note": "Bilingual requirement verified. Law 25 opt-out logged. Parity Decree wage floor (23/h) budgeted with 42% gross margin."
+      },
+      {
+        "agent": "Valérie",
+        "badge": "Proposal Closer",
+        "note": "Drafted 2-page bilingual PDF trial scope: Friday evening auto-scrubbing test with zero clinical downtime. Door 2 backup clause included."
+      }
+    ],
+    "aiRecommendation": "RECOMMENDED: Approve dispatch of bilingual trial proposal via quotes@otiscc.ca, with automated SMS task to Max for 2:00 PM phone follow-up.",
+    "draftPreview": "Bonjour Catalina,\n\nFélicitations pour vos nouveaux locaux au 1 Avenue Holiday. Avec l'hiver montréalais qui approche, le sel et la gadoue vont rapidement ternir les planchers de votre clinique.\n\nOTIS propose un essai pré-hivernal de récurage mécanique avec notre autorécureuse Tennant spécialisée pour cliniques médicales sans interrompre vos patients.\n\nDisponibles ce vendredi dès 18h00. Consultez notre proposition ci-jointe.",
+    "executiveDecision": null,
+    "decisionTimestamp": null,
+    "executiveDirective": null
+  },
+  {
+    "id": "DOSS-02",
+    "leadId": "LEAD-14",
+    "businessName": "Placements Sergakis Inc. (181 Hymus + Portfolio)",
+    "sector": "Commercial Property Management",
+    "location": "181 Hymus, Pointe-Claire (Multi-tenant office)",
+    "priority": "Priority A (Go Now)",
+    "score": "5 / 5",
+    "contactName": "Sylvie Filion",
+    "role": "Supervisor, Repairs and Maintenance",
+    "phone": "514-937-6137 ext 225",
+    "email": "Sylvie.fillion@sergakis.com",
+    "sqFt": "13,260 sq ft common areas",
+    "trigger": "Multi-tenant office common area upkeep & pre-winter entrance vestibule salt sealing",
+    "status": "pending",
+    "statusLabel": "⏳ Awaiting Zan Review",
+    "proposedOffer": "Door 2 On-Call Backup Agreement & Common Corridors Scrubbing Trial",
+    "proposedPricing": "$1,950 Entrance & Lobby Scrub → $4,200 / mo Common Area MRR",
+    "dispatchChannel": "Direct Email to Sylvie Filion (quotes@otiscc.ca)",
+    "agentBreakdown": [
+      {
+        "agent": "Hunter",
+        "badge": "Recon",
+        "note": "Identified direct email for Sylvie Filion (Maintenance Supervisor) and Mark Bedard (Commercial Director). Highest quality contact in 37-lead sheet."
+      },
+      {
+        "agent": "Marcus",
+        "badge": "Ops / Equipment",
+        "note": "13,260 sq ft lobby and shared corridors. Tennant auto scrubber verified for lobby terrazzo. Neutral defoamer budgeted for slush extraction."
+      },
+      {
+        "agent": "Émile",
+        "badge": "Compliance",
+        "note": "Commercial B2B relevance under CASL confirmed. Commercial general liability insurance ($5M) certificate attached."
+      },
+      {
+        "agent": "Valérie",
+        "badge": "Proposal Closer",
+        "note": "Structured Door 2 'Zero-Risk Backup Provider' agreement: Put OTIS on call with guaranteed 2-hour emergency response for winter salt surges."
+      }
+    ],
+    "aiRecommendation": "RECOMMENDED: Approve direct outreach to Sylvie Filion. Offer on-call backup status first (easiest yes), backed by one-off vestibule auto-scrubbing.",
+    "draftPreview": "Chère Mme Filion,\n\nEn tant que superviseure de la maintenance pour le portefeuille de Placements Sergakis, vous savez à quel point l'hiver montréalais met à rude épreuve les halls d'entrée et corridors du 181 Hymus.\n\nOTIS propose de devenir votre fournisseur de relève officiel ('Backup On-Call') : 0 $ d'engagement, disponible en 2 heures si votre équipe habituelle a un imprévu, avec essai préalable de récurage mécanique Tennant pour vos aires communes.\n\nSeriez-vous ouverte à un échange de 5 minutes cette semaine ?",
+    "executiveDecision": null,
+    "decisionTimestamp": null,
+    "executiveDirective": null
+  },
+  {
+    "id": "DOSS-03",
+    "leadId": "LEAD-08",
+    "businessName": "The Learning Tree Daycare",
+    "sector": "Daycare / CPE",
+    "location": "16 Rue de Seville, Dollard-des-Ormeaux",
+    "priority": "Priority B (High Value)",
+    "score": "4 / 5",
+    "contactName": "Directrice Générale / Centre Director",
+    "role": "Director of Facilities & Child Care",
+    "phone": "514-683-8426",
+    "email": "",
+    "sqFt": "4,200 sq ft",
+    "trigger": "Strict Quebec Daycare Regulation (Disinfection outside children hours) & Nov 1 floor care",
+    "status": "pending",
+    "statusLabel": "⏳ Awaiting Zan Review",
+    "proposedOffer": "Evening Plant-Safe Disinfection & Linoleum Auto-Scrubbing Contract",
+    "proposedPricing": "$850 Deep Clean Trial → $1,750 / mo Recurring (3x/week)",
+    "dispatchChannel": "Phone Call Outreach (No email published / CASL safe)",
+    "agentBreakdown": [
+      {
+        "agent": "Hunter",
+        "badge": "Recon",
+        "note": "Identified Anglophone West Island daycare serving Kirkland & DDO. Note: No verified email published. Phone call required to respect CASL."
+      },
+      {
+        "agent": "Émile",
+        "badge": "Compliance",
+        "note": "CRITICAL REGULATION: Ministry of Families requires all surface disinfection outside children's presence. Bilingual documentation ready."
+      },
+      {
+        "agent": "Marcus",
+        "badge": "Ops / Equipment",
+        "note": "Verified 100% non-toxic, hospital-grade botanical disinfectants (no harsh bleaches). Tennant scrubber fitted with soft non-marking brushes."
+      },
+      {
+        "agent": "Alex",
+        "badge": "Walkthrough",
+        "note": "Walkthrough schedule pre-set for 6:15 PM (immediately after parent pickup). Script prepared for Max."
+      }
+    ],
+    "aiRecommendation": "RECOMMENDED: Approve phone call script. Max phones reception at 514-683-8426 to schedule evening walkthrough with the Director.",
+    "draftPreview": "Phone Script for Max:\n'Hi, this is Max from OTIS Commercial Cleaning in NDG and the West Island. I'm calling specifically regarding your evening facility maintenance.\nUnder Quebec childcare guidelines, deep disinfection and floor sanitization must be done after children leave. We have a dedicated West Island crew with machine scrubbers using 100% child-safe neutral disinfectants.\nI'd like to drop by for 10 minutes at 6:15 PM after pick-up to see if our backup evening service would be helpful to your team. Who would be the best person to coordinate that with?'",
+    "executiveDecision": null,
+    "decisionTimestamp": null,
+    "executiveDirective": null
+  },
+  {
+    "id": "DOSS-04",
+    "leadId": "LEAD-05",
+    "businessName": "World Gym Dollard-des-Ormeaux",
+    "sector": "Gym / Fitness Center",
+    "location": "3237 Des Sources Blvd, DDO",
+    "priority": "Priority B (High Value)",
+    "score": "4 / 5",
+    "contactName": "Club General Manager",
+    "role": "General Manager & Operations",
+    "phone": "438-600-2100",
+    "email": "",
+    "sqFt": "42,000 sq ft (Largest Lead in Batch)",
+    "trigger": "Winter salt & high-traffic rubber floor degradation (Nov 1 Deadline)",
+    "status": "pending",
+    "statusLabel": "⏳ Awaiting Zan Review",
+    "proposedOffer": "High-Capacity Overnight Tennant Auto-Scrubbing & Locker Room Sanitization",
+    "proposedPricing": "$2,600 Main Circulation Track Trial → $5,400 / mo Recurring",
+    "dispatchChannel": "In-Person Walk-in / Drop-by (3237 Des Sources)",
+    "agentBreakdown": [
+      {
+        "agent": "Hunter",
+        "badge": "Recon",
+        "note": "42,000 sq ft facility. Open 24h Tue-Thu. Requires overnight scheduled maintenance window. No published email; in-person or call."
+      },
+      {
+        "agent": "Marcus",
+        "badge": "Ops / Equipment",
+        "note": "Tennant auto-scrubber is required due to 42k sq ft scale. Defoamer chemistry essential for heavy salt neutralization on rubber flooring."
+      },
+      {
+        "agent": "Bruno",
+        "badge": "Crew Dispatch",
+        "note": "Overnight 2-person crew modeled (2:00 AM - 6:00 AM). CPEEP shift differential (23 + overnight bonus) factored into pricing."
+      },
+      {
+        "agent": "Valérie",
+        "badge": "Proposal Closer",
+        "note": "Structured proposal focusing on slip-and-fall winter liability prevention for gym members."
+      }
+    ],
+    "aiRecommendation": "RECOMMENDED: Approve Max in-person walkthrough visit at 10:30 AM with 1-page Gym Winter Floor Defense brief.",
+    "draftPreview": "Walk-in Executive Briefing:\n'Attention: Club Manager, World Gym DDO\nSubject: Pre-Winter Salt Mitigation & High-Traffic Rubber Floor Preservation\nWith 42,000 sq ft of high-traffic members, salt and calcium tracking will destroy flooring and create slip hazards by mid-November.\nOTIS deploys Tennant commercial auto-scrubbers with neutral anti-salt chemistries during off-peak hours (2 AM - 6 AM).\nWe offer a 1-night test scrub on your main entrance track for $2,600 with zero club interruption.'",
+    "executiveDecision": null,
+    "decisionTimestamp": null,
+    "executiveDirective": null
+  }
+]

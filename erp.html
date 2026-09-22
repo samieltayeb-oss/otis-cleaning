@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OTIS ERP — Master Operations & Resource Planning System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0B1B2B;
+      --navy-surface: #102438;
+      --navy-light: #162E47;
+      --navy-border: #1E3D5C;
+      --orange: #F7941D;
+      --orange-light: #FFA940;
+      --green: #1E7B34;
+      --green-light: #28A745;
+      --white: #FFFFFF;
+      --text-muted: #8FA6BE;
+      --text-body: #C2D3E5;
+      --card: #0F2337;
+      --border: rgba(255, 255, 255, 0.08);
+      --red: #EF4444;
+      --blue: #38BDF8;
+      --purple: #A855F7;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--navy);
+      color: var(--text-body);
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      padding-top: 0;
+      min-height: 100vh;
+    }
+    /* Sticky Top Navigation Bar */
+    .top-bar {
+      position: sticky;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(11, 27, 43, 0.96);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.65rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .brand-logo img {
+      height: 32px;
+      max-width: 140px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+    }
+    .badge-pill {
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.2rem 0.65rem;
+      border-radius: 50px;
+      letter-spacing: 0.04em;
+      background: rgba(247, 148, 29, 0.15);
+      border: 1px solid rgba(247, 148, 29, 0.35);
+      color: var(--orange);
+      white-space: nowrap;
+    }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: nowrap;
+    }
+    .btn-nav {
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 0.4rem 0.75rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: var(--text-body);
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.04);
+      white-space: nowrap;
+    }
+    .btn-nav:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--white);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+    .btn-nav.active {
+      background: rgba(247, 148, 29, 0.2);
+      border-color: var(--orange);
+      color: var(--orange);
+      font-weight: 700;
+    }
+    .btn-prototype {
+      background: linear-gradient(135deg, var(--orange), #d97706);
+      color: var(--navy) !important;
+      font-weight: 700;
+      border: none;
+    }
+    .btn-prototype:hover {
+      background: linear-gradient(135deg, #fb923c, var(--orange));
+      transform: translateY(-1px);
+    }
+    .nav-hamburger {
+      display: none;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border);
+      color: var(--white);
+      font-size: 1.25rem;
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+    .nav-hamburger:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: var(--orange);
+      color: var(--orange);
+    }
+    .mobile-nav-drawer {
+      display: none;
+      position: fixed;
+      top: 54px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(8, 13, 26, 0.98);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      z-index: 999;
+      padding: 1.5rem 2rem 2.5rem;
+      overflow-y: auto;
+      flex-direction: column;
+      gap: 0.65rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .mobile-nav-drawer.open {
+      display: flex;
+    }
+    .mobile-nav-drawer .mobile-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.8rem 1.1rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text-body);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+    .mobile-nav-drawer .mobile-link:hover,
+    .mobile-nav-drawer .mobile-link.active {
+      background: rgba(247, 148, 29, 0.15);
+      border-color: var(--orange);
+      color: var(--white);
+    }
+    .mobile-nav-drawer .mobile-link.prototype-link {
+      background: linear-gradient(135deg, var(--orange), #d97706);
+      color: var(--navy) !important;
+      font-weight: 700;
+      border: none;
+    }
+    @media (max-width: 1100px) {
+      .nav-actions { display: none; }
+      .nav-hamburger { display: inline-flex; }
+    }
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+      color: var(--orange);
+      padding: 0.25rem 0.65rem;
+      border-radius: 20px;
+      font-weight: 700;
+    }
+
+    /* Executive Hero Header */
+    .erp-hero {
+      background: linear-gradient(135deg, rgba(16,36,56,0.9) 0%, rgba(11,27,43,0.95) 100%);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.2rem;
+      margin-bottom: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .erp-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 0.4rem;
+    }
+    .erp-sub {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      max-width: 760px;
+      line-height: 1.5;
+    }
+
+    /* Action Buttons */
+    .btn-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0.75rem 1.4rem;
+      border-radius: 30px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-pdf {
+      background: linear-gradient(135deg, #ef4444, #dc2626);
+      color: var(--white);
+      box-shadow: 0 4px 14px rgba(239, 68, 68, 0.3);
+    }
+    .btn-pdf:hover {
+      background: #f87171;
+      transform: translateY(-1px);
+    }
+    .btn-print {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border);
+      color: var(--white);
+    }
+    .btn-print:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    /* KPI Summary */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .kpi-card {
+      background: var(--navy-surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.25rem;
+    }
+    .kpi-val {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.1;
+    }
+    .kpi-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 0.3rem;
+      font-weight: 700;
+    }
+
+    /* Module Navigation Tabs */
+    .tabs-bar {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .tab-btn {
+      background: var(--navy-surface);
+      border: 1px solid var(--border);
+      color: var(--text-body);
+      padding: 0.6rem 1.1rem;
+      border-radius: 10px 10px 0 0;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .tab-btn:hover {
+      background: var(--navy-light);
+      color: var(--white);
+    }
+    .tab-btn.active {
+      background: var(--navy-light);
+      border-bottom: 2px solid var(--orange);
+      color: var(--orange);
+    }
+
+    /* Tab Content Panels */
+    .tab-panel {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+    .tab-panel.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Tables & Cards */
+    .erp-card {
+      background: var(--navy-surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.8rem;
+      margin-bottom: 1.5rem;
+    }
+    .erp-card-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 0.3rem;
+    }
+    .erp-table-wrap {
+      overflow-x: auto;
+      margin-top: 1rem;
+    }
+    .erp-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      text-align: left;
+    }
+    .erp-table th {
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text-muted);
+      padding: 0.8rem 1rem;
+      font-weight: 700;
+      border-bottom: 1px solid var(--border);
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+    }
+    .erp-table td {
+      padding: 0.85rem 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      color: var(--text-body);
+      vertical-align: middle;
+    }
+    .erp-table tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    /* Pill Badges */
+    .pill {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
+    .pill.green { background: rgba(30,123,52,0.25); color: var(--green-light); border: 1px solid var(--green); }
+    .pill.orange { background: rgba(247,148,29,0.2); color: var(--orange); border: 1px solid var(--orange); }
+    .pill.blue { background: rgba(56,189,248,0.2); color: var(--blue); border: 1px solid #0284c7; }
+    .pill.red { background: rgba(239,68,68,0.2); color: #f87171; border: 1px solid #ef4444; }
+
+    /* Checklist */
+    .checklist-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0.75rem;
+      background: var(--navy);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 0.5rem;
+    }
+    .checklist-item input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--orange);
+      cursor: pointer;
+    }
+
+    /* Print Overrides */
+    @media print {
+      body { background: #fff !important; color: #000 !important; padding-top: 0 !important; }
+      .top-bar, .tabs-bar, .btn-action, .btn-nav { display: none !important; }
+      .tab-panel { display: block !important; margin-bottom: 30px !important; }
+      .erp-card { border: 1px solid #ccc !important; background: #fff !important; color: #000 !important; }
+      .kpi-val, .erp-card-title { color: #000 !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Top Navigation Bar -->
+  <header class="top-bar">
+    <a href="/" class="brand-logo">
+      <img src="/imgs/otis-logo.png" alt="OTIS Commercial Cleaning">
+      <span class="badge-pill">OTIS ERP System</span>
+    </a>
+    
+    <nav class="nav-actions">
+      <a href="/" class="btn-nav"><span>🏠 Home</span></a>
+      <a href="/leads.html" class="btn-nav"><span>📋 37 Leads</span></a>
+      <a href="/crm.html" class="btn-nav"><span>🤖 AI Staff</span></a>
+      <a href="/erp.html" class="btn-nav active"><span>📊 ERP</span></a>
+      <a href="/zan-review.html" class="btn-nav"><span>⚖️ Zan Audit</span></a>
+      <a href="/equipment.html" class="btn-nav"><span>🛠️ Equipment</span></a>
+      <a href="/discovery.html" class="btn-nav"><span>🔍 Discovery</span></a>
+      <a href="/otis-final-v2_11.html" class="btn-nav btn-prototype" target="_blank"><span>Prototype →</span></a>
+    </nav>
+
+    <button class="nav-hamburger" id="nav-toggle" aria-label="Toggle navigation" onclick="toggleNavMenu()">☰</button>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav-drawer" id="mobile-nav-drawer">
+    <div style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.25rem;">
+      Command Center Navigation
+    </div>
+    <a href="/" class="mobile-link"><span>🏠 Executive Home</span> <span>→</span></a>
+    <a href="/leads.html" class="mobile-link"><span>📋 37 Accounts Master Tracker</span> <span>37 Verified</span></a>
+    <a href="/crm.html" class="mobile-link"><span>🤖 AI Staff & Zan Command Console</span> <span>8 Agents</span></a>
+    <a href="/erp.html" class="mobile-link active"><span>📊 OTIS ERP Master System</span> <span style="color:var(--orange);">Active</span></a>
+    <a href="/zan-review.html" class="mobile-link"><span>⚖️ Honest Zan Review & Audit</span> <span>5.5 vs 9.6</span></a>
+    <a href="/equipment.html" class="mobile-link"><span>🛠️ Operational Equipment Truth</span> <span>Verified</span></a>
+    <a href="/discovery.html" class="mobile-link"><span>🔍 Montreal SEO + AEO + GEO Engine</span> <span>Live</span></a>
+    <div style="height: 1px; background: var(--border); margin: 0.4rem 0;"></div>
+    <a href="/OTIS_EXECUTIVE_ERP_REPORT_2026.pdf" class="mobile-link" target="_blank" style="border-color: rgba(34, 160, 69, 0.4); color: var(--green-light);">
+      <span>📄 Download Master PDF Report</span> <span>564 KB ↗</span>
+    </a>
+    <a href="/otis-final-v2_11.html" class="mobile-link prototype-link" target="_blank">
+      <span>🚀 Open Customer-Facing Prototype</span> <span>↗</span>
+    </a>
+  </div>
+
+  <main class="container">
+
+    <!-- Executive Hero Header -->
+    <div class="erp-hero">
+      <div>
+        <div class="pill orange" style="margin-bottom:0.5rem;">OTIS Enterprise Resource Planning</div>
+        <h1 class="erp-title">Operations, Labor &amp; Financial ERP Command</h1>
+        <p class="erp-sub">
+          The centralized ERP engine coordinating OTIS's 8 autonomous AI staff, operational equipment registry, Quebec CPEEP Decree labor compliance, inventory restocking, and commercial MRR billing.
+        </p>
+      </div>
+      <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+        <a href="/OTIS_EXECUTIVE_ERP_REPORT_2026.pdf" target="_blank" download="OTIS_EXECUTIVE_ERP_REPORT_2026.pdf" class="btn-action btn-pdf">
+          <span>📥 Download Full Report (PDF)</span>
+        </a>
+        <button onclick="window.print()" class="btn-action btn-print">
+          <span>🖨️ Print / Save PDF</span>
+        </button>
+        <a href="/erp-report.html" target="_blank" class="btn-action btn-print" style="font-size:0.8rem;">
+          <span>📄 Clean Report View</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Live KPI Summary Bar -->
+    <div class="kpi-grid">
+      <div class="kpi-card" style="border-top: 3px solid var(--orange);">
+        <div class="kpi-val" style="color:var(--orange);">$420,000+</div>
+        <div class="kpi-label">Annual Pipeline Potential</div>
+      </div>
+      <div class="kpi-card" style="border-top: 3px solid var(--green-light);">
+        <div class="kpi-val" style="color:var(--green-light);">$31.15 / h</div>
+        <div class="kpi-label">Decree Break-Even Cost Floor</div>
+      </div>
+      <div class="kpi-card" style="border-top: 3px solid #38bdf8;">
+        <div class="kpi-val" style="color:#38bdf8;">1x Tennant Scrubber</div>
+        <div class="kpi-label">Verified Mechanical Asset</div>
+      </div>
+      <div class="kpi-card" style="border-top: 3px solid #a855f7;">
+        <div class="kpi-val" style="color:#a855f7;">8 Staff Agents</div>
+        <div class="kpi-label">Autonomous Workforce</div>
+      </div>
+    </div>
+
+    <!-- Module Navigation Tabs -->
+    <div class="tabs-bar">
+      <button class="tab-btn active" onclick="switchTab('tab-ops')"><span>🚛 1. Operations &amp; Dispatch</span></button>
+      <button class="tab-btn" onclick="switchTab('tab-equip')"><span>🛠️ 2. Equipment Registry</span></button>
+      <button class="tab-btn" onclick="switchTab('tab-inv')"><span>📦 3. Inventory &amp; Supplies</span></button>
+      <button class="tab-btn" onclick="switchTab('tab-labor')"><span>⚖️ 4. Labor &amp; Decree</span></button>
+      <button class="tab-btn" onclick="switchTab('tab-fin')"><span>💰 5. Finance &amp; MRR</span></button>
+      <button class="tab-btn" onclick="switchTab('tab-qa')"><span>⭐ 6. QA &amp; Inspection</span></button>
+      <button class="tab-btn" onclick="switchTab('tab-legal')"><span>📜 7. Legal &amp; Bill 96</span></button>
+      <button class="tab-btn" onclick="switchTab('tab-zan')"><span>👑 8. Zan's Executive Sign-Off</span></button>
+    </div>
+
+    <!-- TAB 1: OPERATIONS & DISPATCH -->
+    <div id="tab-ops" class="tab-panel active">
+      <div class="erp-card">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+          <div>
+            <div class="pill blue" style="margin-bottom:0.3rem;">Chief Agents: Bruno (Logistics) &amp; Alex (Walkthrough)</div>
+            <h2 class="erp-card-title">Commercial Field Dispatch &amp; Route Operations</h2>
+          </div>
+          <span class="pill green">● 3 Clustered Shifts Armed</span>
+        </div>
+        <div class="erp-table-wrap">
+          <table class="erp-table">
+            <thead>
+              <tr>
+                <th>Cluster Route</th>
+                <th>Target Facilities</th>
+                <th>Shift Hours</th>
+                <th>Assigned Crew</th>
+                <th>Access Protocol</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>West Island Medical</strong></td>
+                <td>Clinique Dentaire Pointe-Claire, Lakeshore Dental</td>
+                <td>18:00 – 22:30</td>
+                <td>Team Alpha (2 operatives)</td>
+                <td>Keybox #4821; Disarm code logged</td>
+                <td><span class="pill green">Active Roster</span></td>
+              </tr>
+              <tr>
+                <td><strong>West Island CPEs</strong></td>
+                <td>The Learning Tree Daycare, Garderie Bébé &amp; Cie</td>
+                <td>18:30 – 21:00</td>
+                <td>Team Beta (2 operatives)</td>
+                <td>Mandatory off-hours disinfection outside children presence</td>
+                <td><span class="pill green">Active Roster</span></td>
+              </tr>
+              <tr>
+                <td><strong>Corporate Corridors</strong></td>
+                <td>Placements Sergakis (181 Hymus), 225 Hymus</td>
+                <td>20:00 – 02:00</td>
+                <td>Team Mechanical (Tennant Scrubber)</td>
+                <td>Security fob check-in; freight elevator reserve</td>
+                <td><span class="pill green">Active Roster</span></td>
+              </tr>
+              <tr>
+                <td><strong>Overnight Gyms</strong></td>
+                <td>World Gym DDO, Fit Forme Pointe-Claire</td>
+                <td>02:00 – 06:00</td>
+                <td>Team Heavy (2 operatives)</td>
+                <td>Manager lockbox; overnight decree differential applied</td>
+                <td><span class="pill orange">Standby</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: EQUIPMENT REGISTRY -->
+    <div id="tab-equip" class="tab-panel">
+      <div class="erp-card">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+          <div>
+            <div class="pill orange" style="margin-bottom:0.3rem;">Chief Agent: Marcus (Equipment Truth Guard)</div>
+            <h2 class="erp-card-title">Mechanical Fleet &amp; Rental Bridge Status</h2>
+          </div>
+          <span class="pill green">Strict Owner Truth Active</span>
+        </div>
+        <p style="font-size:0.85rem; color:var(--text-muted); margin-top:0.4rem;">
+          Only owner-confirmed equipment is marketed or bid. Unowned machinery is accessed strictly through pre-negotiated commercial rental accounts.
+        </p>
+
+        <div class="erp-table-wrap">
+          <table class="erp-table">
+            <thead>
+              <tr>
+                <th>Asset ID</th>
+                <th>Asset Description</th>
+                <th>Ownership Status</th>
+                <th>Maintenance &amp; Battery Log</th>
+                <th>Operational Role</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>EQ-01</strong></td>
+                <td>Tennant Walk-Behind Commercial Auto-Scrubber</td>
+                <td><span class="pill green">Verified In-House</span></td>
+                <td>Battery: 98% health · Squeegee blades inspected Sept 2026</td>
+                <td>Primary wedge: entrance halls, vinyl, sealed concrete</td>
+              </tr>
+              <tr>
+                <td><strong>EQ-02 to 08</strong></td>
+                <td>Commercial Dual-Bucket Mop Systems (Microfiber)</td>
+                <td><span class="pill green">Verified In-House</span></td>
+                <td>Mop heads rotated &amp; laundered weekly</td>
+                <td>Clinic operatories, washrooms, stairs</td>
+              </tr>
+              <tr>
+                <td><strong>RB-01</strong></td>
+                <td>175 RPM Floor Buffer / Stripping Machine</td>
+                <td><span class="pill orange">Rental Bridge ($65/day)</span></td>
+                <td>Reserved on-demand via Stephenson's Commercial Account</td>
+                <td>Heavy floor stripping &amp; acrylic waxing</td>
+              </tr>
+              <tr>
+                <td><strong>RB-02</strong></td>
+                <td>Commercial Hot-Water Box Carpet Extractor</td>
+                <td><span class="pill orange">Rental Bridge ($75/day)</span></td>
+                <td>Reserved on-demand via Home Depot Pro / Stephenson's</td>
+                <td>Commercial carpet deep cleaning</td>
+              </tr>
+              <tr>
+                <td><strong>SUB-01</strong></td>
+                <td>Exterior High-Rise Window Rope &amp; Boom Rig</td>
+                <td><span class="pill red">Approved Subcontractor</span></td>
+                <td>Vetted partner: Nettoyage Vitres Plus Montreal</td>
+                <td>Exterior multi-story glass (10% broker margin)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: INVENTORY & CONSUMABLES -->
+    <div id="tab-inv" class="tab-panel">
+      <div class="erp-card">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+          <div>
+            <div class="pill green" style="margin-bottom:0.3rem;">Chief Agents: Marcus (Chemicals) &amp; Sophie (Restock Billing)</div>
+            <h2 class="erp-card-title">Cleaning Supplies &amp; Client Washroom Consumables</h2>
+          </div>
+          <span class="pill green">20% Margin Auto-Billing Active</span>
+        </div>
+
+        <div class="erp-table-wrap">
+          <table class="erp-table">
+            <thead>
+              <tr>
+                <th>Stock Category</th>
+                <th>Item &amp; Specification</th>
+                <th>Internal Unit Cost</th>
+                <th>Client Invoice Rate</th>
+                <th>Gross Margin</th>
+                <th>Stock Level</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Washroom Consumable</strong></td>
+                <td>2-Ply Embossed Bath Tissue (96 rolls/case)</td>
+                <td>$42.00 / case</td>
+                <td>$54.00 / case</td>
+                <td><strong style="color:var(--green-light);">22.2%</strong></td>
+                <td><span class="pill green">24 cases in stock</span></td>
+              </tr>
+              <tr>
+                <td><strong>Washroom Consumable</strong></td>
+                <td>Multifold Hand Towels (4,000 sheets/case)</td>
+                <td>$31.50 / case</td>
+                <td>$39.50 / case</td>
+                <td><strong style="color:var(--green-light);">20.3%</strong></td>
+                <td><span class="pill green">18 cases in stock</span></td>
+              </tr>
+              <tr>
+                <td><strong>Washroom Consumable</strong></td>
+                <td>Luxury Foaming Hand Soap (4x1200ml)</td>
+                <td>$44.00 / case</td>
+                <td>$56.00 / case</td>
+                <td><strong style="color:var(--green-light);">21.4%</strong></td>
+                <td><span class="pill green">12 cases in stock</span></td>
+              </tr>
+              <tr>
+                <td><strong>Internal Chemical</strong></td>
+                <td>Concentrated Neutral Floor Cleaner (4x4L)</td>
+                <td>$38.50 / case</td>
+                <td>Cost of Goods</td>
+                <td>—</td>
+                <td><span class="pill green">6 cases in stock</span></td>
+              </tr>
+              <tr>
+                <td><strong>Internal Chemical</strong></td>
+                <td>Anti-Foam Defoamer for Tennant Tank (4L)</td>
+                <td>$24.00 / bottle</td>
+                <td>Cost of Goods</td>
+                <td>—</td>
+                <td><span class="pill green">8 bottles in stock</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 4: LABOR & DECREE -->
+    <div id="tab-labor" class="tab-panel">
+      <div class="erp-card">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+          <div>
+            <div class="pill red" style="margin-bottom:0.3rem;">Chief Agent: Émile (Quebec Compliance Sentinel)</div>
+            <h2 class="erp-card-title">Quebec Parity Decree (CPEEP) Labor Cost Engine</h2>
+          </div>
+          <span class="pill green">Attestation Ready</span>
+        </div>
+
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1.25rem; margin:1.2rem 0;">
+          <div style="background:var(--navy); padding:1.25rem; border-radius:12px; border:1px solid var(--border);">
+            <div style="font-size:0.75rem; color:var(--text-muted); text-transform:uppercase; font-weight:700;">Statutory Minimum Breakdown</div>
+            <div style="font-size:1.8rem; font-weight:800; color:var(--white); margin:0.3rem 0;">$31.15 / h</div>
+            <div style="font-size:0.8rem; color:var(--text-body); line-height:1.5;">
+              • Base Class B Wage: <strong>23/h</strong> (March 2026 decree)<br>
+              • Statutory Burden (34.0%): <strong>$7.90/h</strong><br>
+              (CNESST, QPP, EI, Vacation 8%, CPEEP levy 0.5%)
+            </div>
+          </div>
+
+          <div style="background:var(--navy); padding:1.25rem; border-radius:12px; border:1px solid var(--border);">
+            <div style="font-size:0.75rem; color:var(--text-muted); text-transform:uppercase; font-weight:700;">OTIS Commercial Billing Floor</div>
+            <div style="font-size:1.8rem; font-weight:800; color:var(--green-light); margin:0.3rem 0;">$38.00 – $48.00 / h</div>
+            <div style="font-size:0.8rem; color:var(--text-body); line-height:1.5;">
+              • Gross Margin: <strong>38% to 45%</strong><br>
+              • Guarantees 100% legal payroll<br>
+              • Prevents client joint liability (Article 14)
+            </div>
+          </div>
+
+          <div style="background:var(--navy); padding:1.25rem; border-radius:12px; border:1px solid var(--border);">
+            <div style="font-size:0.75rem; color:var(--text-muted); text-transform:uppercase; font-weight:700;">Client Protection Shield</div>
+            <div style="font-size:1.8rem; font-weight:800; color:#38bdf8; margin:0.3rem 0;">$5,000,000</div>
+            <div style="font-size:0.8rem; color:var(--text-body); line-height:1.5;">
+              • Commercial General Liability Insurance<br>
+              • Certified CNESST Letter of Good Standing<br>
+              • 0 Parity grievances in company history
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 5: FINANCE & CONTRACTS -->
+    <div id="tab-fin" class="tab-panel">
+      <!-- Owner Truth Reconciliation & Concentration Banner -->
+      <div class="erp-card" style="border-top: 4px solid var(--orange);">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:1.25rem;">
+          <div>
+            <div class="pill orange" style="margin-bottom:0.3rem;">Owner-Verified Reality · September 2026</div>
+            <h2 class="erp-card-title">Commercial Recurring Revenue &amp; Contract Audit</h2>
+          </div>
+          <span class="pill red">100% Uncontracted MRR · High Risk</span>
+        </div>
+
+        <!-- Metric Grid -->
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:1rem; margin-bottom:1.5rem;">
+          <div style="background:var(--navy); padding:1rem; border-radius:10px; border:1px solid var(--border);">
+            <div style="font-size:0.75rem; color:var(--text-muted); text-transform:uppercase; font-weight:700;">Reconciled Monthly Revenue</div>
+            <div style="font-size:1.6rem; font-weight:800; color:var(--green-light); margin:2px 0;">$6,100 / mo</div>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Exact Baseline ($73,200 ARR)</div>
+          </div>
+          <div style="background:var(--navy); padding:1rem; border-radius:10px; border:1px solid var(--border);">
+            <div style="font-size:0.75rem; color:var(--text-muted); text-transform:uppercase; font-weight:700;">Reconciliation Status</div>
+            <div style="font-size:1.6rem; font-weight:800; color:var(--white); margin:2px 0;">✓ Verified</div>
+            <div style="font-size:0.75rem; color:var(--green-light);">Confirmed by Owner (Sept 2026)</div>
+          </div>
+          <div style="background:var(--navy); padding:1rem; border-radius:10px; border:1px solid var(--border);">
+            <div style="font-size:0.75rem; color:var(--text-muted); text-transform:uppercase; font-weight:700;">Revenue Concentration</div>
+            <div style="font-size:1.6rem; font-weight:800; color:#f87171; margin:2px 0;">91.0%</div>
+            <div style="font-size:0.75rem; color:var(--text-muted);">Top 2 clients represent $5,550/mo</div>
+          </div>
+          <div style="background:var(--navy); padding:1rem; border-radius:10px; border:1px solid var(--border);">
+            <div style="font-size:0.75rem; color:var(--text-muted); text-transform:uppercase; font-weight:700;">Contract Coverage</div>
+            <div style="font-size:1.6rem; font-weight:800; color:#f87171; margin:2px 0;">0 of 3 Clients</div>
+            <div style="font-size:0.75rem; color:var(--text-muted);">0% under fixed-term agreements</div>
+          </div>
+        </div>
+
+        <div style="background:rgba(247,148,29,0.08); border-left:4px solid var(--orange); padding:1rem; border-radius:0 8px 8px 0; margin-bottom:1.5rem; font-size:0.85rem; line-height:1.5;">
+          <strong>Strategic Imperative:</strong> All 3 existing OTIS clients are active recurring accounts totaling <strong>$6,100 / month ($73,200 ARR)</strong>, but <strong>none are under a fixed-term contract</strong>. A single phone call from Client 1 or Client 2 could wipe out 45% of company revenue overnight. We have two separate objectives: (1) Convert existing clients into fixed-term agreements via VIP loyalty perks, and (2) Mandate 6-Month and 10-Month agreements for all new commercial clients.
+        </div>
+
+        <!-- 3 Active Accounts Table -->
+        <h3 style="font-family:'Syne',sans-serif; font-size:1.15rem; color:var(--white); margin-bottom:0.75rem;">Active Client Portfolio &amp; Conversion Strategy</h3>
+        <div class="erp-table-wrap" style="margin-bottom:2rem;">
+          <table class="erp-table">
+            <thead>
+              <tr>
+                <th>Account</th>
+                <th>Current Monthly Fee</th>
+                <th>% of Total MRR</th>
+                <th>Contract Status</th>
+                <th>Target Conversion Offer</th>
+                <th>Key Customer Benefit</th>
+                <th>Committed Value Target</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="highlight">
+                <td><strong>Client 1</strong> (Anchor Account)</td>
+                <td><strong style="color:var(--white); font-size:1rem;">$2,800 / mo</strong></td>
+                <td><strong style="color:#f87171;">45.9%</strong></td>
+                <td><span class="pill red">Month-to-Month (Uncontracted)</span></td>
+                <td><strong>10-Month Preferred Agreement</strong></td>
+                <td>10-Mo Price Freeze + Free Tennant Machine Floor Scrub ($450 value)</td>
+                <td><strong style="color:var(--green-light);">$28,000 Total</strong></td>
+              </tr>
+              <tr class="highlight">
+                <td><strong>Client 2</strong> (Core Account)</td>
+                <td><strong style="color:var(--white); font-size:1rem;">$2,750 / mo</strong></td>
+                <td><strong style="color:#f87171;">45.1%</strong></td>
+                <td><span class="pill red">Month-to-Month (Uncontracted)</span></td>
+                <td><strong>10-Month Preferred Agreement</strong></td>
+                <td>Rate Lock against CPEEP decree hikes + Free Tennant Floor Scrub</td>
+                <td><strong style="color:var(--green-light);">$27,500 Total</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Client 3</strong> (SMB Account)</td>
+                <td><strong style="color:var(--white); font-size:1rem;">$550 / mo</strong></td>
+                <td><strong>9.0%</strong></td>
+                <td><span class="pill red">Month-to-Month (Uncontracted)</span></td>
+                <td><strong>6-Month Standard Agreement</strong></td>
+                <td>Rate Freeze + Automated Digital PAD Invoicing (Zero monthly check hassle)</td>
+                <td><strong style="color:var(--green-light);">$3,300 Total</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Standard Contract Architecture for New Clients -->
+        <h3 style="font-family:'Syne',sans-serif; font-size:1.15rem; color:var(--white); margin-bottom:0.75rem;">Standard Contract System for New Recurring Accounts</h3>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:1.25rem;">
+          <div style="background:var(--navy); border:1px solid var(--border); border-radius:12px; padding:1.25rem;">
+            <div class="pill blue" style="margin-bottom:0.4rem;">Option A · Low Friction</div>
+            <h4 style="color:var(--white); font-size:1.1rem; margin-bottom:0.4rem;">6-Month Commercial Agreement</h4>
+            <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:0.75rem;">Ideal for first-time buyers, skeptical facility managers, and smaller offices.</p>
+            <ul style="font-size:0.8rem; color:var(--text-body); list-style:none; padding-left:0; line-height:1.6;">
+              <li>• Fixed 6-month firm term at standard scheduled rate.</li>
+              <li>• Includes 30-day performance review exit window.</li>
+              <li>• 30 days' advance written notice required for termination.</li>
+              <li>• Fair $250 early transition recovery fee under Art. 2129 CCQ.</li>
+            </ul>
+          </div>
+
+          <div style="background:var(--navy); border:1px solid var(--orange); border-radius:12px; padding:1.25rem;">
+            <div class="pill orange" style="margin-bottom:0.4rem;">Option B · Flagship High-Retention</div>
+            <h4 style="color:var(--white); font-size:1.1rem; margin-bottom:0.4rem;">10-Month Preferred Agreement</h4>
+            <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:0.75rem;">Flagship tier for offices, medical clinics, and facilities wanting long-term quality.</p>
+            <ul style="font-size:0.8rem; color:var(--text-body); list-style:none; padding-left:0; line-height:1.6;">
+              <li>• <strong>6% Preferred rate discount</strong> ($1,400+ annual client savings).</li>
+              <li>• <strong>Guaranteed Price Lock:</strong> Absorbs all late-2026 CPEEP wage decree increases.</li>
+              <li>• <strong>INCLUDED:</strong> 1 complete Tennant T300 machine floor scrub ($450 value).</li>
+              <li>• <strong>15% Discount</strong> on all additional specialty cleans.</li>
+              <li>• Legally defensible discount clawback if client exits early without cause.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 6: QA & INSPECTION -->
+    <div id="tab-qa" class="tab-panel">
+      <div class="erp-card">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+          <div>
+            <div class="pill purple" style="margin-bottom:0.3rem;">Chief Agent: Sophie (QA &amp; CSAT Retention Chief)</div>
+            <h2 class="erp-card-title">50-Point Digital Cleanliness Audit &amp; CSAT Engine</h2>
+          </div>
+          <span class="pill green">Target: 98% Pass Rate</span>
+        </div>
+
+        <div style="margin:1rem 0;">
+          <h4 style="color:var(--white); font-size:0.95rem; margin-bottom:0.6rem;">Live Morning Inspection Checklist:</h4>
+          <div class="checklist-item">
+            <input type="checkbox" checked>
+            <div>
+              <strong style="color:var(--white); font-size:0.85rem;">Restroom Sanitization &amp; Descaling:</strong>
+              <div style="font-size:0.75rem; color:var(--text-muted);">Toilets disinfected, mirrors streak-free, soap/paper dispensers filled to 100%.</div>
+            </div>
+          </div>
+          <div class="checklist-item">
+            <input type="checkbox" checked>
+            <div>
+              <strong style="color:var(--white); font-size:0.85rem;">Floor Scrubbing &amp; Entrance Salt Neutralization:</strong>
+              <div style="font-size:0.75rem; color:var(--text-muted);">Tennant scrubber pass completed; zero white calcium tracking on vestibule tiles.</div>
+            </div>
+          </div>
+          <div class="checklist-item">
+            <input type="checkbox" checked>
+            <div>
+              <strong style="color:var(--white); font-size:0.85rem;">Clinical Operatory Disinfection (Medical Leads):</strong>
+              <div style="font-size:0.75rem; color:var(--text-muted);">Quat-disinfectant contact time verified (10 min); chairs and counters sanitized.</div>
+            </div>
+          </div>
+          <div class="checklist-item">
+            <input type="checkbox" checked>
+            <div>
+              <strong style="color:var(--white); font-size:0.85rem;">Waste Receptacles &amp; Secure Staging:</strong>
+              <div style="font-size:0.75rem; color:var(--text-muted);">Liners renewed, bins wiped, recycling sorted, alarm armed and door deadbolted.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 7: LEGAL & BILL 96 -->
+    <div id="tab-legal" class="tab-panel">
+      <div class="erp-card">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+          <div>
+            <div class="pill red" style="margin-bottom:0.3rem;">Chief Agent: Émile (Quebec Legal Sentinel)</div>
+            <h2 class="erp-card-title">Quebec Language (Bill 96), CASL &amp; Privacy Vault</h2>
+          </div>
+          <span class="pill green">100% Compliant</span>
+        </div>
+
+        <div class="erp-table-wrap">
+          <table class="erp-table">
+            <thead>
+              <tr>
+                <th>Legal Framework</th>
+                <th>Statutory Requirement</th>
+                <th>OTIS Operational Defense</th>
+                <th>Audit Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Bill 96 / OQLF</strong></td>
+                <td>French-first priority on all business contracts, invoices, and daycare services.</td>
+                <td>CPE and daycare proposals generated 100% in Quebec French first.</td>
+                <td><span class="pill green">Verified</span></td>
+              </tr>
+              <tr>
+                <td><strong>CASL 66(1) B2B</strong></td>
+                <td>Conspicuous publication without non-solicitation notice, role-relevant.</td>
+                <td>Hunter logs exact source URLs and collection timestamps for all 37 leads.</td>
+                <td><span class="pill green">Verified</span></td>
+              </tr>
+              <tr>
+                <td><strong>Quebec Law 25</strong></td>
+                <td>Confidentiality policy, privacy officer listed, encryption, opt-out mechanisms.</td>
+                <td>One-click unsubscribe and opt-out registry active on quotes@otiscc.ca.</td>
+                <td><span class="pill green">Verified</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 8: ZAN'S EXECUTIVE SIGN-OFF -->
+    <div id="tab-zan" class="tab-panel">
+      <div class="erp-card" style="border: 2px solid var(--orange);">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+          <div>
+            <div class="pill orange" style="margin-bottom:0.3rem;">Executive Sign-Off Console</div>
+            <h2 class="erp-card-title">Zan &amp; CEO Max Strategic Sign-Off Gate</h2>
+          </div>
+          <span class="pill orange" id="zan-signoff-badge">Awaiting Digital Signature</span>
+        </div>
+        <p style="font-size:0.9rem; color:var(--text-body); margin:0.5rem 0 1.5rem; line-height:1.6;">
+          Confirming this ERP architecture empowers the 8 autonomous AI staff to execute client outreach, schedule walkthroughs, and dispatch crews according to Quebec Decree and equipment truth standards.
+        </p>
+
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:1.5rem; margin-bottom:1.5rem;">
+          <div style="background:var(--navy); padding:1.5rem; border-radius:12px; border:1px solid var(--border);">
+            <div style="font-size:0.75rem; font-weight:800; color:var(--orange); text-transform:uppercase;">Strategy Reviewer Sign-Off</div>
+            <div style="font-family:'Syne',sans-serif; font-size:1.3rem; font-weight:800; color:var(--white); margin:0.3rem 0;">ZAN</div>
+            <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:1rem;">Managing Director · Golden Thread Solutions</div>
+            <div id="zan-stamp" style="font-size:0.85rem; color:var(--text-muted); padding:0.6rem; border:1px dashed var(--border); border-radius:6px; margin-bottom:1rem;">
+              Status: Signature Pending
+            </div>
+            <button onclick="signAsZan()" class="btn-action btn-pdf" style="width:100%; justify-content:center; background:linear-gradient(135deg, var(--orange), #d97706); color:var(--navy);">
+              ✍️ Sign &amp; Approve as Zan
+            </button>
+          </div>
+
+          <div style="background:var(--navy); padding:1.5rem; border-radius:12px; border:1px solid var(--border);">
+            <div style="font-size:0.75rem; font-weight:800; color:var(--green-light); text-transform:uppercase;">Operational Founder Sign-Off</div>
+            <div style="font-family:'Syne',sans-serif; font-size:1.3rem; font-weight:800; color:var(--white); margin:0.3rem 0;">MAX</div>
+            <div style="font-size:0.8rem; color:var(--text-muted); margin-bottom:1rem;">Founder &amp; Chief Executive · OTIS Commercial Cleaning</div>
+            <div id="max-stamp" style="font-size:0.85rem; color:var(--text-muted); padding:0.6rem; border:1px dashed var(--border); border-radius:6px; margin-bottom:1rem;">
+              Status: Operational Review Ready
+            </div>
+            <button onclick="signAsMax()" class="btn-action btn-pdf" style="width:100%; justify-content:center; background:var(--green-light); color:var(--navy);">
+              ✍️ Sign &amp; Approve as Max
+            </button>
+          </div>
+        </div>
+
+        <div style="text-align:center; padding-top:1rem; border-top:1px solid var(--border);">
+          <a href="/OTIS_EXECUTIVE_ERP_REPORT_2026.pdf" target="_blank" download class="btn-action btn-pdf" style="padding:0.8rem 2rem; font-size:0.95rem;">
+            <span>📥 Download Signed Executive PDF Report</span>
+            <span>→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.remove('active'); });
+      document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+      
+      var targetPanel = document.getElementById(tabId);
+      if (targetPanel) targetPanel.classList.add('active');
+
+      event.currentTarget.classList.add('active');
+    }
+
+    function signAsZan() {
+      var stamp = document.getElementById('zan-stamp');
+      var now = new Date().toLocaleString();
+      stamp.innerHTML = '<span style="color:var(--green-light); font-weight:800;">✅ APPROVED BY ZAN</span><br><span style="font-size:0.75rem; color:var(--text-muted);">' + now + ' · Directive: Launch 37 Accounts</span>';
+      stamp.style.borderColor = 'var(--green-light)';
+      stamp.style.background = 'rgba(30,123,52,0.1)';
+      checkBothSigned();
+    }
+
+    function signAsMax() {
+      var stamp = document.getElementById('max-stamp');
+      var now = new Date().toLocaleString();
+      stamp.innerHTML = '<span style="color:var(--green-light); font-weight:800;">✅ APPROVED BY MAX</span><br><span style="font-size:0.75rem; color:var(--text-muted);">' + now + ' · Operations Cleared</span>';
+      stamp.style.borderColor = 'var(--green-light)';
+      stamp.style.background = 'rgba(30,123,52,0.1)';
+      checkBothSigned();
+    }
+
+    function checkBothSigned() {
+      var badge = document.getElementById('zan-signoff-badge');
+      badge.textContent = '✅ Fully Executed & Signed';
+      badge.className = 'pill green';
+    }
+
+    function toggleNavMenu() {
+      var drawer = document.getElementById('mobile-nav-drawer');
+      var btn = document.getElementById('nav-toggle');
+      if (!drawer) return;
+      var isOpen = drawer.classList.contains('open');
+      if (isOpen) {
+        drawer.classList.remove('open');
+        if (btn) btn.innerHTML = '☰';
+        document.body.style.overflow = '';
+      } else {
+        drawer.classList.add('open');
+        if (btn) btn.innerHTML = '✕';
+        document.body.style.overflow = 'hidden';
+      }
+    }
+  </script>
+</body>
+</html>

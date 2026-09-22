@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OTIS Phase 4: Restock & Scale Engine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Syne:wght@700;800&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0B1B2B; --surface: #102438; --border: #1E3D5C; --text: #C2D3E5; --white: #FFF;
+      --brand-navy: #0B1B2B; --brand-orange: #F7941D; --brand-gray: #475569; --light-gray: #f8fafc;
+      --purple: #a855f7; --blue: #38bdf8; --green: #10b981;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); display: flex; height: 100vh; overflow: hidden; }
+    
+    /* Left Panel: Inputs */
+    .sidebar { width: 420px; background: var(--surface); border-right: 1px solid var(--border); padding: 2rem; display: flex; flex-direction: column; gap: 1.25rem; overflow-y: auto; }
+    .sidebar h2 { color: var(--white); font-size: 1.2rem; margin-bottom: 0.5rem; font-family: 'Syne', sans-serif; }
+    .sidebar p { font-size: 0.85rem; color: #8FA6BE; margin-bottom: 1rem; line-height: 1.5; }
+    
+    .form-group label { display: block; font-size: 0.75rem; font-weight: 700; color: #8FA6BE; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 1px; }
+    .form-control { width: 100%; padding: 0.85rem; border-radius: 4px; border: 1px solid var(--border); background: rgba(0,0,0,0.2); color: var(--white); font-family: inherit; font-size: 0.95rem; transition: 0.2s; }
+    .form-control:focus { outline: none; border-color: var(--purple); }
+    
+    .btn { padding: 1rem; border-radius: 4px; font-weight: 700; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; text-align: center; border: none; font-size: 0.85rem; width: 100%; transition: 0.2s; }
+    .btn-primary { background: var(--purple); color: #FFF; margin-top: 1rem; }
+    .btn-primary:hover { background: #9333ea; }
+    .btn-print { background: transparent; color: #38bdf8; border: 1px solid #38bdf8; margin-top: 0.5rem; }
+    
+    /* Economics Grid */
+    .econ-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 1rem; }
+    .econ-box { background: rgba(255,255,255,0.03); border: 1px solid var(--border); padding: 1rem; border-radius: 4px; }
+    .econ-label { font-size: 0.7rem; color: #8FA6BE; text-transform: uppercase; margin-bottom: 0.3rem; }
+    .econ-val { font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 800; color: var(--white); }
+    
+    /* Right Panel: Preview */
+    .preview-pane { flex: 1; background: #cbd5e1; padding: 3rem; overflow-y: auto; display: flex; justify-content: center; }
+    
+    /* PDF STYLING */
+    .document { 
+      background: #FFF; width: 100%; max-width: 850px; min-height: 1100px; 
+      padding: 4rem 5rem; color: #334155; font-family: 'Inter', sans-serif; 
+      line-height: 1.6; box-shadow: 0 20px 40px rgba(0,0,0,0.3); position: relative; 
+    }
+    
+    .pdf-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem; }
+    .pdf-logo-sec { max-width: 65%; }
+    .pdf-logo-sec .subtitle { font-size: 0.85rem; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.75rem; }
+    .pdf-logo-sec .meta { font-size: 0.75rem; color: #64748b; }
+    
+    .pdf-dark-box { background: var(--brand-navy); color: #fff; padding: 1rem 1.5rem; text-align: right; border-radius: 4px; }
+    .pdf-dark-box div { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.8; }
+    
+    .pdf-purple-line { height: 3px; background: var(--purple); width: 100%; margin-bottom: 3rem; }
+
+    .prop-title { font-size: 1.6rem; font-weight: 800; color: var(--brand-navy); margin-bottom: 1.5rem; letter-spacing: -0.5px; text-transform: uppercase; }
+    .prop-intro { font-size: 0.95rem; color: #475569; margin-bottom: 2rem; line-height: 1.7; }
+    
+    /* Table */
+    .inv-table { width: 100%; border-collapse: collapse; margin-bottom: 2.5rem; }
+    .inv-table th { background: var(--brand-navy); color: #fff; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 0.75rem 1rem; text-align: left; }
+    .inv-table td { padding: 1rem; border-bottom: 1px solid #e2e8f0; font-size: 0.9rem; color: #0f172a; vertical-align: middle; }
+    .item-title { font-weight: 700; color: var(--brand-navy); margin-bottom: 0.25rem; }
+    .item-desc { font-size: 0.8rem; color: #64748b; }
+    
+    .clause-block { margin-bottom: 1.5rem; }
+    .clause-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; color: var(--brand-navy); margin-bottom: 0.5rem; text-transform: uppercase; }
+    .clause-text { font-size: 0.9rem; text-align: justify; margin-bottom: 0.75rem; color: #334155; padding-left: 1rem; border-left: 2px solid #e2e8f0; }
+
+    /* Signatures */
+    .sig-block { margin-top: 3rem; display: flex; justify-content: space-between; page-break-inside: avoid; }
+    .sig-col { width: 45%; }
+    .sig-col strong { display: block; font-size: 0.8rem; color: var(--purple); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 2.5rem; }
+    .sig-line { border-bottom: 2px solid var(--brand-navy); margin-bottom: 0.5rem; height: 10px; }
+    .sig-label { font-size: 0.85rem; color: var(--brand-navy); font-weight: 700; }
+    
+    @media print {
+      body { background: #FFF; overflow: visible; display: block; }
+      .sidebar { display: none; }
+      .preview-pane { padding: 0; background: none; display: block; }
+      .document { box-shadow: none; max-width: 100%; padding: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="sidebar">
+  <div style="display:flex; justify-content:space-between; align-items:center;">
+    <h2>Phase 4: Scale Engine</h2>
+    <a href="execution.html" style="color:var(--purple); text-decoration:none; font-size:0.8rem; font-weight:700;">◀ BACK</a>
+  </div>
+  <p>Automate consumable distribution (20% margin) and quarterly Tennant machine scrubs for existing portfolio clients.</p>
+  
+  <div class="form-group">
+    <label>Active Client Name</label>
+    <input type="text" id="inp-client" class="form-control" value="Centre Dentaire Lakeshore">
+  </div>
+  
+  <div style="display:flex; gap:10px;">
+    <div class="form-group" style="flex:1;">
+      <label>Facility Headcount (Staff)</label>
+      <input type="number" id="inp-staff" class="form-control" value="15">
+    </div>
+    <div class="form-group" style="flex:1;">
+      <label>Quarterly Scrub ($)</label>
+      <input type="number" id="inp-scrub" class="form-control" value="450">
+    </div>
+  </div>
+  
+  <div class="econ-grid" id="internal-econ" style="display:none;">
+    <div class="econ-box">
+      <div class="econ-label">Wholesale Cost</div>
+      <div class="econ-val" id="econ-cost">$0.00</div>
+    </div>
+    <div class="econ-box">
+      <div class="econ-label">Client Billed Rate</div>
+      <div class="econ-val" style="color:var(--blue);" id="econ-billed">$0.00</div>
+    </div>
+    <div class="econ-box" style="grid-column: span 2; background:rgba(16, 185, 129, 0.1); border-color:var(--green);">
+      <div class="econ-label" style="color:var(--green);">New Passive Net Profit / Year</div>
+      <div class="econ-val" style="color:var(--green);" id="econ-profit">+$0.00</div>
+    </div>
+  </div>
+
+  <button class="btn btn-primary" onclick="generate()">Calculate & Build Addendum</button>
+  <button class="btn btn-print" onclick="window.print()" id="btn-print" style="display:none;">🖨️ Print PDF Addendum</button>
+</div>
+
+<div class="preview-pane">
+  <div class="document">
+    
+    <!-- HEADER -->
+    <div class="pdf-header">
+      <div class="pdf-logo-sec">
+        <img src="imgs/otis-logo.png" alt="OTIS" style="height:48px; filter:brightness(0); margin-bottom:0.75rem;">
+        <div class="subtitle">SUPPLY & MAINTENANCE ADDENDUM</div>
+        <div class="meta">
+          Headquarters: 2447 Avenue Madison, Montreal, QC H4B 2T5 · Phone: +1 (438) 935-9725
+        </div>
+      </div>
+      <div class="pdf-dark-box">
+        <div>ADDENDUM FOR: <span id="out-client-box">CLIENT</span></div>
+        <div>PREPARED BY: ZAN</div>
+        <div>EFFECTIVE: <span id="out-date">OCTOBER 2026</span></div>
+      </div>
+    </div>
+    <div class="pdf-purple-line"></div>
+    
+    <div class="prop-title">Consumables & Fleet Maintenance Schedule</div>
+    
+    <div class="prop-intro">
+      This document serves as an official Addendum to the existing Commercial Service Agreement between OTIS Commercial Cleaning Inc. and <b id="out-client-intro">[CLIENT]</b>. By executing this Addendum, the Client authorizes OTIS to autonomously manage facility supply replenishment and/or scheduled heavy machine maintenance, eliminating the administrative burden on the Client's management team.
+    </div>
+    
+    <table class="inv-table">
+      <thead>
+        <tr>
+          <th style="width:55%">AUTOMATED DISTRIBUTION PROGRAM</th>
+          <th style="width:25%; text-align:center;">EST. MONTHLY VOLUME</th>
+          <th style="width:20%; text-align:right;">BILLED RATE</th>
+        </tr>
+      </thead>
+      <tbody id="out-tbody">
+        <!-- Injected via JS -->
+      </tbody>
+    </table>
+    
+    <div class="clause-block">
+      <div class="clause-title">1. Automated Inventory Restock Protocol</div>
+      <div class="clause-text">OTIS logistics staff will monitor consumable levels during scheduled cleaning shifts. Supplies will be automatically replenished from OTIS wholesale stock. The Client will be billed dynamically on their monthly invoice based strictly on cases consumed, matching the rates outlined above.</div>
+    </div>
+    
+    <div class="clause-block">
+      <div class="clause-title">2. Quarterly Machine Scrubbing Cycle</div>
+      <div class="clause-text">OTIS will deploy a Tennant commercial walk-behind auto-scrubber to the facility once every ninety (90) days to conduct a deep restorative mechanical scrub of all sealed hard floors. This specialized maintenance prevents severe winter salt degradation and extends the lifespan of the floor finish.</div>
+    </div>
+
+    <!-- Signatures -->
+    <div class="sig-block">
+      <div class="sig-col">
+        <strong>OTIS COMMERCIAL CLEANING INC.</strong>
+        <div class="sig-line"></div>
+        <div class="sig-label">Maxwell Miller</div>
+        <div style="font-size:0.75rem; color:#64748b;">Director of Operations</div>
+      </div>
+      <div class="sig-col">
+        <strong>THE CLIENT: <span id="out-client-sig">CLIENT</span></strong>
+        <div class="sig-line"></div>
+        <div class="sig-label">Authorized Signatory</div>
+        <div style="font-size:0.75rem; color:#64748b;">Facility Director</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  function generate() {
+    const client = document.getElementById('inp-client').value || 'Target Client';
+    const staff = parseInt(document.getElementById('inp-staff').value) || 15;
+    const scrub = parseFloat(document.getElementById('inp-scrub').value) || 0;
+    
+    const today = new Date();
+    const opts = { month: 'long', day: 'numeric', year: 'numeric' };
+    const dateStr = today.toLocaleDateString('en-US', opts).toUpperCase();
+
+    // ALGORITHM: Restock Modeling based on Headcount
+    // Avg office worker uses ~1.5 rolls of TP per month, ~200 paper towels, ~100ml soap.
+    // Case sizes: TP (96 rolls), Towels (4000), Soap (4800ml)
+    
+    const casesTP = Math.ceil((staff * 1.5) / 96) || 1;
+    const casesTowels = Math.ceil((staff * 200) / 4000) || 1;
+    const casesSoap = Math.ceil((staff * 100) / 4800) || 1;
+    
+    // OTIS ERP Costs vs Billed Rates (From Module 3)
+    const costTP = 42.00; const billTP = 54.00;
+    const costTowels = 31.50; const billTowels = 39.50;
+    const costSoap = 44.00; const billSoap = 56.00;
+    
+    const monthlyCost = (casesTP * costTP) + (casesTowels * costTowels) + (casesSoap * costSoap);
+    const monthlyBilled = (casesTP * billTP) + (casesTowels * billTowels) + (casesSoap * billSoap);
+    const monthlyProfit = monthlyBilled - monthlyCost;
+    
+    // Scrubbing (Quarterly = 4x year) -> Monthly equivalent profit is scrub amount since OTIS owns the machine
+    const yearlyScrubRevenue = scrub * 4;
+    const yearlyConsumableProfit = monthlyProfit * 12;
+    const totalNewYearlyNet = yearlyConsumableProfit + yearlyScrubRevenue;
+
+    // Update UI Internals
+    document.getElementById('internal-econ').style.display = 'grid';
+    document.getElementById('econ-cost').innerText = '$' + monthlyCost.toFixed(2) + '/mo';
+    document.getElementById('econ-billed').innerText = '$' + monthlyBilled.toFixed(2) + '/mo';
+    document.getElementById('econ-profit').innerText = '+$' + totalNewYearlyNet.toFixed(2);
+    document.getElementById('btn-print').style.display = 'block';
+
+    // Update PDF Document
+    document.getElementById('out-client-box').innerText = client.toUpperCase().substring(0, 20);
+    document.getElementById('out-client-intro').innerText = client.toUpperCase();
+    document.getElementById('out-client-sig').innerText = client.toUpperCase();
+    document.getElementById('out-date').innerText = dateStr;
+    
+    const tbody = document.getElementById('out-tbody');
+    tbody.innerHTML = `
+      <tr>
+        <td>
+          <div class="item-title">2-Ply Commercial Bath Tissue</div>
+          <div class="item-desc">96 Rolls per Case. Auto-stocked.</div>
+        </td>
+        <td style="text-align:center; font-weight:600;">~${casesTP} Case(s)</td>
+        <td style="text-align:right; font-weight:700;">$${billTP.toFixed(2)} / case</td>
+      </tr>
+      <tr>
+        <td>
+          <div class="item-title">Multifold Kraft Hand Towels</div>
+          <div class="item-desc">4,000 Sheets per Case.</div>
+        </td>
+        <td style="text-align:center; font-weight:600;">~${casesTowels} Case(s)</td>
+        <td style="text-align:right; font-weight:700;">$${billTowels.toFixed(2)} / case</td>
+      </tr>
+      <tr>
+        <td>
+          <div class="item-title">Antibacterial Luxury Foam Soap</div>
+          <div class="item-desc">Touchless Cartridges (4x1200ml).</div>
+        </td>
+        <td style="text-align:center; font-weight:600;">~${casesSoap} Case(s)</td>
+        <td style="text-align:right; font-weight:700;">$${billSoap.toFixed(2)} / case</td>
+      </tr>
+      <tr style="background:#f8fafc;">
+        <td>
+          <div class="item-title" style="color:var(--purple);">Quarterly Tennant Auto-Scrub Cycle</div>
+          <div class="item-desc">Mechanical floor restoration (Occurs every 90 days).</div>
+        </td>
+        <td style="text-align:center; font-weight:600;">1x / Quarter</td>
+        <td style="text-align:right; font-weight:700;">$${scrub.toFixed(2)} / cycle</td>
+      </tr>
+    `;
+  }
+  
+  // Run on load
+  generate();
+</script>
+
+</body>
+</html>

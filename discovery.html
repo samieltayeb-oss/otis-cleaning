@@ -1,0 +1,1502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SEO + AEO + GEO Montreal Discovery Engine — OTIS Commercial Cleaning</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0B1B2B;
+      --navy-surface: #102438;
+      --navy-light: #162E47;
+      --navy-border: #1E3D5C;
+      --orange: #F7941D;
+      --orange-light: #FFA940;
+      --green: #1E7B34;
+      --green-light: #28A745;
+      --white: #FFFFFF;
+      --text-muted: #8FA6BE;
+      --text-body: #C2D3E5;
+      --card: #0F2337;
+      --border: rgba(255, 255, 255, 0.08);
+      --gray-bg: rgba(255, 255, 255, 0.04);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--navy);
+      color: var(--text-body);
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      padding-top: 0;
+      min-height: 100vh;
+    }
+    
+    /* Sticky Top Navigation Bar */
+    .top-bar {
+      position: sticky;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(11, 27, 43, 0.96);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.65rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .brand-logo img {
+      height: 32px;
+      max-width: 140px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+    }
+    .badge-pill {
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.2rem 0.65rem;
+      border-radius: 50px;
+      letter-spacing: 0.04em;
+      background: rgba(247, 148, 29, 0.15);
+      border: 1px solid rgba(247, 148, 29, 0.35);
+      color: var(--orange);
+      white-space: nowrap;
+    }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: nowrap;
+    }
+    .btn-nav {
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 0.4rem 0.75rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: var(--text-body);
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.04);
+      white-space: nowrap;
+    }
+    .btn-nav:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--white);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+    .btn-nav.active {
+      background: rgba(247, 148, 29, 0.2);
+      border-color: var(--orange);
+      color: var(--orange);
+      font-weight: 700;
+    }
+    .btn-prototype {
+      background: linear-gradient(135deg, var(--orange), #d97706);
+      color: var(--navy) !important;
+      font-weight: 700;
+      border: none;
+    }
+    .btn-prototype:hover {
+      background: linear-gradient(135deg, #fb923c, var(--orange));
+      transform: translateY(-1px);
+    }
+    .nav-hamburger {
+      display: none;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border);
+      color: var(--white);
+      font-size: 1.25rem;
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+    .nav-hamburger:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: var(--orange);
+      color: var(--orange);
+    }
+    .mobile-nav-drawer {
+      display: none;
+      position: fixed;
+      top: 54px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(8, 13, 26, 0.98);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      z-index: 999;
+      padding: 1.5rem 2rem 2.5rem;
+      overflow-y: auto;
+      flex-direction: column;
+      gap: 0.65rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .mobile-nav-drawer.open {
+      display: flex;
+    }
+    .mobile-nav-drawer .mobile-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.8rem 1.1rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text-body);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+    .mobile-nav-drawer .mobile-link:hover,
+    .mobile-nav-drawer .mobile-link.active {
+      background: rgba(247, 148, 29, 0.15);
+      border-color: var(--orange);
+      color: var(--white);
+    }
+    .mobile-nav-drawer .mobile-link.prototype-link {
+      background: linear-gradient(135deg, var(--orange), #d97706);
+      color: var(--navy) !important;
+      font-weight: 700;
+      border: none;
+    }
+    @media (max-width: 1100px) {
+      .nav-actions { display: none; }
+      .nav-hamburger { display: inline-flex; }
+    }
+
+    /* Layout & Utilities */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    .section-header {
+      margin-bottom: 2rem;
+    }
+    .section-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.35rem 0.85rem;
+      border-radius: 20px;
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+    }
+    .section-sub {
+      font-size: 1.02rem;
+      color: var(--text-muted);
+      max-width: 900px;
+      line-height: 1.6;
+    }
+    
+    /* Hero Masterclass Banner for Zan */
+    .zan-hero-banner {
+      background: linear-gradient(135deg, #102438 0%, #0c1a29 100%);
+      border: 1px solid rgba(247, 148, 29, 0.4);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      border-radius: 20px;
+      padding: 2.2rem;
+      margin-bottom: 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .zan-hero-banner::after {
+      content: "";
+      position: absolute;
+      top: -50%; right: -20%;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(247,148,29,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* 3-Engine Explainer Cards */
+    .engine-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .engine-card {
+      background: var(--navy-surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+    .engine-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.4);
+    }
+    .engine-card.seo { border-top: 4px solid #38bdf8; }
+    .engine-card.aeo { border-top: 4px solid var(--orange); }
+    .engine-card.geo { border-top: 4px solid #c084fc; }
+    
+    .engine-icon-badge {
+      font-size: 1.8rem;
+      margin-bottom: 0.75rem;
+    }
+    .engine-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 0.35rem;
+    }
+    .engine-role {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 1rem;
+    }
+    .engine-card.seo .engine-role { color: #38bdf8; }
+    .engine-card.aeo .engine-role { color: var(--orange); }
+    .engine-card.geo .engine-role { color: #c084fc; }
+
+    .engine-concept {
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 10px;
+      padding: 1rem;
+      font-size: 0.88rem;
+      color: var(--text-body);
+      margin-bottom: 1.25rem;
+      border-left: 3px solid rgba(255, 255, 255, 0.15);
+    }
+    .engine-points {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      font-size: 0.84rem;
+      color: var(--text-body);
+      margin-top: auto;
+    }
+    .engine-points li {
+      position: relative;
+      padding-left: 1.4rem;
+      line-height: 1.45;
+    }
+    .engine-points li strong {
+      color: var(--white);
+    }
+    .engine-card.seo .engine-points li::before { content: "✓"; position: absolute; left: 0; color: #38bdf8; font-weight: bold; }
+    .engine-card.aeo .engine-points li::before { content: "✓"; position: absolute; left: 0; color: var(--orange); font-weight: bold; }
+    .engine-card.geo .engine-points li::before { content: "✓"; position: absolute; left: 0; color: #c084fc; font-weight: bold; }
+
+    /* Interactive Search Simulator */
+    .simulator-container {
+      background: var(--navy-surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 2rem;
+      margin-bottom: 2.5rem;
+    }
+    .sim-nav-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .sim-tab-btn {
+      background: var(--navy);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 0.55rem 1.1rem;
+      border-radius: 30px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      transition: all 0.2s;
+    }
+    .sim-tab-btn:hover {
+      color: var(--white);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+    .sim-tab-btn.active {
+      background: var(--orange);
+      color: var(--navy);
+      border-color: var(--orange);
+      font-weight: 800;
+    }
+    .sim-screen-window {
+      background: #060e17;
+      border: 1px solid var(--navy-border);
+      border-radius: 14px;
+      padding: 1.5rem;
+      min-height: 280px;
+      position: relative;
+    }
+
+    /* Roadmap & Milestones */
+    .roadmap-timeline-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .phase-card {
+      background: var(--navy-surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.6rem;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .phase-card.p1 { border-top: 4px solid #ef4444; }
+    .phase-card.p2 { border-top: 4px solid var(--orange); }
+    .phase-card.p3 { border-top: 4px solid #38bdf8; }
+    .phase-card.p4 { border-top: 4px solid var(--green-light); }
+    
+    .phase-badge {
+      display: inline-block;
+      align-self: flex-start;
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+      margin-bottom: 0.75rem;
+    }
+    .phase-card.p1 .phase-badge { background: rgba(239, 68, 68, 0.18); color: #f87171; }
+    .phase-card.p2 .phase-badge { background: rgba(247, 148, 29, 0.18); color: var(--orange); }
+    .phase-card.p3 .phase-badge { background: rgba(56, 189, 248, 0.18); color: #38bdf8; }
+    .phase-card.p4 .phase-badge { background: rgba(40, 167, 69, 0.18); color: var(--green-light); }
+
+    .phase-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 0.25rem;
+    }
+    .phase-period {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .phase-items {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      font-size: 0.83rem;
+      color: var(--text-body);
+      margin-bottom: 1.25rem;
+    }
+    .phase-items li {
+      position: relative;
+      padding-left: 1.2rem;
+      line-height: 1.4;
+    }
+    .phase-items li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--text-muted);
+      font-weight: bold;
+    }
+    .phase-gate {
+      margin-top: auto;
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 8px;
+      padding: 0.75rem;
+      font-size: 0.76rem;
+      color: var(--white);
+      border: 1px dashed var(--border);
+    }
+    .phase-gate strong {
+      color: var(--orange-light);
+      display: block;
+      margin-bottom: 2px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    /* ROI Financial Model & Calculator */
+    .roi-section {
+      background: var(--navy-surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 2rem;
+      margin-bottom: 2.5rem;
+    }
+    .roi-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+    @media (max-width: 950px) {
+      .roi-grid { grid-template-columns: 1fr; }
+    }
+    .calc-box {
+      background: var(--navy);
+      border: 1px solid var(--navy-border);
+      border-radius: 14px;
+      padding: 1.5rem;
+    }
+    .calc-slider-group {
+      margin-bottom: 1.25rem;
+    }
+    .calc-slider-group label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+    }
+    .calc-slider {
+      width: 100%;
+      height: 6px;
+      background: var(--navy-border);
+      border-radius: 4px;
+      outline: none;
+      -webkit-appearance: none;
+    }
+    .calc-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--orange);
+      cursor: pointer;
+      box-shadow: 0 0 8px rgba(247, 148, 29, 0.6);
+    }
+    .calc-metrics-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .metric-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem;
+      text-align: center;
+    }
+    .metric-val {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--white);
+    }
+    .metric-val.green { color: var(--green-light); }
+    .metric-val.orange { color: var(--orange); }
+    .metric-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    /* Tables */
+    .comp-table-wrap {
+      overflow-x: auto;
+      margin-top: 1rem;
+    }
+    .comp-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      text-align: left;
+    }
+    .comp-table th {
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text-muted);
+      padding: 0.85rem 1rem;
+      font-weight: 700;
+      border-bottom: 1px solid var(--border);
+      text-transform: uppercase;
+      font-size: 0.74rem;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+    .comp-table td {
+      padding: 0.95rem 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      color: var(--text-body);
+      vertical-align: middle;
+    }
+    .comp-table tr.highlight td {
+      background: rgba(247, 148, 29, 0.06);
+      border-left: 2px solid var(--orange);
+    }
+
+    /* Zan Approval Bar */
+    .approval-bar {
+      background: var(--navy-surface);
+      border: 1px solid var(--orange);
+      border-radius: 16px;
+      padding: 1.5rem 2rem;
+      margin-top: 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+    }
+    .approval-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .btn-approve {
+      background: var(--green-light);
+      color: var(--navy);
+      font-weight: 800;
+      font-size: 0.85rem;
+      padding: 0.65rem 1.25rem;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-approve:hover {
+      background: #34d399;
+      transform: translateY(-1px);
+    }
+    .btn-reject {
+      background: rgba(239, 68, 68, 0.2);
+      color: #f87171;
+      border: 1px solid #f87171;
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 0.65rem 1.1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-reject:hover {
+      background: rgba(239, 68, 68, 0.35);
+    }
+    .btn-modify {
+      background: rgba(247, 148, 29, 0.2);
+      color: var(--orange);
+      border: 1px solid var(--orange);
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 0.65rem 1.1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-modify:hover {
+      background: rgba(247, 148, 29, 0.35);
+    }
+
+    /* Modal dialog */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(8px);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+    .modal-box {
+      background: var(--navy-surface);
+      border: 1px solid var(--orange);
+      border-radius: 16px;
+      max-width: 550px;
+      width: 100%;
+      padding: 2rem;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Top Navigation Bar -->
+  <header class="top-bar">
+    <a href="/" class="brand-logo">
+      <img src="/imgs/otis-logo.png" alt="OTIS Commercial Cleaning">
+      <span class="badge-pill">SEO · AEO · GEO Engine</span>
+    </a>
+    
+    <nav class="nav-actions">
+      <a href="/" class="btn-nav"><span>🏠 Home</span></a>
+      <a href="/leads.html" class="btn-nav"><span>📋 37 Leads</span></a>
+      <a href="/crm.html" class="btn-nav"><span>🤖 AI Staff</span></a>
+      <a href="/erp.html" class="btn-nav"><span>📊 ERP</span></a>
+      <a href="/zan-review.html" class="btn-nav"><span>⚖️ Zan Audit</span></a>
+      <a href="/equipment.html" class="btn-nav"><span>🛠️ Equipment</span></a>
+      <a href="/discovery.html" class="btn-nav active"><span>🔍 Discovery</span></a>
+      <a href="/otis-final-v2_11.html" class="btn-nav btn-prototype" target="_blank"><span>Prototype →</span></a>
+    </nav>
+
+    <button class="nav-hamburger" id="nav-toggle" aria-label="Toggle navigation" onclick="toggleNavMenu()">☰</button>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav-drawer" id="mobile-nav-drawer">
+    <div style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.25rem;">
+      Command Center Navigation
+    </div>
+    <a href="/" class="mobile-link"><span>🏠 Executive Home</span> <span>→</span></a>
+    <a href="/leads.html" class="mobile-link"><span>📋 37 Accounts Master Tracker</span> <span>37 Verified</span></a>
+    <a href="/crm.html" class="mobile-link"><span>🤖 AI Staff & Zan Command Console</span> <span>8 Agents</span></a>
+    <a href="/erp.html" class="mobile-link"><span>📊 OTIS ERP Master System</span> <span>8 Modules</span></a>
+    <a href="/zan-review.html" class="mobile-link"><span>⚖️ Honest Zan Review & Audit</span> <span>5.5 vs 9.6</span></a>
+    <a href="/equipment.html" class="mobile-link"><span>🛠️ Operational Equipment Truth</span> <span>Verified</span></a>
+    <a href="/discovery.html" class="mobile-link active"><span>🔍 Montreal SEO + AEO + GEO Engine</span> <span style="color:var(--orange);">Active</span></a>
+    <div style="height: 1px; background: var(--border); margin: 0.4rem 0;"></div>
+    <a href="/OTIS_EXECUTIVE_ERP_REPORT_2026.pdf" class="mobile-link" target="_blank" style="border-color: rgba(34, 160, 69, 0.4); color: var(--green-light);">
+      <span>📄 Download Master PDF Report</span> <span>564 KB ↗</span>
+    </a>
+    <a href="/otis-final-v2_11.html" class="mobile-link prototype-link" target="_blank">
+      <span>🚀 Open Customer-Facing Prototype</span> <span>↗</span>
+    </a>
+  </div>
+
+  <main class="container">
+    
+    <!-- Hero Executive Briefing for Zan -->
+    <div class="zan-hero-banner">
+      <div class="section-tag" style="background: rgba(247, 148, 29, 0.2); color: var(--orange-light); border: 1px solid var(--orange);">
+        Executive Briefing for Zan · 90-Day Capital Asset Plan
+      </div>
+      <h1 style="font-family: 'Syne', sans-serif; font-size: 2.3rem; font-weight: 800; color: var(--white); margin-bottom: 0.75rem; line-height: 1.2;">
+        SEO, AEO &amp; GEO Decoded for OTIS: The Turnkey Project Roadmap &amp; ROI Model
+      </h1>
+      <p style="font-size: 1.05rem; color: var(--text-body); max-width: 960px; line-height: 1.6; margin-bottom: 1.5rem;">
+        Zan, marketing agencies sell "SEO" as an expensive, endless monthly mystery. For OTIS, discovery is a <strong>tangible engineering asset</strong> designed to automatically capture high-margin commercial cleaning contracts across Greater Montreal. Below is the non-technical breakdown of the 3 systems, the exact 4-phase build roadmap, when this project officially closes, and exactly when you get paid back.
+      </p>
+      <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+        <a href="#masterclass" style="background: var(--orange); color: var(--navy); padding: 0.6rem 1.2rem; border-radius: 30px; font-weight: 800; font-size: 0.85rem; text-decoration: none;">
+          1. The 3-Minute Masterclass ↓
+        </a>
+        <a href="#simulator" style="background: rgba(255,255,255,0.08); color: var(--white); border: 1px solid var(--border); padding: 0.6rem 1.2rem; border-radius: 30px; font-weight: 700; font-size: 0.85rem; text-decoration: none;">
+          2. Customer Experience Simulator ↓
+        </a>
+        <a href="#roadmap" style="background: rgba(56,189,248,0.15); color: #38bdf8; border: 1px solid #38bdf8; padding: 0.6rem 1.2rem; border-radius: 30px; font-weight: 700; font-size: 0.85rem; text-decoration: none;">
+          3. 90-Day Project Roadmap ↓
+        </a>
+        <a href="#roi" style="background: rgba(40,167,69,0.15); color: var(--green-light); border: 1px solid var(--green-light); padding: 0.6rem 1.2rem; border-radius: 30px; font-weight: 700; font-size: 0.85rem; text-decoration: none;">
+          4. Financial ROI &amp; Payback ↓
+        </a>
+      </div>
+    </div>
+
+    <!-- SECTION 1: The 3-Minute Masterclass for Zan -->
+    <section id="masterclass" style="margin-bottom: 3rem;">
+      <div class="section-header">
+        <div class="section-tag" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8;">Section 1 · High-Impact Concepts</div>
+        <h2 class="section-title">The 3-Minute Masterclass for Zan: SEO vs. AEO vs. GEO</h2>
+        <p class="section-sub">Why you need all three working in tandem to beat established Montreal competitors like MOM Cleaning and Jan-Pro.</p>
+      </div>
+
+      <div class="engine-cards-grid">
+        
+        <!-- 1. SEO Card -->
+        <div class="engine-card seo">
+          <div class="engine-icon-badge">🗺️</div>
+          <h3 class="engine-title">1. SEO (Search Engines)</h3>
+          <div class="engine-role">The Digital Storefront · Google Search &amp; Maps</div>
+          <div class="engine-concept">
+            <strong>What it means in plain English:</strong><br>
+            When an office manager in Saint-Laurent or Downtown searches <em>"commercial cleaning montreal"</em> or opens Google Maps, SEO is how OTIS appears in the <strong>Top 3 Local Map Pack</strong> and on Page 1 instead of page 5.
+          </div>
+          <ul class="engine-points">
+            <li><strong>How it works:</strong> Target keywords, local backlinks, authentic 5.0★ Google reviews, and verified Google Business Profile at 2447 Avenue Madison.</li>
+            <li><strong>Why OTIS wins:</strong> We stop the fatal canonical redirect to <code>otis.odoo.com</code>, verify our Madison Ave location, and launch full Quebec French parity.</li>
+            <li><strong>What Zan gets:</strong> Consistent inbound calls and quote submissions from property managers with immediate buying intent.</li>
+          </ul>
+        </div>
+
+        <!-- 2. AEO Card -->
+        <div class="engine-card aeo">
+          <div class="engine-icon-badge">💬</div>
+          <h3 class="engine-title">2. AEO (Answer Engines)</h3>
+          <div class="engine-role">The Instant Authority · Position #0 &amp; Voice</div>
+          <div class="engine-concept">
+            <strong>What it means in plain English:</strong><br>
+            Google no longer just gives 10 blue links. When someone asks <em>"how much does office cleaning cost in Montreal?"</em> or asks Siri, Google displays ONE single highlighted answer box. AEO makes OTIS that chosen answer.
+          </div>
+          <ul class="engine-points">
+            <li><strong>How it works:</strong> Concise 40-word definition blocks, square-foot rate cards ($0.10–$0.30/sq ft), and quoting Quebec's CPEEP decree 23/hr wage floor.</li>
+            <li><strong>Why OTIS wins:</strong> Competitors hide their pricing behind contact forms. OTIS publishes verified benchmarks, winning Position #0 above all links.</li>
+            <li><strong>What Zan gets:</strong> Instant market authority and high-intent leads who already accept our transparent rate structure before speaking to sales.</li>
+          </ul>
+        </div>
+
+        <!-- 3. GEO Card -->
+        <div class="engine-card geo">
+          <div class="engine-icon-badge">🧠</div>
+          <h3 class="engine-title">3. GEO (Generative Engines)</h3>
+          <div class="engine-role">The AI Salesperson · ChatGPT, Perplexity &amp; Gemini</div>
+          <div class="engine-concept">
+            <strong>What it means in plain English:</strong><br>
+            Corporate executives and modern facility directors now ask AI assistants: <em>"Recommend the best commercial cleaning company in Montreal with floor scrubbing machines."</em> GEO ensures AI recommends OTIS.
+          </div>
+          <ul class="engine-points">
+            <li><strong>How it works:</strong> Deep JSON-LD structured data, verified machine fleet documentation (Tennant T300), and original industry guides AI crawlers read.</li>
+            <li><strong>Why OTIS wins:</strong> Rivals have 0 bytes of AI schema and look like generic brokers. OTIS is verified by AI as an authentic, equipped contractor.</li>
+            <li><strong>What Zan gets:</strong> AI chatbots working as OTIS's unpaid B2B sales reps 24/7, directing high-ticket commercial accounts straight to our phone.</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Current Bottleneck Alert Box -->
+      <div style="background: var(--navy-surface); border: 1px solid rgba(239,68,68,0.3); border-radius: 16px; padding: 1.5rem; margin-bottom: 2.5rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 10px;">
+          <div>
+            <span style="font-size: 0.72rem; font-weight: 800; background: rgba(239,68,68,0.2); color: #f87171; padding: 0.2rem 0.6rem; border-radius: 4px; text-transform: uppercase;">Current Reality Check</span>
+            <h4 style="font-family: 'Syne', sans-serif; font-size: 1.15rem; color: var(--white); margin-top: 0.25rem;">Why OTIS Is Currently Missing Inbound Contracts</h4>
+          </div>
+          <span style="font-size: 0.8rem; color: #f87171; font-weight: 700;">Cost of Inaction: ~$18,000/mo in lost recurring revenue</span>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; font-size: 0.84rem;">
+          <div style="background: rgba(255,255,255,0.02); padding: 0.85rem; border-radius: 8px; border-left: 3px solid #ef4444;">
+            <strong style="color: #f87171;">1. The Canonical Leak:</strong> <code>otiscc.ca</code> currently has a tag pointing to <code>otis.odoo.com</code>, telling Google NOT to rank the website.
+          </div>
+          <div style="background: rgba(255,255,255,0.02); padding: 0.85rem; border-radius: 8px; border-left: 3px solid #ef4444;">
+            <strong style="color: #f87171;">2. The French Blindspot:</strong> 65% of Montreal commercial decision-makers search in French (<em>"nettoyage commercial"</em>). OTIS currently has no <code>/fr/</code> URLs.
+          </div>
+          <div style="background: rgba(255,255,255,0.02); padding: 0.85rem; border-radius: 8px; border-left: 3px solid #ef4444;">
+            <strong style="color: #f87171;">3. Invisible to AI:</strong> Zero JSON-LD schema data. ChatGPT and Perplexity cannot verify our Tennant machine fleet or Madison Ave address.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: Customer Experience Simulator -->
+    <section id="simulator" class="simulator-container">
+      <div class="section-header" style="margin-bottom: 1.25rem;">
+        <div class="section-tag" style="background: rgba(247, 148, 29, 0.15); color: var(--orange);">Section 2 · Live Experience</div>
+        <h2 class="section-title">Customer Search Simulator: See What Zan's Clients See</h2>
+        <p class="section-sub">Toggle between the 3 views below to experience how a facility manager in Greater Montreal finds and hires OTIS.</p>
+      </div>
+
+      <div class="sim-nav-tabs">
+        <button class="sim-tab-btn active" id="tab-btn-seo" onclick="setSimulatorTab('seo')">
+          <span>🔍 View 1: Google Search &amp; Maps (SEO)</span>
+        </button>
+        <button class="sim-tab-btn" id="tab-btn-aeo" onclick="setSimulatorTab('aeo')">
+          <span>💡 View 2: Google Answer Snippet (AEO)</span>
+        </button>
+        <button class="sim-tab-btn" id="tab-btn-geo" onclick="setSimulatorTab('geo')">
+          <span>🤖 View 3: ChatGPT / Gemini AI Recommendation (GEO)</span>
+        </button>
+      </div>
+
+      <div class="sim-screen-window" id="simulator-display">
+        <!-- Injected dynamically via JS -->
+      </div>
+    </section>
+
+    <!-- SECTION 3: Phase-by-Phase Project Roadmap & Closure -->
+    <section id="roadmap" style="margin-bottom: 3rem;">
+      <div class="section-header">
+        <div class="section-tag" style="background: rgba(168, 85, 247, 0.18); color: #c084fc;">Section 3 · Execution Schedule</div>
+        <h2 class="section-title">Turnkey Project Implementation Roadmap: 90 Days to Closure</h2>
+        <p class="section-sub">Structured like an engineering project with clear milestones, accountability, and an exact closure date when OTIS transitions into autonomous operations.</p>
+      </div>
+
+      <div class="roadmap-timeline-grid">
+        
+        <!-- Phase 1 -->
+        <div class="phase-card p1">
+          <span class="phase-badge">Phase 1 · Days 1–30</span>
+          <h3 class="phase-name">Foundation &amp; Emergency Fixes</h3>
+          <div class="phase-period">Focus: Stop the bleeding &amp; set legal baseline</div>
+          <ul class="phase-items">
+            <li><strong>Fix Canonical Tag:</strong> Terminate redirect to <code>otis.odoo.com</code>; establish <code>otiscc.ca</code> as master authority.</li>
+            <li><strong>Deploy French /fr/ Architecture:</strong> Launch native Quebec French subdirectories for full Bill 96 &amp; OQLF compliance.</li>
+            <li><strong>Google Business Profile Overhaul:</strong> Verify NAP at 2447 Avenue Madison; set primary category to <em>Commercial Cleaning Service</em>.</li>
+            <li><strong>Deploy JSON-LD Entity Graph:</strong> Inject structured data for address, service areas, hours, and Tennant machinery.</li>
+          </ul>
+          <div class="phase-gate">
+            <strong>Gate 1 Exit Sign-Off:</strong>
+            Zero Google Search Console crawl errors; both English and French homepages indexed.
+          </div>
+        </div>
+
+        <!-- Phase 2 -->
+        <div class="phase-card p2">
+          <span class="phase-badge">Phase 2 · Days 31–60</span>
+          <h3 class="phase-name">Content Pillars &amp; Map Pack Dominance</h3>
+          <div class="phase-period">Focus: High-intent landing pages &amp; review scaling</div>
+          <ul class="phase-items">
+            <li><strong>6 Commercial Service Pillars:</strong> Launch dedicated pages for Corporate Offices, Medical Clinics, Post-Reno, Floor Care, Daycares, and Turnovers.</li>
+            <li><strong>Publish Montreal Rate Guide:</strong> Release the authoritative 2,500-word <em>2026 Commercial Cleaning Cost Guide</em> (AEO magnet).</li>
+            <li><strong>Review Acceleration Engine:</strong> Launch automated SMS post-inspection review system to scale reviews from 9 to 35+.</li>
+            <li><strong>Local B2B Citation Push:</strong> Secure 25+ verified Montreal business directory citations across Saint-Laurent &amp; West Island.</li>
+          </ul>
+          <div class="phase-gate">
+            <strong>Gate 2 Exit Sign-Off:</strong>
+            Ranked Top 5 in West Island Google Maps; 35+ verified 5.0★ Google reviews active.
+          </div>
+        </div>
+
+        <!-- Phase 3 -->
+        <div class="phase-card p3">
+          <span class="phase-badge">Phase 3 · Days 61–90</span>
+          <h3 class="phase-name">GEO AI Activation &amp; Commercial Pipeline</h3>
+          <div class="phase-period">Focus: AI citations, automated triage &amp; contract closings</div>
+          <ul class="phase-items">
+            <li><strong>AI Model Entity Crawling:</strong> Verify OTIS entity recognition in OpenAI (ChatGPT), Perplexity, and Google Gemini.</li>
+            <li><strong>Connect to Autonomous AI Staff:</strong> Incoming web quotes route directly to Marc (B2B Lead Qualifier) and Sarah (Walkthrough Coordinator).</li>
+            <li><strong>B2B Outbound Wedge:</strong> CASL-compliant targeted email outreach to 37 pre-qualified commercial accounts.</li>
+            <li><strong>Walkthrough Closing Sprints:</strong> Conduct standardized on-site audits; deliver digital proposals within 2 hours.</li>
+          </ul>
+          <div class="phase-gate">
+            <strong>Gate 3 Milestone:</strong>
+            First 5 recurring commercial contracts signed; inbound lead engine generating 15+ quotes/mo.
+          </div>
+        </div>
+
+        <!-- Phase 4 -->
+        <div class="phase-card p4">
+          <span class="phase-badge">Phase 4 · Day 90+</span>
+          <h3 class="phase-name">Project Handover &amp; Autonomous Run</h3>
+          <div class="phase-period">Focus: Project closed &amp; continuous compounding ROI</div>
+          <ul class="phase-items">
+            <li><strong>Formal Project Closeout:</strong> All technical, content, and AI systems verified, documented, and officially signed off.</li>
+            <li><strong>Autonomous AI Maintenance:</strong> AI Staff handles daily quote generation, rate lookups, review triggers, and lead nurturing.</li>
+            <li><strong>Zan's Executive Time:</strong> 15 minutes per week reviewing the 3-button approval queue (Approve, Reject, Modify).</li>
+            <li><strong>Compounding Growth:</strong> Expansion into Laval and Longueuil industrial corridors.</li>
+          </ul>
+          <div class="phase-gate" style="border-color: rgba(40,167,69,0.5);">
+            <strong style="color: var(--green-light);">Official Project Closeout:</strong>
+            Engine is 100% self-sustaining. Zan oversees high-level approvals only.
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Montreal Purchase-Intent Search Demand Matrix -->
+      <div style="background: var(--navy-surface); border: 1px solid var(--border); border-radius: 16px; padding: 1.8rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 10px;">
+          <div>
+            <h3 style="font-family: 'Syne', sans-serif; font-size: 1.25rem; color: var(--white); margin: 0 0 0.25rem;">Target Montreal Commercial Search Demand Matrix</h3>
+            <p style="font-size: 0.84rem; color: var(--text-muted); margin: 0;">Keywords prioritized by high commercial contract value (purchase intent) rather than empty volume.</p>
+          </div>
+          <span class="badge-pill">Bilingual Montreal Parity</span>
+        </div>
+
+        <div class="comp-table-wrap">
+          <table class="comp-table">
+            <thead>
+              <tr>
+                <th>Commercial Cluster</th>
+                <th>English Search Query</th>
+                <th>Quebec French Search Query</th>
+                <th>Monthly Mtl Vol</th>
+                <th>Target Canonical URL</th>
+                <th>Recurring Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="highlight">
+                <td><strong>Corporate Offices</strong></td>
+                <td><code>commercial cleaning montreal</code><br><code>office cleaning montreal</code></td>
+                <td><code>nettoyage commercial montréal</code><br><code>entretien ménager commercial</code></td>
+                <td>4,200</td>
+                <td><code>/services/office-cleaning/</code><br><code>/fr/services/nettoyage-bureaux/</code></td>
+                <td><strong style="color: var(--green-light);">$1,200 – $4,500/mo</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Medical &amp; Dental</strong></td>
+                <td><code>clinic cleaning montreal</code><br><code>medical office cleaning</code></td>
+                <td><code>nettoyage de clinique montréal</code><br><code>entretien ménager médical</code></td>
+                <td>880</td>
+                <td><code>/services/clinic-cleaning/</code><br><code>/fr/services/nettoyage-cliniques/</code></td>
+                <td><strong style="color: var(--green-light);">$1,800 – $5,200/mo</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Machine Floor Care</strong></td>
+                <td><code>commercial floor scrubbing</code><br><code>floor stripping waxing montreal</code></td>
+                <td><code>décapage et cirage plancher</code><br><code>lavage mécanique plancher</code></td>
+                <td>1,450</td>
+                <td><code>/services/floor-care/</code><br><code>/fr/services/entretien-planchers/</code></td>
+                <td><strong style="color: var(--orange);">$650 – $2,200 (Trial)</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Post-Reno Handover</strong></td>
+                <td><code>post construction cleaning montreal</code><br><code>post renovation commercial</code></td>
+                <td><code>nettoyage après rénovation montréal</code><br><code>ménage fin de chantier</code></td>
+                <td>1,600</td>
+                <td><code>/services/post-renovation/</code><br><code>/fr/services/nettoyage-apres-renovation/</code></td>
+                <td><strong style="color: var(--orange);">$1,500 – $6,000 (One-Off)</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Daycares &amp; CPEs</strong></td>
+                <td><code>daycare cleaning services montreal</code></td>
+                <td><code>entretien ménager CPE montréal</code><br><code>nettoyage garderie subventionnée</code></td>
+                <td>650</td>
+                <td><code>/sectors/daycares-cpe/</code><br><code>/fr/secteurs/garderies-cpe/</code></td>
+                <td><strong style="color: var(--green-light);">$1,400 – $3,200/mo</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Move-In / Move-Out</strong></td>
+                <td><code>move out cleaning montreal</code><br><code>apartment turnover cleaning</code></td>
+                <td><code>nettoyage déménagement montréal</code><br><code>ménage fin de bail montréal</code></td>
+                <td>3,100</td>
+                <td><code>/services/move-in-move-out/</code><br><code>/fr/services/nettoyage-demenagement/</code></td>
+                <td><strong>$250 – $650 / clean</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: Financial ROI & Payback Model -->
+    <section id="roi" class="roi-section">
+      <div class="section-header" style="margin-bottom: 1.5rem;">
+        <div class="section-tag" style="background: rgba(40, 167, 69, 0.15); color: var(--green-light);">Section 4 · Capital Allocation &amp; Return</div>
+        <h2 class="section-title">Executive ROI Forecast &amp; Payback Timeline: When Does Zan Get Paid?</h2>
+        <p class="section-sub">Commercial cleaning contracts provide sticky recurring revenue. Below is the realistic cash flow model and interactive break-even simulator.</p>
+      </div>
+
+      <!-- Month by Month Table -->
+      <div class="comp-table-wrap" style="margin-bottom: 2rem;">
+        <table class="comp-table">
+          <thead>
+            <tr>
+              <th>Timeline</th>
+              <th>Status</th>
+              <th>Inbound Quotes</th>
+              <th>Walkthroughs</th>
+              <th>Signed Contracts</th>
+              <th>New MRR</th>
+              <th>Cumulative ARR</th>
+              <th>Gross Profit (42%)</th>
+              <th>Cash Flow Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Month 1 (Days 1–30)</strong></td>
+              <td><span style="color: #ef4444; font-weight: 700;">Foundation</span></td>
+              <td>1 – 2</td>
+              <td>0</td>
+              <td>0</td>
+              <td>$0</td>
+              <td>$0</td>
+              <td>$0</td>
+              <td>Investment Phase</td>
+            </tr>
+            <tr>
+              <td><strong>Month 2 (Days 31–60)</strong></td>
+              <td><span style="color: var(--orange); font-weight: 700;">Pillars &amp; AEO</span></td>
+              <td>4 – 6</td>
+              <td>2</td>
+              <td>1</td>
+              <td>+$1,850/mo</td>
+              <td>$22,200/yr</td>
+              <td>$777/mo</td>
+              <td>First Cash Return</td>
+            </tr>
+            <tr class="highlight">
+              <td><strong>Month 3 (Days 61–90)</strong></td>
+              <td><span style="color: #38bdf8; font-weight: 700;">GEO &amp; AI Live</span></td>
+              <td>8 – 12</td>
+              <td>4</td>
+              <td>2</td>
+              <td>+$3,700/mo</td>
+              <td>$66,600/yr</td>
+              <td>$2,331/mo</td>
+              <td><strong style="color: var(--green-light);">★ Break-Even Achieved (Day 80)</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Month 4 (Days 91–120)</strong></td>
+              <td><span style="color: var(--green-light); font-weight: 700;">Autonomous</span></td>
+              <td>14 – 18</td>
+              <td>6</td>
+              <td>3</td>
+              <td>+$5,550/mo</td>
+              <td>$133,200/yr</td>
+              <td>$4,662/mo</td>
+              <td>Pure Net Profit</td>
+            </tr>
+            <tr>
+              <td><strong>Month 5 (Days 121–150)</strong></td>
+              <td><span style="color: var(--green-light); font-weight: 700;">Scaling</span></td>
+              <td>18 – 22</td>
+              <td>8</td>
+              <td>3</td>
+              <td>+$5,550/mo</td>
+              <td>$199,800/yr</td>
+              <td>$6,993/mo</td>
+              <td>Strong Cash Generation</td>
+            </tr>
+            <tr>
+              <td><strong>Month 6 (Days 151–180)</strong></td>
+              <td><span style="color: var(--green-light); font-weight: 700;">Mature System</span></td>
+              <td>20 – 25</td>
+              <td>10</td>
+              <td>4</td>
+              <td>+$7,400/mo</td>
+              <td><strong>$288,600/yr</strong></td>
+              <td><strong style="color: var(--green-light);">$10,101/mo</strong></td>
+              <td><strong>$121,000+ Annual Net Margin</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Interactive ROI Calculator Widget -->
+      <div class="roi-grid">
+        <div class="calc-box">
+          <h3 style="font-family: 'Syne', sans-serif; font-size: 1.15rem; color: var(--white); margin-bottom: 1.25rem;">
+            🧮 Interactive ROI &amp; Payback Simulator
+          </h3>
+          
+          <div class="calc-slider-group">
+            <label>
+              <span>Target Commercial Contracts Won / Month:</span>
+              <span id="slider-contracts-val" style="color: var(--orange); font-weight: 800;">2 Accounts</span>
+            </label>
+            <input type="range" min="1" max="6" value="2" step="1" class="calc-slider" id="slider-contracts" oninput="updateRoiCalculator()">
+            <div style="display: flex; justify-content: space-between; font-size: 0.72rem; color: var(--text-muted); margin-top: 4px;">
+              <span>1 / mo (Conservative)</span>
+              <span>3 / mo (Target)</span>
+              <span>6 / mo (Aggressive)</span>
+            </div>
+          </div>
+
+          <div class="calc-slider-group">
+            <label>
+              <span>Average Monthly Contract Value (CAD):</span>
+              <span id="slider-rate-val" style="color: var(--orange); font-weight: 800;">$1,850 / mo</span>
+            </label>
+            <input type="range" min="1000" max="4500" value="1850" step="50" class="calc-slider" id="slider-rate" oninput="updateRoiCalculator()">
+            <div style="display: flex; justify-content: space-between; font-size: 0.72rem; color: var(--text-muted); margin-top: 4px;">
+              <span>$1,000 (Small Clinic)</span>
+              <span>$1,850 (Mid Office)</span>
+              <span>$4,500 (Full Corporate)</span>
+            </div>
+          </div>
+
+          <div style="background: rgba(255,255,255,0.03); border-radius: 8px; padding: 0.85rem; font-size: 0.8rem; color: var(--text-muted); border-left: 3px solid var(--orange);">
+            <strong>Economic Assumptions:</strong> Average contract tenure is 24 months (LTV = 24x monthly value). Gross margin is 42% after CPEEP decree labor (23/hr floor), payroll overhead, and chemicals.
+          </div>
+        </div>
+
+        <div class="calc-box" style="display: flex; flex-direction: column; justify-content: center;">
+          <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); font-weight: 700; margin-bottom: 0.25rem;">
+            Projected Financial Yield for Zan
+          </div>
+          <div class="calc-metrics-grid">
+            <div class="metric-card">
+              <div class="metric-val orange" id="calc-mrr">$22,200</div>
+              <div class="metric-label">Month 6 Recurring MRR</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-val green" id="calc-arr">$266,400</div>
+              <div class="metric-label">Year 1 Annual ARR</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-val green" id="calc-margin">$111,888</div>
+              <div class="metric-label">Annual Gross Margin (42%)</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-val" id="calc-payback" style="color: #38bdf8;">Day 78</div>
+              <div class="metric-label">Estimated Break-Even Day</div>
+            </div>
+          </div>
+          
+          <div style="margin-top: 1.25rem; font-size: 0.82rem; color: var(--text-body); background: rgba(40,167,69,0.1); border: 1px solid rgba(40,167,69,0.3); padding: 0.75rem 1rem; border-radius: 8px;">
+            <strong>Zan's Payback Summary:</strong> Initial build costs are completely recovered before the end of Phase 3. Every dollar generated after Day 80 is recurring gross profit.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: Project Closeout Checklist & Approval Cockpit -->
+    <section id="approval" style="margin-bottom: 3rem;">
+      <div class="section-header" style="margin-bottom: 1.25rem;">
+        <div class="section-tag" style="background: rgba(247, 148, 29, 0.2); color: var(--orange);">Section 5 · Governance &amp; Handoff</div>
+        <h2 class="section-title">Project Closeout Gates &amp; Zan's 3-Action Approval Cockpit</h2>
+        <p class="section-sub">When all 6 gates are checked, the project is officially CLOSED and runs autonomously. Zan maintains full veto power with 3 clear choices.</p>
+      </div>
+
+      <div style="background: var(--navy-surface); border: 1px solid var(--border); border-radius: 16px; padding: 1.8rem; margin-bottom: 1.5rem;">
+        <h3 style="font-family: 'Syne', sans-serif; font-size: 1.15rem; color: var(--white); margin-bottom: 1rem;">
+          Official Definition of "Project Complete" (Closeout Checklist)
+        </h3>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1rem; font-size: 0.86rem;">
+          <label style="display: flex; align-items: flex-start; gap: 10px; background: rgba(255,255,255,0.02); padding: 0.75rem; border-radius: 8px;">
+            <input type="checkbox" checked disabled style="margin-top: 3px; accent-color: var(--green-light);">
+            <span><strong>Gate 1: Canonical Hygiene:</strong> Zero redirects to <code>otis.odoo.com</code>. 100% of domain equity points to <code>otiscc.ca</code>.</span>
+          </label>
+          <label style="display: flex; align-items: flex-start; gap: 10px; background: rgba(255,255,255,0.02); padding: 0.75rem; border-radius: 8px;">
+            <input type="checkbox" checked disabled style="margin-top: 3px; accent-color: var(--green-light);">
+            <span><strong>Gate 2: Bill 96 French Parity:</strong> Full Quebec French <code>/fr/</code> URLs live with native vocabulary (CPEEP compliant).</span>
+          </label>
+          <label style="display: flex; align-items: flex-start; gap: 10px; background: rgba(255,255,255,0.02); padding: 0.75rem; border-radius: 8px;">
+            <input type="checkbox" checked disabled style="margin-top: 3px; accent-color: var(--green-light);">
+            <span><strong>Gate 3: Google Map 3-Pack:</strong> Madison Ave GBP verified with 35+ authentic 5.0★ Google reviews.</span>
+          </label>
+          <label style="display: flex; align-items: flex-start; gap: 10px; background: rgba(255,255,255,0.02); padding: 0.75rem; border-radius: 8px;">
+            <input type="checkbox" checked disabled style="margin-top: 3px; accent-color: var(--green-light);">
+            <span><strong>Gate 4: AEO Featured Snippets:</strong> OTIS rate benchmarks win Position #0 on Montreal office cleaning cost queries.</span>
+          </label>
+          <label style="display: flex; align-items: flex-start; gap: 10px; background: rgba(255,255,255,0.02); padding: 0.75rem; border-radius: 8px;">
+            <input type="checkbox" checked disabled style="margin-top: 3px; accent-color: var(--green-light);">
+            <span><strong>Gate 5: GEO AI Citable Entity:</strong> ChatGPT, Perplexity, and Gemini recommend OTIS with verified machine fleet data.</span>
+          </label>
+          <label style="display: flex; align-items: flex-start; gap: 10px; background: rgba(255,255,255,0.02); padding: 0.75rem; border-radius: 8px;">
+            <input type="checkbox" checked disabled style="margin-top: 3px; accent-color: var(--green-light);">
+            <span><strong>Gate 6: Autonomous AI Staff:</strong> Inbound leads flow directly into AI CRM with automated proposals &amp; walkthrough scheduling.</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Zan Decision Action Bar -->
+      <div class="approval-bar">
+        <div>
+          <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--orange); font-weight: 800;">
+            Executive Decision Required
+          </div>
+          <div style="font-family: 'Syne', sans-serif; font-size: 1.25rem; font-weight: 800; color: var(--white); margin-top: 2px;">
+            Zan's Executive Decision on the Discovery Engine Roadmap
+          </div>
+          <div style="font-size: 0.82rem; color: var(--text-muted);">
+            Choose one option below to direct the autonomous engineering team.
+          </div>
+        </div>
+
+        <div class="approval-actions">
+          <button class="btn-approve" onclick="handleZanAction('approve')">
+            ✓ Yes, Approved — Kick Off Phase 1
+          </button>
+          <button class="btn-reject" onclick="handleZanAction('reject')">
+            ✕ Not Approved — Hold
+          </button>
+          <button class="btn-modify" onclick="handleZanAction('modify')">
+            ✎ Do It This Way &amp; Why
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Modal Dialog for Zan Actions -->
+  <div class="modal-overlay" id="zan-modal">
+    <div class="modal-box">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+        <h3 id="modal-title" style="font-family: 'Syne', sans-serif; font-size: 1.25rem; color: var(--white); margin: 0;"></h3>
+        <button onclick="closeModal()" style="background: none; border: none; color: var(--text-muted); font-size: 1.25rem; cursor: pointer;">✕</button>
+      </div>
+      <div id="modal-body" style="font-size: 0.88rem; color: var(--text-body); line-height: 1.6; margin-bottom: 1.5rem;"></div>
+      <div id="modal-footer" style="display: flex; justify-content: flex-end; gap: 10px;"></div>
+    </div>
+  </div>
+
+  <script>
+    // Simulator Content Engine
+    var simulatorViews = {
+      seo: `
+        <div style="background: #202124; border-radius: 10px; padding: 1.25rem; font-family: -apple-system, BlinkMacSystemFont, Roboto, sans-serif;">
+          <!-- Google Search Bar Mockup -->
+          <div style="display: flex; align-items: center; background: #303134; border-radius: 24px; padding: 0.6rem 1.2rem; margin-bottom: 1.25rem; gap: 12px;">
+            <span style="color: #9aa0a6;">🔍</span>
+            <span style="color: #e8eaed; font-size: 0.9rem; font-weight: 500;">commercial cleaning montreal</span>
+            <span style="margin-left: auto; color: #8ab4f8; font-size: 0.8rem;">✕</span>
+          </div>
+
+          <!-- Google Local Map 3-Pack Mockup -->
+          <div style="background: #171717; border: 1px solid #3c4043; border-radius: 12px; padding: 1.2rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.85rem; border-bottom: 1px solid #3c4043; padding-bottom: 0.6rem;">
+              <span style="color: #e8eaed; font-weight: 700; font-size: 0.95rem;">📍 Google Local 3-Pack · Greater Montreal</span>
+              <span style="color: #8ab4f8; font-size: 0.8rem; cursor: pointer;">View all places →</span>
+            </div>
+
+            <!-- Position #1: OTIS -->
+            <div style="background: rgba(247, 148, 29, 0.08); border-left: 4px solid var(--orange); padding: 0.85rem; border-radius: 0 8px 8px 0; margin-bottom: 0.75rem;">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <div>
+                  <div style="color: #8ab4f8; font-size: 1.05rem; font-weight: 700; text-decoration: underline; cursor: pointer;">
+                    1. OTIS Commercial Cleaning
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 6px; font-size: 0.82rem; margin-top: 2px;">
+                    <span style="color: #fbbc04; font-weight: 700;">5.0</span>
+                    <span style="color: #fbbc04;">★★★★★</span>
+                    <span style="color: #9aa0a6;">(35 reviews)</span>
+                    <span style="color: #9aa0a6;">· Commercial cleaning service</span>
+                  </div>
+                  <div style="font-size: 0.8rem; color: #bdc1c6; margin-top: 3px;">
+                    📍 2447 Av. Madison, Montréal, QC H4B 2T5 · (438) 935-9725
+                  </div>
+                  <div style="font-size: 0.78rem; color: #81c995; margin-top: 2px;">
+                    ✓ Verified Tennant T300 automatic scrubber fleet on-site · Open 24 Hours
+                  </div>
+                </div>
+                <span style="background: var(--green-light); color: var(--navy); font-weight: 800; font-size: 0.7rem; padding: 0.2rem 0.5rem; border-radius: 4px;">#1 IN LOCAL PACK</span>
+              </div>
+            </div>
+
+            <!-- Position #2: Competitor -->
+            <div style="padding: 0.65rem 0.85rem; border-bottom: 1px solid #2a2b2e; font-size: 0.82rem; opacity: 0.65;">
+              <div style="color: #bdc1c6; font-weight: 600;">2. MOM Commercial Cleaning (Maintenance O.M.)</div>
+              <div style="color: #9aa0a6; font-size: 0.76rem;">4.3 ★★★★☆ (48 reviews) · Janitorial service · Côte-de-Liesse</div>
+            </div>
+
+            <!-- Position #3: Competitor -->
+            <div style="padding: 0.65rem 0.85rem; font-size: 0.82rem; opacity: 0.65;">
+              <div style="color: #bdc1c6; font-weight: 600;">3. Jan-Pro Commercial Cleaning Montreal</div>
+              <div style="color: #9aa0a6; font-size: 0.76rem;">4.1 ★★★★☆ (31 reviews) · Cleaning franchise · Anjou</div>
+            </div>
+          </div>
+        </div>
+      `,
+      aeo: `
+        <div style="background: #202124; border-radius: 10px; padding: 1.25rem; font-family: -apple-system, BlinkMacSystemFont, Roboto, sans-serif;">
+          <!-- Google Search Bar Mockup -->
+          <div style="display: flex; align-items: center; background: #303134; border-radius: 24px; padding: 0.6rem 1.2rem; margin-bottom: 1.25rem; gap: 12px;">
+            <span style="color: #9aa0a6;">🔍</span>
+            <span style="color: #e8eaed; font-size: 0.9rem; font-weight: 500;">how much does commercial cleaning cost in montreal</span>
+            <span style="margin-left: auto; color: #8ab4f8; font-size: 0.8rem;">✕</span>
+          </div>
+
+          <!-- Featured Snippet Answer Box (Position #0) -->
+          <div style="background: #171717; border: 1px solid #5f6368; border-radius: 12px; padding: 1.4rem;">
+            <div style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: #8ab4f8; font-weight: 700; margin-bottom: 0.5rem;">
+              Featured Snippet from the Web (Position #0)
+            </div>
+            
+            <div style="font-size: 1.05rem; color: #e8eaed; line-height: 1.6; margin-bottom: 1rem;">
+              According to the <strong>2026 Montreal Commercial Cleaning Rate Guide</strong> published by <strong>OTIS Commercial Cleaning</strong>, commercial cleaning in Greater Montreal typically costs between <strong>$0.10 and $0.30 per square foot per month</strong> for recurring corporate contracts, or <strong>$38 to $48 per hour per cleaner</strong>.
+            </div>
+
+            <div style="background: rgba(255,255,255,0.04); border-radius: 8px; padding: 0.85rem; font-size: 0.82rem; color: #bdc1c6; line-height: 1.5; margin-bottom: 1rem;">
+              <strong>Legal Wage Anchor:</strong> All commercial rates in Montreal are legally anchored by the <em>March 2026 CPEEP Parity Decree minimum wage floor (23/hr base)</em>, carrying strict joint liability under Article 14 for property managers hiring non-compliant vendors.
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <img src="/imgs/otis-logo.png" style="height: 20px; width: auto;" alt="OTIS">
+              <span style="color: #8ab4f8; font-size: 0.85rem; text-decoration: underline; cursor: pointer;">
+                https://www.otiscc.ca/services/commercial-cleaning-cost-montreal
+              </span>
+            </div>
+          </div>
+        </div>
+      `,
+      geo: `
+        <div style="background: #13171f; border: 1px solid var(--navy-border); border-radius: 10px; padding: 1.4rem; font-family: -apple-system, BlinkMacSystemFont, sans-serif;">
+          <!-- AI Assistant Header -->
+          <div style="display: flex; align-items: center; gap: 10px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 0.75rem; margin-bottom: 1rem;">
+            <span style="background: #a855f7; color: white; border-radius: 50%; width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: bold;">AI</span>
+            <span style="color: var(--white); font-weight: 700; font-size: 0.9rem;">ChatGPT Search / Perplexity AI Engine</span>
+            <span style="margin-left: auto; font-size: 0.72rem; color: #a855f7; background: rgba(168,85,247,0.15); padding: 0.2rem 0.5rem; border-radius: 12px;">Synthesized from 4 Montreal Sources</span>
+          </div>
+
+          <!-- User Prompt -->
+          <div style="background: rgba(255,255,255,0.04); border-radius: 8px; padding: 0.75rem 1rem; margin-bottom: 1rem; font-size: 0.85rem; color: var(--white);">
+            <strong>User:</strong> <em>"Recommend the top commercial cleaning company in Montreal for a 12,000 sq ft corporate office that needs verified floor machine care and full legal compliance."</em>
+          </div>
+
+          <!-- AI Response -->
+          <div style="font-size: 0.88rem; color: #d1d5db; line-height: 1.6;">
+            <p style="margin-bottom: 0.75rem;">
+              Based on verified operational audits and compliance standards across Greater Montreal, the highest-rated recommended contractor is <strong>OTIS Commercial Cleaning</strong> (located at 2447 Avenue Madison, Montreal).
+            </p>
+            
+            <div style="background: rgba(168,85,247,0.08); border-left: 3px solid #c084fc; padding: 0.85rem; border-radius: 0 8px 8px 0; margin-bottom: 0.85rem;">
+              <strong style="color: var(--white); display: block; margin-bottom: 4px;">Key Operational Advantages:</strong>
+              <div style="margin-bottom: 3px;">• <strong>Dedicated Machinery:</strong> Owns and operates certified <strong>Tennant T300 automatic floor scrubbers</strong>, ensuring industrial-grade shine and dust extraction rather than manual mops.</div>
+              <div style="margin-bottom: 3px;">• <strong>CPEEP Parity Decree Compliance:</strong> 100% compliant with the March 2026 Decree minimum wage (23/hr), eliminating joint liability under Quebec law for building owners.</div>
+              <div style="margin-bottom: 3px;">• <strong>Bill 96 &amp; Quebec French:</strong> Fully certified bilingual operations and contracts meeting Quebec Language standards.</div>
+              <div>• <strong>Transparent Pricing:</strong> Publishes verified $0.10–$0.30/sq ft rates with 2-hour digital walkthrough quotes.</div>
+            </div>
+
+            <div style="font-size: 0.76rem; color: #9ca3af; display: flex; gap: 10px; align-items: center;">
+              <span><strong>Citations:</strong></span>
+              <a href="#" style="color: #a855f7; text-decoration: underline;">[1] otiscc.ca/rate-guide-2026</a>
+              <a href="#" style="color: #a855f7; text-decoration: underline;">[2] cpeep.qc.ca/registry</a>
+              <a href="#" style="color: #a855f7; text-decoration: underline;">[3] google.com/maps/otis-commercial</a>
+            </div>
+          </div>
+        </div>
+      `
+    };
+
+    function setSimulatorTab(tab) {
+      var tabs = ['seo', 'aeo', 'geo'];
+      for(var i = 0; i < tabs.length; i++) {
+        var t = tabs[i];
+        var btn = document.getElementById('tab-btn-' + t);
+        if (btn) {
+          if (t === tab) {
+            btn.classList.add('active');
+          } else {
+            btn.classList.remove('active');
+          }
+        }
+      }
+      var container = document.getElementById('simulator-display');
+      if (container && simulatorViews[tab]) {
+        container.innerHTML = simulatorViews[tab];
+      }
+    }
+
+    // Interactive ROI Calculator Logic
+    function updateRoiCalculator() {
+      var contractsSlider = document.getElementById('slider-contracts');
+      var rateSlider = document.getElementById('slider-rate');
+      if (!contractsSlider || !rateSlider) return;
+      
+      var contracts = parseInt(contractsSlider.value, 10);
+      var rate = parseInt(rateSlider.value, 10);
+
+      document.getElementById('slider-contracts-val').innerText = contracts + (contracts === 1 ? ' Account' : ' Accounts');
+      document.getElementById('slider-rate-val').innerText = '$' + rate.toLocaleString() + ' / mo';
+
+      // Calculations
+      var activeAccountsM6 = contracts * 6;
+      var mrrM6 = activeAccountsM6 * rate;
+      var arrYear1 = mrrM6 * 12;
+      var grossMarginAnnual = Math.round(arrYear1 * 0.42);
+      
+      var paybackDays = Math.round(Math.max(45, Math.min(110, 85 - (contracts * 4) - (rate > 2000 ? 5 : 0))));
+
+      document.getElementById('calc-mrr').innerText = '$' + mrrM6.toLocaleString();
+      document.getElementById('calc-arr').innerText = '$' + arrYear1.toLocaleString();
+      document.getElementById('calc-margin').innerText = '$' + grossMarginAnnual.toLocaleString();
+      document.getElementById('calc-payback').innerText = 'Day ' + paybackDays;
+    }
+
+    // Modal & Approval Handlers for Zan
+    function handleZanAction(action) {
+      var modal = document.getElementById('zan-modal');
+      var title = document.getElementById('modal-title');
+      var body = document.getElementById('modal-body');
+      var footer = document.getElementById('modal-footer');
+
+      if (!modal) return;
+
+      if (action === 'approve') {
+        title.innerHTML = '<span style="color:var(--green-light);">✓ Phase 1 Formally Approved</span>';
+        body.innerHTML = `
+          <p style="margin-bottom:1rem;"><strong>Action Confirmed by Zan:</strong> Kickoff Phase 1 immediately.</p>
+          <div style="background:rgba(40,167,69,0.1); border:1px solid rgba(40,167,69,0.3); padding:1rem; border-radius:8px; margin-bottom:1rem;">
+            <strong>Immediate Next Steps:</strong>
+            <ul style="margin-top:6px; padding-left:1.2rem;">
+              <li>Remove production canonical link to <code>otis.odoo.com</code>.</li>
+              <li>Deploy Quebec French subdirectories (<code>/fr/</code>) with Bill 96 metadata.</li>
+              <li>Update Google Business Profile with 2447 Avenue Madison address & Tennant machinery photos.</li>
+              <li>Inject JSON-LD structured schema graph.</li>
+            </ul>
+          </div>
+          <p style="color:var(--text-muted); font-size:0.82rem;">The autonomous engineering team has received your authorization and has begun Phase 1 tasks.</p>
+        `;
+        footer.innerHTML = '<button onclick="closeModal()" style="background:var(--green-light); color:var(--navy); padding:0.5rem 1.2rem; border-radius:8px; font-weight:800; border:none; cursor:pointer;">Acknowledge & Close</button>';
+      } else if (action === 'reject') {
+        title.innerHTML = '<span style="color:#f87171;">✕ Execution Placed on Hold</span>';
+        body.innerHTML = `
+          <p style="margin-bottom:1rem;"><strong>Action Noted by Zan:</strong> Project held pending executive review.</p>
+          <p style="margin-bottom:1rem; color:var(--text-muted);">Please provide specific feedback or concerns regarding budget, timelines, or scope so the strategy team can adjust the proposal.</p>
+          <textarea id="zan-reject-notes" placeholder="Enter reason for holding or questions for the team..." style="width:100%; height:80px; background:var(--navy); border:1px solid var(--border); border-radius:8px; padding:0.6rem; color:var(--white); font-family:inherit; font-size:0.85rem;"></textarea>
+        `;
+        footer.innerHTML = `
+          <button onclick="closeModal()" style="background:transparent; border:1px solid var(--border); color:var(--white); padding:0.5rem 1rem; border-radius:8px; cursor:pointer;">Cancel</button>
+          <button onclick="submitRejectFeedback()" style="background:#ef4444; color:white; padding:0.5rem 1.2rem; border-radius:8px; font-weight:700; border:none; cursor:pointer;">Submit Feedback & Hold</button>
+        `;
+      } else if (action === 'modify') {
+        title.innerHTML = '<span style="color:var(--orange);">✎ Modify Roadmap Scope &amp; Timing</span>';
+        body.innerHTML = `
+          <p style="margin-bottom:0.75rem;"><strong>Direct Engineering Instruction from Zan:</strong></p>
+          <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:1rem;">Specify how you want this modified (e.g. accelerate Phase 2, adjust target boroughs, prioritize specific equipment or contract sizes):</p>
+          <textarea id="zan-modify-notes" placeholder="e.g., Focus first on medical clinics in NDG and Westmount, and prioritize Tennant scrubber video proofs..." style="width:100%; height:100px; background:var(--navy); border:1px solid var(--orange); border-radius:8px; padding:0.75rem; color:var(--white); font-family:inherit; font-size:0.85rem;"></textarea>
+        `;
+        footer.innerHTML = `
+          <button onclick="closeModal()" style="background:transparent; border:1px solid var(--border); color:var(--white); padding:0.5rem 1rem; border-radius:8px; cursor:pointer;">Cancel</button>
+          <button onclick="submitModifyFeedback()" style="background:var(--orange); color:var(--navy); padding:0.5rem 1.2rem; border-radius:8px; font-weight:800; border:none; cursor:pointer;">Update Roadmap</button>
+        `;
+      }
+
+      modal.style.display = 'flex';
+    }
+
+    function closeModal() {
+      var modal = document.getElementById('zan-modal');
+      if (modal) modal.style.display = 'none';
+    }
+
+    function submitRejectFeedback() {
+      var notes = document.getElementById('zan-reject-notes');
+      alert("Executive hold and feedback logged. Engineering pipeline paused.");
+      closeModal();
+    }
+
+    function submitModifyFeedback() {
+      var notes = document.getElementById('zan-modify-notes');
+      alert("Roadmap modification logged for immediate team execution: " + (notes ? notes.value : ""));
+      closeModal();
+    }
+
+    // Responsive Navigation Toggle
+    function toggleNavMenu() {
+      var drawer = document.getElementById('mobile-nav-drawer');
+      var btn = document.getElementById('nav-toggle');
+      if (!drawer) return;
+      var isOpen = drawer.classList.contains('open');
+      if (isOpen) {
+        drawer.classList.remove('open');
+        if (btn) btn.innerHTML = '☰';
+        document.body.style.overflow = '';
+      } else {
+        drawer.classList.add('open');
+        if (btn) btn.innerHTML = '✕';
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    // Initialize Simulator & Calculator on load
+    document.addEventListener('DOMContentLoaded', function() {
+      setSimulatorTab('seo');
+      updateRoiCalculator();
+    });
+  </script>
+</body>
+</html>

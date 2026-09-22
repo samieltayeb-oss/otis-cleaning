@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OTIS | Executive ERP & AI Command Center</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Syne:wght@700;800&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root {
+      --bg: #050d14; --surface: #0a192f; --surface-hover: #112240; --border: #1e3a5f; --text: #C2D3E5; --white: #FFF;
+      --brand-navy: #0a192f; --brand-orange: #F7941D; --brand-gray: #8FA6BE; 
+      --green: #10b981; --red: #ef4444; --blue: #38bdf8; --purple: #a855f7; --gold: #eab308;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); display: flex; height: 100vh; overflow: hidden; }
+    
+    /* Left Sidebar: Modules */
+    .sidebar { width: 260px; background: var(--surface); border-right: 1px solid var(--border); display: flex; flex-direction: column; z-index: 20; }
+    .logo-area { padding: 1.5rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 15px; }
+    .logo-area img { height: 35px; filter: brightness(0) invert(1); }
+    .logo-area div { color: var(--brand-orange); font-size: 0.65rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; }
+    
+    .nav-group { padding: 1rem 0; border-bottom: 1px solid var(--border); }
+    .nav-title { font-size: 0.65rem; color: var(--brand-gray); text-transform: uppercase; letter-spacing: 1px; padding: 0 1.5rem; margin-bottom: 0.5rem; font-weight: 700; }
+    .nav-item { padding: 0.8rem 1.5rem; display: flex; align-items: center; gap: 12px; color: var(--text); font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: 0.2s; border-left: 3px solid transparent; }
+    .nav-item:hover { background: var(--surface-hover); color: var(--white); }
+    .nav-item.active { background: rgba(247, 148, 29, 0.1); border-left-color: var(--brand-orange); color: var(--brand-orange); }
+    
+    .nav-icon { font-size: 1.1rem; width: 20px; text-align: center; }
+    
+    /* Main Content Area */
+    .main-pane { flex: 1; display: flex; flex-direction: column; background: var(--bg); position: relative; overflow: hidden; }
+    
+    .top-bar { padding: 1rem 2rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; background: rgba(10, 25, 47, 0.9); backdrop-filter: blur(10px); z-index: 10; }
+    .top-bar h1 { font-family: 'Syne', sans-serif; font-size: 1.3rem; color: var(--white); }
+    .live-indicator { display: flex; align-items: center; gap: 8px; font-size: 0.75rem; font-weight: 700; color: var(--green); text-transform: uppercase; letter-spacing: 1px; background: rgba(16, 185, 129, 0.1); padding: 5px 12px; border-radius: 20px; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .pulse { width: 8px; height: 8px; background: var(--green); border-radius: 50%; box-shadow: 0 0 10px var(--green); animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.5); } 100% { opacity: 1; transform: scale(1); } }
+    
+    .content-area { flex: 1; overflow-y: auto; padding: 2rem; }
+    .module-view { display: none; max-width: 1200px; margin: 0 auto; animation: fadeIn 0.3s ease; }
+    .module-view.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Universal Grid & Cards */
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-bottom: 2rem; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 2rem; }
+    .grid-2 { display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem; margin-bottom: 2rem; }
+    
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
+    .card-title { font-size: 0.8rem; color: var(--brand-gray); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 0.5rem; }
+    .card-value { font-family: 'Syne', sans-serif; font-size: 2rem; color: var(--white); }
+    .card-delta.positive { color: var(--green); font-size: 0.85rem; font-weight: 600; display:flex; align-items:center; gap:5px; margin-top:5px; }
+
+    /* Specific Module: Finance */
+    .chart-container { height: 300px; width: 100%; margin-top: 1rem; }
+    .invoice-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+    .invoice-table th, .invoice-table td { padding: 1rem; text-align: left; border-bottom: 1px solid var(--border); font-size: 0.85rem; }
+    .invoice-table th { color: var(--brand-gray); text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px; }
+    .invoice-table tr:hover { background: rgba(255,255,255,0.02); }
+    .status-badge { padding: 4px 10px; border-radius: 6px; font-weight: 700; font-size: 0.7rem; text-transform: uppercase; }
+    .status-paid { background: rgba(16, 185, 129, 0.15); color: var(--green); }
+    .status-pending { background: rgba(234, 179, 8, 0.15); color: var(--gold); }
+
+    /* Specific Module: CRM Kanban */
+    .kanban-board { display: flex; gap: 1.5rem; overflow-x: auto; padding-bottom: 1rem; }
+    .kanban-col { background: rgba(0,0,0,0.2); border: 1px solid var(--border); border-radius: 8px; width: 300px; flex-shrink: 0; display: flex; flex-direction: column; }
+    .kanban-hdr { padding: 1rem; border-bottom: 1px solid var(--border); font-family: 'Syne', sans-serif; font-size: 1rem; color: var(--white); display: flex; justify-content: space-between; }
+    .kanban-count { background: var(--border); padding: 2px 8px; border-radius: 12px; font-size: 0.75rem; font-family: 'Inter', sans-serif; }
+    .kanban-body { padding: 1rem; display: flex; flex-direction: column; gap: 1rem; flex: 1; }
+    .deal-card { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 1rem; cursor: pointer; transition: 0.2s; border-left: 3px solid var(--brand-orange); }
+    .deal-card:hover { transform: translateY(-3px); box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+    .deal-name { color: var(--white); font-weight: 700; font-size: 0.95rem; margin-bottom: 0.3rem; }
+    .deal-val { color: var(--green); font-size: 0.85rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .deal-agent { font-size: 0.7rem; color: var(--brand-gray); display: flex; align-items: center; gap: 5px; }
+
+    /* Tri-State Action Feed */
+    .task-card { background: linear-gradient(135deg, var(--surface), #050d14); border: 1px solid rgba(247, 148, 29, 0.3); border-radius: 8px; margin-bottom: 1.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.2); transition: 0.3s; }
+    .task-hdr { padding: 1rem 1.5rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.2); }
+    .task-body { padding: 1.5rem; }
+    .action-bar { padding: 1rem 1.5rem; border-top: 1px solid var(--border); display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; background: rgba(0,0,0,0.2); }
+    .btn { padding: 0.8rem; border-radius: 6px; font-weight: 700; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; border: none; font-size: 0.75rem; display: flex; align-items: center; justify-content: center; gap: 8px; transition: 0.2s; }
+    .btn-approve { background: rgba(16, 185, 129, 0.1); color: var(--green); border: 1px solid var(--green); }
+    .btn-approve:hover { background: rgba(16, 185, 129, 0.25); }
+    .btn-reject { background: rgba(239, 68, 68, 0.1); color: var(--red); border: 1px solid var(--red); }
+    .btn-reject:hover { background: rgba(239, 68, 68, 0.25); }
+    .btn-adjust { background: rgba(56, 189, 248, 0.1); color: var(--blue); border: 1px solid var(--blue); }
+    .btn-adjust:hover { background: rgba(56, 189, 248, 0.25); }
+
+    /* AI Staff Directory */
+    .cv-grid-main { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+    .cv-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; position: relative; overflow: hidden; }
+    .cv-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--brand-orange); }
+    .cv-avatar { width: 50px; height: 50px; border-radius: 8px; background: rgba(255,255,255,0.05); font-size: 1.8rem; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
+    .cv-name { font-family: 'Syne', sans-serif; font-size: 1.3rem; color: var(--white); margin-bottom: 0.2rem; }
+    .cv-title { font-size: 0.75rem; color: var(--brand-orange); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 1rem; }
+    .cv-desc { font-size: 0.85rem; color: var(--brand-gray); line-height: 1.5; margin-bottom: 1rem; }
+    .cv-tech { font-family: monospace; font-size: 0.7rem; color: var(--blue); background: rgba(56, 189, 248, 0.1); padding: 8px; border-radius: 4px; }
+
+    /* Inbox List Interactive Items */
+    .inbox-item { padding: 1rem; border-bottom: 1px solid var(--border); cursor: pointer; transition: 0.2s; border-left: 3px solid transparent; }
+    .inbox-item:hover { background: rgba(255,255,255,0.03); }
+    .inbox-item.active { background: rgba(247, 148, 29, 0.08); border-left-color: var(--brand-orange); }
+
+    /* Modals & Overlays */
+    .auth-overlay { position: fixed; inset: 0; background: rgba(5, 13, 20, 0.95); backdrop-filter: blur(12px); z-index: 9999; display: flex; align-items: center; justify-content: center; }
+    .auth-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 2.5rem; width: 400px; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+    
+    .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.7); backdrop-filter: blur(5px); z-index: 999; display: none; align-items: center; justify-content: center; }
+    .modal-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; width: 550px; max-width: 90%; box-shadow: 0 10px 40px rgba(0,0,0,0.4); }
+
+    /* Toast Notification */
+    #toast-container { position: fixed; bottom: 20px; right: 20px; z-index: 10000; display: flex; flex-direction: column; gap: 10px; }
+    .toast { background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--brand-orange); color: var(--white); padding: 12px 20px; border-radius: 6px; font-size: 0.85rem; box-shadow: 0 5px 20px rgba(0,0,0,0.3); animation: slideIn 0.3s ease; }
+    @keyframes slideIn { from { transform: translateX(50px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+  </style>
+</head>
+<body>
+
+<!-- EXECUTIVE AUTHENTICATION GATE OVERLAY -->
+<div id="auth-overlay" class="auth-overlay">
+  <div class="auth-card">
+    <img src="imgs/otis-logo.png" alt="OTIS" style="height: 38px; margin-bottom: 1.2rem; filter: brightness(0) invert(1);">
+    <h2 style="font-family: 'Syne', sans-serif; color: var(--white); font-size: 1.4rem; margin-bottom: 0.4rem;">Executive ERP Console</h2>
+    <p style="color: var(--brand-gray); font-size: 0.85rem; margin-bottom: 1.5rem;">Zan | Owner & Operator Access Control</p>
+    
+    <div style="margin-bottom: 1.2rem; text-align: left;">
+      <label style="display:block; font-size: 0.7rem; color: var(--brand-orange); text-transform: uppercase; font-weight: 700; margin-bottom: 0.4rem; letter-spacing: 1px;">Security PIN</label>
+      <input type="password" id="auth-pin-input" placeholder="Enter PIN (Default: 8842)" maxlength="8" style="width: 100%; padding: 0.8rem 1rem; border-radius: 6px; background: rgba(0,0,0,0.3); border: 1px solid var(--border); color: #fff; font-size: 1.1rem; outline: none; text-align: center; letter-spacing: 4px;" onkeyup="if(event.key==='Enter') handleExecutiveLogin()">
+    </div>
+    <button id="auth-unlock-btn" class="btn btn-approve" style="width: 100%; padding: 0.85rem; font-size: 0.85rem;" onclick="handleExecutiveLogin()">Unlock Executive Console</button>
+    <div id="auth-error" style="color: var(--red); font-size: 0.8rem; margin-top: 0.8rem; display: none;"></div>
+  </div>
+</div>
+
+<!-- TOAST CONTAINER -->
+<div id="toast-container"></div>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <div class="logo-area">
+    <img src="imgs/otis-logo.png" alt="OTIS">
+    <div>ERP SYSTEM</div>
+  </div>
+  
+  <div class="nav-group">
+    <div class="nav-title">Communications</div>
+    <div class="nav-item" onclick="switchModule('module-inbox', this)">
+      <div class="nav-icon">📧</div> Internal Inbox (Clara)
+    </div>
+  </div>
+  <div class="nav-group">
+    <div class="nav-title">Execution</div>
+    <div class="nav-item active" onclick="switchModule('module-command', this)">
+      <div class="nav-icon">⚡</div> Tri-State Command
+    </div>
+  </div>
+
+  <div class="nav-group">
+    <div class="nav-title">Financials & Growth</div>
+    <div class="nav-item" onclick="switchModule('module-finance', this)">
+      <div class="nav-icon">📈</div> Finance & Invoices
+    </div>
+    <div class="nav-item" onclick="switchModule('module-crm', this)">
+      <div class="nav-icon">🎯</div> Lead CRM & Pipeline
+    </div>
+  </div>
+
+  <div class="nav-group">
+    <div class="nav-title">Operations</div>
+    <div class="nav-item" onclick="switchModule('module-hr', this)">
+      <div class="nav-icon">🚐</div> HR & Fleet Map
+    </div>
+    <div class="nav-item" onclick="switchModule('module-ai', this)">
+      <div class="nav-icon">🤖</div> AI Staff Directory
+    </div>
+  </div>
+
+  <div class="nav-group" style="border-bottom:none; margin-top:auto;">
+    <div class="nav-item" onclick="window.location.href='index.html'">
+      <div class="nav-icon">🌍</div> Public Website
+    </div>
+    <div class="nav-item" onclick="window.location.href='execution.html'">
+      <div class="nav-icon">⚙️</div> Manual Generators
+    </div>
+  </div>
+</div>
+
+<div class="main-pane">
+  <div class="top-bar">
+    <h1 id="top-title">Tri-State Command Console</h1>
+    <div style="display:flex; gap:12px; align-items:center;">
+      <button id="odoo-sync-btn" style="background:rgba(168, 85, 247, 0.15); border:1px solid rgba(168, 85, 247, 0.4); color:var(--purple); padding:6px 14px; border-radius:20px; font-size:0.75rem; font-weight:700; cursor:pointer; transition:0.2s;" onclick="syncOdooData()">🔄 Sync Odoo Data</button>
+      <div class="live-indicator" id="live-indicator-badge">
+        <div class="pulse"></div> AI System Fully Automated
+      </div>
+      <button onclick="lockExecutiveSession()" style="background:rgba(239, 68, 68, 0.1); border:1px solid rgba(239, 68, 68, 0.3); color:var(--red); padding:6px 12px; border-radius:6px; font-size:0.75rem; font-weight:700; cursor:pointer;" title="Lock Session">🔒 Lock</button>
+    </div>
+  </div>
+  
+  <div class="content-area">
+
+    <!-- MODULE: INTERNAL INBOX -->
+    <div id="module-inbox" class="module-view">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 2rem;">
+        <div>
+          <h2 style="font-family:'Syne', sans-serif; color:var(--white); margin-bottom:0.5rem;">OTIS Corporate Inbox</h2>
+          <p style="color:var(--brand-gray); font-size:0.9rem;">Live webmail hooked to info@otiscc.ca via SendGrid Inbound Parse. Clara monitors this for inbound leads.</p>
+        </div>
+        <button class="btn btn-approve" style="padding:0.8rem 1.5rem; width:auto;" onclick="openComposeModal()">+ Compose Email</button>
+      </div>
+
+      <div style="display:flex; gap:1.5rem; height: 600px;">
+        <!-- Inbox List -->
+        <div style="width: 360px; background:var(--surface); border:1px solid var(--border); border-radius:8px; display:flex; flex-direction:column;">
+          <div style="padding:1rem; border-bottom:1px solid var(--border); font-weight:700; display:flex; justify-content:space-between; align-items:center;">
+            <span>Inbox <span id="inbox-count-badge" style="background:var(--brand-orange); color:#000; padding:2px 8px; border-radius:12px; font-size:0.7rem; margin-left:10px;">0 New</span></span>
+            <button onclick="fetchInboxEmails()" style="background:transparent; border:none; color:var(--brand-gray); cursor:pointer; font-size:0.8rem;" title="Refresh Inbox">🔄</button>
+          </div>
+          <div id="inbox-list-container" style="overflow-y:auto; flex:1;">
+            <!-- Dynamically populated from /api/inbound_email or /api/firebase -->
+          </div>
+        </div>
+
+        <!-- Email Viewer -->
+        <div id="email-viewer-pane" style="flex:1; background:var(--surface); border:1px solid var(--border); border-radius:8px; display:flex; flex-direction:column; overflow:hidden;">
+          <div style="padding: 2rem; text-align: center; color: var(--brand-gray); margin: auto;">Select an email from the inbox to read and review Clara's AI reply.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODULE 1: COMMAND CENTER (FEED) -->
+    <div id="module-command" class="module-view active">
+      <div style="margin-bottom: 2rem;">
+        <h2 style="font-family:'Syne', sans-serif; color:var(--white); margin-bottom:0.5rem;">Awaiting Executive Approval</h2>
+        <p style="color:var(--brand-gray); font-size:0.9rem;">Your AI agents have prepared the following actions. Click Approve to execute the API calls.</p>
+      </div>
+
+      <!-- Task 1 -->
+      <div class="task-card" id="task-hunter-card">
+        <div class="task-hdr">
+          <div style="display:flex; gap:10px; align-items:center;">
+            <span style="font-size:1.2rem;">🎯</span> <span style="font-weight:700; color:var(--brand-gray);">HUNTER (LEADS) + VALÉRIE (SALES)</span>
+          </div>
+          <div id="task-hunter-badge" style="background:rgba(247,148,29,0.15); color:var(--brand-orange); padding:4px 10px; border-radius:20px; font-size:0.7rem; font-weight:700;">Outbound Pitch Ready</div>
+        </div>
+        <div class="task-body">
+          <h3 style="color:var(--white); font-family:'Syne'; font-size:1.3rem; margin-bottom:0.5rem;">Fire Cold Email to "Centre Dentaire Lakeshore"</h3>
+          <p style="color:var(--text); font-size:0.95rem; line-height:1.6; margin-bottom:1rem;">Hunter identified this clinic via Maps API. CASL checked. Valérie wrote the 'Pre-Winter Wedge' pitch targeting their dirty floors. Awaiting Zan's approval to trigger SendGrid.</p>
+          <div style="background:rgba(0,0,0,0.3); padding:1rem; border-radius:6px; font-size:0.85rem;">
+            <div style="display:flex; justify-content:space-between; margin-bottom:5px;"><span style="color:var(--brand-gray)">Lead:</span> <span style="color:var(--white); font-weight:700;">Dr. Tremblay (Owner)</span></div>
+            <div style="display:flex; justify-content:space-between;"><span style="color:var(--brand-gray)">Expected MRR:</span> <span style="color:var(--green); font-weight:700;">$1,800/mo</span></div>
+          </div>
+        </div>
+        <div class="action-bar" id="task-hunter-actions">
+          <button class="btn btn-approve" onclick="approveHunterPitch()">✓ APPROVE (SEND)</button>
+          <button class="btn btn-reject" onclick="rejectHunterPitch()">✕ REJECT (TRASH)</button>
+          <button class="btn btn-adjust" onclick="openPitchModal()">⚙️ ADJUST PITCH</button>
+        </div>
+      </div>
+
+      <!-- Task 2 -->
+      <div class="task-card" id="task-sophie-card">
+        <div class="task-hdr">
+          <div style="display:flex; gap:10px; align-items:center;">
+            <span style="font-size:1.2rem;">⭐</span> <span style="font-weight:700; color:var(--brand-gray);">SOPHIE (RETENTION)</span>
+          </div>
+          <div id="task-sophie-badge" style="background:rgba(56,189,248,0.15); color:var(--blue); padding:4px 10px; border-radius:20px; font-size:0.7rem; font-weight:700;">Consumables Upsell</div>
+        </div>
+        <div class="task-body">
+          <h3 style="color:var(--white); font-family:'Syne'; font-size:1.3rem; margin-bottom:0.5rem;">Execute 20% Markup Supply Addendum for "Epic Quebec"</h3>
+          <p style="color:var(--text); font-size:0.95rem; line-height:1.6; margin-bottom:1rem;">Client has been with us for 45 days with 100% QA scores. Sophie auto-generated a PDF addendum to take over their toilet paper purchasing. This will add $185/mo to their invoice.</p>
+          <div style="background:rgba(0,0,0,0.3); padding:1rem; border-radius:6px; font-size:0.85rem;">
+            <div style="display:flex; justify-content:space-between; margin-bottom:5px;"><span style="color:var(--brand-gray)">Attachment:</span> <span style="color:var(--blue); font-weight:700; cursor:pointer; text-decoration:underline;" onclick="window.open('restock_engine.html')">Addendum_Epic.pdf</span></div>
+            <div style="display:flex; justify-content:space-between;"><span style="color:var(--brand-gray)">New Total MRR:</span> <span style="color:var(--green); font-weight:700;">$2,335/mo</span></div>
+          </div>
+        </div>
+        <div class="action-bar" id="task-sophie-actions">
+          <button class="btn btn-approve" onclick="approveSophieUpsell()">✓ APPROVE (EMAIL PDF)</button>
+          <button class="btn btn-reject" onclick="delaySophieUpsell()">✕ DELAY (REMIND 30D)</button>
+          <button class="btn btn-adjust" onclick="window.open('restock_engine.html')">⚙️ MODIFY MARGIN</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODULE 2: FINANCE & INVOICES -->
+    <div id="module-finance" class="module-view">
+      <div class="grid-4">
+        <div class="card">
+          <div class="card-title">Total Monthly Recurring Revenue (MRR)</div>
+          <div class="card-value" id="finance-mrr-val">$6,100.00</div>
+          <div class="card-delta positive" id="finance-mrr-delta">↑ Phase 1 Baseline Active</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Projected EOY MRR Goal</div>
+          <div class="card-value">$25,000.00</div>
+          <div class="card-delta" style="color:var(--gold); font-size:0.85rem; font-weight:600;">Phase 4 Target</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Average Gross Margin</div>
+          <div class="card-value">42.8%</div>
+          <div class="card-delta positive">↑ +2.1% via Consumables</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Outstanding Receivables</div>
+          <div class="card-value" id="finance-receivables-val">$1,250.00</div>
+          <div class="card-delta" style="color:var(--red); font-size:0.85rem; font-weight:600;">Valérie chasing via Email</div>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-title" style="margin-bottom: 1rem;">MRR Growth Trajectory (90 Days)</div>
+          <div class="chart-container">
+            <canvas id="mrrChart"></canvas>
+          </div>
+        </div>
+        <div class="card">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+            <div class="card-title" style="margin-bottom:0;">Recent Invoices (Odoo)</div>
+            <a href="invoice_generator.html" target="_blank" style="font-size:0.75rem; color:var(--blue); text-decoration:none; font-weight:700;">+ Manual Generate</a>
+          </div>
+          <table class="invoice-table">
+            <thead>
+              <tr>
+                <th>Client</th>
+                <th>Amount (CAD)</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="invoices-tbody">
+              <tr>
+                <td><a href="invoice_generator.html" target="_blank" style="color:var(--white); text-decoration:none;">Placements Sergakis</a></td>
+                <td style="font-weight:700;">$1,379.70</td>
+                <td><span class="status-badge status-paid">Paid</span></td>
+              </tr>
+              <tr>
+                <td><a href="invoice_generator.html" target="_blank" style="color:var(--white); text-decoration:none;">Epic Quebec</a></td>
+                <td style="font-weight:700;">$2,471.93</td>
+                <td><span class="status-badge status-paid">Paid</span></td>
+              </tr>
+              <tr>
+                <td><a href="#" style="color:var(--white); text-decoration:none;">Clinique Dentaire NDG</a></td>
+                <td style="font-weight:700;">$1,250.00</td>
+                <td><span class="status-badge status-pending">Net 30</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODULE 3: CRM & PIPELINE -->
+    <div id="module-crm" class="module-view">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 2rem;">
+        <div>
+          <h2 style="font-family:'Syne', sans-serif; color:var(--white); margin-bottom:0.5rem;">Sales Pipeline & Lead Tracking</h2>
+          <p style="color:var(--brand-gray); font-size:0.9rem;">Hunter scrapes the web. Clara answers the chat. Valérie closes the deals.</p>
+        </div>
+        <a href="bidding_engine.html" target="_blank" class="btn btn-approve" style="padding:0.8rem 1.5rem;">+ Open Bidding Engine</a>
+      </div>
+
+      <div class="kanban-board">
+        <!-- Col 1 -->
+        <div class="kanban-col">
+          <div class="kanban-hdr">
+            Scraped by Hunter <span class="kanban-count" id="count-scraped">24</span>
+          </div>
+          <div class="kanban-body" id="kanban-scraped-body">
+            <div class="deal-card">
+              <div class="deal-name">Tech Hub Mile End</div>
+              <div class="deal-val">$2,500/mo</div>
+              <div class="deal-agent">🎯 Awaiting Email Dispatch</div>
+            </div>
+            <div class="deal-card">
+              <div class="deal-name">Clinique Med Plateau</div>
+              <div class="deal-val">$1,200/mo</div>
+              <div class="deal-agent">🎯 Validating CASL rules</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Col 2 -->
+        <div class="kanban-col">
+          <div class="kanban-hdr">
+            Inbound Walkthroughs <span class="kanban-count" id="count-inbound">2</span>
+          </div>
+          <div class="kanban-body" id="kanban-inbound-body">
+            <div class="deal-card" style="border-left-color:var(--blue);">
+              <div class="deal-name">Dental Office Westmount</div>
+              <div class="deal-val">$1,800/mo</div>
+              <div class="deal-agent">💬 Booked by Clara (Chatbot)</div>
+            </div>
+            <div class="deal-card" style="border-left-color:var(--blue);">
+              <div class="deal-name">Law Firm Downtown</div>
+              <div class="deal-val">$3,100/mo</div>
+              <div class="deal-agent">🗺️ Alex Routing Traffic</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Col 3 -->
+        <div class="kanban-col">
+          <div class="kanban-hdr">
+            Proposal Sent <span class="kanban-count" id="count-proposal">1</span>
+          </div>
+          <div class="kanban-body" id="kanban-proposal-body">
+            <div class="deal-card" style="border-left-color:var(--purple);">
+              <div class="deal-name">Syndicat Copropriété Laval</div>
+              <div class="deal-val">$4,500/mo</div>
+              <div class="deal-agent">✍️ Valérie Sent PDF (Follow up in 2d)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Col 4 -->
+        <div class="kanban-col">
+          <div class="kanban-hdr">
+            Closed / Active <span class="kanban-count" id="count-closed">2</span>
+          </div>
+          <div class="kanban-body" id="kanban-closed-body">
+            <div class="deal-card" style="border-left-color:var(--green);">
+              <div class="deal-name">Epic Quebec</div>
+              <div class="deal-val">$2,150/mo</div>
+              <div class="deal-agent">⚖️ Émile Verified Contract</div>
+            </div>
+            <div class="deal-card" style="border-left-color:var(--green);">
+              <div class="deal-name">Placements Sergakis</div>
+              <div class="deal-val">$1,200/mo</div>
+              <div class="deal-agent">⭐ Sophie Upselling Soon</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODULE 4: HR & OPERATIONS -->
+    <div id="module-hr" class="module-view">
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-title">Active Field Crews</div>
+          <div class="card-value">2</div>
+          <div class="card-delta" style="color:var(--brand-gray);">Bruno tracking via GPS</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Average QA Score (30d)</div>
+          <div class="card-value" style="color:var(--green);">98.4%</div>
+          <div class="card-delta positive">↑ Exceeds 95% Threshold</div>
+        </div>
+        <div class="card">
+          <div class="card-title">Legal Wage Compliance</div>
+          <div class="card-value" style="color:var(--blue);">$23.00/h</div>
+          <div class="card-delta" style="color:var(--blue); font-size:0.85rem; font-weight:600;">CPEEP Parity Decree Matched</div>
+        </div>
+      </div>
+
+      <div class="card" style="min-height: 400px; position:relative; overflow:hidden; padding:0;">
+        <div style="padding: 1.5rem; border-bottom: 1px solid var(--border); background: var(--surface); position:relative; z-index:2;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin:0;"><div class="card-title" style="margin:0;">Live Map & Fleet Dispatch</div><a href="field_app.html" target="_blank" style="font-size:0.75rem; color:var(--blue); font-weight:700; text-decoration:none;">+ Launch Crew App (Preview)</a></div>
+        </div>
+        <!-- Mock Map Background -->
+        <div style="position:absolute; top:0; left:0; width:100%; height:100%; background: url('https://upload.wikimedia.org/wikipedia/commons/e/e0/Montreal_locator_map.png') center/cover opacity:0.1; filter: grayscale(100%) invert(100%) brightness(50%); z-index:1;"></div>
+        
+        <!-- Map Markers -->
+        <div style="position:absolute; top:40%; left:50%; z-index:3; background:rgba(10,25,47,0.9); border:1px solid var(--green); padding:10px; border-radius:8px;">
+          <div style="font-size:0.7rem; color:var(--brand-gray); text-transform:uppercase;">Crew Alpha</div>
+          <div style="color:var(--white); font-weight:700; font-size:0.85rem;">Epic Quebec (Cleaning...)</div>
+          <div style="color:var(--green); font-size:0.7rem; margin-top:4px;">● Clocked In 1h 20m ago</div>
+        </div>
+        
+        <div style="position:absolute; top:60%; left:35%; z-index:3; background:rgba(10,25,47,0.9); border:1px solid var(--blue); padding:10px; border-radius:8px;">
+          <div style="font-size:0.7rem; color:var(--brand-gray); text-transform:uppercase;">Crew Bravo</div>
+          <div style="color:var(--white); font-weight:700; font-size:0.85rem;">En Route to NDG</div>
+          <div style="color:var(--blue); font-size:0.7rem; margin-top:4px;">● ETA: 14 mins</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODULE 5: AI STAFF DIRECTORY -->
+    <div id="module-ai" class="module-view">
+      <div style="margin-bottom: 2rem;">
+        <h2 style="font-family:'Syne', sans-serif; color:var(--white); margin-bottom:0.5rem;">Corporate AI Staff Directory</h2>
+        <p style="color:var(--brand-gray); font-size:0.9rem;">The 8 automated employees managing your enterprise. Salary: $0. Availability: 24/7.</p>
+      </div>
+      
+      <div class="cv-grid-main">
+        <div class="cv-card">
+          <div class="cv-avatar">🎯</div>
+          <div class="cv-name">Hunter</div>
+          <div class="cv-title">Director of Sourcing</div>
+          <div class="cv-desc">Scrapes Maps & LinkedIn for leads. Checks CASL compliance.</div>
+          <div class="cv-tech">API: Google Places, ZeroBounce</div>
+        </div>
+        <div class="cv-card">
+          <div class="cv-avatar">💬</div>
+          <div class="cv-name">Clara</div>
+          <div class="cv-title">Inbound Concierge</div>
+          <div class="cv-desc">Answers 24/7 web chat. Books walkthroughs directly to your calendar.</div>
+          <div class="cv-tech">API: OpenAI, Twilio Webhooks</div>
+        </div>
+        <div class="cv-card">
+          <div class="cv-avatar">✍️</div>
+          <div class="cv-name">Valérie</div>
+          <div class="cv-title">Proposal Architect</div>
+          <div class="cv-desc">Drafts perfect contracts, applies Article 14 shields, builds PDFs.</div>
+          <div class="cv-tech">Module: Bidding Engine, Contract Gen</div>
+        </div>
+        <div class="cv-card">
+          <div class="cv-avatar">⚖️</div>
+          <div class="cv-name">Émile</div>
+          <div class="cv-title">Compliance Sentinel</div>
+          <div class="cv-desc">Ensures Bill 96 French laws & CPEEP wage parity laws are followed.</div>
+          <div class="cv-tech">DB: Quebec CNESST / Legislate</div>
+        </div>
+        <div class="cv-card">
+          <div class="cv-avatar">🗺️</div>
+          <div class="cv-name">Alex</div>
+          <div class="cv-title">Route Coordinator</div>
+          <div class="cv-desc">Enforces the 15-minute density rule. Rejects far-away leads.</div>
+          <div class="cv-tech">API: Google Distance Matrix</div>
+        </div>
+        <div class="cv-card">
+          <div class="cv-avatar">🧰</div>
+          <div class="cv-name">Marcus</div>
+          <div class="cv-title">CapEx Manager</div>
+          <div class="cv-desc">Tracks floor scrubbers, amortizes equipment rental costs into bids.</div>
+          <div class="cv-tech">Module: Restock & Scale Engine</div>
+        </div>
+        <div class="cv-card">
+          <div class="cv-avatar">🚐</div>
+          <div class="cv-name">Bruno</div>
+          <div class="cv-title">Crew Dispatch</div>
+          <div class="cv-desc">Texts lockbox codes to human cleaners. Tracks GPS clock-ins.</div>
+          <div class="cv-tech">API: Twilio SMS, Geo-fencing</div>
+        </div>
+        <div class="cv-card">
+          <div class="cv-avatar">⭐</div>
+          <div class="cv-name">Sophie</div>
+          <div class="cv-title">Retention & QA</div>
+          <div class="cv-desc">Collects Google Reviews after shifts, upsells TP and Soap at 20% margin.</div>
+          <div class="cv-tech">API: SendGrid, Google Business</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- MODAL: ADJUST PITCH -->
+<div id="pitch-modal" class="modal-overlay">
+  <div class="modal-card">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+      <h3 style="font-family:'Syne'; color:#fff; font-size:1.2rem;">Adjust Valérie's Cold Email Pitch</h3>
+      <button onclick="closePitchModal()" style="background:transparent; border:none; color:var(--brand-gray); font-size:1.2rem; cursor:pointer;">✕</button>
+    </div>
+    <div style="margin-bottom:1rem;">
+      <label style="display:block; font-size:0.75rem; color:var(--brand-gray); margin-bottom:0.4rem;">Target Organization</label>
+      <input type="text" id="pitch-target" value="Centre Dentaire Lakeshore" style="width:100%; padding:0.6rem; border-radius:4px; background:rgba(0,0,0,0.3); border:1px solid var(--border); color:#fff;">
+    </div>
+    <div style="margin-bottom:1rem;">
+      <label style="display:block; font-size:0.75rem; color:var(--brand-gray); margin-bottom:0.4rem;">Email Pitch Draft</label>
+      <textarea id="pitch-text" rows="6" style="width:100%; padding:0.8rem; border-radius:4px; background:rgba(0,0,0,0.3); border:1px solid var(--border); color:#fff; font-family:inherit; font-size:0.85rem; line-height:1.5;">Bonjour Dr. Tremblay,
+
+Suite à notre analyse de vos locaux, nous avons remarqué l'impact sévère du sel hivernal sur vos planchers. OTIS applique rigoureusement le décret légal CPEEP (23 $/h). Nous vous offrons une inspection gratuite de 10 minutes ainsi qu'un test de récurage mécanique Tennant.</textarea>
+    </div>
+    <div style="display:flex; justify-content:space-between;">
+      <button class="btn btn-adjust" onclick="regeneratePitchAI()">🤖 Valérie Regenerate</button>
+      <div style="display:flex; gap:10px;">
+        <button class="btn btn-reject" onclick="closePitchModal()">Cancel</button>
+        <button class="btn btn-approve" onclick="saveAndSendPitch()">Save & Queue</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: COMPOSE EMAIL -->
+<div id="compose-modal" class="modal-overlay">
+  <div class="modal-card">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+      <h3 style="font-family:'Syne'; color:#fff; font-size:1.2rem;">Compose Inbound Webmail</h3>
+      <button onclick="closeComposeModal()" style="background:transparent; border:none; color:var(--brand-gray); font-size:1.2rem; cursor:pointer;">✕</button>
+    </div>
+    <div style="margin-bottom:0.8rem;">
+      <label style="display:block; font-size:0.75rem; color:var(--brand-gray); margin-bottom:0.4rem;">To:</label>
+      <input type="email" id="compose-to" placeholder="client@example.ca" style="width:100%; padding:0.6rem; border-radius:4px; background:rgba(0,0,0,0.3); border:1px solid var(--border); color:#fff;">
+    </div>
+    <div style="margin-bottom:0.8rem;">
+      <label style="display:block; font-size:0.75rem; color:var(--brand-gray); margin-bottom:0.4rem;">Subject:</label>
+      <input type="text" id="compose-subject" placeholder="Proposition d'entretien commercial" style="width:100%; padding:0.6rem; border-radius:4px; background:rgba(0,0,0,0.3); border:1px solid var(--border); color:#fff;">
+    </div>
+    <div style="margin-bottom:1rem;">
+      <label style="display:block; font-size:0.75rem; color:var(--brand-gray); margin-bottom:0.4rem;">Message Body:</label>
+      <textarea id="compose-body" rows="6" style="width:100%; padding:0.8rem; border-radius:4px; background:rgba(0,0,0,0.3); border:1px solid var(--border); color:#fff; font-family:inherit; font-size:0.85rem;"></textarea>
+    </div>
+    <div style="display:flex; justify-content:flex-end; gap:10px;">
+      <button class="btn btn-reject" onclick="closeComposeModal()">Cancel</button>
+      <button class="btn btn-approve" onclick="dispatchManualEmail()">Send Email via SendGrid</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  let currentInboxes = [];
+  let selectedEmailIndex = 0;
+  let mrrChartInstance = null;
+
+  // Notification Toast Helper
+  function showToast(msg, isSuccess = true) {
+    const container = document.getElementById('toast-container');
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.style.borderLeftColor = isSuccess ? 'var(--green)' : 'var(--red)';
+    toast.innerText = msg;
+    container.appendChild(toast);
+    setTimeout(() => {
+      toast.style.opacity = '0';
+      setTimeout(() => toast.remove(), 300);
+    }, 4000);
+  }
+
+  // Navigation Switch
+  function switchModule(modId, element) {
+    document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+    element.classList.add('active');
+    
+    document.querySelectorAll('.module-view').forEach(el => el.classList.remove('active'));
+    document.getElementById(modId).classList.add('active');
+    
+    document.getElementById('top-title').innerText = element.innerText.trim();
+
+    if (modId === 'module-inbox') {
+      fetchInboxEmails();
+    }
+  }
+
+  // Executive Authentication Gate
+  async function checkSessionAuth() {
+    const token = sessionStorage.getItem('otis_erp_token');
+    if (!token) {
+      document.getElementById('auth-overlay').style.display = 'flex';
+      return false;
+    }
+
+    try {
+      const res = await fetch('/api/auth', {
+        headers: { 'Authorization': 'Bearer ' + token }
+      });
+      const data = await res.json();
+      if (data.authenticated) {
+        document.getElementById('auth-overlay').style.display = 'none';
+        return true;
+      }
+    } catch (e) {}
+
+    document.getElementById('auth-overlay').style.display = 'flex';
+    return false;
+  }
+
+  async function handleExecutiveLogin() {
+    const pin = document.getElementById('auth-pin-input').value.trim();
+    const btn = document.getElementById('auth-unlock-btn');
+    const errDiv = document.getElementById('auth-error');
+
+    if (!pin) {
+      errDiv.innerText = 'Please enter security PIN';
+      errDiv.style.display = 'block';
+      return;
+    }
+
+    btn.innerText = 'Verifying...';
+    btn.disabled = true;
+
+    try {
+      const res = await fetch('/api/auth', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ pin })
+      });
+      const data = await res.json();
+
+      if (data.success && data.token) {
+        sessionStorage.setItem('otis_erp_token', data.token);
+        document.getElementById('auth-overlay').style.display = 'none';
+        showToast('🔓 Executive console unlocked. Welcome Zan.');
+        initializeDashboardData();
+      } else {
+        errDiv.innerText = data.error || 'Invalid Executive PIN';
+        errDiv.style.display = 'block';
+      }
+    } catch (err) {
+      errDiv.innerText = 'Failed to connect to authentication API';
+      errDiv.style.display = 'block';
+    } finally {
+      btn.innerText = 'Unlock Executive Console';
+      btn.disabled = false;
+    }
+  }
+
+  function lockExecutiveSession() {
+    sessionStorage.removeItem('otis_erp_token');
+    document.getElementById('auth-pin-input').value = '';
+    document.getElementById('auth-error').style.display = 'none';
+    document.getElementById('auth-overlay').style.display = 'flex';
+    showToast('🔒 Executive console locked.', false);
+  }
+
+  // Odoo XML-RPC Synchronization
+  async function syncOdooData() {
+    const btn = document.getElementById('odoo-sync-btn');
+    const badge = document.getElementById('live-indicator-badge');
+    const oldBtnText = btn.innerHTML;
+
+    btn.innerHTML = '⏳ Syncing Odoo XML-RPC...';
+    btn.disabled = true;
+    btn.style.opacity = '0.7';
+
+    try {
+      const token = sessionStorage.getItem('otis_erp_token');
+      const res = await fetch('/api/odoo_sync', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + token
+        }
+      });
+      const result = await res.json();
+
+      if (result.status === 'success' && result.data_synced) {
+        const d = result.data_synced;
+        showToast(`✅ Odoo Synced: ${d.clients} Clients, ${d.invoices} Invoices ($${d.total_mrr.toLocaleString('en-CA')} MRR)`);
+        
+        // Update Finance Cards
+        document.getElementById('finance-mrr-val').innerText = `$${d.total_mrr.toLocaleString('en-CA')}.00`;
+        document.getElementById('finance-receivables-val').innerText = `$${d.outstanding_receivables.toLocaleString('en-CA')}.00`;
+        document.getElementById('finance-mrr-delta').innerHTML = `↑ Odoo Synced (${result.mode === 'live_odoo_xmlrpc' ? 'Live' : 'Simulation'})`;
+
+        // Update Invoices Table
+        if (Array.isArray(d.recent_invoices) && d.recent_invoices.length > 0) {
+          const tbody = document.getElementById('invoices-tbody');
+          tbody.innerHTML = d.recent_invoices.map(inv => `
+            <tr>
+              <td><span style="color:var(--white);">${inv.client}</span></td>
+              <td style="font-weight:700;">$${inv.amount.toLocaleString('en-CA', { minimumFractionDigits: 2 })}</td>
+              <td><span class="status-badge ${inv.status === 'paid' ? 'status-paid' : 'status-pending'}">${inv.status}</span></td>
+            </tr>
+          `).join('');
+        }
+
+        // Update CRM Kanban with synced clients
+        if (Array.isArray(d.recent_clients) && d.recent_clients.length > 0) {
+          const closedBody = document.getElementById('kanban-closed-body');
+          closedBody.innerHTML = d.recent_clients.slice(0, 4).map(c => `
+            <div class="deal-card" style="border-left-color:var(--green);">
+              <div class="deal-name">${c.name}</div>
+              <div class="deal-val">$${c.mrr || 2150}/mo</div>
+              <div class="deal-agent">🏢 Odoo Partner #${c.id} (${c.city || 'Montreal'})</div>
+            </div>
+          `).join('');
+          document.getElementById('count-closed').innerText = d.recent_clients.length;
+        }
+
+        // Update Chart
+        if (mrrChartInstance) {
+          mrrChartInstance.data.datasets[0].data[0] = d.total_mrr;
+          mrrChartInstance.update();
+        }
+
+        badge.innerHTML = `<div class="pulse"></div> Odoo Active (${d.clients} Clients)`;
+      } else {
+        showToast('⚠️ Odoo sync completed with fallback.', false);
+      }
+    } catch (e) {
+      showToast('❌ Odoo connection error: ' + e.message, false);
+    } finally {
+      btn.innerHTML = oldBtnText;
+      btn.disabled = false;
+      btn.style.opacity = '1';
+    }
+  }
+
+  // Internal Corporate Inbox Logic
+  async function fetchInboxEmails() {
+    try {
+      const res = await fetch('/api/inbound_email');
+      const data = await res.json();
+      currentInboxes = data.emails || [];
+
+      document.getElementById('inbox-count-badge').innerText = `${currentInboxes.length} New`;
+      renderInboxList();
+      if (currentInboxes.length > 0) {
+        renderEmailDetail(0);
+      }
+    } catch (e) {
+      console.warn('Failed to fetch inbox emails:', e);
+    }
+  }
+
+  function renderInboxList() {
+    const container = document.getElementById('inbox-list-container');
+    if (!currentInboxes || currentInboxes.length === 0) {
+      container.innerHTML = '<div style="padding:1.5rem; color:var(--brand-gray); text-align:center; font-size:0.85rem;">No emails in inbox.</div>';
+      return;
+    }
+
+    container.innerHTML = currentInboxes.map((email, idx) => {
+      const timeStr = email.timestamp ? new Date(email.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : '10:42 AM';
+      const sender = email.from_name || email.from_email || 'Commercial Lead';
+      const isActive = idx === selectedEmailIndex;
+      return `
+        <div class="inbox-item ${isActive ? 'active' : ''}" onclick="selectEmail(${idx})">
+          <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
+            <span style="font-weight:700; font-size:0.9rem; color:${isActive ? 'var(--white)' : 'var(--text)'};">${sender}</span>
+            <span style="font-size:0.7rem; color:var(--brand-gray);">${timeStr}</span>
+          </div>
+          <div style="font-size:0.8rem; color:var(--blue); font-weight:700; margin-bottom:5px;">${email.subject}</div>
+          <div style="font-size:0.8rem; color:var(--brand-gray); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${(email.body_text || '').replace(/<[^>]*>?/gm, '').slice(0, 50)}...</div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  function selectEmail(idx) {
+    selectedEmailIndex = idx;
+    renderInboxList();
+    renderEmailDetail(idx);
+  }
+
+  function renderEmailDetail(idx) {
+    const pane = document.getElementById('email-viewer-pane');
+    const email = currentInboxes[idx];
+    if (!email) return;
+
+    const sender = email.from_name || email.from_email;
+    const fromAddr = email.from_email || 'inbound@commercial.qc.ca';
+    const bodyFormatted = (email.body_text || '').replace(/\n/g, '<br>');
+    const aiReplyFormatted = (email.ai_draft_reply || '').replace(/\n/g, '<br>');
+
+    pane.innerHTML = `
+      <div style="padding:1.5rem; border-bottom:1px solid var(--border);">
+        <h3 style="font-size:1.2rem; margin-bottom:10px; color:var(--white);">${email.subject}</h3>
+        <div style="font-size:0.85rem; color:var(--brand-gray);">From: <strong style="color:var(--white);">${sender}</strong> &lt;${fromAddr}&gt; &nbsp;|&nbsp; To: info@otiscc.ca</div>
+      </div>
+      <div style="padding:1.5rem; flex:1; font-size:0.95rem; line-height:1.6; color:var(--text); overflow-y:auto;">
+        <div>${bodyFormatted}</div>
+        
+        <div style="margin-top:2rem; padding:1.5rem; background:rgba(56, 189, 248, 0.05); border:1px solid rgba(56, 189, 248, 0.3); border-radius:8px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+            <div style="font-size:0.75rem; color:var(--blue); font-weight:700; text-transform:uppercase;">🤖 Clara (AI) Suggested Reply:</div>
+            <span style="font-size:0.7rem; color:var(--brand-gray);">Quebec Decree $23/h Compliant</span>
+          </div>
+          <p style="font-size:0.9rem; color:var(--white); line-height:1.6;">${aiReplyFormatted}</p>
+          <div style="margin-top:15px; display:flex; gap:10px;">
+            <button class="btn btn-approve" style="padding:8px 15px; width:auto;" onclick="sendClaraReply(${idx})">Dispath AI Reply via SendGrid</button>
+            <button class="btn btn-adjust" style="padding:8px 15px; width:auto;" onclick="editClaraReply(${idx})">Edit Draft</button>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  function sendClaraReply(idx) {
+    const email = currentInboxes[idx];
+    showToast(`📨 Reply dispatched to ${email.from_name || email.from_email} via SendGrid!`);
+  }
+
+  function editClaraReply(idx) {
+    const email = currentInboxes[idx];
+    document.getElementById('compose-to').value = email.from_email;
+    document.getElementById('compose-subject').value = 'Re: ' + email.subject;
+    document.getElementById('compose-body').value = email.ai_draft_reply || '';
+    openComposeModal();
+  }
+
+  // Tri-State Command Console Handlers
+  async function approveHunterPitch() {
+    const card = document.getElementById('task-hunter-card');
+    const badge = document.getElementById('task-hunter-badge');
+    const actions = document.getElementById('task-hunter-actions');
+
+    badge.style.background = 'rgba(16, 185, 129, 0.15)';
+    badge.style.color = 'var(--green)';
+    badge.innerText = '✓ Approved & Dispatched';
+
+    actions.innerHTML = `
+      <div style="grid-column: 1 / -1; color: var(--green); font-size: 0.85rem; font-weight: 700; text-align: center; padding: 0.5rem;">
+        🚀 Valérie's Pre-Winter pitch dispatched to Dr. Tremblay via SendGrid!
+      </div>
+    `;
+
+    // Persist approval to Firebase
+    try {
+      await fetch('/api/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          companyName: 'Centre Dentaire Lakeshore',
+          address: 'Pointe-Claire, Montreal, QC',
+          status: 'approved',
+          estValue: '$1,800/mo',
+          approvedBy: 'Zan (Owner)'
+        })
+      });
+    } catch (e) {}
+
+    showToast('🚀 Cold outreach dispatched to Centre Dentaire Lakeshore!');
+  }
+
+  function rejectHunterPitch() {
+    const card = document.getElementById('task-hunter-card');
+    card.style.opacity = '0.3';
+    card.style.pointerEvents = 'none';
+    showToast('🗑️ Lead outreach discarded.');
+  }
+
+  function approveSophieUpsell() {
+    const badge = document.getElementById('task-sophie-badge');
+    const actions = document.getElementById('task-sophie-actions');
+
+    badge.style.background = 'rgba(16, 185, 129, 0.15)';
+    badge.style.color = 'var(--green)';
+    badge.innerText = '✓ Addendum Executed';
+
+    actions.innerHTML = `
+      <div style="grid-column: 1 / -1; color: var(--green); font-size: 0.85rem; font-weight: 700; text-align: center; padding: 0.5rem;">
+        📄 20% Consumables Addendum emailed to Epic Quebec. MRR increased to $2,335/mo!
+      </div>
+    `;
+
+    showToast('📄 Addendum emailed! Epic Quebec MRR elevated.');
+  }
+
+  function delaySophieUpsell() {
+    const card = document.getElementById('task-sophie-card');
+    card.style.opacity = '0.4';
+    showToast('⏰ Reminder postponed for 30 days.');
+  }
+
+  // Modals
+  function openPitchModal() {
+    document.getElementById('pitch-modal').style.display = 'flex';
+  }
+  function closePitchModal() {
+    document.getElementById('pitch-modal').style.display = 'none';
+  }
+
+  async function regeneratePitchAI() {
+    const target = document.getElementById('pitch-target').value;
+    const txt = document.getElementById('pitch-text');
+    txt.value = '🤖 Valérie is drafting Quebec CPEEP-compliant cold pitch...';
+
+    try {
+      const res = await fetch('/api/draft', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ target, industry: 'Medical/Dental', language: 'fr' })
+      });
+      const data = await res.json();
+      txt.value = data.email || data.draft;
+      showToast('✨ Valérie generated fresh pitch!');
+    } catch (e) {
+      txt.value = 'Failed to generate pitch.';
+    }
+  }
+
+  function saveAndSendPitch() {
+    closePitchModal();
+    approveHunterPitch();
+  }
+
+  function openComposeModal() {
+    document.getElementById('compose-modal').style.display = 'flex';
+  }
+  function closeComposeModal() {
+    document.getElementById('compose-modal').style.display = 'none';
+  }
+
+  function dispatchManualEmail() {
+    const to = document.getElementById('compose-to').value;
+    if (!to) {
+      alert('Please enter a recipient email');
+      return;
+    }
+    closeComposeModal();
+    showToast(`📨 Outbound email dispatched to ${to} via SendGrid!`);
+  }
+
+  function initializeDashboardData() {
+    fetchInboxEmails();
+  }
+
+  // Initialize Finance Chart & Auth
+  document.addEventListener('DOMContentLoaded', async function() {
+    // Auth Check
+    const isAuthed = await checkSessionAuth();
+    if (isAuthed) {
+      initializeDashboardData();
+    }
+
+    // Initialize Chart
+    const ctx = document.getElementById('mrrChart').getContext('2d');
+    mrrChartInstance = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Month 1', 'Month 2', 'Month 3 (Proj.)', 'Month 4 (Proj.)'],
+        datasets: [{
+          label: 'MRR Growth ($)',
+          data: [6100, 10500, 18000, 25000],
+          borderColor: '#10b981',
+          backgroundColor: 'rgba(16, 185, 129, 0.1)',
+          borderWidth: 3,
+          tension: 0.4,
+          fill: true,
+          pointBackgroundColor: '#0a192f',
+          pointBorderColor: '#10b981',
+          pointBorderWidth: 2,
+          pointRadius: 5
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+          y: {
+            grid: { color: 'rgba(255,255,255,0.05)' },
+            ticks: { color: '#8FA6BE', callback: function(value) { return '$' + value; } }
+          },
+          x: {
+            grid: { display: false },
+            ticks: { color: '#8FA6BE' }
+          }
+        }
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

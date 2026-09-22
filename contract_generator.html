@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OTIS Contract Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0B1B2B; --surface: #102438; --border: #1E3D5C; --text: #C2D3E5; --white: #FFF;
+      --brand-navy: #0B1B2B; --brand-orange: #F7941D; --brand-gray: #475569;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); display: flex; height: 100vh; overflow: hidden; }
+    
+    /* Left Panel: Inputs */
+    .sidebar { width: 380px; background: var(--surface); border-right: 1px solid var(--border); padding: 2rem; display: flex; flex-direction: column; gap: 1.25rem; overflow-y: auto; }
+    .sidebar h2 { color: var(--white); font-size: 1.2rem; margin-bottom: 1rem; font-family: 'Syne', sans-serif; }
+    .form-group label { display: block; font-size: 0.75rem; font-weight: 700; color: #8FA6BE; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 1px; }
+    .form-control { width: 100%; padding: 0.85rem; border-radius: 6px; border: 1px solid var(--border); background: rgba(0,0,0,0.2); color: var(--white); font-family: inherit; font-size: 0.95rem; transition: 0.2s; }
+    .form-control:focus { outline: none; border-color: var(--brand-orange); }
+    .btn { padding: 1rem; border-radius: 6px; font-weight: 700; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; text-align: center; border: none; transition: 0.2s; font-size: 0.85rem; }
+    .btn-primary { background: linear-gradient(135deg, var(--brand-orange), #e68010); color: #FFF; margin-top: 1rem; }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(247, 148, 29, 0.3); }
+    .btn-print { background: transparent; color: #38bdf8; border: 1px solid #38bdf8; margin-top: 0.5rem; }
+    .btn-print:hover { background: rgba(56, 189, 248, 0.1); }
+    
+    /* Right Panel: Contract Preview */
+    .preview-pane { flex: 1; background: #cbd5e1; padding: 3rem; overflow-y: auto; display: flex; justify-content: center; }
+    
+    /* Printable Document - PRO DESIGN */
+    .document { 
+      background: #FFF; 
+      width: 100%; 
+      max-width: 850px; 
+      min-height: 1100px; 
+      padding: 4rem 5rem; 
+      color: #1e293b; 
+      font-family: 'DM Sans', sans-serif; 
+      line-height: 1.7; 
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3); 
+      position: relative; 
+    }
+    
+    /* Top Orange Accent Bar */
+    .document::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 8px;
+      background: var(--brand-orange);
+    }
+    
+    .doc-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #e2e8f0; padding-bottom: 2rem; margin-bottom: 2.5rem; }
+    
+    .doc-logo { font-family: 'Syne', sans-serif; font-size: 2.5rem; font-weight: 800; color: var(--brand-navy); letter-spacing: -1px; }
+    .doc-logo span { color: var(--brand-orange); }
+    
+    .doc-meta { text-align: right; font-size: 0.85rem; color: var(--brand-gray); line-height: 1.5; }
+    .doc-meta strong { color: var(--brand-navy); }
+    
+    .doc-title { text-align: center; font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 800; color: var(--brand-navy); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 2.5rem; }
+    
+    .party-block { display: flex; justify-content: space-between; margin-bottom: 2.5rem; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1.5rem; }
+    .party-col { width: 48%; }
+    .party-col strong { display: block; font-size: 0.75rem; color: var(--brand-orange); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; }
+    .party-col .corp-name { font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--brand-navy); margin-bottom: 0.5rem; }
+    .party-col p { font-size: 0.9rem; color: var(--brand-gray); line-height: 1.5; }
+    
+    .recitals { font-style: italic; margin-bottom: 2.5rem; font-size: 0.95rem; color: var(--brand-gray); padding: 0 1rem; border-left: 3px solid var(--brand-orange); }
+    
+    .clause-block { margin-bottom: 1.5rem; }
+    .clause-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--brand-navy); margin-bottom: 0.5rem; text-transform: uppercase; }
+    .clause-text { font-size: 0.95rem; text-align: justify; margin-bottom: 0.75rem; color: #334155; padding-left: 1rem; }
+    .clause-text b { color: var(--brand-navy); font-weight: 700; }
+    
+    .sig-block { margin-top: 4rem; display: flex; justify-content: space-between; page-break-inside: avoid; }
+    .sig-col { width: 45%; }
+    .sig-col strong { display: block; font-size: 0.8rem; color: var(--brand-orange); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3rem; }
+    .sig-line { border-bottom: 2px solid var(--brand-navy); margin-bottom: 0.75rem; height: 10px; }
+    .sig-label { font-size: 0.9rem; color: var(--brand-navy); font-weight: 700; margin-bottom: 0.2rem; }
+    .sig-sub { font-size: 0.8rem; color: var(--brand-gray); }
+    
+    @media print {
+      body { background: #FFF; overflow: visible; display: block; }
+      .sidebar { display: none; }
+      .preview-pane { padding: 0; background: none; display: block; }
+      .document { box-shadow: none; max-width: 100%; padding: 2rem 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="sidebar">
+  <div style="display:flex; justify-content:space-between; align-items:center;">
+    <h2>Contract Engine</h2>
+    <a href="execution.html" style="color:var(--brand-orange); text-decoration:none; font-size:0.8rem; font-weight:700;">◀ BACK TO HUB</a>
+  </div>
+  
+  <div class="form-group">
+    <label>Term Length</label>
+    <select id="inp-term" class="form-control">
+      <option value="6">6-Month Trial Agreement</option>
+      <option value="10">10-Month Preferred Agreement</option>
+    </select>
+  </div>
+  
+  <div class="form-group">
+    <label>Client Corporate Name</label>
+    <input type="text" id="inp-client" class="form-control" placeholder="e.g. Centre Dentaire Lakeshore Inc.">
+  </div>
+  
+  <div class="form-group">
+    <label>Authorized Signatory</label>
+    <input type="text" id="inp-rep" class="form-control" placeholder="e.g. Dr. Sarah Jenkins">
+  </div>
+  
+  <div class="form-group">
+    <label>Facility Address</label>
+    <input type="text" id="inp-addr" class="form-control" placeholder="e.g. 123 Main St, Westmount, QC">
+  </div>
+  
+  <div class="form-group">
+    <label>Monthly Service Fee ($ CAD)</label>
+    <input type="number" id="inp-fee" class="form-control" placeholder="e.g. 1500.00">
+  </div>
+  
+  <div class="form-group">
+    <label>Start Date</label>
+    <input type="date" id="inp-start" class="form-control">
+  </div>
+
+  <button class="btn btn-primary" onclick="generate()">Preview Contract</button>
+  <button class="btn btn-print" onclick="window.print()">🖨️ Print to PDF</button>
+</div>
+
+<div class="preview-pane">
+  <div class="document">
+    <div class="doc-header">
+      <img src="imgs/otis-logo.png" alt="OTIS" style="height:48px; filter: brightness(0);">
+      <div class="doc-meta">
+        <strong>OTIS COMMERCIAL CLEANING INC.</strong><br>
+        2447 Avenue Madison<br>
+        Montreal, Quebec H4B 2T5<br>
+        admin@otiscc.ca
+      </div>
+    </div>
+    
+    <div class="doc-title"><span id="out-term-title">6-MONTH</span> COMMERCIAL SERVICE AGREEMENT</div>
+    
+    <p style="margin-bottom:2rem; font-size:0.95rem; color:var(--brand-gray);">This Commercial Service Agreement (the "Agreement") is entered into effectively as of <b id="out-start" style="color:var(--brand-navy);">___</b> (the "Effective Date"), in the Province of Quebec, by and between:</p>
+    
+    <div class="party-block">
+      <div class="party-col">
+        <strong>The Contractor</strong>
+        <div class="corp-name">OTIS COMMERCIAL CLEANING INC.</div>
+        <p>2447 Avenue Madison<br>Montreal, Quebec H4B 2T5</p>
+        <p style="margin-top:0.5rem;">Represented by: <b>Maxwell Miller</b></p>
+      </div>
+      <div class="party-col">
+        <strong>The Client</strong>
+        <div class="corp-name" id="out-client-p">[CLIENT CORPORATE NAME]</div>
+        <p id="out-addr-p">[Facility Address]</p>
+        <p style="margin-top:0.5rem;">Represented by: <b id="out-rep-p">[Signatory]</b></p>
+      </div>
+    </div>
+    
+    <div class="recitals">
+      WHEREAS the Contractor operates a legally compliant commercial cleaning and facility maintenance business in Greater Montreal;<br><br>
+      WHEREAS the Client desires to retain the Contractor to provide commercial cleaning services at the designated facility, and the Contractor agrees to provide such services under the strict compliance terms outlined herein.
+    </div>
+    
+    <div class="clause-block">
+      <div class="clause-title">1. The Term</div>
+      <div class="clause-text">1.1. This Agreement shall commence on the Effective Date and shall remain in full force and effect for an initial period of <b id="out-term-text">six (6) months</b> (the "Term").</div>
+      <div class="clause-text">1.2. The specific start date for physical cleaning operations (the "Start Date") shall be <b id="out-start-op">___</b>. The Expiration Date of the initial Term shall be exactly <b id="out-term-months">six</b> months following the Start Date.</div>
+    </div>
+    
+    <div class="clause-block">
+      <div class="clause-title">2. Scope of Work</div>
+      <div class="clause-text">2.1. The Contractor shall perform the facility cleaning and janitorial maintenance services (the "Services") as detailed in the attached Schedule "A" (Scope of Work).</div>
+      <div class="clause-text">2.2. All cleaning equipment (including vacuums, Tennant auto-scrubbers, microfibers) and standard cleaning chemicals shall be supplied by the Contractor at its own expense.</div>
+    </div>
+    
+    <div class="clause-block">
+      <div class="clause-title">3. Financial Consideration</div>
+      <div class="clause-text">3.1. <b>Monthly Fee:</b> In consideration for the Services, the Client shall pay the Contractor a fixed monthly service fee of <b>$<span id="out-fee">0.00</span> CAD</b> (the "Monthly Fee"), plus applicable federal (GST) and provincial (QST) taxes.</div>
+      <div class="clause-text">3.2. <b>Invoicing & Payment Terms:</b> The Contractor shall issue an invoice on the 1st day of each month for services to be rendered during that calendar month. Payment is strictly due <b>Net 15 Days</b> from the invoice date.</div>
+    </div>
+    
+    <div class="clause-block">
+      <div class="clause-title">4. Quality Assurance & Cure Obligation</div>
+      <div class="clause-text">4.1. <b>Performance Standard:</b> OTIS shall perform all services in a professional manner, in accordance with industry standards established by ISSA Canada and Quebec workplace safety standards.</div>
+      <div class="clause-text">4.2. <b>The 24-Hour Cure:</b> If the Client provides written notice of deficient cleaning, OTIS shall dispatch staff to remediate the deficient area within twenty-four (24) hours at zero additional cost.</div>
+    </div>
+    
+    <div class="clause-block">
+      <div class="clause-title">5. Insurance & Decree Compliance Shield</div>
+      <div class="clause-text">5.1. <b>Insurance Coverage:</b> The Contractor maintains a Commercial General Liability (CGL) insurance policy with a coverage limit of not less than <b>CAD $5,000,000</b>.</div>
+      <div class="clause-text">5.2. <b>Quebec Decree Compliance:</b> The Contractor complies strictly with the *Decree respecting the cleaning of public buildings in Greater Montreal* (CPEEP), guaranteeing that all personnel are paid at or above mandatory statutory wage floors (strictly <b>23/h</b> base minimum), fully shielding the Client from joint liability under Article 14 of the *Act respecting collective agreement decrees*.</div>
+    </div>
+
+    <div class="sig-block">
+      <div class="sig-col">
+        <strong>FOR: OTIS COMMERCIAL CLEANING INC.</strong>
+        <div class="sig-line"></div>
+        <div class="sig-label">Maxwell Miller</div>
+        <div class="sig-sub">Director of Operations</div>
+      </div>
+      <div class="sig-col">
+        <strong>FOR: <span id="out-sig-client">[CLIENT]</span></strong>
+        <div class="sig-line"></div>
+        <div class="sig-label" id="out-sig-rep">[Authorized Signatory]</div>
+        <div class="sig-sub">Authorized Representative</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  document.getElementById('inp-start').valueAsDate = new Date();
+
+  function generate() {
+    const term = document.getElementById('inp-term').value;
+    const client = document.getElementById('inp-client').value || '[CLIENT CORPORATE NAME]';
+    const rep = document.getElementById('inp-rep').value || '[Authorized Signatory]';
+    const addr = document.getElementById('inp-addr').value || '[Facility Address]';
+    const fee = parseFloat(document.getElementById('inp-fee').value) || 0.00;
+    
+    const startObj = new Date(document.getElementById('inp-start').value);
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    const dateStr = startObj.toLocaleDateString('en-CA', options);
+
+    document.getElementById('out-term-title').innerText = term + "-MONTH";
+    document.getElementById('out-term-text').innerText = term === "6" ? "six (6) months" : "ten (10) months";
+    document.getElementById('out-term-months').innerText = term === "6" ? "six" : "ten";
+
+    document.getElementById('out-client-p').innerText = client.toUpperCase();
+    document.getElementById('out-sig-client').innerText = client.toUpperCase();
+    document.getElementById('out-addr-p').innerText = addr;
+    document.getElementById('out-rep-p').innerText = rep;
+    document.getElementById('out-sig-rep').innerText = rep;
+    
+    document.getElementById('out-start').innerText = dateStr;
+    document.getElementById('out-start-op').innerText = dateStr;
+    document.getElementById('out-fee').innerText = fee.toLocaleString('en-US', {minimumFractionDigits: 2});
+  }
+  
+  generate();
+</script>
+
+</body>
+</html>

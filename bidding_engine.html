@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OTIS Route Density & Bidding Engine (Phase 3)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Syne:wght@700;800&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0B1B2B; --surface: #102438; --border: #1E3D5C; --text: #C2D3E5; --white: #FFF;
+      --brand-navy: #0B1B2B; --brand-orange: #F7941D; --brand-gray: #475569; --light-gray: #f8fafc;
+      --green: #10b981; --red: #ef4444; --blue: #38bdf8;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); display: flex; height: 100vh; overflow: hidden; }
+    
+    /* Left Panel: Inputs */
+    .sidebar { width: 420px; background: var(--surface); border-right: 1px solid var(--border); padding: 2rem; display: flex; flex-direction: column; gap: 1.25rem; overflow-y: auto; }
+    .sidebar h2 { color: var(--white); font-size: 1.2rem; margin-bottom: 0.5rem; font-family: 'Syne', sans-serif; }
+    .sidebar p { font-size: 0.85rem; color: #8FA6BE; margin-bottom: 1rem; line-height: 1.5; }
+    
+    .form-group label { display: block; font-size: 0.75rem; font-weight: 700; color: #8FA6BE; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 1px; }
+    .form-control { width: 100%; padding: 0.85rem; border-radius: 4px; border: 1px solid var(--border); background: rgba(0,0,0,0.2); color: var(--white); font-family: inherit; font-size: 0.95rem; transition: 0.2s; }
+    .form-control:focus { outline: none; border-color: var(--brand-orange); }
+    
+    .btn { padding: 1rem; border-radius: 4px; font-weight: 700; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; text-align: center; border: none; font-size: 0.85rem; width: 100%; transition: 0.2s; }
+    .btn-primary { background: var(--brand-orange); color: #FFF; margin-top: 1rem; }
+    .btn-primary:hover { background: #e68010; }
+    .btn-print { background: transparent; color: #38bdf8; border: 1px solid #38bdf8; margin-top: 0.5rem; }
+    
+    /* Route Density Status Box */
+    .route-status { padding: 1rem; border-radius: 6px; background: rgba(0,0,0,0.2); border: 1px solid var(--border); text-align: center; margin-bottom: 1rem; }
+    .route-status.approved { border-color: var(--green); background: rgba(16, 185, 129, 0.1); }
+    .route-status.rejected { border-color: var(--red); background: rgba(239, 68, 68, 0.1); }
+    .route-title { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; }
+    .route-val { font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 800; }
+    .approved .route-val { color: var(--green); }
+    .rejected .route-val { color: var(--red); }
+    
+    /* Internal Economics Box */
+    .econ-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 1rem; }
+    .econ-box { background: rgba(255,255,255,0.03); border: 1px solid var(--border); padding: 0.75rem; border-radius: 4px; }
+    .econ-label { font-size: 0.7rem; color: #8FA6BE; text-transform: uppercase; margin-bottom: 0.2rem; }
+    .econ-val { font-weight: 700; color: var(--white); }
+    
+    /* Right Panel: Preview */
+    .preview-pane { flex: 1; background: #cbd5e1; padding: 3rem; overflow-y: auto; display: flex; justify-content: center; }
+    
+    /* PROPOSAL DOCUMENT - PDF STYLING */
+    .document { 
+      background: #FFF; width: 100%; max-width: 850px; min-height: 1100px; 
+      padding: 4rem 5rem; color: #334155; font-family: 'Inter', sans-serif; 
+      line-height: 1.6; box-shadow: 0 20px 40px rgba(0,0,0,0.3); position: relative; 
+    }
+    
+    .pdf-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem; }
+    .pdf-logo-sec { max-width: 65%; }
+    .pdf-logo-sec .subtitle { font-size: 0.85rem; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.75rem; }
+    .pdf-logo-sec .meta { font-size: 0.75rem; color: #64748b; }
+    
+    .pdf-dark-box { background: var(--pdf-navy); color: #fff; padding: 1rem 1.5rem; text-align: right; border-radius: 4px; }
+    .pdf-dark-box div { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.8; }
+    
+    .pdf-orange-line { height: 3px; background: var(--pdf-orange); width: 100%; margin-bottom: 3rem; }
+
+    .prop-title { font-size: 1.8rem; font-weight: 800; color: var(--brand-navy); margin-bottom: 1rem; letter-spacing: -0.5px; text-transform: uppercase; }
+    .prop-intro { font-size: 0.95rem; color: #475569; margin-bottom: 2.5rem; line-height: 1.7; }
+    
+    .prop-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2.5rem; }
+    .prop-card { border: 1px solid #e2e8f0; border-radius: 4px; padding: 1.5rem; background: #f8fafc; }
+    .prop-card h3 { font-size: 0.85rem; color: var(--brand-orange); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; }
+    .prop-card-val { font-size: 1.8rem; font-weight: 800; color: var(--brand-navy); margin-bottom: 0.25rem; }
+    .prop-card-sub { font-size: 0.85rem; color: #64748b; }
+    
+    .scope-list { margin-bottom: 2.5rem; }
+    .scope-list h3 { font-size: 1.1rem; color: var(--brand-navy); font-weight: 700; text-transform: uppercase; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; margin-bottom: 1rem; }
+    .scope-list ul { padding-left: 1.25rem; color: #334155; font-size: 0.95rem; }
+    .scope-list li { margin-bottom: 0.5rem; }
+    
+    /* Footer */
+    .doc-footer { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid #e2e8f0; font-size: 0.85rem; color: #64748b; line-height: 1.6; }
+    .doc-footer strong { color: var(--brand-navy); }
+    
+    @media print {
+      body { background: #FFF; overflow: visible; display: block; }
+      .sidebar { display: none; }
+      .preview-pane { padding: 0; background: none; display: block; }
+      .document { box-shadow: none; max-width: 100%; padding: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="sidebar">
+  <div style="display:flex; justify-content:space-between; align-items:center;">
+    <h2>Bidding Engine</h2>
+    <a href="execution.html" style="color:var(--brand-orange); text-decoration:none; font-size:0.8rem; font-weight:700;">◀ BACK</a>
+  </div>
+  <p>Phase 3: Verify 15-minute route clustering and generate mathematically protected commercial proposals.</p>
+  
+  <div class="form-group">
+    <label>Target Postal Code / City Area</label>
+    <select id="inp-zone" class="form-control" onchange="checkRoute()">
+      <option value="westmount">Westmount (H3Z, H3Y)</option>
+      <option value="ndg" selected>NDG / CDN (H4A, H4B, H3W)</option>
+      <option value="westisland">West Island (Pointe-Claire, DDO, Kirkland)</option>
+      <option value="saintlaurent">Saint-Laurent / TMR (H4R, H4S)</option>
+      <option value="laval">Laval / North Shore</option>
+      <option value="brossard">Brossard / South Shore</option>
+    </select>
+  </div>
+  
+  <div id="route-status-box" class="route-status approved">
+    <div class="route-title">Route Density Audit</div>
+    <div class="route-val" id="route-msg">APPROVED: 5 MIN DRIVE</div>
+    <div style="font-size:0.75rem; color:#8FA6BE; margin-top:4px;" id="route-sub">Within strict 15-minute radius of HQ.</div>
+  </div>
+  
+  <div style="border-top:1px solid var(--border); margin:1rem 0;"></div>
+
+  <div class="form-group">
+    <label>Client Corporate Name</label>
+    <input type="text" id="inp-client" class="form-control" value="Centre Dentaire Lakeshore">
+  </div>
+  
+  <div style="display:flex; gap:10px;">
+    <div class="form-group" style="flex:1;">
+      <label>Square Footage</label>
+      <input type="number" id="inp-sqft" class="form-control" value="3500">
+    </div>
+    <div class="form-group" style="flex:1;">
+      <label>Frequency</label>
+      <select id="inp-freq" class="form-control">
+        <option value="1">1x / Week</option>
+        <option value="3" selected>3x / Week</option>
+        <option value="5">5x / Week</option>
+        <option value="7">7x / Week</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Facility Profile (Difficulty)</label>
+    <select id="inp-profile" class="form-control">
+      <option value="standard">Standard Corporate Office (Fastest)</option>
+      <option value="medical" selected>Medical/Dental Clinic (Requires Sanitation)</option>
+      <option value="daycare">Daycare/CPE (High Touchpoint)</option>
+    </select>
+  </div>
+  
+  <div class="econ-grid" id="internal-econ" style="display:none;">
+    <div class="econ-box">
+      <div class="econ-label">Base Cost/SqFt</div>
+      <div class="econ-val" id="econ-sqft-rate">0.22</div>
+    </div>
+    <div class="econ-box">
+      <div class="econ-label">Mo. Labor Hours</div>
+      <div class="econ-val" id="econ-hours">22 hrs</div>
+    </div>
+    <div class="econ-box">
+      <div class="econ-label">23/h Legal Floor</div>
+      <div class="econ-val" style="color:var(--red);" id="econ-labor-cost">$650.00</div>
+    </div>
+    <div class="econ-box">
+      <div class="econ-label">Gross Margin</div>
+      <div class="econ-val" style="color:var(--green);" id="econ-margin">44%</div>
+    </div>
+  </div>
+
+  <button class="btn btn-primary" onclick="generate()">Calculate & Build Proposal</button>
+  <button class="btn btn-print" onclick="window.print()" id="btn-print" style="display:none;">🖨️ Print PDF Proposal</button>
+</div>
+
+<div class="preview-pane">
+  <div class="document">
+    
+    <!-- EXACT PDF HEADER -->
+    <div class="pdf-header">
+      <div class="pdf-logo-sec">
+        <img src="imgs/otis-logo.png" alt="OTIS" style="height:48px; filter:brightness(0); margin-bottom:0.75rem;">
+        <div class="subtitle">COMMERCIAL CLEANING PROPOSAL</div>
+        <div class="meta">
+          Headquarters: 2447 Avenue Madison, Montreal, QC H4B 2T5 · Phone: +1 (438) 935-9725 · Web: otiscc.ca
+        </div>
+      </div>
+      <div class="pdf-dark-box">
+        <div>PROPOSAL FOR: <span id="out-client-box">CLIENT</span></div>
+        <div>PREPARED BY: ZAN</div>
+        <div>DATE: <span id="out-date">OCTOBER 2026</span></div>
+      </div>
+    </div>
+    <div class="pdf-orange-line"></div>
+    
+    <div class="prop-title">Facility Maintenance Proposal</div>
+    
+    <div class="prop-intro">
+      Thank you for the opportunity to walk through your facility. Based on our site audit of approximately <strong id="out-sqft">3,500</strong> square feet, OTIS Commercial Cleaning is pleased to present the following proposal. <br><br>
+      Unlike standard contractors, OTIS guarantees strict compliance with the Quebec Parity Decree (CPEEP). 100% of our operatives are paid at or above the mandatory $23.00/h wage floor, entirely shielding your management team from Article 14 joint liability.
+    </div>
+    
+    <div class="prop-grid">
+      <div class="prop-card">
+        <h3>Proposed Service Frequency</h3>
+        <div class="prop-card-val" id="out-freq">3 Days / Week</div>
+        <div class="prop-card-sub" id="out-profile">Medical/Dental Sanitation Standard</div>
+      </div>
+      <div class="prop-card">
+        <h3>Monthly Investment (MRR)</h3>
+        <div class="prop-card-val" id="out-mrr">$1,850.00</div>
+        <div class="prop-card-sub">Fixed monthly flat-rate. No hidden fees.</div>
+      </div>
+    </div>
+    
+    <div class="scope-list">
+      <h3>Included Scope of Work</h3>
+      <ul>
+        <li><strong>Floor Care:</strong> Mechanical scrubbing of hard floors using Tennant auto-scrubbers and neutral pH chemistries.</li>
+        <li><strong>Sanitation:</strong> Disinfection of high-touch surfaces (door handles, light switches, reception desk) using hospital-grade botanical disinfectants.</li>
+        <li><strong>Restrooms:</strong> Complete descaling of toilets and urinals; streak-free mirror polishing.</li>
+        <li><strong>Waste Management:</strong> Emptying of all centralized waste and recycling receptacles; liner replacement.</li>
+        <li><strong>Supply Restock:</strong> Automated replenishment of paper towels, toilet tissue, and hand soap dispensers (materials billed at cost + 20% or provided by client).</li>
+      </ul>
+    </div>
+    
+    <div class="scope-list">
+      <h3>The OTIS 24-Hour Cure Guarantee</h3>
+      <p style="font-size:0.95rem; color:#475569; text-align:justify;">
+        We believe in accountability. If you discover a deficiency in our cleaning quality, simply email us a photo within 24 hours of the shift. OTIS will immediately dispatch a supervisor to remediate the specific area within the same day, at zero additional cost to you.
+      </p>
+    </div>
+
+    <!-- Footer -->
+    <div class="doc-footer">
+      <strong>NEXT STEPS:</strong><br>
+      To proceed with this proposal, please reply to this document indicating your approval. We will immediately draft your 6-Month or 10-Month Preferred Agreement and schedule your facility onboarding.<br><br>
+      Validity: This pricing proposal is valid for 14 days from the date of issue.
+    </div>
+
+  </div>
+</div>
+
+<script>
+  function checkRoute() {
+    const zone = document.getElementById('inp-zone').value;
+    const box = document.getElementById('route-status-box');
+    const msg = document.getElementById('route-msg');
+    const sub = document.getElementById('route-sub');
+    
+    box.className = 'route-status';
+    
+    if (zone === 'laval') {
+      box.classList.add('rejected');
+      msg.innerText = 'REJECTED: BRIDGE TRAFFIC';
+      sub.innerText = 'Laval violates the 15-minute cluster rule. Unpaid travel time destroys margins.';
+    } else if (zone === 'brossard') {
+      box.classList.add('rejected');
+      msg.innerText = 'REJECTED: CHAMPLAIN BRIDGE';
+      sub.innerText = 'South Shore violates the 15-minute cluster rule. High risk of delays.';
+    } else if (zone === 'westmount' || zone === 'ndg') {
+      box.classList.add('approved');
+      msg.innerText = 'APPROVED: 5 MIN DRIVE';
+      sub.innerText = 'Core territory. Maximum route density achieved.';
+    } else if (zone === 'westisland') {
+      box.classList.add('approved');
+      msg.innerText = 'APPROVED: 15 MIN DRIVE';
+      sub.innerText = 'Hwy 20 corridor. Good for medical clusters.';
+    } else {
+      box.classList.add('approved');
+      msg.innerText = 'APPROVED: 12 MIN DRIVE';
+      sub.innerText = 'Saint-Laurent industrial cluster.';
+    }
+  }
+
+  function generate() {
+    const zone = document.getElementById('inp-zone').value;
+    if (zone === 'laval' || zone === 'brossard') {
+      alert("WARNING: This lead is outside the 15-minute Route Cluster (Phase 3 strict rule). Do not bid.");
+      return;
+    }
+
+    const client = document.getElementById('inp-client').value || 'Target Prospect';
+    const sqft = parseFloat(document.getElementById('inp-sqft').value) || 3500;
+    const freq = parseInt(document.getElementById('inp-freq').value) || 3;
+    const profile = document.getElementById('inp-profile').value;
+    
+    const today = new Date();
+    const opts = { month: 'long', day: 'numeric', year: 'numeric' };
+    const dateStr = today.toLocaleDateString('en-US', opts).toUpperCase();
+
+    // BID ALGORITHM
+    // Cleanable sqft per hour based on profile
+    let sqftPerHour = 2500; 
+    let baseRateSqft = 0.18; // base monthly rate per sqft for 1x/week
+    let profileName = "Standard Commercial Office";
+
+    if (profile === 'medical') {
+      sqftPerHour = 2000; // Slower due to sanitation
+      baseRateSqft = 0.22;
+      profileName = "Medical/Clinical Sanitation Standard";
+    } else if (profile === 'daycare') {
+      sqftPerHour = 2200;
+      baseRateSqft = 0.20;
+      profileName = "Daycare/CPE Disinfection Standard";
+    }
+
+    // Monthly frequency multiplier
+    const visitsPerMonth = freq * 4.33;
+    
+    // Time per visit
+    const hoursPerVisit = Math.max(sqft / sqftPerHour, 1.5); // Minimum 1.5 hrs
+    const totalHoursMonth = hoursPerVisit * visitsPerMonth;
+    
+    // Labor Cost Floor (CPEEP)
+    const laborCostHour = 23.00;
+    const laborBurden = 1.15; // 15% taxes/CNESST
+    const totalLaborCost = totalHoursMonth * laborCostHour * laborBurden;
+    
+    // Total Bid Calculation (Target 42% Margin)
+    const monthlyBid = totalLaborCost / 0.58;
+    const margin = ((monthlyBid - totalLaborCost) / monthlyBid) * 100;
+
+    // Update UI Internals
+    document.getElementById('internal-econ').style.display = 'grid';
+    document.getElementById('econ-sqft-rate').innerText = '$' + (monthlyBid/sqft).toFixed(2) + '/sqft';
+    document.getElementById('econ-hours').innerText = totalHoursMonth.toFixed(1) + ' hrs';
+    document.getElementById('econ-labor-cost').innerText = '$' + totalLaborCost.toFixed(2);
+    document.getElementById('econ-margin').innerText = margin.toFixed(1) + '%';
+    document.getElementById('btn-print').style.display = 'block';
+
+    // Update PDF Document
+    document.getElementById('out-client-box').innerText = client.toUpperCase().substring(0, 20);
+    document.getElementById('out-date').innerText = dateStr;
+    document.getElementById('out-sqft').innerText = sqft.toLocaleString('en-US');
+    document.getElementById('out-freq').innerText = freq + (freq === 1 ? ' Day / Week' : ' Days / Week');
+    document.getElementById('out-profile').innerText = profileName;
+    document.getElementById('out-mrr').innerText = '$' + monthlyBid.toLocaleString('en-US', {minimumFractionDigits: 2});
+  }
+  
+  // Run on load
+  checkRoute();
+</script>
+
+</body>
+</html>

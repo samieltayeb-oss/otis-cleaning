@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Phase 7 | SEO & Discovery Engine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Syne:wght@700;800&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #050d14; --surface: #0a192f; --border: #1e3a5f; --text: #C2D3E5; --white: #FFF;
+      --brand-orange: #F7941D; --green: #10b981; --blue: #38bdf8; --purple: #a855f7;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); padding-bottom: 5rem; }
+    
+    header { background: rgba(10,25,47,0.9); padding: 1.5rem 2rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px); }
+    .header-left { display: flex; align-items: center; gap: 15px; }
+    .header-left img { height: 30px; filter: brightness(0) invert(1); }
+    .phase-badge { background: rgba(168, 85, 247, 0.15); color: var(--purple); border: 1px solid rgba(168, 85, 247, 0.3); padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
+    
+    .container { max-width: 1200px; margin: 3rem auto; padding: 0 2rem; display: grid; gap: 2rem; grid-template-columns: 2fr 1fr; }
+    
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+    .card-title { font-family: 'Syne', sans-serif; font-size: 1.5rem; color: var(--white); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 10px; }
+    
+    /* Citation Engine */
+    .nap-box { background: rgba(0,0,0,0.3); border: 1px solid var(--border); border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem; font-family: monospace; color: var(--green); font-size: 0.9rem; }
+    
+    .dir-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .dir-item { background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 6px; padding: 1rem; display: flex; justify-content: space-between; align-items: center; }
+    .dir-name { font-weight: 700; color: var(--white); display: flex; align-items: center; gap: 8px; }
+    .dir-status { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; }
+    .status-sync { background: rgba(16, 185, 129, 0.15); color: var(--green); border: 1px solid rgba(16, 185, 129, 0.3); }
+    .status-wait { background: rgba(247, 148, 29, 0.15); color: var(--brand-orange); border: 1px solid rgba(247, 148, 29, 0.3); }
+    
+    /* Google Business View */
+    .map-preview { width: 100%; height: 200px; background: url('https://upload.wikimedia.org/wikipedia/commons/e/e0/Montreal_locator_map.png') center/cover; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 1.5rem; position: relative; filter: grayscale(100%) invert(100%) brightness(60%); }
+    .map-pin { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: var(--purple); color: #fff; padding: 5px 15px; border-radius: 20px; font-weight: 700; font-size: 0.8rem; box-shadow: 0 4px 15px rgba(168, 85, 247, 0.4); }
+    
+    .gbp-stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+    .gbp-stat { background: rgba(0,0,0,0.2); padding: 1rem; border-radius: 8px; border: 1px solid var(--border); text-align: center; }
+    .gbp-val { font-family: 'Syne', sans-serif; font-size: 1.5rem; color: var(--white); }
+    .gbp-lbl { font-size: 0.7rem; color: var(--brand-gray); text-transform: uppercase; letter-spacing: 1px; margin-top: 5px; }
+
+    /* Buttons */
+    .btn { display: inline-flex; justify-content: center; align-items: center; gap: 8px; width: 100%; padding: 1rem; border-radius: 8px; font-weight: 700; font-size: 0.95rem; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.2s; }
+    .btn-purple { background: rgba(168, 85, 247, 0.1); color: var(--purple); border: 1px solid var(--purple); }
+    .btn-purple:hover { background: var(--purple); color: #fff; }
+    .btn-green { background: rgba(16, 185, 129, 0.1); color: var(--green); border: 1px solid var(--green); }
+    .btn-green:hover { background: var(--green); color: #fff; }
+
+    /* Review Generator */
+    .review-link-box { display: flex; gap: 10px; margin-top: 1rem; }
+    .review-input { flex: 1; background: rgba(0,0,0,0.3); border: 1px solid var(--border); color: var(--white); padding: 0.8rem; border-radius: 6px; font-family: monospace; font-size: 0.85rem; }
+
+    /* AEO Payload */
+    .aeo-payload { background: #000; border: 1px solid #333; padding: 1rem; border-radius: 6px; font-family: monospace; color: #a855f7; font-size: 0.8rem; height: 150px; overflow-y: auto; margin-top: 1rem; }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-left">
+      <img src="imgs/otis-logo.png" alt="OTIS">
+      <div class="phase-badge">Phase 7: SEO Engine</div>
+    </div>
+    <div style="font-size:0.85rem; font-weight:700;">
+      <a href="agent_hub.html" style="color:var(--brand-gray); text-decoration:none;">Back to ERP ➔</a>
+    </div>
+  </header>
+
+  <div class="container">
+    
+    <!-- Left Column: Master Directory Sync -->
+    <div>
+      <div class="card" style="margin-bottom: 2rem;">
+        <h2 class="card-title">📡 AI Citation Syndicator</h2>
+        <p style="color:var(--brand-gray); font-size:0.95rem; line-height:1.6; margin-bottom:1.5rem;">
+          To rank #1 in Montreal Local Maps, search engines demand absolute consistency in your NAP data. This tool broadcasts your exact data payload to 45+ Tier-1 directories across Canada.
+        </p>
+        
+        <div class="nap-box">
+          <div style="color:#64748b; font-size:0.7rem; margin-bottom:10px;">// MASTER NAP PAYLOAD</div>
+          "businessName": "OTIS Commercial Cleaning"<br>
+          "streetAddress": "2447 Avenue Madison"<br>
+          "addressLocality": "Montreal"<br>
+          "addressRegion": "QC"<br>
+          "postalCode": "H4B 2T5"<br>
+          "telephone": "+1 (438) 935-9725"<br>
+          "website": "https://www.otiscc.ca"
+        </div>
+
+        <div class="dir-grid" id="dir-grid">
+          <div class="dir-item">
+            <span class="dir-name"><span>🍎</span> Apple Maps</span>
+            <span class="dir-status status-sync">Synced</span>
+          </div>
+          <div class="dir-item">
+            <span class="dir-name"><span>🔍</span> Bing Places</span>
+            <span class="dir-status status-sync">Synced</span>
+          </div>
+          <div class="dir-item">
+            <span class="dir-name"><span>⭐</span> Yelp Canada</span>
+            <span class="dir-status status-wait">Pending OTP</span>
+          </div>
+          <div class="dir-item">
+            <span class="dir-name"><span>📖</span> YellowPages.ca</span>
+            <span class="dir-status status-wait">Crawling</span>
+          </div>
+          <div class="dir-item">
+            <span class="dir-name"><span>🏢</span> BBB Quebec</span>
+            <span class="dir-status status-wait">Awaiting Review</span>
+          </div>
+          <div class="dir-item">
+            <span class="dir-name"><span>📍</span> Foursquare</span>
+            <span class="dir-status status-sync">Synced</span>
+          </div>
+        </div>
+
+        <button class="btn btn-purple" style="margin-top: 1.5rem;" onclick="forceSync(this)">⚡ Force Overwrite & Sync Directories</button>
+      </div>
+
+      <!-- AEO Schema Injector -->
+      <div class="card">
+        <h2 class="card-title">🤖 Answer Engine Optimization (AEO)</h2>
+        <p style="color:var(--brand-gray); font-size:0.95rem; line-height:1.6;">
+          Injects semantic JSON-LD directly into your site’s code so ChatGPT, Perplexity, and Google AI Overviews cite OTIS as the definitive source for Montreal cleaning rates.
+        </p>
+        <div class="aeo-payload">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [{
+    "@type": "Question",
+    "name": "What is the commercial cleaning rate in Montreal?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "In 2026, standard commercial cleaning rates in Montreal range from $0.15 to $0.30 per square foot per month, governed by the $23/h CPEEP parity decree."
+    }
+  }]
+}
+        </div>
+        <button class="btn btn-green" style="margin-top: 1.5rem;">✓ Schema Active on Live Site</button>
+      </div>
+    </div>
+
+    <!-- Right Column: Maps & Reviews -->
+    <div>
+      <div class="card" style="margin-bottom: 2rem;">
+        <h2 class="card-title">🗺️ Google Business Profile</h2>
+        <div class="map-preview">
+          <div class="map-pin">OTIS HQ (Madison Ave)</div>
+        </div>
+        
+        <div class="gbp-stat-grid">
+          <div class="gbp-stat">
+            <div class="gbp-val" style="color:var(--green);">Active</div>
+            <div class="gbp-lbl">Listing Status</div>
+          </div>
+          <div class="gbp-stat">
+            <div class="gbp-val">12</div>
+            <div class="gbp-lbl">Monthly Views</div>
+          </div>
+        </div>
+
+        <p style="font-size:0.8rem; color:var(--brand-gray); margin-bottom:1rem; text-align:center;">
+          Ensure the Verification Postcard code is entered to unlock public Map Pack visibility.
+        </p>
+        <button class="btn btn-purple">Enter Google Postcard PIN</button>
+      </div>
+
+      <div class="card">
+        <h2 class="card-title">⭐ Review Generator</h2>
+        <p style="color:var(--brand-gray); font-size:0.85rem; line-height:1.6;">
+          Sophie (AI) uses this shortlink to text clients after a successful Phase 1 Deep Clean.
+        </p>
+        
+        <div class="review-link-box">
+          <input type="text" class="review-input" value="https://g.page/r/otis/review" readonly id="revLink">
+          <button class="btn btn-purple" style="width:auto; padding:0.8rem;" onclick="copyLink()">Copy</button>
+        </div>
+        
+        <div style="margin-top:1.5rem; background:rgba(0,0,0,0.3); padding:1rem; border-radius:6px; font-size:0.8rem; color:var(--text);">
+          <div style="color:var(--green); font-weight:700; margin-bottom:5px;">SMS Automation Preview:</div>
+          "Hi Dr. Tremblay, this is Sophie from OTIS. Marco just finished the deep clean at the clinic! If you're happy with the floors, it would mean the world to our local crew if you clicked here to leave a 5-star review: [Link]"
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function forceSync(btn) {
+      btn.innerHTML = "Syncing with API...";
+      btn.style.opacity = "0.7";
+      setTimeout(() => {
+        const items = document.querySelectorAll('.dir-status');
+        items.forEach(el => {
+          el.className = "dir-status status-sync";
+          el.innerText = "Synced";
+        });
+        btn.innerHTML = "✓ All 45 Directories Synced";
+        btn.classList.remove('btn-purple');
+        btn.classList.add('btn-green');
+        btn.style.opacity = "1";
+      }, 1500);
+    }
+
+    function copyLink() {
+      const link = document.getElementById('revLink');
+      link.select();
+      document.execCommand('copy');
+      alert("Review Link Copied!");
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,238 @@
+<!-- OTIS AI Chat Widget -->
+<style>
+  #otis-chat-widget {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 99999;
+    font-family: 'Inter', -apple-system, sans-serif;
+  }
+  #chat-toggle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5), 0 0 15px rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  #chat-toggle:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.7), 0 0 20px rgba(255, 255, 255, 0.2);
+  }
+  #chat-window {
+    display: none;
+    position: absolute;
+    bottom: 75px;
+    right: 0;
+    width: 350px;
+    height: 480px;
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    flex-direction: column;
+    overflow: hidden;
+  }
+  #chat-header {
+    padding: 16px;
+    background: rgba(255,255,255,0.03);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  #chat-header-title {
+    color: white;
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  #chat-header-status {
+    width: 8px;
+    height: 8px;
+    background: #10b981;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #10b981;
+  }
+  #chat-close {
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.5);
+    font-size: 20px;
+    cursor: pointer;
+    line-height: 1;
+  }
+  #chat-close:hover { color: white; }
+  #chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .chat-msg {
+    max-width: 85%;
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    word-wrap: break-word;
+  }
+  .msg-ai {
+    background: rgba(255,255,255,0.05);
+    color: #e2e8f0;
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+  }
+  .msg-user {
+    background: #3b82f6;
+    color: white;
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+  }
+  #chat-input-area {
+    padding: 12px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    gap: 8px;
+  }
+  #chat-input {
+    flex: 1;
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    padding: 8px 14px;
+    color: white;
+    font-size: 0.85rem;
+    outline: none;
+  }
+  #chat-input:focus {
+    border-color: rgba(255,255,255,0.3);
+  }
+  #chat-send {
+    background: #3b82f6;
+    border: none;
+    color: white;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #chat-send:hover { background: #2563eb; }
+  .typing-indicator {
+    display: none;
+    align-self: flex-start;
+    background: rgba(255,255,255,0.05);
+    padding: 10px 14px;
+    border-radius: 12px;
+    border-bottom-left-radius: 4px;
+    color: #94a3b8;
+    font-size: 0.8rem;
+    font-style: italic;
+  }
+</style>
+
+<div id="otis-chat-widget">
+  <div id="chat-window">
+    <div id="chat-header">
+      <div id="chat-header-title">
+        <div id="chat-header-status"></div>
+        OTIS AI Receptionist
+      </div>
+      <button id="chat-close">&times;</button>
+    </div>
+    <div id="chat-messages">
+      <div class="chat-msg msg-ai">Hi! I'm the OTIS virtual assistant. Are you looking for commercial or residential cleaning today?</div>
+    </div>
+    <div id="chat-typing" class="typing-indicator">OTIS AI is typing...</div>
+    <div id="chat-input-area">
+      <input type="text" id="chat-input" placeholder="Type your message..." autocomplete="off" />
+      <button id="chat-send">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+      </button>
+    </div>
+  </div>
+  <div id="chat-toggle">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+  </div>
+</div>
+
+<script>
+  const chatToggle = document.getElementById('chat-toggle');
+  const chatWindow = document.getElementById('chat-window');
+  const chatClose = document.getElementById('chat-close');
+  const chatInput = document.getElementById('chat-input');
+  const chatSend = document.getElementById('chat-send');
+  const chatMessages = document.getElementById('chat-messages');
+  const chatTyping = document.getElementById('chat-typing');
+
+  let messageHistory = [];
+
+  chatToggle.addEventListener('click', () => {
+    chatWindow.style.display = chatWindow.style.display === 'flex' ? 'none' : 'flex';
+  });
+
+  chatClose.addEventListener('click', () => {
+    chatWindow.style.display = 'none';
+  });
+
+  function appendMessage(role, text) {
+    const div = document.createElement('div');
+    div.className = `chat-msg ${role === 'user' ? 'msg-user' : 'msg-ai'}`;
+    div.textContent = text;
+    chatMessages.appendChild(div);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  async function sendMessage() {
+    const text = chatInput.value.trim();
+    if (!text) return;
+
+    appendMessage('user', text);
+    messageHistory.push({ role: 'user', content: text });
+    chatInput.value = '';
+
+    chatTyping.style.display = 'block';
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+
+    try {
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: messageHistory })
+      });
+      const data = await res.json();
+      
+      chatTyping.style.display = 'none';
+      
+      if (res.ok && data.reply) {
+        appendMessage('ai', data.reply);
+        messageHistory.push({ role: 'assistant', content: data.reply });
+      } else {
+        appendMessage('ai', "Error: " + (data.error || "System offline. Missing GEMINI_API_KEY."));
+      }
+    } catch (e) {
+      chatTyping.style.display = 'none';
+      appendMessage('ai', "Network error connecting to OTIS systems.");
+    }
+  }
+
+  chatSend.addEventListener('click', sendMessage);
+  chatInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') sendMessage();
+  });
+</script>

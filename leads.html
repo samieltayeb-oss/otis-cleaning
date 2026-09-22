@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width="device-width, initial-scale=1.0">
+  <title>OTIS — 37 Commercial Leads Master Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0B1B2B;
+      --navy-surface: #102438;
+      --navy-light: #162E47;
+      --navy-border: #1E3D5C;
+      --orange: #F7941D;
+      --orange-light: #FFA940;
+      --green: #1E7B34;
+      --green-light: #28A745;
+      --white: #FFFFFF;
+      --text-muted: #8FA6BE;
+      --text-body: #C2D3E5;
+      --card: #0F2337;
+      --border: rgba(255, 255, 255, 0.08);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--navy);
+      color: var(--text-body);
+      font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.5;
+      padding-top: 0;
+      min-height: 100vh;
+    }
+    /* Sticky Top Navigation Bar */
+    .top-bar {
+      position: sticky;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(11, 27, 43, 0.96);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.65rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .brand-logo img {
+      height: 32px;
+      max-width: 140px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+    }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: nowrap;
+    }
+    .btn-nav {
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 0.4rem 0.75rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: var(--text-body);
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.04);
+      white-space: nowrap;
+    }
+    .btn-nav:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--white);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+    .btn-nav.active {
+      background: rgba(247, 148, 29, 0.2);
+      border-color: var(--orange);
+      color: var(--orange);
+      font-weight: 700;
+    }
+    .btn-prototype {
+      background: linear-gradient(135deg, var(--orange), #d97706);
+      color: var(--navy) !important;
+      font-weight: 700;
+      border: none;
+    }
+    .btn-prototype:hover {
+      background: linear-gradient(135deg, #fb923c, var(--orange));
+      transform: translateY(-1px);
+    }
+    .nav-hamburger {
+      display: none;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border);
+      color: var(--white);
+      font-size: 1.25rem;
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+    .nav-hamburger:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: var(--orange);
+      color: var(--orange);
+    }
+    .mobile-nav-drawer {
+      display: none;
+      position: fixed;
+      top: 54px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(8, 13, 26, 0.98);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      z-index: 999;
+      padding: 1.5rem 2rem 2.5rem;
+      overflow-y: auto;
+      flex-direction: column;
+      gap: 0.65rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .mobile-nav-drawer.open {
+      display: flex;
+    }
+    .mobile-nav-drawer .mobile-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.8rem 1.1rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text-body);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+    .mobile-nav-drawer .mobile-link:hover,
+    .mobile-nav-drawer .mobile-link.active {
+      background: rgba(247, 148, 29, 0.15);
+      border-color: var(--orange);
+      color: var(--white);
+    }
+    .mobile-nav-drawer .mobile-link.prototype-link {
+      background: linear-gradient(135deg, var(--orange), #d97706);
+      color: var(--navy) !important;
+      font-weight: 700;
+      border: none;
+    }
+    @media (max-width: 1100px) {
+      .nav-actions { display: none; }
+      .nav-hamburger { display: inline-flex; }
+    }
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    .badge-pill {
+      font-size: 0.75rem;
+      background: rgba(247, 148, 29, 0.15);
+      border: 1px solid var(--orange);
+      color: var(--orange);
+      padding: 0.25rem 0.65rem;
+      border-radius: 20px;
+      font-weight: 700;
+    }
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .kpi-card {
+      background: var(--navy-surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.25rem;
+    }
+    .kpi-val {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--white);
+    }
+    .kpi-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 0.25rem;
+      font-weight: 700;
+    }
+    .filter-bar {
+      background: var(--navy-surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.25rem;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+    .search-input {
+      flex: 2;
+      min-width: 220px;
+      background: var(--navy);
+      border: 1px solid var(--navy-border);
+      color: var(--white);
+      padding: 0.6rem 1rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      outline: none;
+    }
+    .search-input:focus {
+      border-color: var(--orange);
+    }
+    .select-filter {
+      background: var(--navy);
+      border: 1px solid var(--navy-border);
+      color: var(--text-body);
+      padding: 0.6rem 0.9rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      outline: none;
+      cursor: pointer;
+    }
+    .leads-table-wrap {
+      background: var(--navy-surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow-x: auto;
+      margin-bottom: 1.5rem;
+    }
+    .leads-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      text-align: left;
+    }
+    .leads-table th {
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text-muted);
+      padding: 0.9rem 1rem;
+      font-weight: 700;
+      border-bottom: 1px solid var(--border);
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+    }
+    .leads-table td {
+      padding: 0.9rem 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      color: var(--text-body);
+      vertical-align: middle;
+    }
+    .leads-table tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+    .priority-badge-a {
+      background: rgba(247, 148, 29, 0.2);
+      border: 1px solid var(--orange);
+      color: var(--orange);
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-weight: 800;
+      font-size: 0.7rem;
+      display: inline-block;
+    }
+    .priority-badge-b {
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid #38bdf8;
+      color: #38bdf8;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 0.7rem;
+      display: inline-block;
+    }
+    .pagination-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 1rem 0;
+    }
+    .page-btn {
+      background: var(--navy-surface);
+      border: 1px solid var(--border);
+      color: var(--text-body);
+      padding: 0.5rem 0.9rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .page-btn:hover:not(:disabled) {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--white);
+    }
+    .page-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+    .page-btn.active {
+      background: var(--orange);
+      color: var(--navy);
+      font-weight: 800;
+      border-color: var(--orange);
+    }
+    /* Modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(8px);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+    .modal-card {
+      background: var(--navy-surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      max-width: 800px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 2rem;
+      position: relative;
+    }
+    .close-modal {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    .close-modal:hover { color: var(--white); }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Top Navigation Bar -->
+  <header class="top-bar">
+    <a href="/" class="brand-logo">
+      <img src="/imgs/otis-logo.png" alt="OTIS Commercial Cleaning">
+      <span class="badge-pill">37 Leads Tracker</span>
+    </a>
+    
+    <nav class="nav-actions">
+      <a href="/" class="btn-nav"><span>🏠 Home</span></a>
+      <a href="/leads.html" class="btn-nav active"><span>📋 37 Leads</span></a>
+      <a href="/crm.html" class="btn-nav"><span>🤖 AI Staff</span></a>
+      <a href="/erp.html" class="btn-nav"><span>📊 ERP</span></a>
+      <a href="/zan-review.html" class="btn-nav"><span>⚖️ Zan Audit</span></a>
+      <a href="/equipment.html" class="btn-nav"><span>🛠️ Equipment</span></a>
+      <a href="/discovery.html" class="btn-nav"><span>🔍 Discovery</span></a>
+      <a href="/otis-final-v2_11.html" class="btn-nav btn-prototype" target="_blank"><span>Prototype →</span></a>
+    </nav>
+
+    <button class="nav-hamburger" id="nav-toggle" aria-label="Toggle navigation" onclick="toggleNavMenu()">☰</button>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav-drawer" id="mobile-nav-drawer">
+    <div style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.25rem;">
+      Command Center Navigation
+    </div>
+    <a href="/" class="mobile-link"><span>🏠 Executive Home</span> <span>→</span></a>
+    <a href="/leads.html" class="mobile-link active"><span>📋 37 Accounts Master Tracker</span> <span style="color:var(--orange);">Active</span></a>
+    <a href="/crm.html" class="mobile-link"><span>🤖 AI Staff & Zan Command Console</span> <span>8 Agents</span></a>
+    <a href="/erp.html" class="mobile-link"><span>📊 OTIS ERP Master System</span> <span>8 Modules</span></a>
+    <a href="/zan-review.html" class="mobile-link"><span>⚖️ Honest Zan Review & Audit</span> <span>5.5 vs 9.6</span></a>
+    <a href="/equipment.html" class="mobile-link"><span>🛠️ Operational Equipment Truth</span> <span>Verified</span></a>
+    <a href="/discovery.html" class="mobile-link"><span>🔍 Montreal SEO + AEO + GEO Engine</span> <span>Live</span></a>
+    <div style="height: 1px; background: var(--border); margin: 0.4rem 0;"></div>
+    <a href="/OTIS_EXECUTIVE_ERP_REPORT_2026.pdf" class="mobile-link" target="_blank" style="border-color: rgba(34, 160, 69, 0.4); color: var(--green-light);">
+      <span>📄 Download Master PDF Report</span> <span>564 KB ↗</span>
+    </a>
+    <a href="/otis-final-v2_11.html" class="mobile-link prototype-link" target="_blank">
+      <span>🚀 Open Customer-Facing Prototype</span> <span>↗</span>
+    </a>
+  </div>
+
+  <main class="container">
+    <div style="margin-bottom: 2rem;">
+      <div style="font-size: 0.85rem; color: var(--orange); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.4rem;">
+        Zan Lead Intelligence Engine · West Island & NDG
+      </div>
+      <h1 style="font-family: 'Syne', sans-serif; font-size: 2.2rem; font-weight: 800; color: var(--white); margin-bottom: 0.5rem;">
+        The 37 Commercial Accounts Master Tracker
+      </h1>
+      <p style="color: var(--text-body); max-width: 850px; font-size: 0.95rem;">
+        All 37 verified commercial businesses across West Island and NDG researched by Zan (Golden Thread Solutions). Complete with decision-maker contacts, verified floor areas, pre-winter trigger windows (closing Nov 1), and CASL compliance records.
+      </p>
+    </div>
+
+    <!-- KPI Summary Bar -->
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-val" style="color: var(--white);" id="total-leads-count">37</div>
+        <div class="kpi-label">Total Researched Accounts</div>
+      </div>
+      <div class="kpi-card" style="border-left: 3px solid var(--orange);">
+        <div class="kpi-val" style="color: var(--orange);">5 Accounts</div>
+        <div class="kpi-label">Priority A (Go-Now · Nov 1 Window)</div>
+      </div>
+      <div class="kpi-card" style="border-left: 3px solid #38bdf8;">
+        <div class="kpi-val" style="color: #38bdf8;">32 Accounts</div>
+        <div class="kpi-label">Priority B (High-Value West Island)</div>
+      </div>
+      <div class="kpi-card" style="border-left: 3px solid var(--green-light);">
+        <div class="kpi-val" style="color: var(--green-light);">~200k+ sq ft</div>
+        <div class="kpi-label">Total Addressable Floor Area</div>
+      </div>
+    </div>
+
+    <!-- Filters & Search Bar -->
+    <div class="filter-bar">
+      <input type="text" id="search-input" class="search-input" placeholder="🔍 Search by business, contact, phone, or neighborhood..." oninput="applyFilters()">
+      
+      <select id="priority-filter" class="select-filter" onchange="applyFilters()">
+        <option value="all">All Priorities</option>
+        <option value="A">Priority A — Go Now (5)</option>
+        <option value="B">Priority B — Worth It (32)</option>
+      </select>
+
+      <select id="sector-filter" class="select-filter" onchange="applyFilters()">
+        <option value="all">All Sectors</option>
+        <option value="Medical clinic">Medical & Dental Clinics</option>
+        <option value="Office">Corporate Offices</option>
+        <option value="School">Private Schools</option>
+        <option value="Daycare / CPE">Daycares & CPEs</option>
+        <option value="Kindergarten / preschool">Preschools</option>
+        <option value="Gym / Studio">Gyms & Fitness</option>
+        <option value="Property manager">Property Managers</option>
+      </select>
+
+      <select id="area-filter" class="select-filter" onchange="applyFilters()">
+        <option value="all">All Locations</option>
+        <option value="Pointe-Claire">Pointe-Claire</option>
+        <option value="Dollard-des-Ormeaux">Dollard-des-Ormeaux (DDO)</option>
+        <option value="Kirkland">Kirkland</option>
+        <option value="Beaconsfield">Beaconsfield</option>
+        <option value="Dorval">Dorval</option>
+        <option value="NDG">NDG / Westmount</option>
+      </select>
+
+      <button onclick="exportCsv()" class="btn-nav" style="margin-left: auto; background: rgba(30,123,52,0.2); border-color: var(--green-light); color: var(--green-light);">
+        📥 Export 37 Leads CSV
+      </button>
+    </div>
+
+    <!-- Leads Table -->
+    <div class="leads-table-wrap">
+      <table class="leads-table">
+        <thead>
+          <tr>
+            <th>ID & Prio</th>
+            <th>Business Name</th>
+            <th>Sector</th>
+            <th>Location</th>
+            <th>Sq Ft</th>
+            <th>Decision Maker</th>
+            <th>Best Approach</th>
+            <th>Score</th>
+            <th>Dossier</th>
+          </tr>
+        </thead>
+        <tbody id="leads-tbody">
+          <!-- Populated by JS -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Multi-Page Pagination Bar -->
+    <div class="pagination-bar">
+      <div style="font-size: 0.85rem; color: var(--text-muted);" id="showing-text">
+        Showing 1 to 10 of 37 leads
+      </div>
+      <div style="display: flex; gap: 6px;" id="pagination-controls">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+  </main>
+
+  <!-- Lead Detail Modal -->
+  <div class="modal-overlay" id="lead-modal" onclick="if(event.target===this)closeModal()">
+    <div class="modal-card">
+      <button class="close-modal" onclick="closeModal()">&times;</button>
+      <div id="modal-content">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    var allLeads = [{"business_name": "Cromwell Management", "sector": "Property manager", "neighbourhood": "Kirkland", "language": "EN", "sq_ft": "25000.0", "public_private": "Private", "property_manager": "\u2014", "has_cleaner": "Unknown", "current_cleaner": "", "how_we_know": "Not yet known", "contract_value_public": "", "award_date": "", "est_renewal_window": "", "seao_ref": "", "trigger": "Pre-winter floors", "trigger_live_until": "46327.0", "hard_floors": "Unknown", "best_fit_offer": "One-off - Strip & wax", "score": "4", "priority": "B - worth it", "contact_name": "Michael Doroshenko", "role": "Director of Commercial Leasing", "phone": "514-824-2278", "email": "", "best_approach": "Call", "referred_by": "", "source_url": "https://cromwellmgt.ca/en/contact/", "date_collected": "46281.0", "date_approached": "", "status": "Not started", "walkthrough_booked": "", "walkthrough_done": "", "proposal_sent": "", "days_to_proposal": "", "quote_value": "", "payment_terms": "", "compliance_pack_sent": "", "job_date": "", "follow_up_date": "", "invoiced_date": "", "paid_date": "", "amount_paid": "", "on_backup_list": "", "contract_stage": "Not yet raised", "contract_value_mo": "", "notes": "CALL ONLY - a placeholder email was removed on 16 Sept 2026. No published address verified, so there is no CASL basis. Michael Doroshenko, Director of Commercial Leasing, is a named contact found on a commercial property listing - phone him.", "id": "LEAD-01"}, {"business_name": "Groupe Shapiro", "sector": "Property manager", "neighbourhood": "Pointe-Claire", "language": "Bilingual", "sq_ft": "", "public_private": "Private", "property_manager": "", "has_cleaner": "", "current_cleaner": "", "how_we_know": "", "contract_value_public": "", "award_date": "", "est_renewal_window": "", "seao_ref": "", "trigger": "New tenancy / move", "trigger_live_until": "46327.0", "hard_floors": "Unknown", "best_fit_offer": "One-off - Strip & wax", "score": "4", "priority": "B - worth it", "contact_name": "Matthew Krantzberg", "role": "Leasing - 225 Hymus", "phone": "514-833-6208", "email": "", "best_approach": "Call", "referred_by": "", "source_url": "https://www.loopnet.ca/Listing/225-Boul-Hymus-Pointe-claire-QC/28602128/", "date_collected": "46281.0", "date_approached": "", "status": "Not started", "walkthrough_booked": "", "walkthrough_done": "", "proposal_sent": "", "days_to_proposal": "", "quote_value": "", "payment_terms": "", "compliance_pack_sent": "", "job_date": "", "follow_up_date": "", "invoiced_date": "", "paid_date": "", "amount_paid": "", "on_backup_list": "", "contract_stage": "Not yet raised", "contract_value_mo": "", "notes": "TIER 1. Manages 225 Boul Hymus, Pointe-Claire - offices 100-2,000 sq ft, newly renovated, COMMON WASHROOMS (shared areas = the cleaning contract). Multi-tenant, so new tenants arrive constantly. Other contacts: Steven Glazer 514-933-5112 x262, Gregory Depatie 514-951-8587. $30/sq ft/yr asking.", "id": "LEAD-02"}, {"business_name": "TRAMS Property Management", "sector": "Property manager", "neighbourhood": "Other - in corridor", "language": "EN", "sq_ft": "", "public_private": "Private", "property_manager": "", "has_cleaner": "", "current_cleaner": "", "how_we_know": "", "contract_value_public": "", "award_date": "", "est_renewal_window": "", "seao_ref": "", "trigger": "Pre-winter floors", "trigger_live_until": "46327.0", "hard_floors": "Unknown", "best_fit_offer": "One-off - Strip & wax", "score": "3", "priority": "B - worth it", "contact_name": "", "role": "Reception - ask for property manager", "phone": "514-341-8600", "email": "info@tramsmgmt.com", "best_approach": "Call", "referred_by": "", "source_url": "https://tramsmgmt.com/", "date_collected": "46281.0", "date_approached": "", "status": "Not started", "walkthrough_booked": "", "walkthrough_done": "", "proposal_sent": "", "days_to_proposal": "", "quote_value": "", "payment_terms": "", "compliance_pack_sent": "", "job_date": "", "follow_up_date": "", "invoiced_date": "", "paid_date": "", "amount_paid": "", "on_backup_list": "", "contract_stage": "Not yet raised", "contract_value_mo": "", "notes": "TIER 1. COMMERCIAL properties in Dollard-des-Ormeaux, Kirkland and Anjou - all corridor. Office 5151 de la Savane. No named contact published - get one on the call.", "id": "LEAD-03"}, {"business_name": "VS Property Management / VS Gestion Immobiliere", "sector": "Property manager", "neighbourhood": "Lachine", "language": "Bilingual", "sq_ft": "24746.0", "public_private": "Private", "property_manager": "", "has_cleaner": "", "current_cleaner": "", "how_we_know": "", "contract_value_public": "", "award_date": "", "est_renewal_window": "", "seao_ref": "", "trigger": "Pre-winter floors", "trigger_live_until": "46327.0", "hard_floors": "Unknown", "best_fit_offer": "One-off - Strip & wax", "score": "3", "priority": "B - worth it", "contact_name": "", "role": "Reception - ask for property manager", "phone": "438-265-1855", "email": "info@vsgestionimmo.com", "best_approach": "Call", "referred_by": "", "source_url": "https://www.vsgestionimmo.com/", "date_collected": "46281.0", "date_approached": "", "status": "Not started", "walkthrough_booked": "", "walkthrough_done": "", "proposal_sent": "", "days_to_proposal": "", "quote_value": "", "payment_terms": "", "compliance_pack_sent": "", "job_date": "", "follow_up_date": "", "invoiced_date": "", "paid_date": "", "amount_paid": "", "on_backup_list": "", "contract_stage": "Not yet raised", "contract_value_mo": "", "notes": "TIER 1. Commercial/retail/industrial. Corridor property: 9960-9970 Cote-de-Liesse, Lachine (24,746 sq ft). Head office is Brossard - lead with the Lachine building, not the company.", "id": "LEAD-04"}, {"business_name": "World Gym Dollard-des-Ormeaux", "sector": "Gym / Studio", "neighbourhood": "Dollard-des-Ormeaux", "language": "Bilingual", "sq_ft": "42000.0", "public_private": "Private", "property_manager": "", "has_cleaner": "", "current_cleaner": "", "how_we_know": "", "contract_value_public": "", "award_date": "", "est_renewal_window": "", "seao_ref": "", "trigger": "Pre-winter floors", "trigger_live_until": "46327.0", "hard_floors": "Yes", "best_fit_offer": "One-off - Strip & wax", "score": "4", "priority": "B - worth it", "contact_name": "", "role": "Reception - ask for club manager", "phone": "438-600-2100", "email": "", "best_approach": "Walk-in", "referred_by": "", "source_url": "https://wgq.ca/en/world-gym-dollard-des-ormeaux/", "date_collected": "46281.0", "date_approached": "", "status": "Not started", "walkthrough_booked": "", "walkthrough_done": "", "proposal_sent": "", "days_to_proposal": "", "quote_value": "", "payment_terms": "", "compliance_pack_sent": "", "job_date": "", "follow_up_date": "", "invoiced_date": "", "paid_date": "", "amount_paid": "", "on_backup_list": "", "contract_stage": "Not yet raised", "contract_value_mo": "", "notes": "42,000 SQ FT - largest in this batch. 3237 Des Sources Blvd. Open 24h Tue-Thu, so floor work needs planning - but high traffic plus winter salt makes this the strongest floor-care case here. No email published: CALL OR WALK IN ONLY.", "id": "LEAD-05"}, {"business_name": "GYM Fit Forme Pointe-Claire", "sector": "Gym / Studio", "neighbourhood": "Pointe-Claire", "language": "Bilingual", "sq_ft": "", "public_private": "Private", "property_manager": "", "has_cleaner": "", "current_cleaner": "", "how_we_know": "", "contract_value_public": "", "award_date": "", "est_renewal_window": "", "seao_ref": "", "trigger": "Pre-winter floors", "trigger_live_until": "46327.0", "hard_floors": "Yes", "best_fit_offer": "One-off - Strip & wax", "score": "4", "priority": "B - worth it", "contact_name": "", "role": "Reception - ask for manager", "phone": "514-643-1888", "email": "", "best_approach": "Walk-in", "referred_by": "", "source_url": "https://gymfitforme.com/en/west-island/", "date_collected": "46281.0", "date_approached": "", "status": "Not started", "walkthrough_booked": "", "walkthrough_done": "", "proposal_sent": "", "days_to_proposal": "", "quote_value": "", "payment_terms": "", "compliance_pack_sent": "", "job_date": "", "follow_up_date": "", "invoiced_date": "", "paid_date": "", "amount_paid": "", "on_backup_list": "", "contract_stage": "Not yet raised", "contract_value_mo": "", "notes": "2375 Trans-Canada Hwy, Pointe-Claire. ONE OF FOUR BRANCHES - a win here could become four sites. Showers and saunas add wet-area work. 24h for premium members. No email published: CALL OR WALK IN ONLY.", "id": "LEAD-06"}, {"business_name": "Energie EnCorps", "sector": "Gym / Studio", "neighbourhood": "Pointe-Claire", "language": "Bilingual", "sq_ft": "", "public_private": "Private", "property_manager": "", "has_cleaner": "", "current_cleaner": "", "how_we_know": "", "contract_value_public": "", "award_date": "", "est_renewal_window": "", "seao_ref": "", "trigger": "Pre-winter floors", "trigger_live_until": "46327.0", "hard_floors": "Yes", "best_fit_offer": "One-off - Deep clean", "score": "4", "priority": "B - worth it", "contact_name": "", "role": "Reception - ask for owner", "phone": "514-505-9642", "email": "", "best_approach": "Walk-in", "referred_by": "", "source_url": "https://energieencorps.com/contact/", "date_collected": "46281.0", "date_approached": "", "status": "Not started", "walkthrough_booked": "", "walkthrough_done": "", "proposal_sent": "", "days_to_proposal": "", "quote_value": "", "payment_terms": "", "compliance_pack_sent": "", "job_date": "", "follow_up_date": "", "invoiced_date": "", "paid_date": "", "amount_paid": "", "on_backup_list": "", "contract_stage": "Not yet raised", "contract_value_mo": "", "notes": "18 Place de la Triade #230, Pointe-Claire. Yoga, fitness and holistic health - 35+ classes a week plus massage, osteopathy, reiki. Treatment rooms mean hygiene matters more than in a normal gym. No email published: CALL OR WALK IN ONLY.", "id": "LEAD-07"}, {"business_name": "The Learning Tree Daycare", "sector": "Daycare / CPE", "neighbourhood": "Dollard-des-Ormeaux", "language": "EN", "sq_ft": "", "public_private": "Private", "property_manager": "", "has_cleaner": "", "current_cleaner": "", "how_we_know": "", "contract_value_public": "", "award_date": "", "est_renewal_window": "", "seao_ref": "", "trigger": "Pre-winter floors", "trigger_live_until": "46327.0", "hard_floors": "Unknown", "best_fit_offer": "One-off - Deep clean", "score": "3", "priority": "B - worth it", "contact_name": "", "role": "Reception - ask for director", "phone": "514-683-8426", "email": "", "best_approach": "Call", "referred_by": "", "source_url": "https://thelearningtree.ca/contact-us/", "date_collected": "46281.0", "date_approached": "", "status": "Not started", "walkthrough_booked": "", "walkthrough_done": "", "proposal_sent": "", "days_to_proposal": "", "quote_value": "", "payment_terms": "", "compliance_pack_sent": "", "job_date": "", "follow_up_date": "", "invoiced_date": "", "paid_date": "", "amount_paid": "", "on_backup_list": "", "contract_stage": "Not yet raised", "contract_value_mo": "", "notes": "16 Rue de Seville, DDO. ANGLOPHONE daycare serving Kirkland, Pierrefonds, Pointe-Claire, DDO. Regulation angle applies: equipment must be disinfected outside childrens presence - which means evenings, which means a contract. No email published: CALL ONLY.", "id": "LEAD-08"}, {"business_name": "Garderie Bebe et Cie", "sector": "Daycare / CPE", "neighbourhood": "Other - in corridor", "language": "Bilingual", "sq_ft": "", "public_private": "Private", "property_manager": "", "has_cleaner": "", "current_cleaner": "", "how_we_know": "", "contract_value_public": "", "award_date": "", "est_renewal_window": "", "seao_ref": "", "trigger": "Pre-winter floors", "trigger_live_until": "46327.0", "hard_floors": "Unknown", "best_fit_offer": "One-off - Deep clean", "score": "3", "priority": "B - worth it", "contact_name": "", "role": "Reception - ask for director", "phone": "514-583-8309", "email": "info@bebeetcie.com", "best_approach": "Call", "referred_by": "", "source_url": "http://bebeetcie.com/", "date_collected": "46281.0", "date_approached": "", "status": "Not started", "walkthrough_booked": "", "walkthrough_done": "", "proposal_sent": "", "days_to_proposal": "", "quote_value": "", "payment_terms": "", "compliance_pack_sent": "", "job_date": "", "follow_up_date": "", "invoiced_date": "", "paid_date": "", "amount_paid": "", "on_backup_list": "", "contract_stage": "Not yet raised", "contract_value_mo": "", "notes": "4830 Boul St-Jean, Pierrefonds. Ages 3 months to 5 years. Closed weekends = clean access Sat/Sun. Same regulation angle as any daycare: disinfection outside childrens presence.", "id": "LEAD-09"}, {"business_name": "Clinique Dentaire Pointe-Claire", "sector": "Medical clinic", "neighbourhood": "Pointe-Claire", "language": "Bilingual", "sq_ft": "", "public_private": "Private", "property_manager": "", "has_cleaner": "", "current_cleaner": "", "how_we_know": "", "contract_value_public": "", "award_date": "", "est_renewal_window": "", "seao_ref": "", "trigger": "New tenancy / move", "trigger_live_until": "46327.0", "hard_floors": "Yes", "best_fit_offer": "One-off - Strip & wax", "score": "5", "priority": "A - go now", "contact_name": "Catalina Zambrano", "role": "Privacy Officer - route to office manager", "phone": "514-697-7391", "email": "info@cliniquedentairepointeclaire.com", "best_approach": "Call", "referred_by": "", "source_url": "https://cliniquedentairepointeclaire.com/about-us/", "date_collected": "46281.0", "date_approached": "", "status": "Not started", "walkthrough_booked": "", "walkthrough_done": "", "proposal_sent": "", "days_to_proposal": "", "quote_value": "", "payment_terms": "", "compliance_pack_sent": "", "job_date": "", "follow_up_date": "", "invoiced_date": "", "paid_date": "", "amount_paid": "", "on_backup_list": "", "contract_stage": "Not yet raised", "contract_value_mo": "", "notes": "1 Ave Holiday #250, Pointe-Claire. TWO TRIGGERS: recently relocated to Holiday Ave (new premises) AND pre-winter floors. 30+ yrs in the West Island. Multiple operatories. Closed weekends = clean access. Hard floors inferred from clinical norms; confirm at walkthrough.", "id": "LEAD-10"}, {"business_name": "Centre Dentaire Lakeshore", "sector": "Medical clinic", "neighbourhood": "Kirkland", "language": "EN", "sq_ft": "", "public_private": "Private", "property_manager": "", "has_cleaner": "", "current_cleaner": "", "how_we_know": "", "contract_value_public": "", "award_date": "", "est_renewal_window": "", "seao_ref": "", "trigger": "Pre-winter floors", "trigger_live_until": "46327.0", "hard_floors": "Yes", "best_fit_offer": "One-off - Strip & wax", "score": "5", "priority": "A - go now", "contact_name": "Dr Sochea Da Lung-Tor", "role": "Principal dentist", "phone": "514-694-5716", "email": "", "best_approach": "Call", "referred_by": "", "source_url": "https://centredentairelakeshore.com/get-in-touch/", "date_collected": "46281.0", "date_approached": "", "status": "Not started", "walkthrough_booked": "", "walkthrough_done": "", "proposal_sent": "", "days_to_proposal": "", "quote_value": "", "payment_terms": "", "compliance_pack_sent": "", "job_date": "", "follow_up_date": "", "invoiced_date": "", "paid_date": "", "amount_paid": "", "on_backup_list": "", "contract_stage": "Not yet raised", "contract_value_mo": "", "notes": "22 Canvin St, Kirkland. 3 dentists, 8 staff. Behind Lakeshore General Hospital. Second dentist: Dr Duc-Minh Lam-Do. NO EMAIL PUBLISHED - CALL ONLY, no CASL basis to email. Hard floors inferred from clinical norms.", "id": "LEAD-11"}, {"business_name": "Beaconsfield Dentistry", "sector": "Medical clinic", "neighbourhood": "Kirkland", "language": "EN", "sq_ft": "", "public_private": "Private", "property_manager": "", "has_cleaner": "", "current_cleaner": "", "how_we_know": "", "contract_value_public": "", "award_date": "", "est_renewal_window": "", "seao_ref": "", "trigger": "Pre-winter floors", "trigger_live_until": "46327.0", "hard_floors": "Yes", "best_fit_offer": "One-off - Strip & wax", "score": "5", "priority": "A - go now", "contact_name": "Dr Mark Reich", "role": "Principal dentist", "phone": "514-697-7107", "email": "contact@beaconsfielddentistry.com", "best_approach": "Call", "referred_by": "", "source_url": "https://beaconsfielddentistry.com/contact.php", "date_collected": "46281.0", "date_approached": "", "status": "Not started", "walkthrough_booked": "", "walkthrough_done": "", "proposal_sent": "", "days_to_proposal": "", "quote_value": "", "payment_terms": "", "compliance_pack_sent": "", "job_date": "", "follow_up_date": "", "invoiced_date": "", "paid_date": "", "amount_paid": "", "on_backup_list": "", "contract_stage": "Not yet raised", "contract_value_mo": "", "notes": "2969 Saint Charles Blvd, Kirkland. 50+ yrs in the West Island. Second dentist: Dr Paul Deep. Closes 3pm Fridays - good weekend access. Hard floors inferred from clinical norms.", "id": "LEAD-12"}, {"business_name": "Beaconsfield Medical Clinic", "sector": "Medical clinic", "neighbourhood": "Beaconsfield", "language": "EN", "sq_ft": "", "public_private": "Private", "property_manager": "", "has_cleaner": "", "current_cleaner": "", "how_we_know": "", "contract_value_public": "", "award_date": "", "est_renewal_window": "", "seao_ref": "", "trigger": "Pre-winter floors", "trigger_live_until": "46327.0", "hard_floors": "Yes", "best_fit_offer": "One-off - Strip & wax", "score": "4", "priority": "B - worth it", "contact_name": "", "role": "Reception - ask for clinic manager", "phone": "514-375-5342", "email": "", "best_approach": "Call", "referred_by": "", "source_url": "https://www.cmbeaconsfield.com/en/contact-us", "date_collected": "46281.0", "date_approached": "", "status": "Not started", "walkthrough_booked": "", "walkthrough_done": "", "proposal_sent": "", "days_to_proposal": "", "quote_value": "", "payment_terms": "", "compliance_pack_sent": "", "job_date": "", "follow_up_date": "", "invoiced_date": "", "paid_date": "", "amount_paid": "", "on_backup_list": "", "contract_stage": "Not yet raised", "contract_value_mo": "", "notes": "Doctors, nurse practitioners AND an on-site pharmacy - bigger footprint than a dental practice. Serves Beaconsfield, Pierrefonds, Pointe-Claire, Kirkland. NO EMAIL PUBLISHED - CALL ONLY. Get the clinic managers name on the call.", "id": "LEAD-13"}, {"business_name": "Placements Sergakis Inc. (181 Hymus + portfolio)", "sector": "Office", "neighbourhood": "Pointe-Claire", "language": "EN", "sq_ft": "", "public_private": "Private", "property_manager": "Self-managed", "has_cleaner": "", "current_cleaner": "", "how_we_know": "", "contract_value_public": "", "award_date": "", "est_renewal_window": "", "seao_ref": "", "trigger": "Pre-winter floors", "trigger_live_until": "46327.0", "hard_floors": "Yes", "best_fit_offer": "One-off - Strip & wax", "score": "5", "priority": "A - go now", "contact_name": "Sylvie Filion", "role": "Supervisor, Repairs and Maintenance", "phone": "514-937-6137 ext 225", "email": "Sylvie.fillion@sergakis.com", "best_approach": "Email", "referred_by": "", "source_url": "https://en.sergakis.com/contactez-nous", "date_collected": "46281.0", "date_approached": "", "status": "", "walkthrough_booked": "", "walkthrough_done": "", "proposal_sent": "", "days_to_proposal": "", "quote_value": "", "payment_terms": "", "compliance_pack_sent": "", "job_date": "", "follow_up_date": "", "invoiced_date": "", "paid_date": "", "amount_paid": "", "on_backup_list": "", "contract_stage": "", "contract_value_mo": "", "notes": "BEST OF BATCH. Multi-building commercial + residential landlord, head office LaSalle. Publishes a named maintenance supervisor with direct email on its own contact page - that is the cleaning buyer, published, CASL-clean. Second contact: Mark Bedard, Commercial Real Estate Director, mbedard@sergakis.com, 514-803-0011. 181 Hymus Pointe-Claire office listed 1,660-13,260 sq ft. One relationship covers a portfolio.", "id": "LEAD-14"}, {"business_name": "Michael White Realties Inc. (271 Labrosse)", "sector": "Office", "neighbourhood": "Pointe-Claire", "language": "EN", "sq_ft": "", "public_private": "Private", "property_manager": "Michael White Realties", "has_cleaner": "", "current_cleaner": "", "how_we_know": "", "contract_value_public": "", "award_date": "", "est_renewal_window": "", "seao_ref": "", "trigger": "Pre-winter floors", "trigger_live_until": "46327.0", "hard_floors": "Yes", "best_fit_offer": "One-off - Strip & wax", "score": "4", "priority": "B - worth it", "contact_name": "", "role": "", "phone": "514-488-5111", "email": "mwr@whiteinc.ca", "best_approach": "Email", "referred_by": "", "source_url": "https://www.mwr.ca/contact-us/", "date_collected": "46281.0", "date_approached": "", "status": "", "walkthrough_booked": "", "walkthrough_done": "", "proposal_sent": "", "days_to_proposal": "", "quote_value": "", "payment_terms": "", "compliance_pack_sent": "", "job_date": "", "follow_up_date": "", "invoiced_date": "", "paid_date": "", "amount_paid": "", "on_backup_list": "", "contract_stage": "", "contract_value_mo": "", "notes": "Commercial/industrial brokerage and manager, office at 6800 Cote-de-Liesse Saint-Laurent. Manages 271 Av Labrosse Pointe-Claire, 1,000-10,000 sq ft office. General published email only - ask for whoever handles building services.", "id": "LEAD-15"}, {"business_name": "Groupe Petra (1 Holiday Ave)", "sector": "Office", "neighbourhood": "Pointe-Claire", "language": "EN", "sq_ft": "19508.0", "public_private": "Private", "property_manager": "Groupe Petra Ltd", "has_cleaner": "", "current_cleaner": "", "how_we_know": "", "contract_value_public": "", "award_date": "", "est_renewal_window": "", "seao_ref": "", "trigger": "Pre-winter floors", "trigger_live_until": "46327.0", "hard_floors": "Yes", "best_fit_offer": "One-off - Strip & wax", "score": "4", "priority": "B - worth it", "contact_name": "", "role": "", "phone": "514-321-7515", "email": "info@groupepetra.com", "best_approach": "Email", "referred_by": "", "source_url": "https://groupepetra.com/", "date_collected": "46281.0", "date_approached": "", "status": "", "walkthrough_booked": "", "walkthrough_done": "", "proposal_sent": "", "days_to_proposal": "", "quote_value": "", "payment_terms": "", "compliance_pack_sent": "", "job_date": "", "follow_up_date": "", "invoiced_date": "", "paid_date": "", "amount_paid": "", "on_backup_list": "", "contract_stage": "", "contract_value_mo": "", "notes": "Manages 1 Av Holiday Pointe-Claire, 994-19,508 sq ft office building. Head office 8000 Langelier, Saint-Leonard. Large portfolio incl. 1000 de la Gauchetiere. General published email only.", "id": "LEAD-16"}, {"business_name": "Epic Quebec Inc. (6000 Trans-Canada, Dorval)", "sector": "Office", "neighbourhood": "Dorval", "language": "EN", "sq_ft": "218338.0", "public_private": "Private", "property_manager": "Epic Quebec / Epic Investment Services", "has_cleaner": "", "current_cleaner": "", "how_we_know": "", "contract_value_public": "", "award_date": "", "est_renewal_window": "", "seao_ref": "", "trigger": "Pre-winter floors", "trigger_live_until": "46327.0", "hard_floors": "Yes", "best_fit_offer": "One-off - Strip & wax", "score": "5", "priority": "A - go now", "contact_name": "Sabrina Grassi", "role": "Leasing contact", "phone": "438-812-7878", "email": "ldragu@epicquebec.com", "best_approach": "Email", "referred_by": "", "source_url": "https://ia.ca/business/office-space/6000-trans-canada-highway", "date_collected": "46281.0", "date_approached": "", "status": "", "walkthrough_booked": "", "walkthrough_done": "", "proposal_sent": "", "days_to_proposal": "", "quote_value": "", "payment_terms": "", "compliance_pack_sent": "", "job_date": "", "follow_up_date": "", "invoiced_date": "", "paid_date": "", "amount_paid": "", "on_backup_list": "", "contract_stage": "", "contract_value_mo": "", "notes": "Manages 6000 Trans-Canada for iA Financial Group. Building is 218,338 sq ft, expanded 2010 and 2014 - industrial/office mix with 18 docks, so likely ABOVE Otis capacity for a full contract; work it for one-off floor care and the backup list, not a recurring bid. Published email is on the landlord's leasing page.", "id": "LEAD-17"}, {"business_name": "BGI - 6600 Trans-Canada, Pointe-Claire", "sector": "Office", "neighbourhood": "Pointe-Claire", "language": "EN", "sq_ft": "85454.0", "public_private": "Private", "property_manager": "BGI", "has_cleaner": "", "current_cleaner": "", "how_we_know": "", "contract_value_public": "", "award_date": "", "est_renewal_window": "", "seao_ref": "", "trigger": "Pre-winter floors", "trigger_live_until": "46327.0", "hard_floors": "Yes", "best_fit_offer": "One-off - Strip & wax", "score": "4", "priority": "B - worth it", "contact_name": "", "role": "", "phone": "", "email": "", "best_approach": "Walk-in", "referred_by": "", "source_url": "https://www.loopnet.ca/Listing/6600-Rte-Transcanadienne-Pointe-claire-QC/26089956/", "date_collected": "46281.0", "date_approached": "", "status": "", "walkthrough_booked": "", "walkthrough_done": "", "proposal_sent": "", "days_to_proposal": "", "quote_value": "", "payment_terms": "", "compliance_pack_sent": "", "job_date": "", "follow_up_date": "", "invoiced_date": "", "paid_date": "", "amount_paid": "", "on_backup_list": "", "contract_stage": "", "contract_value_mo": "", "notes": "CALL ONLY / WALK-IN - no published email found. 85,454 sq ft multi-tenant office, built 1975, listing states 'Property Manager on Site'. Older building with a new interior restaurant fit-out = live renovation signal. On-site manager means a walk-in is realistic. Suites 450-6,582 sq ft.", "id": "LEAD-18"}, {"business_name": "Plaza Pointe Claire Inc. (245-325 St-Jean)", "sector": "Office", "neighbourhood": "Pointe-Claire", "language": "EN", "sq_ft": "16807.0", "public_private": "Private", "property_manager": "Plaza Pointe Claire Inc.", "has_cleaner": "", "current_cleaner": "", "how_we_know": "", "contract_value_public": "", "award_date": "", "est_renewal_window": "", "seao_ref": "", "trigger": "Pre-winter floors", "trigger_live_until": "46327.0", "hard_floors": "Yes", "best_fit_offer": "One-off - Strip & wax", "score": "4", "priority": "B - worth it", "contact_name": "", "role": "", "phone": "", "email": "", "best_approach": "Call", "referred_by": "", "source_url": "https://www.loopnet.ca/search/office-space/pointe-claire-qc--canada/for-lease/", "date_collected": "46281.0", "date_approached": "", "status": "", "walkthrough_booked": "", "walkthrough_done": "", "proposal_sent": "", "days_to_proposal": "", "quote_value": "", "payment_terms": "", "compliance_pack_sent": "", "job_date": "", "follow_up_date": "", "invoiced_date": "", "paid_date": "", "amount_paid": "", "on_backup_list": "", "contract_stage": "", "contract_value_mo": "", "notes": "CALL ONLY - no published email found. Office space 657-16,807 sq ft across 245-325 Boul Saint-Jean. Owner-managed. Needs a name before it is workable.", "id": "LEAD-19"}, {"business_name": "Kells Academy (3 campuses)", "sector": "School", "neighbourhood": "NDG", "language": "EN", "sq_ft": "", "public_private": "Private", "property_manager": "", "has_cleaner": "", "current_cleaner": "", "how_we_know": "", "contract_value_public": "", "award_date": "", "est_renewal_window": "", "seao_ref": "", "trigger": "Pre-winter floors", "trigger_live_until": "46327.0", "hard_floors": "Yes", "best_fit_offer": "One-off - Strip & wax", "score": "4", "priority": "B - worth it", "contact_name": "", "role": "", "phone": "514-487-2345", "email": "kadmin@kells.ca", "best_approach": "Email", "referred_by": "", "source_url": "https://kells.ca/index.php?Itemid=203", "date_collected": "46281.0", "date_approached": "", "status": "", "walkthrough_booked": "", "walkthrough_done": "", "proposal_sent": "", "days_to_proposal": "", "quote_value": "", "payment_terms": "", "compliance_pack_sent": "", "job_date": "", "follow_up_date": "", "invoiced_date": "", "paid_date": "", "amount_paid": "", "on_backup_list": "", "contract_stage": "", "contract_value_mo": "", "notes": "STRONGEST SCHOOL LEAD. Three campuses, all H4B - the same postcode district as Otis at 2447 Madison Ave. Elementary 2290 Cavendish; High School 6865 De Maisonneuve W; Grade 12 6645 De Maisonneuve W. ~300 students total so each site is mid-size, inside capacity. Three buildings under one administration = contract-shaped from the first conversation. Published general admin email.", "id": "LEAD-20"}, {"business_name": "Hebrew Foundation School", "sector": "School", "neighbourhood": "Dollard-des-Ormeaux", "language": "EN", "sq_ft": "", "public_private": "Private", "property_manager": "", "has_cleaner": "", "current_cleaner": "", "how_we_know": "", "contract_value_public": "", "award_date": "", "est_renewal_window": "", "seao_ref": "", "trigger": "Pre-winter floors", "trigger_live_until": "46327.0", "hard_floors": "Yes", "best_fit_offer": "One-off - Strip & wax", "score": "4", "priority": "B - worth it", "contact_name": "", "role": "", "phone": "514-684-6270", "email": "communication@hfs.qc.ca", "best_approach": "Email", "referred_by": "", "source_url": "https://www.hfs.qc.ca/", "date_collected": "46281.0", "date_approached": "", "status": "", "walkthrough_booked": "", "walkthrough_done": "", "proposal_sent": "", "days_to_proposal": "", "quote_value": "", "payment_terms": "", "compliance_pack_sent": "", "job_date": "", "follow_up_date": "", "invoiced_date": "", "paid_date": "", "amount_paid": "", "on_backup_list": "", "contract_stage": "", "contract_value_mo": "", "notes": "2 rue Hope, DDO H9A 2V5. Bilingual, preschool to grade 6 plus a separate high school division - two buildings. Published general email. Note: preschool division on site means the disinfection-outside-children's-presence angle applies here too.", "id": "LEAD-21"}, {"business_name": "West Island College", "sector": "School", "neighbourhood": "Dollard-des-Ormeaux", "language": "EN", "sq_ft": "", "public_private": "Private", "property_manager": "", "has_cleaner": "", "current_cleaner": "", "how_we_know": "", "contract_value_public": "", "award_date": "", "est_renewal_window": "", "seao_ref": "", "trigger": "Pre-winter floors", "trigger_live_until": "46327.0", "hard_floors": "Yes", "best_fit_offer": "One-off - Strip & wax", "score": "4", "priority": "B - worth it", "contact_name": "", "role": "", "phone": "514-683-4660", "email": "", "best_approach": "Call", "referred_by": "", "source_url": "https://wicmtl.ca/", "date_collected": "46281.0", "date_approached": "", "status": "", "walkthrough_booked": "", "walkthrough_done": "", "proposal_sent": "", "days_to_proposal": "", "quote_value": "", "payment_terms": "", "compliance_pack_sent": "", "job_date": "", "follow_up_date": "", "invoiced_date": "", "paid_date": "", "amount_paid": "", "on_backup_list": "", "contract_stage": "", "contract_value_mo": "", "notes": "CALL ONLY - site obfuscates its email address, so no CASL basis. 851 Tecumseh, DDO H9B 2L2. Independent school, FEEP member. Ask for the business manager or director general.", "id": "LEAD-22"}, {"business_name": "Emmanuel Christian School", "sector": "School", "neighbourhood": "Dollard-des-Ormeaux", "language": "EN", "sq_ft": "", "public_private": "Private", "property_manager": "", "has_cleaner": "", "current_cleaner": "", "how_we_know": "", "contract_value_public": "", "award_date": "", "est_renewal_window": "", "seao_ref": "", "trigger": "Pre-winter floors", "trigger_live_until": "46327.0", "hard_floors": "Yes", "best_fit_offer": "One-off - Strip & wax", "score": "4", "priority": "B - worth it", "contact_name": "", "role": "", "phone": "514-696-6430", "email": "", "best_approach": "Call", "referred_by": "", "source_url": "https://ville.ddo.qc.ca/en/live/community-and-institutions/educational-institutions/", "date_collected": "46281.0", "date_approached": "", "status": "", "walkthrough_booked": "", "walkthrough_done": "", "proposal_sent": "", "days_to_proposal": "", "quote_value": "", "payment_terms": "", "compliance_pack_sent": "", "job_date": "", "follow_up_date": "", "invoiced_date": "", "paid_date": "", "amount_paid": "", "on_backup_list": "", "contract_stage": "", "contract_value_mo": "", "notes": "CALL ONLY - site blocked to automated fetch, no published email verified. 4698 rue St-Jean, DDO. Listed on the City of DDO educational institutions page.", "id": "LEAD-23"}, {"business_name": "Montreal Confucius School", "sector": "School", "neighbourhood": "Dollard-des-Ormeaux", "language": "EN", "sq_ft": "", "public_private": "Private", "property_manager": "", "has_cleaner": "", "current_cleaner": "", "how_we_know": "", "contract_value_public": "", "award_date": "", "est_renewal_window": "", "seao_ref": "", "trigger": "Pre-winter floors", "trigger_live_until": "46327.0", "hard_floors": "Yes", "best_fit_offer": "One-off - Deep clean", "score": "4", "priority": "B - worth it", "contact_name": "", "role": "", "phone": "514-691-0412", "email": "", "best_approach": "Call", "referred_by": "", "source_url": "https://ville.ddo.qc.ca/en/live/community-and-institutions/educational-institutions/", "date_collected": "46281.0", "date_approached": "", "status": "", "walkthrough_booked": "", "walkthrough_done": "", "proposal_sent": "", "days_to_proposal": "", "quote_value": "", "payment_terms": "", "compliance_pack_sent": "", "job_date": "", "follow_up_date": "", "invoiced_date": "", "paid_date": "", "amount_paid": "", "on_backup_list": "", "contract_stage": "", "contract_value_mo": "", "notes": "CALL ONLY - no published email verified. 851 Tecumseh, DDO - shares an address with West Island College, so likely a tenant in that building. Ask who cleans before pitching: this may be the landlord's decision. Weekend/supplementary school, so lower volume.", "id": "LEAD-24"}, {"business_name": "St. George's School of Montreal", "sector": "School", "neighbourhood": "Westmount", "language": "EN", "sq_ft": "", "public_private": "Private", "property_manager": "", "has_cleaner": "", "current_cleaner": "", "how_we_know": "", "contract_value_public": "", "award_date": "", "est_renewal_window": "", "seao_ref": "", "trigger": "Pre-winter floors", "trigger_live_until": "46327.0", "hard_floors": "Yes", "best_fit_offer": "One-off - Strip & wax", "score": "4", "priority": "B - worth it", "contact_name": "", "role": "", "phone": "514-937-9289", "email": "", "best_approach": "Call", "referred_by": "", "source_url": "https://www.stgeorges.qc.ca/", "date_collected": "46281.0", "date_approached": "", "status": "", "walkthrough_booked": "", "walkthrough_done": "", "proposal_sent": "", "days_to_proposal": "", "quote_value": "", "payment_terms": "", "compliance_pack_sent": "", "job_date": "", "follow_up_date": "", "invoiced_date": "", "paid_date": "", "amount_paid": "", "on_backup_list": "", "contract_stage": "", "contract_value_mo": "", "notes": "CALL ONLY on purpose. Two Westmount campuses - 3685 The Boulevard and 3100 Le Boulevard - K to 12, founded 1930. Only admissions@stgeorges.qc.ca is published, which is not the facilities buyer, so there is no role-relevant CASL basis. Phone and ask for the business manager.", "id": "LEAD-25"}, {"business_name": "English Montreal School Board / Lester B. Pearson School Board", "sector": "School", "neighbourhood": "Other - in corridor", "language": "EN", "sq_ft": "", "public_private": "Public", "property_manager": "", "has_cleaner": "", "current_cleaner": "", "how_we_know": "", "contract_value_public": "", "award_date": "", "est_renewal_window": "", "seao_ref": "", "trigger": "Contract expiring", "trigger_live_until": "", "hard_floors": "Yes", "best_fit_offer": "Recurring contract", "score": "4", "priority": "B - worth it", "contact_name": "", "role": "", "phone": "", "email": "", "best_approach": "Property manager", "referred_by": "", "source_url": "https://ville.ddo.qc.ca/en/live/community-and-institutions/educational-institutions/", "date_collected": "46281.0", "date_approached": "", "status": "", "walkthrough_booked": "", "walkthrough_done": "", "proposal_sent": "", "days_to_proposal": "", "quote_value": "", "payment_terms": "", "compliance_pack_sent": "", "job_date": "", "follow_up_date": "", "invoiced_date": "", "paid_date": "", "amount_paid": "", "on_backup_list": "", "contract_stage": "", "contract_value_mo": "", "notes": "DO NOT COLD-APPROACH. Both are public bodies - their cleaning is tendered through SEAO, so a call to a principal goes nowhere. LBPSB 514-422-3000. This row exists as a standing watch item: the SEAO feed is the route, on the contract-expiry trigger. Loaded as a reminder, not a lead - set Status accordingly.", "id": "LEAD-26"}, {"business_name": "Beaurepaire Preschool", "sector": "Kindergarten / preschool", "neighbourhood": "Beaconsfield", "language": "EN", "sq_ft": "", "public_private": "Private", "property_manager": "", "has_cleaner": "", "current_cleaner": "", "how_we_know": "", "contract_value_public": "", "award_date": "", "est_renewal_window": "", "seao_ref": "", "trigger": "Pre-winter floors", "trigger_live_until": "46327.0", "hard_floors": "Yes", "best_fit_offer": "One-off - Deep clean", "score": "4", "priority": "B - worth it", "contact_name": "", "role": "Registrar", "phone": "514-695-4609", "email": "registrar@beaurepairepreschool.com", "best_approach": "Email", "referred_by": "", "source_url": "https://westislandmommies.com/directory/preschools-2/", "date_collected": "46281.0", "date_approached": "", "status": "", "walkthrough_booked": "", "walkthrough_done": "", "proposal_sent": "", "days_to_proposal": "", "quote_value": "", "payment_terms": "", "compliance_pack_sent": "", "job_date": "", "follow_up_date": "", "invoiced_date": "", "paid_date": "", "amount_paid": "", "on_backup_list": "", "contract_stage": "", "contract_value_mo": "", "notes": "25 Fieldfare, Beaconsfield. Published email. Likely a co-op or small independent - decision may sit with a volunteer parent board, so expect a slower yes. Verify who owns the building before scoring as live.", "id": "LEAD-27"}, {"business_name": "Magic Circle Preschool", "sector": "Kindergarten / preschool", "neighbourhood": "Beaconsfield", "language": "EN", "sq_ft": "", "public_private": "Private", "property_manager": "", "has_cleaner": "", "current_cleaner": "", "how_we_know": "", "contract_value_public": "", "award_date": "", "est_renewal_window": "", "seao_ref": "", "trigger": "Pre-winter floors", "trigger_live_until": "46327.0", "hard_floors": "Yes", "best_fit_offer": "One-off - Deep clean", "score": "4", "priority": "B - worth it", "contact_name": "", "role": "", "phone": "514-608-9956", "email": "info@magiccirclepreschool.com", "best_approach": "Email", "referred_by": "", "source_url": "https://westislandmommies.com/directory/preschools-2/", "date_collected": "46281.0", "date_approached": "", "status": "", "walkthrough_booked": "", "walkthrough_done": "", "proposal_sent": "", "days_to_proposal": "", "quote_value": "", "payment_terms": "", "compliance_pack_sent": "", "job_date": "", "follow_up_date": "", "invoiced_date": "", "paid_date": "", "amount_paid": "", "on_backup_list": "", "contract_stage": "", "contract_value_mo": "", "notes": "313 Windermere Road, Beaconsfield H9W 1W1. Published email and own website. Appears to be a standalone operator rather than a co-op, which makes the decision faster.", "id": "LEAD-28"}, {"business_name": "Montessori School of Pointe-Claire", "sector": "Kindergarten / preschool", "neighbourhood": "Pointe-Claire", "language": "EN", "sq_ft": "", "public_private": "Private", "property_manager": "", "has_cleaner": "", "current_cleaner": "", "how_we_know": "", "contract_value_public": "", "award_date": "", "est_renewal_window": "", "seao_ref": "", "trigger": "Pre-winter floors", "trigger_live_until": "46327.0", "hard_floors": "Yes", "best_fit_offer": "One-off - Deep clean", "score": "4", "priority": "B - worth it", "contact_name": "", "role": "", "phone": "514-697-3792", "email": "montessori.school.pc@gmail.com", "best_approach": "Email", "referred_by": "", "source_url": "https://westislandmommies.com/directory/preschools-2/", "date_collected": "46281.0", "date_approached": "", "status": "", "walkthrough_booked": "", "walkthrough_done": "", "proposal_sent": "", "days_to_proposal": "", "quote_value": "", "payment_terms": "", "compliance_pack_sent": "", "job_date": "", "follow_up_date": "", "invoiced_date": "", "paid_date": "", "amount_paid": "", "on_backup_list": "", "contract_stage": "", "contract_value_mo": "", "notes": "116 Sunderland Ave, Pointe-Claire. Published email. Montessori settings use extensive floor-level materials and hard floors, which makes the disinfection-outside-children's-presence angle unusually strong here.", "id": "LEAD-29"}, {"business_name": "Coolbrooke Park Preschool", "sector": "Kindergarten / preschool", "neighbourhood": "Dollard-des-Ormeaux", "language": "EN", "sq_ft": "", "public_private": "Private", "property_manager": "", "has_cleaner": "", "current_cleaner": "", "how_we_know": "", "contract_value_public": "", "award_date": "", "est_renewal_window": "", "seao_ref": "", "trigger": "Pre-winter floors", "trigger_live_until": "46327.0", "hard_floors": "Yes", "best_fit_offer": "One-off - Deep clean", "score": "4", "priority": "B - worth it", "contact_name": "", "role": "", "phone": "438-936-7671", "email": "coolbrookepreschool@gmail.com", "best_approach": "Email", "referred_by": "", "source_url": "https://ville.ddo.qc.ca/en/live/community-and-institutions/educational-institutions/", "date_collected": "46281.0", "date_approached": "", "status": "", "walkthrough_booked": "", "walkthrough_done": "", "proposal_sent": "", "days_to_proposal": "", "quote_value": "", "payment_terms": "", "compliance_pack_sent": "", "job_date": "", "follow_up_date": "", "invoiced_date": "", "paid_date": "", "amount_paid": "", "on_backup_list": "", "contract_stage": "", "contract_value_mo": "", "notes": "260 Spring Garden, DDO. Published on the City of DDO page. Small site - check whether the premises are municipally owned before treating it as a live prospect.", "id": "LEAD-30"}, {"business_name": "Westpark Cooperative Preschool", "sector": "Kindergarten / preschool", "neighbourhood": "Dollard-des-Ormeaux", "language": "EN", "sq_ft": "", "public_private": "Private", "property_manager": "City of Dollard-des-Ormeaux (probable)", "has_cleaner": "", "current_cleaner": "", "how_we_know": "", "contract_value_public": "", "award_date": "", "est_renewal_window": "", "seao_ref": "", "trigger": "Pre-winter floors", "trigger_live_until": "46327.0", "hard_floors": "Yes", "best_fit_offer": "Backup list", "score": "4", "priority": "B - worth it", "contact_name": "", "role": "", "phone": "514-400-8133", "email": "westparkpreschool@hotmail.com", "best_approach": "Email", "referred_by": "", "source_url": "https://westislandmommies.com/directory/preschools-2/", "date_collected": "46281.0", "date_approached": "", "status": "", "walkthrough_booked": "", "walkthrough_done": "", "proposal_sent": "", "days_to_proposal": "", "quote_value": "", "payment_terms": "", "compliance_pack_sent": "", "job_date": "", "follow_up_date": "", "invoiced_date": "", "paid_date": "", "amount_paid": "", "on_backup_list": "", "contract_stage": "", "contract_value_mo": "", "notes": "Operates from the Terry Fox park chalet, 100 Fairview, DDO (also listed at 85 Hemingway). BUILDING IS PROBABLY CITY-OWNED - the municipality may already clean it, so confirm before pitching a contract. Backup list is the right first ask here. Parent co-op, volunteer board.", "id": "LEAD-31"}, {"business_name": "Dorval Preschool Co-op", "sector": "Kindergarten / preschool", "neighbourhood": "Dorval", "language": "EN", "sq_ft": "", "public_private": "Private", "property_manager": "City of Dorval (probable)", "has_cleaner": "", "current_cleaner": "", "how_we_know": "", "contract_value_public": "", "award_date": "", "est_renewal_window": "", "seao_ref": "", "trigger": "Pre-winter floors", "trigger_live_until": "46327.0", "hard_floors": "Yes", "best_fit_offer": "Backup list", "score": "4", "priority": "B - worth it", "contact_name": "", "role": "", "phone": "514-633-4000", "email": "DorvalPreschoolCoopSDCC@gmail.com", "best_approach": "Email", "referred_by": "", "source_url": "https://westislandmommies.com/directory/preschools-2/", "date_collected": "46281.0", "date_approached": "", "status": "", "walkthrough_booked": "", "walkthrough_done": "", "proposal_sent": "", "days_to_proposal": "", "quote_value": "", "payment_terms": "", "compliance_pack_sent": "", "job_date": "", "follow_up_date": "", "invoiced_date": "", "paid_date": "", "amount_paid": "", "on_backup_list": "", "contract_stage": "", "contract_value_mo": "", "notes": "Inside the Sarto Desnoyers Community Centre, 1335 Lakeshore Drive, Dorval. BUILDING IS MUNICIPAL - City of Dorval very likely cleans it. Worth a call to confirm; if the City does clean it, the real lead is the City's facilities team, not the co-op.", "id": "LEAD-32"}, {"business_name": "Prematernelle Parksites Preschool", "sector": "Kindergarten / preschool", "neighbourhood": "Pointe-Claire", "language": "EN", "sq_ft": "", "public_private": "Private", "property_manager": "St. Columba Church (probable)", "has_cleaner": "", "current_cleaner": "", "how_we_know": "", "contract_value_public": "", "award_date": "", "est_renewal_window": "", "seao_ref": "", "trigger": "Pre-winter floors", "trigger_live_until": "46327.0", "hard_floors": "Yes", "best_fit_offer": "Backup list", "score": "4", "priority": "B - worth it", "contact_name": "", "role": "", "phone": "438-989-7908", "email": "info@parksites.ca", "best_approach": "Email", "referred_by": "", "source_url": "https://westislandmommies.com/directory/preschools-2/", "date_collected": "46281.0", "date_approached": "", "status": "", "walkthrough_booked": "", "walkthrough_done": "", "proposal_sent": "", "days_to_proposal": "", "quote_value": "", "payment_terms": "", "compliance_pack_sent": "", "job_date": "", "follow_up_date": "", "invoiced_date": "", "paid_date": "", "amount_paid": "", "on_backup_list": "", "contract_stage": "", "contract_value_mo": "", "notes": "Operates from St. Columba Church, 11 Rodney Ave, Pointe-Claire. CHURCH-OWNED BUILDING - the parish may already clean it. If so the church itself is the better lead. Confirm on the call.", "id": "LEAD-33"}, {"business_name": "Garderie educative Ange gardien", "sector": "Daycare / CPE", "neighbourhood": "Dollard-des-Ormeaux", "language": "EN", "sq_ft": "", "public_private": "Private", "property_manager": "", "has_cleaner": "", "current_cleaner": "", "how_we_know": "", "contract_value_public": "", "award_date": "", "est_renewal_window": "", "seao_ref": "", "trigger": "Pre-winter floors", "trigger_live_until": "46327.0", "hard_floors": "Yes", "best_fit_offer": "One-off - Deep clean", "score": "4", "priority": "B - worth it", "contact_name": "", "role": "", "phone": "514-685-2032", "email": "", "best_approach": "Call", "referred_by": "", "source_url": "https://ville.ddo.qc.ca/en/live/community-and-institutions/educational-institutions/", "date_collected": "46281.0", "date_approached": "", "status": "", "walkthrough_booked": "", "walkthrough_done": "", "proposal_sent": "", "days_to_proposal": "", "quote_value": "", "payment_terms": "", "compliance_pack_sent": "", "job_date": "", "follow_up_date": "", "invoiced_date": "", "paid_date": "", "amount_paid": "", "on_backup_list": "", "contract_stage": "", "contract_value_mo": "", "notes": "CALL ONLY - no published email. 3869 Sources Blvd #100, DDO. Private garderie rather than a subsidised CPE, so it buys its own services directly - better odds than a CPE.", "id": "LEAD-34"}, {"business_name": "Or-Maimonide Day Care", "sector": "Daycare / CPE", "neighbourhood": "Dollard-des-Ormeaux", "language": "EN", "sq_ft": "", "public_private": "Private", "property_manager": "", "has_cleaner": "", "current_cleaner": "", "how_we_know": "", "contract_value_public": "", "award_date": "", "est_renewal_window": "", "seao_ref": "", "trigger": "Pre-winter floors", "trigger_live_until": "46327.0", "hard_floors": "Yes", "best_fit_offer": "One-off - Deep clean", "score": "4", "priority": "B - worth it", "contact_name": "", "role": "", "phone": "514-676-1531", "email": "", "best_approach": "Call", "referred_by": "", "source_url": "https://ville.ddo.qc.ca/en/live/community-and-institutions/educational-institutions/", "date_collected": "46281.0", "date_approached": "", "status": "", "walkthrough_booked": "", "walkthrough_done": "", "proposal_sent": "", "days_to_proposal": "", "quote_value": "", "payment_terms": "", "compliance_pack_sent": "", "job_date": "", "follow_up_date": "", "invoiced_date": "", "paid_date": "", "amount_paid": "", "on_backup_list": "", "contract_stage": "", "contract_value_mo": "", "notes": "CALL ONLY - no published email. 96 Fredmir, DDO. Likely linked to the Or-Maimonide school network, which could open a larger relationship.", "id": "LEAD-35"}, {"business_name": "CPE Les Bois Verts", "sector": "Daycare / CPE", "neighbourhood": "Dollard-des-Ormeaux", "language": "FR", "sq_ft": "", "public_private": "Public", "property_manager": "", "has_cleaner": "", "current_cleaner": "", "how_we_know": "", "contract_value_public": "", "award_date": "", "est_renewal_window": "", "seao_ref": "", "trigger": "Pre-winter floors", "trigger_live_until": "46327.0", "hard_floors": "Yes", "best_fit_offer": "Backup list", "score": "4", "priority": "B - worth it", "contact_name": "", "role": "", "phone": "514-684-7712", "email": "", "best_approach": "Call", "referred_by": "", "source_url": "https://ville.ddo.qc.ca/en/live/community-and-institutions/educational-institutions/", "date_collected": "46281.0", "date_approached": "", "status": "", "walkthrough_booked": "", "walkthrough_done": "", "proposal_sent": "", "days_to_proposal": "", "quote_value": "", "payment_terms": "", "compliance_pack_sent": "", "job_date": "", "follow_up_date": "", "invoiced_date": "", "paid_date": "", "amount_paid": "", "on_backup_list": "", "contract_stage": "", "contract_value_mo": "", "notes": "CALL ONLY - no published email. 50 Seville, DDO. Subsidised CPE, so purchasing may run through a group arrangement - unverified. French-named operator, outside the anglophone rule strictly speaking; loaded for completeness of the DDO sweep, deprioritise.", "id": "LEAD-36"}, {"business_name": "CPE Dollard", "sector": "Daycare / CPE", "neighbourhood": "Dollard-des-Ormeaux", "language": "FR", "sq_ft": "", "public_private": "Public", "property_manager": "", "has_cleaner": "", "current_cleaner": "", "how_we_know": "", "contract_value_public": "", "award_date": "", "est_renewal_window": "", "seao_ref": "", "trigger": "Pre-winter floors", "trigger_live_until": "46327.0", "hard_floors": "Yes", "best_fit_offer": "Backup list", "score": "4", "priority": "B - worth it", "contact_name": "", "role": "", "phone": "514-683-7366", "email": "", "best_approach": "Call", "referred_by": "", "source_url": "https://ville.ddo.qc.ca/en/live/community-and-institutions/educational-institutions/", "date_collected": "46281.0", "date_approached": "", "status": "", "walkthrough_booked": "", "walkthrough_done": "", "proposal_sent": "", "days_to_proposal": "", "quote_value": "", "payment_terms": "", "compliance_pack_sent": "", "job_date": "", "follow_up_date": "", "invoiced_date": "", "paid_date": "", "amount_paid": "", "on_backup_list": "", "contract_stage": "", "contract_value_mo": "", "notes": "CALL ONLY - no published email. 2000 De Salaberry Blvd, DDO. Subsidised CPE, same caveat as Les Bois Verts. Deprioritise under the anglophone rule.", "id": "LEAD-37"}];
+    var filteredLeads = allLeads.slice();
+    var currentPage = 1;
+    var pageSize = 10;
+
+    function applyFilters() {
+      var query = document.getElementById('search-input').value.toLowerCase().trim();
+      var prio = document.getElementById('priority-filter').value;
+      var sector = document.getElementById('sector-filter').value;
+      var area = document.getElementById('area-filter').value;
+
+      filteredLeads = allLeads.filter(function(l) {
+        var matchQ = !query || 
+          l.business_name.toLowerCase().includes(query) ||
+          l.contact_name.toLowerCase().includes(query) ||
+          l.phone.toLowerCase().includes(query) ||
+          l.neighbourhood.toLowerCase().includes(query);
+        
+        var matchPrio = prio === 'all' || 
+          (prio === 'A' && l.priority.startsWith('A')) || 
+          (prio === 'B' && l.priority.startsWith('B'));
+
+        var matchSector = sector === 'all' || l.sector === sector;
+        var matchArea = area === 'all' || l.neighbourhood.includes(area);
+
+        return matchQ && matchPrio && matchSector && matchArea;
+      });
+
+      currentPage = 1;
+      renderTable();
+    }
+
+    function renderTable() {
+      var tbody = document.getElementById('leads-tbody');
+      tbody.innerHTML = '';
+
+      var total = filteredLeads.length;
+      var start = (currentPage - 1) * pageSize;
+      var end = Math.min(start + pageSize, total);
+      var pageItems = filteredLeads.slice(start, end);
+
+      if (pageItems.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="9" style="text-align:center; padding: 2rem; color: var(--text-muted);">No leads match the selected filters.</td></tr>';
+      } else {
+        pageItems.forEach(function(lead) {
+          var tr = document.createElement('tr');
+          var isPrioA = lead.priority.startsWith('A');
+          var badgeClass = isPrioA ? 'priority-badge-a' : 'priority-badge-b';
+          var prioLabel = isPrioA ? 'Prio A (Go Now)' : 'Prio B';
+
+          var sqFtDisplay = lead.sq_ft ? Number(lead.sq_ft).toLocaleString() + ' pi²' : '—';
+          var contactDisplay = lead.contact_name ? lead.contact_name : (lead.role || 'Reception');
+
+          tr.innerHTML = 
+            '<td><span class="' + badgeClass + '">' + lead.id + ' · ' + (isPrioA ? 'A' : 'B') + '</span></td>' +
+            '<td><strong style="color:var(--white); cursor:pointer;" onclick="openModal(\'' + lead.id + '\')">' + lead.business_name + '</strong></td>' +
+            '<td>' + lead.sector + '</td>' +
+            '<td>' + lead.neighbourhood + '</td>' +
+            '<td>' + sqFtDisplay + '</td>' +
+            '<td>' + contactDisplay + '</td>' +
+            '<td><span style="background:rgba(255,255,255,0.06); padding:2px 7px; border-radius:4px; font-size:0.75rem;">' + (lead.best_approach || 'Call') + '</span></td>' +
+            '<td><strong style="color:' + (isPrioA ? 'var(--orange)' : '#38bdf8') + '">' + (lead.score || '4') + '/5</strong></td>' +
+            '<td><button onclick="openModal(\'' + lead.id + '\')" style="background:rgba(247,148,29,0.15); border:1px solid var(--orange); color:var(--orange); padding:4px 9px; border-radius:6px; font-size:0.75rem; font-weight:700; cursor:pointer;">Dossier →</button></td>';
+          tbody.appendChild(tr);
+        });
+      }
+
+      // Update showing text
+      document.getElementById('showing-text').textContent = 
+        total > 0 ? 'Showing ' + (start + 1) + ' to ' + end + ' of ' + total + ' leads' : 'Showing 0 leads';
+
+      // Update pagination controls
+      renderPagination(total);
+    }
+
+    function renderPagination(total) {
+      var controls = document.getElementById('pagination-controls');
+      controls.innerHTML = '';
+      var totalPages = Math.ceil(total / pageSize);
+      if (totalPages <= 1) return;
+
+      var prevBtn = document.createElement('button');
+      prevBtn.className = 'page-btn';
+      prevBtn.textContent = '← Prev';
+      prevBtn.disabled = currentPage === 1;
+      prevBtn.onclick = function() { if (currentPage > 1) { currentPage--; renderTable(); } };
+      controls.appendChild(prevBtn);
+
+      for (var p = 1; p <= totalPages; p++) {
+        (function(pageIndex) {
+          var btn = document.createElement('button');
+          btn.className = 'page-btn' + (pageIndex === currentPage ? ' active' : '');
+          btn.textContent = pageIndex;
+          btn.onclick = function() { currentPage = pageIndex; renderTable(); };
+          controls.appendChild(btn);
+        })(p);
+      }
+
+      var nextBtn = document.createElement('button');
+      nextBtn.className = 'page-btn';
+      nextBtn.textContent = 'Next →';
+      nextBtn.disabled = currentPage === totalPages;
+      nextBtn.onclick = function() { if (currentPage < totalPages) { currentPage++; renderTable(); } };
+      controls.appendChild(nextBtn);
+    }
+
+    function openModal(id) {
+      var lead = allLeads.find(function(l) { return l.id === id; });
+      if (!lead) return;
+
+      var isPrioA = lead.priority.startsWith('A');
+      var content = document.getElementById('modal-content');
+
+      var phoneLink = lead.phone ? '<a href="tel:' + lead.phone.replace(/[^0-9]/g, '') + '" style="color:var(--green-light); font-weight:700;">' + lead.phone + '</a>' : '<span style="color:var(--text-muted);">Not listed</span>';
+      var emailLink = lead.email ? '<a href="mailto:' + lead.email + '" style="color:#38bdf8;">' + lead.email + '</a>' : '<span style="color:var(--text-muted);">Call required</span>';
+
+      content.innerHTML = 
+        '<div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1rem; padding-right:2rem;">' +
+          '<div>' +
+            '<span class="' + (isPrioA ? 'priority-badge-a' : 'priority-badge-b') + '" style="margin-bottom:0.5rem;">' + lead.priority + ' · Score ' + lead.score + '/5</span>' +
+            '<h2 style="font-family:Syne,sans-serif; color:var(--white); font-size:1.5rem;">' + lead.business_name + '</h2>' +
+            '<div style="color:var(--text-muted); font-size:0.85rem;">' + lead.sector + ' · ' + lead.neighbourhood + ' · ' + (lead.language || 'Bilingual') + '</div>' +
+          '</div>' +
+        '</div>' +
+
+        '<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:1rem; margin-bottom:1.5rem;">' +
+          '<div style="background:var(--navy); padding:1rem; border-radius:10px; border:1px solid var(--border);">' +
+            '<div style="font-size:0.75rem; color:var(--text-muted); text-transform:uppercase;">Decision Maker Contact</div>' +
+            '<div style="font-weight:700; color:var(--white); margin:0.3rem 0;">' + (lead.contact_name || 'Direct In-Person Walk-in') + '</div>' +
+            '<div style="font-size:0.8rem; color:var(--text-muted);">' + (lead.role || 'Facility / Operations') + '</div>' +
+            '<div style="margin-top:0.5rem; font-size:0.85rem;">📞 ' + phoneLink + '</div>' +
+            '<div style="margin-top:0.25rem; font-size:0.85rem;">✉️ ' + emailLink + '</div>' +
+          '</div>' +
+
+          '<div style="background:var(--navy); padding:1rem; border-radius:10px; border:1px solid var(--border);">' +
+            '<div style="font-size:0.75rem; color:var(--text-muted); text-transform:uppercase;">Strategic Operational Wedge</div>' +
+            '<div style="font-weight:700; color:var(--orange); margin:0.3rem 0;">' + (lead.best_fit_offer || 'Floor Strip & Wax / Auto-Scrubbing') + '</div>' +
+            '<div style="font-size:0.8rem; color:var(--text-muted);">Trigger: ' + (lead.trigger || 'Pre-winter floor protection') + '</div>' +
+            '<div style="font-size:0.8rem; color:#f87171; margin-top:0.3rem;">⏳ Window: ' + (lead.trigger_live_until || '1 November 2026') + '</div>' +
+            '<div style="font-size:0.8rem; color:var(--text-body); margin-top:0.3rem;">Est. Floor Area: ' + (lead.sq_ft ? Number(lead.sq_ft).toLocaleString() + ' sq ft' : 'Verify during walkthrough') + '</div>' +
+          '</div>' +
+        '</div>' +
+
+        '<div style="background:rgba(247,148,29,0.06); border-left:4px solid var(--orange); padding:1rem; border-radius:0 8px 8px 0; margin-bottom:1.25rem;">' +
+          '<div style="font-size:0.75rem; font-weight:800; color:var(--orange); text-transform:uppercase;">Field Intelligence & Operational Notes:</div>' +
+          '<p style="font-size:0.88rem; color:var(--text-body); line-height:1.6; margin-top:0.3rem;">' + (lead.notes || 'Identified by Zan for pre-winter commercial outreach.') + '</p>' +
+        '</div>' +
+
+        '<div style="background:var(--navy); padding:0.85rem; border-radius:8px; border:1px solid var(--border); font-size:0.75rem; color:var(--text-muted); margin-bottom:1.5rem;">' +
+          '<strong>CASL Audit Proof:</strong> Source URL: <a href="' + (lead.source_url || '#') + '" target="_blank" style="color:#38bdf8;">' + (lead.source_url || 'Verified Registry') + '</a> · Date Collected: ' + (lead.date_collected || 'Sept 2026') +
+        '</div>' +
+
+        '<div style="display:flex; justify-content:flex-end; gap:10px;">' +
+          (lead.phone ? '<a href="tel:' + lead.phone.replace(/[^0-9]/g, '') + '" style="background:var(--green-light); color:var(--navy); padding:0.6rem 1.2rem; border-radius:30px; font-weight:700; font-size:0.85rem; text-decoration:none;">📞 Call ' + lead.contact_name + '</a>' : '') +
+          '<button onclick="closeModal()" style="background:rgba(255,255,255,0.08); border:1px solid var(--border); color:var(--white); padding:0.6rem 1.2rem; border-radius:30px; font-weight:600; font-size:0.85rem; cursor:pointer;">Close Dossier</button>' +
+        '</div>';
+
+      document.getElementById('lead-modal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('lead-modal').style.display = 'none';
+    }
+
+    function exportCsv() {
+      var csvRows = [
+        ['ID', 'Business Name', 'Sector', 'Neighbourhood', 'Language', 'Sq Ft', 'Priority', 'Score', 'Contact', 'Role', 'Phone', 'Email', 'Best Approach', 'Best Fit Offer', 'Trigger Deadline', 'Notes']
+      ];
+      filteredLeads.forEach(function(l) {
+        csvRows.push([
+          l.id,
+          '"' + l.business_name.replace(/"/g, '""') + '"',
+          '"' + l.sector + '"',
+          '"' + l.neighbourhood + '"',
+          l.language,
+          l.sq_ft,
+          l.priority,
+          l.score,
+          '"' + l.contact_name.replace(/"/g, '""') + '"',
+          '"' + l.role.replace(/"/g, '""') + '"',
+          l.phone,
+          l.email,
+          l.best_approach,
+          '"' + l.best_fit_offer.replace(/"/g, '""') + '"',
+          l.trigger_live_until,
+          '"' + l.notes.replace(/"/g, '""') + '"'
+        ]);
+      });
+      var csvString = csvRows.map(function(e) { return e.join(','); }).join('\n');
+      var blob = new Blob([csvString], { type: 'text/csv;charset=utf-8;' });
+      var link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.setAttribute('download', 'OTIS_37_Commercial_Leads.csv');
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    function toggleNavMenu() {
+      var drawer = document.getElementById('mobile-nav-drawer');
+      var btn = document.getElementById('nav-toggle');
+      if (!drawer) return;
+      var isOpen = drawer.classList.contains('open');
+      if (isOpen) {
+        drawer.classList.remove('open');
+        if (btn) btn.innerHTML = '☰';
+        document.body.style.overflow = '';
+      } else {
+        drawer.classList.add('open');
+        if (btn) btn.innerHTML = '✕';
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      renderTable();
+    });
+  </script>
+</body>
+</html>

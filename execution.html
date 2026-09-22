@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OTIS 4-Phase Execution Center</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0B1B2B; --navy-surface: #102438; --navy-light: #162E47; --navy-border: #1E3D5C;
+      --orange: #F7941D; --orange-light: #FFA940; --green: #1E7B34; --green-light: #28A745;
+      --white: #FFFFFF; --text-muted: #8FA6BE; --text-body: #C2D3E5; --card: #0F2337;
+      --border: rgba(255, 255, 255, 0.08); --red: #EF4444; --blue: #38BDF8; --purple: #A855F7;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--navy); color: var(--text-body); font-family: 'DM Sans', sans-serif; min-height: 100vh; padding-bottom: 4rem; }
+    
+    /* Top Bar */
+    .top-bar { position: sticky; top: 0; z-index: 100; background: rgba(11,27,43,0.96); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); padding: 0.65rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+    .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 0.4rem 0.8rem; border-radius: 6px; transition: 0.2s; }
+    .nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.05); }
+    .nav-links a.active { color: var(--white); background: rgba(247, 148, 29, 0.1); border: 1px solid rgba(247, 148, 29, 0.2); }
+    
+    /* Header */
+    .header { padding: 3rem 2rem 2rem; max-width: 1200px; margin: 0 auto; border-bottom: 1px solid var(--border); }
+    .header h1 { font-family: 'Syne', sans-serif; font-size: 2.5rem; color: var(--white); margin-bottom: 0.5rem; }
+    .header p { color: var(--text-muted); font-size: 1.1rem; max-width: 800px; }
+
+    /* Main Grid */
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; max-width: 1200px; margin: 2rem auto; padding: 0 2rem; }
+    
+    /* Phase Card */
+    .phase-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 2rem; position: relative; overflow: hidden; }
+    .phase-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--border); }
+    .phase-card.active-phase::before { background: var(--orange); }
+    .phase-badge { position: absolute; top: 1rem; right: 1rem; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 20px; background: rgba(255,255,255,0.05); color: var(--text-muted); }
+    .phase-card.active-phase .phase-badge { background: rgba(247, 148, 29, 0.15); color: var(--orange); border: 1px solid rgba(247, 148, 29, 0.3); }
+    .card-title { font-family: 'Syne', sans-serif; font-size: 1.5rem; color: var(--white); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 10px; }
+    
+    /* UI Controls */
+    .form-group { margin-bottom: 1rem; }
+    .form-group label { display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.4rem; font-weight: 600; text-transform: uppercase; }
+    .form-control { width: 100%; background: rgba(0,0,0,0.2); border: 1px solid var(--navy-border); color: var(--white); padding: 0.75rem 1rem; border-radius: 6px; font-family: inherit; font-size: 1rem; transition: 0.2s; }
+    .form-control:focus { outline: none; border-color: var(--orange); background: rgba(247, 148, 29, 0.05); }
+    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 0.75rem 1.5rem; background: var(--navy-light); color: var(--white); border: 1px solid var(--navy-border); border-radius: 6px; font-family: inherit; font-weight: 600; cursor: pointer; transition: 0.2s; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.5px; }
+    .btn:hover { background: var(--navy-border); }
+    .btn-primary { background: linear-gradient(135deg, var(--orange), #e68010); border: none; color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,0.2); }
+    .btn-primary:hover { background: linear-gradient(135deg, #e68010, #d47000); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(247, 148, 29, 0.3); }
+    .btn-green { background: linear-gradient(135deg, var(--green), var(--green-light)); border: none; }
+    .btn-green:hover { background: linear-gradient(135deg, var(--green-light), #34d058); box-shadow: 0 4px 12px rgba(30, 123, 52, 0.3); }
+
+    /* Results Box */
+    .result-box { background: rgba(0,0,0,0.25); border: 1px solid var(--navy-border); border-radius: 8px; padding: 1.5rem; margin-top: 1.5rem; font-family: monospace; font-size: 0.95rem; color: #38bdf8; line-height: 1.5; white-space: pre-wrap; display: none; }
+    .metric-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 1.5rem; }
+    .metric-box { background: rgba(255,255,255,0.03); padding: 1rem; border-radius: 8px; border: 1px solid var(--border); }
+    .metric-box.highlight { background: rgba(30,123,52,0.1); border-color: var(--green); }
+    .m-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.3rem; }
+    .m-val { font-size: 1.5rem; font-family: 'Syne', sans-serif; color: var(--white); }
+    .highlight .m-val { color: var(--green-light); }
+
+    /* Dossier Preview */
+    .dossier-preview { background: #fff; color: #1e293b; padding: 3rem; border-radius: 8px; font-family: 'DM Sans', sans-serif; margin-top: 2rem; display: none; position: relative; border-top: 6px solid var(--orange); box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
+    .dossier-hdr { text-align: center; border-bottom: 2px solid #e2e8f0; padding-bottom: 1.5rem; margin-bottom: 2rem; } 
+.dossier-hdr h2 { font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 800; color: #0B1B2B; letter-spacing: 1px; margin-bottom: 0.5rem; }
+    .dossier-hdr h2 { font-size: 1.5rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem; }
+    
+  </style>
+</head>
+<body>
+
+<div class="top-bar">
+  <div style="display:flex; align-items:center; gap:12px;">
+    <div style="font-family:'Syne',sans-serif; font-size:1.4rem; font-weight:800; color:var(--white); letter-spacing:1px;">
+      OTIS<span style="color:var(--orange)">.</span>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="index.html">🏠 Hub</a>
+    <a href="crm.html">🤖 CRM & AI</a>
+    <a href="execution.html" class="active">🚀 Execution Center</a>
+    <a href="erp.html">📊 ERP</a>
+  </div>
+</div>
+
+<div class="header">
+  <h1>4-Phase Execution Center</h1>
+  <p>Local offline operational tools to execute the 4-Phase Growth Strategy. The email APIs are currently mapped to local simulation files until deployment. Use these tools to bid, certify, and automate.</p>
+</div>
+
+<div class="grid">
+
+  <!-- PHASE 1: Scripts -->
+  <div class="phase-card active-phase">
+    <div class="phase-badge">Phase 1 (Active)</div>
+    <h2 class="card-title">📞 The "Two-Door" Sales Engine</h2>
+    <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:1.5rem;">Interactive script for calling the 5 Priority-A accounts. Goal: Penetrate without selling "general cleaning".</p>
+    
+    <div style="background:rgba(0,0,0,0.2); padding:1rem; border-radius:8px; border:1px solid var(--navy-border); margin-bottom:1rem;">
+      <p style="font-size:0.85rem; font-weight:700; color:var(--orange); margin-bottom:0.5rem;">[ZAN]: "Hi, this is Zan from OTIS Maintenance. I'm not calling to pitch you daily cleaning..."</p>
+      <div style="display:flex; gap:10px; margin-top:1rem;">
+        <button class="btn" style="flex:1" onclick="showScript('door1')">Open Door 1 (Winter Wax)</button>
+        <button class="btn" style="flex:1" onclick="showScript('door2')">Open Door 2 (Backup List)</button>
+      </div>
+    </div>
+    <div id="script-result" class="result-box" style="color:var(--white); font-family:inherit;"></div>
+    <a href="lead_engine.html" class="btn" style="width:100%; border:1px solid var(--green); color:var(--green); background:rgba(34, 197, 94, 0.1); text-decoration:none; margin-top:1rem;">Launch AI Lead Scraper ➔</a>
+  </div>
+
+  <!-- PHASE 2: Compliance Dossier -->
+  <div class="phase-card">
+    <div class="phase-badge">Phase 2</div>
+    <h2 class="card-title">📄 Commercial Contract Engine</h2>
+    <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:1.5rem;">Generate legally binding 6-Month or 10-Month PDF contracts pre-loaded with the 23/h Legal Shield.</p>
+    <a href="contract_generator.html" class="btn btn-green" style="width:100%; margin-bottom:2rem; text-decoration:none;">Open Contract Generator ➔</a>
+
+    <h2 class="card-title">🛡️ Article 14 Compliance Generator</h2>
+    <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:1.5rem;">Generate the Bilingual CPEEP Decree (23/h) + CNESST Liability Shield to present to property managers.</p>
+    
+    <div class="form-group">
+      <label>Target Facility / Manager Name</label>
+      <input type="text" id="dossier-client" class="form-control" placeholder="e.g. Centre Dentaire Lakeshore">
+    </div>
+    <button class="btn btn-primary" style="width:100%" onclick="generateDossier()">Generate Official PDF Shield</button>
+    
+    <div id="dossier-result" class="dossier-preview">
+      <div class="dossier-hdr">
+        <img src="imgs/otis-logo.png" alt="OTIS" style="height:40px; filter: brightness(0); margin-bottom:1rem; display:block; margin-left:auto; margin-right:auto;">
+        <h2>Attestation de Conformité</h2>
+        <p style="font-size:0.85rem; color:#444;">OTIS Commercial Cleaning | CPEEP & CNESST Certified</p>
+      </div>
+      <p style="font-weight:bold; margin-bottom:1rem;">Délivré à : <span id="dossier-target-name"></span></p>
+      <p style="font-size:0.9rem; margin-bottom:1rem;">Conformément à l'article 14 du Décret sur l'entretien d'édifices publics (CPEEP), le propriétaire ou gestionnaire de l'édifice est <strong>solidairement responsable</strong> des salaires impayés par son sous-traitant d'entretien.</p>
+      <p style="font-size:0.9rem; margin-bottom:1rem;">OTIS Maintenance certifie par la présente que 100% de notre personnel est rémunéré selon ou au-dessus du Taux Salarial Légal strict de <strong>23,00 $/h</strong>, annulant ainsi tout risque de responsabilité solidaire pour votre établissement.</p>
+      <div style="margin-top:2rem; border-top:1px solid #ccc; padding-top:1rem; font-size:0.8rem; color:#555;">
+        <p>✓ Assurance Responsabilité Civile (5 000 000 $)</p>
+        <p>✓ Attestation de conformité CNESST valide</p>
+        <p>✓ C.A. CPEEP Région de Montréal</p>
+      </div>
+      <button class="btn" style="margin-top:1.5rem; width:100%; background:#222; color:#fff;" onclick="window.print()">🖨️ Print Dossier</button>
+    </div>
+  </div>
+
+    <!-- PHASE 3: Route Density & Bidding -->
+  <div class="phase-card">
+    <div class="phase-badge">Phase 3</div>
+    <h2 class="card-title">🗺️ Route Density &amp; Bidding Engine</h2>
+    <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:1.5rem;">Verify 15-minute route clusters, calculate $0.15-$0.30/sqft economics, and generate instant Commercial Proposals for on-site walkthroughs.</p>
+    <a href="bidding_engine.html" class="btn btn-green" style="width:100%; text-decoration:none;">Open Route &amp; Bid Engine ➔</a>
+  </div>
+    <button class="btn btn-green" style="width:100%" onclick="calculateBid()">Calculate Bid Economics</button>
+    
+    <div id="bid-result" style="display:none;">
+      <div class="metric-grid">
+        <div class="metric-box highlight">
+          <div class="m-label">Target Monthly Bid (MRR)</div>
+          <div class="m-val" id="res-mrr">$0.00</div>
+        </div>
+        <div class="metric-box">
+          <div class="m-label">Decree Labor Cost (23/h)</div>
+          <div class="m-val" id="res-labor" style="color:#f87171">$0.00</div>
+        </div>
+        <div class="metric-box">
+          <div class="m-label">Time Per Clean</div>
+          <div class="m-val" id="res-time">0.0 hrs</div>
+        </div>
+        <div class="metric-box">
+          <div class="m-label">Gross Margin</div>
+          <div class="m-val" id="res-margin" style="color:var(--orange)">42%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INVOICE ENGINE -->
+  <div class="phase-card">
+    <div class="phase-badge" style="background:rgba(56, 189, 248, 0.15); color:var(--blue); border:1px solid rgba(56, 189, 248, 0.3);">Finance</div>
+    <h2 class="card-title">💳 Professional Invoice Engine</h2>
+    <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:1.5rem;">Generate high-end, mathematically perfect invoices matching the OTIS Enterprise Design System. Automatically calculates GST & QST.</p>
+    <a href="invoice_generator.html" class="btn" style="width:100%; border:1px solid var(--blue); color:var(--blue); background:rgba(56, 189, 248, 0.1); text-decoration:none;">Open Invoice Generator ➔</a>
+  </div>
+
+    <!-- PHASE 4: Restock Distribution & Scale -->
+  <div class="phase-card">
+    <div class="phase-badge" style="background:rgba(168, 85, 247, 0.15); color:var(--purple); border:1px solid rgba(168, 85, 247, 0.3);">Phase 4</div>
+    <h2 class="card-title">📈 Restock &amp; Scale Engine</h2>
+    <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:1.5rem;">Automate consumable distribution (20% margin) and quarterly Tennant machine scrubs for your existing portfolio clients.</p>
+    <a href="restock_engine.html" class="btn" style="width:100%; border:1px solid var(--purple); color:var(--purple); background:rgba(168, 85, 247, 0.1); text-decoration:none;">Open Scale Engine ➔</a>
+  </div>
+</div>
+
+<div class="dashboard-grid" style="margin-top:2rem;">
+  
+  <!-- ERP -->
+  <div class="card">
+    <div class="phase-badge" style="background:rgba(234, 179, 8, 0.15); color:var(--gold); border:1px solid rgba(234, 179, 8, 0.3);">Phase 5</div>
+    <h2 class="card-title">⚡ Master ERP Dashboard</h2>
+    <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:1.5rem;">The fully automated command center where Zan monitors the AI staff, leads, HR, and financials.</p>
+    <a href="agent_hub.html" class="btn" style="width:100%; border:1px solid var(--gold); color:var(--gold); background:rgba(234, 179, 8, 0.1); text-decoration:none;">Launch Command Center ➔</a>
+  </div>
+
+  <!-- Invoices -->
+  <div class="card">
+    <div class="phase-badge" style="background:rgba(56, 189, 248, 0.15); color:var(--blue); border:1px solid rgba(56, 189, 248, 0.3);">Finance</div>
+    <h2 class="card-title">🧾 Tax & Invoice Engine</h2>
+    <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:1.5rem;">Generate flawless, math-verified, Quebec tax-compliant PDF invoices using the OTIS brand system.</p>
+    <a href="invoice_generator.html" class="btn" style="width:100%; border:1px solid var(--blue); color:var(--blue); background:rgba(56, 189, 248, 0.1); text-decoration:none;">Open Invoice Generator ➔</a>
+  </div>
+
+  <!-- SEO Engine -->
+  <div class="card">
+    <div class="phase-badge" style="background:rgba(168, 85, 247, 0.15); color:var(--purple); border:1px solid rgba(168, 85, 247, 0.3);">Phase 7</div>
+    <h2 class="card-title">🔍 SEO Discovery Engine</h2>
+    <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:1.5rem;">Master LocalBusiness Schema, Google Maps verification, and automated API Directory syndication.</p>
+    <a href="seo_engine.html" class="btn" style="width:100%; border:1px solid var(--purple); color:var(--purple); background:rgba(168, 85, 247, 0.1); text-decoration:none;">Launch SEO Engine ➔</a>
+  </div>
+
+  <!-- Field App -->
+  <div class="card">
+    <div class="phase-badge" style="background:rgba(100, 116, 139, 0.15); color:#94a3b8; border:1px solid rgba(100, 116, 139, 0.3);">Phase 8</div>
+    <h2 class="card-title">📱 Field Crew Portal</h2>
+    <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:1.5rem;">The mobile web app for physical cleaners to clock-in via GPS, retrieve lockbox codes, and submit QA audits.</p>
+    <a href="field_app.html" class="btn" style="width:100%; border:1px solid #94a3b8; color:#94a3b8; background:rgba(100, 116, 139, 0.1); text-decoration:none;">Preview Crew App ➔</a>
+  </div>
+
+</div>
+
+
+</div>
+
+<script>
+  function showScript(door) {
+    const res = document.getElementById('script-result');
+    res.style.display = 'block';
+    if(door === 'door1') {
+      res.innerHTML = `<span style="color:var(--orange)">[DOOR 1: The Pre-Winter Floor Wedge]</span><br><br>"...I'm calling because winter is hitting in 6 weeks, and salt/calcium destroys commercial floors if the wax sealant is degraded.<br><br>Most general cleaners don't have the high-speed scrubbers to fix it. We are offering a one-off weekend strip & wax to protect your floors before the snow hits. No contract required."`;
+    } else {
+      res.innerHTML = `<span style="color:var(--blue)">[DOOR 2: The Emergency Backup List]</span><br><br>"...I'm calling because we know the #1 problem with commercial cleaners is that eventually, someone doesn't show up and leaves the office a mess.<br><br>I don't want to replace your current cleaner today. I just want to be on your 'Emergency 4-Hour Backup List' for the day they inevitably drop the ball."`;
+    }
+  }
+
+  function generateDossier() {
+    const name = document.getElementById('dossier-client').value || 'Target Client';
+    document.getElementById('dossier-target-name').innerText = name.toUpperCase();
+    document.getElementById('dossier-result').style.display = 'block';
+  }
+
+  function calculateBid() {
+    const sqft = parseFloat(document.getElementById('bid-sqft').value);
+    const freq = parseInt(document.getElementById('bid-freq').value);
+    if(isNaN(sqft) || sqft < 100) return;
+    
+    // Average 2500 sqft per hour of cleaning
+    const hoursPerClean = Math.max(sqft / 2500, 1.5); 
+    const hoursPerMonth = hoursPerClean * freq * 4.33;
+    
+    const laborCostHour = 23.00; // Decree Wage
+    const taxesAndBurden = laborCostHour * 1.15; // 15% burden
+    const monthlyLabor = hoursPerMonth * taxesAndBurden;
+    
+    const chemicalCost = sqft * 0.005 * freq * 4.33;
+    const totalCost = monthlyLabor + chemicalCost;
+    
+    // Target 42% Margin
+    const monthlyBid = totalCost / 0.58;
+    
+    document.getElementById('res-mrr').innerText = '$' + monthlyBid.toFixed(2);
+    document.getElementById('res-labor').innerText = '$' + monthlyLabor.toFixed(2);
+    document.getElementById('res-time').innerText = hoursPerClean.toFixed(1) + ' hrs';
+    
+    document.getElementById('bid-result').style.display = 'block';
+  }
+
+  function simulateDispatch() {
+    const action = document.getElementById('sim-action').value;
+    const res = document.getElementById('sim-result');
+    res.style.display = 'block';
+    
+    if(action === 'review') {
+      res.innerHTML = `> MOCKING TWILIO SMS API...<br>> DESTINATION: All Phase-1 Clients<br><br>[SMS CONTENT]<br>"Hi [Name], Zan from OTIS here! Thanks for trusting us with the deep clean. If you were happy with the result, it would mean the world if you tapped this link to leave a quick Google Review! 🌟 [LINK]"`
+    } else {
+      res.innerHTML = `> MOCKING SENDGRID EMAIL API...<br>> DESTINATION: Existing Portfolio<br><br>[EMAIL CONTENT]<br>"Subject: Save time on washroom supplies (OTIS Consumables)<br><br>Hi [Name], we noticed your team manually orders toilet paper and hand soap. OTIS now offers wholesale supply management. We will automatically restock your dispensers during our cleans at wholesale cost + 20%, saving your management team 3 hours a month."`
+    }
+  }
+</script>
+</body>
+</html>

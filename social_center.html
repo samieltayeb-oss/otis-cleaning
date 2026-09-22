@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OTIS Social Media Ad Center</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #080D1A;
+      --orange: #F7941D;
+      --white: #FFFFFF;
+      --border: rgba(255,255,255,0.1);
+    }
+    body {
+      background: var(--navy);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      margin: 0; padding: 2rem;
+    }
+    .header {
+      text-align: center; margin-bottom: 3rem;
+    }
+    .header h1 {
+      font-family: 'Syne', sans-serif; font-size: 2.5rem; color: var(--orange);
+    }
+    .header p {
+      color: #94a3b8; max-width: 600px; margin: 0 auto;
+    }
+    .ad-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto;
+    }
+    .ad-card {
+      background: #111827; border: 1px solid var(--border); border-radius: 12px; padding: 1rem;
+    }
+    .flyer {
+      position: relative; width: 100%; aspect-ratio: 1/1; background: #000; overflow: hidden; border-radius: 8px;
+    }
+    .split-view {
+      display: flex; width: 100%; height: 100%;
+    }
+    .split-img {
+      width: 50%; height: 100%; object-fit: cover;
+    }
+    .split-line {
+      position: absolute; left: 50%; top: 0; bottom: 0; width: 4px; background: var(--orange); z-index: 10; transform: translateX(-50%);
+    }
+    .label-before, .label-after {
+      position: absolute; top: 15px; font-weight: 800; text-transform: uppercase; padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; z-index: 20; color: #fff;
+    }
+    .label-before { left: 15px; background: rgba(239, 68, 68, 0.8); }
+    .label-after { right: 15px; background: rgba(34, 197, 94, 0.8); }
+    
+    .overlay-bottom {
+      position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(8,13,26,0.95), transparent); padding: 40px 20px 20px; text-align: center; z-index: 30;
+    }
+    .overlay-title {
+      font-family: 'Syne', sans-serif; font-size: 1.5rem; color: var(--white); text-shadow: 0 2px 4px rgba(0,0,0,0.8); margin-bottom: 5px; line-height: 1.2;
+    }
+    .overlay-subtitle {
+      font-size: 1rem; color: var(--orange); font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.8); margin-bottom: 15px;
+    }
+    .overlay-footer {
+      display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 10px;
+    }
+    .overlay-logo {
+      height: 25px; filter: brightness(0) invert(1);
+    }
+    .overlay-email {
+      font-size: 0.85rem; font-weight: 700; background: var(--orange); color: var(--navy); padding: 4px 12px; border-radius: 20px;
+    }
+    .fb-copy {
+      padding: 1.5rem; background: rgba(255,255,255,0.03); border-radius: 8px; margin-top: 1rem; font-size: 0.9rem; color: #cbd5e1;
+    }
+    .fb-copy strong { color: #fff; }
+  
+    .poster-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 3rem; max-width: 1200px; margin: 4rem auto;
+    }
+    .poster {
+      position: relative; width: 100%; aspect-ratio: 4/5; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1);
+      background-size: cover; background-position: center;
+    }
+    .poster-overlay {
+      position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(8,13,26,0) 0%, rgba(8,13,26,0) 40%, rgba(8,13,26,0.9) 100%);
+      display: flex; flex-direction: column; justify-content: flex-end; padding: 1.5rem;
+    }
+    .poster-hook {
+      font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 700; letter-spacing: 0.5px; font-weight: 800; color: var(--white); line-height: 1.1; margin-bottom: 1rem; text-transform: uppercase;
+    }
+    .poster-sub {
+      font-size: 1.1rem; color: var(--orange); font-weight: 700; margin-bottom: 1rem; font-size: 0.85rem; color: #cbd5e1; font-weight: 400;
+    }
+    .poster-footer {
+      display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1rem;
+    }
+    .poster-logo {
+      height: 20px; filter: brightness(0) invert(1);
+    }
+    .poster-contact {
+      font-family: 'Syne', sans-serif; font-size: 0.85rem; font-weight: 700; color: var(--white);
+    }
+    .poster-website {
+      font-size: 0.75rem; color: #94a3b8; margin-top: 2px; text-align: right;
+    }
+    .section-title {
+      text-align: center; font-family: 'Syne', sans-serif; font-size: 3rem; color: var(--white); margin-top: 6rem; border-top: 1px solid var(--border); padding-top: 4rem;
+    }
+
+  
+    /* Lightbox Styles */
+    .lightbox {
+      display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.9); justify-content: center; align-items: center; padding: 2rem;
+    }
+    .lightbox.active { display: flex; }
+    .lightbox-content {
+      position: relative; width: auto; height: 90vh; aspect-ratio: 4/5; border-radius: 12px;
+      background-size: cover; background-position: center; box-shadow: 0 0 50px rgba(0,0,0,0.8);
+      overflow: hidden;
+    }
+    .lightbox-close {
+      position: absolute; top: 20px; right: 30px; font-size: 3rem; color: #fff; cursor: pointer; font-family: sans-serif;
+    }
+    .poster { cursor: pointer; transition: transform 0.2s; }
+    .poster:hover { transform: translateY(-5px); box-shadow: 0 25px 50px rgba(0,0,0,0.6); }
+
+  
+    .campaign-section { max-width: 1200px; margin: 4rem auto; }
+    .campaign-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; margin-top: 2rem; }
+    .campaign-card { background: #111827; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 2rem; transition: transform 0.2s; }
+    .campaign-card:hover { transform: translateY(-5px); border-color: rgba(247,148,29,0.5); }
+    .campaign-tag { display: inline-block; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 1rem; }
+    .tag-linkedin { background: rgba(14, 118, 168, 0.2); color: #0e76a8; border: 1px solid rgba(14, 118, 168, 0.5); }
+    .tag-reels { background: rgba(236, 72, 153, 0.2); color: #ec4899; border: 1px solid rgba(236, 72, 153, 0.5); }
+    .tag-meta { background: rgba(6, 104, 225, 0.2); color: #0668e1; border: 1px solid rgba(6, 104, 225, 0.5); }
+    .campaign-title { font-family: 'Syne', sans-serif; font-size: 1.5rem; color: var(--white); margin-bottom: 1rem; line-height: 1.2; }
+    .campaign-desc { font-size: 0.95rem; color: #94a3b8; margin-bottom: 1.5rem; line-height: 1.6; }
+    .campaign-bullet { display: flex; align-items: flex-start; margin-bottom: 0.5rem; font-size: 0.85rem; color: #cbd5e1; }
+    .campaign-bullet::before { content: '→'; color: var(--orange); margin-right: 8px; font-weight: 700; }
+
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>OTIS Facebook Ad Center</h1>
+    <p>Hyper-realistic, raw iPhone photography proven to stop the scroll. Real before & afters targeting Facility Managers across Montreal Island.</p>
+  </div>
+
+  <div class="ad-grid">
+    
+    <!-- Ad 1: Floors -->
+    <div class="ad-card">
+      <div class="flyer">
+        <div class="split-view">
+          <img src="imgs/real_floor_dirty_1789881645030.jpg" class="split-img" alt="Dirty">
+          <img src="imgs/real_floor_clean_1789881653699.jpg" class="split-img" alt="Clean">
+        </div>
+        <div class="split-line"></div>
+        <div class="label-before">Before</div>
+        <div class="label-after">After OTIS</div>
+        <div class="overlay-bottom">
+          <div class="overlay-title">Montreal Winter Destroying Your VCT Floors?</div>
+          <div class="overlay-subtitle">Professional Stripping & Waxing</div>
+          <div class="overlay-footer">
+            <img src="imgs/otis-logo.png" class="overlay-logo" alt="OTIS">
+            <div class="overlay-email">info@otiscc.ca</div>
+          </div>
+        </div>
+      </div>
+      <div class="fb-copy">
+        <strong>Facebook Ad Copy:</strong><br><br>
+        Calcium and salt from Montreal winters will permanently ruin your office VCT flooring if left untreated. 🚫<br><br>
+        At OTIS, we run high-RPM Tennant scrubbers to completely strip the old wax and lay down 3 coats of mirror-finish protection. Look at the difference. ✨<br><br>
+        📍 Servicing all of Montreal Island.<br>
+        👉 Get a free site walkthrough today: www.otiscc.ca
+      </div>
+    </div>
+
+    <!-- Ad 2: Post Construction -->
+    <div class="ad-card">
+      <div class="flyer">
+        <div class="split-view">
+          <img src="imgs/real_desk_dirty_1789881662579.jpg" class="split-img" alt="Dirty">
+          <img src="imgs/real_desk_clean_1789881671878.jpg" class="split-img" alt="Clean">
+        </div>
+        <div class="split-line"></div>
+        <div class="label-before">Before</div>
+        <div class="label-after">After OTIS</div>
+        <div class="overlay-bottom">
+          <div class="overlay-title">Renovation Dust Everywhere?</div>
+          <div class="overlay-subtitle">Post-Construction Occupancy Cleaning</div>
+          <div class="overlay-footer">
+            <img src="imgs/otis-logo.png" class="overlay-logo" alt="OTIS">
+            <div class="overlay-email">info@otiscc.ca</div>
+          </div>
+        </div>
+      </div>
+      <div class="fb-copy">
+        <strong>Facebook Ad Copy:</strong><br><br>
+        General contractors build. We make it livable. 🏗️➡️🏢<br><br>
+        Drywall dust gets into computers, HVAC vents, and carpets. Don't let your staff move back into a dirty office. OTIS deploys HEPA-filter vacuums and industrial degreasers to prep your Montreal office for occupancy.<br><br>
+        📍 Servicing all of Montreal Island.<br>
+        👉 Get your post-renovation quote: www.otiscc.ca
+      </div>
+    </div>
+
+    <!-- Ad 3: Medical Clinic -->
+    <div class="ad-card">
+      <div class="flyer">
+        <div class="split-view">
+          <img src="imgs/real_clinic_dirty_1789881679675.jpg" class="split-img" alt="Dirty">
+          <img src="imgs/real_clinic_clean_1789881688412.jpg" class="split-img" alt="Clean">
+        </div>
+        <div class="split-line"></div>
+        <div class="label-before">Before</div>
+        <div class="label-after">After OTIS</div>
+        <div class="overlay-bottom">
+          <div class="overlay-title">Does Your Clinic Look Like This?</div>
+          <div class="overlay-subtitle">Healthcare-Grade Sanitization</div>
+          <div class="overlay-footer">
+            <img src="imgs/otis-logo.png" class="overlay-logo" alt="OTIS">
+            <div class="overlay-email">info@otiscc.ca</div>
+          </div>
+        </div>
+      </div>
+      <div class="fb-copy">
+        <strong>Facebook Ad Copy:</strong><br><br>
+        Your patients judge your medical expertise by the cleanliness of your waiting room. 🩺<br><br>
+        Stop relying on cheap cleaners who miss the details. OTIS uses hospital-grade disinfectants and strict cross-contamination protocols. We guarantee perfectly clear glass, sanitized surfaces, and empty trash every single morning.<br><br>
+        📍 Medical Clinics across Montreal Island.<br>
+        👉 Request a compliance walkthrough: www.otiscc.ca
+      </div>
+    </div>
+
+  </div>
+
+
+  <h2 class="section-title">High-End Commercial Posters</h2>
+  <p style="text-align:center; color:#94a3b8; max-width:600px; margin: 0 auto 3rem;">Cinematic, premium art direction designed for printed flyers, PDF pitch decks, and Instagram Stories.</p>
+
+  <div class="poster-grid">
+    
+    <!-- Poster 1 -->
+    <div class="poster" onclick="openLightbox(this)" style="background-image: url('imgs/otis_ad_crew_1789881569489.jpg');">
+      <div class="poster-overlay">
+        <div class="poster-hook">Elite Commercial Cleaning.</div>
+        <div class="poster-sub">Professional Janitorial Services across Montreal.</div>
+        <div class="poster-footer">
+          <img src="imgs/otis-logo.png" class="poster-logo" alt="OTIS">
+          <div>
+            <div class="poster-contact">info@otiscc.ca</div>
+            <div class="poster-website">www.otiscc.ca</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Poster 2 -->
+    <div class="poster" onclick="openLightbox(this)" style="background-image: url('imgs/otis_ad_night_1789881587513.jpg');">
+      <div class="poster-overlay">
+        <div class="poster-hook">While Montreal Sleeps, OTIS Works.</div>
+        <div class="poster-sub">Flawless office cleaning. Every single morning.</div>
+        <div class="poster-footer">
+          <img src="imgs/otis-logo.png" class="poster-logo" alt="OTIS">
+          <div>
+            <div class="poster-contact">info@otiscc.ca</div>
+            <div class="poster-website">www.otiscc.ca</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Poster 3 -->
+    <div class="poster" onclick="openLightbox(this)" style="background-image: url('imgs/otis_ad_medical_1789881551259.jpg');">
+      <div class="poster-overlay">
+        <div class="poster-hook">Healthcare-Grade Sanitization.</div>
+        <div class="poster-sub">Hospital-grade protocols for your clinic.</div>
+        <div class="poster-footer">
+          <img src="imgs/otis-logo.png" class="poster-logo" alt="OTIS">
+          <div>
+            <div class="poster-contact">info@otiscc.ca</div>
+            <div class="poster-website">www.otiscc.ca</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Poster 4 -->
+    <div class="poster" onclick="openLightbox(this)" style="background-image: url('imgs/otis_ad_construction_1789881542673.jpg');">
+      <div class="poster-overlay">
+        <div class="poster-hook">Post-Construction Experts.</div>
+        <div class="poster-sub">We clear the drywall dust so you can close the deal.</div>
+        <div class="poster-footer">
+          <img src="imgs/otis-logo.png" class="poster-logo" alt="OTIS">
+          <div>
+            <div class="poster-contact">info@otiscc.ca</div>
+            <div class="poster-website">www.otiscc.ca</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Poster 5 -->
+    <div class="poster" onclick="openLightbox(this)" style="background-image: url('imgs/otis_ad_condo_1789881577986.jpg');">
+      <div class="poster-overlay">
+        <div class="poster-hook">Luxury Building Maintenance.</div>
+        <div class="poster-sub">High-rise and luxury condo maintenance.</div>
+        <div class="poster-footer">
+          <img src="imgs/otis-logo.png" class="poster-logo" alt="OTIS">
+          <div>
+            <div class="poster-contact">info@otiscc.ca</div>
+            <div class="poster-website">www.otiscc.ca</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Poster 6 -->
+    <div class="poster" onclick="openLightbox(this)" style="background-image: url('imgs/otis_ad_floors_1789881559763.jpg');">
+      <div class="poster-overlay">
+        <div class="poster-hook">Industrial Floor Restoration.</div>
+        <div class="poster-sub">VCT stripping, waxing, and protection.</div>
+        <div class="poster-footer">
+          <img src="imgs/otis-logo.png" class="poster-logo" alt="OTIS">
+          <div>
+            <div class="poster-contact">info@otiscc.ca</div>
+            <div class="poster-website">www.otiscc.ca</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Poster 7 -->
+    <div class="poster" onclick="openLightbox(this)" style="background-image: url('imgs/otis_ad_equipment_1789882536007.jpg');">
+      <div class="poster-overlay">
+        <div class="poster-hook">Commercial-Grade Equipment.</div>
+        <div class="poster-sub">Industrial scrubbers and HEPA filtration.</div>
+        <div class="poster-footer">
+          <img src="imgs/otis-logo.png" class="poster-logo" alt="OTIS">
+          <div>
+            <div class="poster-contact">info@otiscc.ca</div>
+            <div class="poster-website">www.otiscc.ca</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Poster 8 -->
+    <div class="poster" onclick="openLightbox(this)" style="background-image: url('imgs/otis_ad_security_1789882545563.jpg');">
+      <div class="poster-overlay">
+        <div class="poster-hook">Secured & Insured.</div>
+        <div class="poster-sub">Trust your office keys to vetted professionals.</div>
+        <div class="poster-footer">
+          <img src="imgs/otis-logo.png" class="poster-logo" alt="OTIS">
+          <div>
+            <div class="poster-contact">info@otiscc.ca</div>
+            <div class="poster-website">www.otiscc.ca</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Poster 9 -->
+    <div class="poster" onclick="openLightbox(this)" style="background-image: url('imgs/otis_ad_restroom_1789882554146.jpg');">
+      <div class="poster-overlay">
+        <div class="poster-hook">Spotless Facilities.</div>
+        <div class="poster-sub">Immaculate corporate restroom sanitization.</div>
+        <div class="poster-footer">
+          <img src="imgs/otis-logo.png" class="poster-logo" alt="OTIS">
+          <div>
+            <div class="poster-contact">info@otiscc.ca</div>
+            <div class="poster-website">www.otiscc.ca</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div> <!-- End Grid -->
+
+  <div class="campaign-section">
+    <h2 class="section-title" style="margin-top: 2rem; border-top: none;">Advanced Social Media Campaigns</h2>
+    <p style="text-align:center; color:#94a3b8; max-width:700px; margin: 0 auto 3rem;">Posters create brand awareness, but campaigns drive leads. Here are 3 highly-targeted content pillars to deploy across Montreal.</p>
+    
+    <div class="campaign-grid">
+      
+      <!-- LinkedIn B2B Authority -->
+      <div class="campaign-card">
+        <span class="campaign-tag tag-linkedin">LinkedIn B2B Strategy</span>
+        <h3 class="campaign-title">The "Founder's Desk" Series</h3>
+        <p class="campaign-desc">Facility managers and CEOs are on LinkedIn. Instead of selling cleaning, Zan sells <strong>compliance and risk management</strong>. Position OTIS as the authority on Quebec labor laws.</p>
+        <div class="campaign-bullet">Post: Break down the CPEEP /hr parity decree and explain "Joint Liability" to office managers.</div>
+        <div class="campaign-bullet">Post: The true cost of "cheap" night cleaners (security breaches, unlocked doors, insurance voids).</div>
+        <div class="campaign-bullet">Format: Text-only posts with 1 striking statistic, driving traffic to the OTIS Compliance PDF.</div>
+      </div>
+
+      <!-- Instagram/FB Reels -->
+      <div class="campaign-card">
+        <span class="campaign-tag tag-reels">IG Reels & TikTok</span>
+        <h3 class="campaign-title">The 60-Second Transformation</h3>
+        <p class="campaign-desc">Cleaning is highly visual. Short-form video satisfies the psychological "itch" of watching something dirty become perfectly clean.</p>
+        <div class="campaign-bullet">Video 1: Floor Stripping. Fast-motion video of a Tennant scrubber removing black scuff marks.</div>
+        <div class="campaign-bullet">Video 2: Post-Construction. Time-lapse of a dusty office turning into a gleaming workspace.</div>
+        <div class="campaign-bullet">Hook: "Watch us restore this Montreal office in 60 seconds..." with trending background audio.</div>
+      </div>
+
+      <!-- Meta Lead Generation -->
+      <div class="campaign-card">
+        <span class="campaign-tag tag-meta">Meta (FB/IG) Paid Ads</span>
+        <h3 class="campaign-title">The "Hidden Cost" Infographic</h3>
+        <p class="campaign-desc">Office managers hate dealing with complaints about empty toilet paper or dirty microwaves. Target their exact pain points with direct-response infographics.</p>
+        <div class="campaign-bullet">Visual: A split infographic showing "Your Current Cleaner" (missing shifts, running out of soap) vs. "The OTIS Standard" (restock automation, GPS tracking).</div>
+        <div class="campaign-bullet">Offer: "Free 1-Month Restroom Supply Restock with any 12-month contract."</div>
+        <div class="campaign-bullet">CTA: Lead Gen Form embedded directly in Facebook (no website click required).</div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <span class="lightbox-close">&times;</span>
+    <div id="lightbox-img" class="lightbox-content" onclick="event.stopPropagation()">
+      <div id="lightbox-overlay" class="poster-overlay"></div>
+    </div>
+  </div>
+
+  <script>
+    function openLightbox(element) {
+      const lb = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lightbox-img');
+      const lbOverlay = document.getElementById('lightbox-overlay');
+      
+      lbImg.style.backgroundImage = element.style.backgroundImage;
+      lbOverlay.innerHTML = element.querySelector('.poster-overlay').innerHTML;
+      
+      lb.classList.add('active');
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+    }
+  </script>
+</body>
+
+</html>

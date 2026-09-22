@@ -1,0 +1,19 @@
+{
+  "name": "otis-commercial-cleaning",
+  "version": "2.0.0",
+  "description": "OTIS Commercial Cleaning Platform - 8-Agent Autonomous ERP & Marketing Engine",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "firebase-admin": "^12.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "xmlrpc": "^1.3.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
