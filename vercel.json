@@ -1,18 +1,54 @@
 {
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/fr/imgs/:path*", "destination": "/imgs/:path*" },
-    { "source": "/services/imgs/:path*", "destination": "/imgs/:path*" },
-    { "source": "/sectors/imgs/:path*", "destination": "/imgs/:path*" },
-    { "source": "/fr/services/imgs/:path*", "destination": "/imgs/:path*" },
-    { "source": "/crew", "destination": "/internal/field_app.html" },
-    { "source": "/app", "destination": "/internal/field_app.html" },
-    { "source": "/playbook", "destination": "/internal/operator_guide.html" },
-    { "source": "/operator", "destination": "/internal/operator_guide.html" },
-    { "source": "/internal/playbook", "destination": "/internal/operator_guide.html" },
-    { "source": "/internal/operator_guide", "destination": "/internal/operator_guide.html" },
-    { "source": "/api/:endpoint", "destination": "/api/:endpoint.js" },
-    { "source": "/api/internal/:endpoint", "destination": "/api/internal/:endpoint.js" }
+    {
+      "source": "/fr/imgs/:path*",
+      "destination": "/imgs/:path*"
+    },
+    {
+      "source": "/services/imgs/:path*",
+      "destination": "/imgs/:path*"
+    },
+    {
+      "source": "/sectors/imgs/:path*",
+      "destination": "/imgs/:path*"
+    },
+    {
+      "source": "/fr/services/imgs/:path*",
+      "destination": "/imgs/:path*"
+    },
+    {
+      "source": "/crew",
+      "destination": "/internal/field_app.html"
+    },
+    {
+      "source": "/app",
+      "destination": "/internal/field_app.html"
+    },
+    {
+      "source": "/playbook",
+      "destination": "/internal/operator_guide.html"
+    },
+    {
+      "source": "/operator",
+      "destination": "/internal/operator_guide.html"
+    },
+    {
+      "source": "/internal/playbook",
+      "destination": "/internal/operator_guide.html"
+    },
+    {
+      "source": "/internal/operator_guide",
+      "destination": "/internal/operator_guide.html"
+    },
+    {
+      "source": "/api/:endpoint",
+      "destination": "/api/:endpoint.js"
+    },
+    {
+      "source": "/api/internal/:endpoint",
+      "destination": "/api/internal/:endpoint.js"
+    }
   ],
   "redirects": [
     {
@@ -94,13 +130,86 @@
       "source": "/erp-report",
       "destination": "/internal/erp-report",
       "permanent": true
+    },
+    {
+      "source": "/services/residential-cleaning",
+      "destination": "/services/commercial-cleaning",
+      "permanent": true
+    },
+    {
+      "source": "/services/residential-cleaning.html",
+      "destination": "/services/commercial-cleaning",
+      "permanent": true
+    },
+    {
+      "source": "/services/deep-cleaning",
+      "destination": "/services/commercial-cleaning",
+      "permanent": true
+    },
+    {
+      "source": "/services/deep-cleaning.html",
+      "destination": "/services/commercial-cleaning",
+      "permanent": true
+    },
+    {
+      "source": "/services/turnover-cleaning",
+      "destination": "/sectors/condo-cleaning",
+      "permanent": true
+    },
+    {
+      "source": "/services/turnover-cleaning.html",
+      "destination": "/sectors/condo-cleaning",
+      "permanent": true
+    },
+    {
+      "source": "/fr/services/nettoyage-residentiel",
+      "destination": "/fr/services/entretien-commercial",
+      "permanent": true
+    },
+    {
+      "source": "/fr/services/nettoyage-residentiel.html",
+      "destination": "/fr/services/entretien-commercial",
+      "permanent": true
+    },
+    {
+      "source": "/fr/services/grand-menage",
+      "destination": "/fr/services/entretien-commercial",
+      "permanent": true
+    },
+    {
+      "source": "/fr/services/grand-menage.html",
+      "destination": "/fr/services/entretien-commercial",
+      "permanent": true
+    },
+    {
+      "source": "/fr/services/nettoyage-fin-de-bail",
+      "destination": "/fr/secteurs/nettoyage-espaces-communs",
+      "permanent": true
+    },
+    {
+      "source": "/fr/services/nettoyage-fin-de-bail.html",
+      "destination": "/fr/secteurs/nettoyage-espaces-communs",
+      "permanent": true
+    },
+    {
+      "source": "/otis-final-v2_8",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/otis-final-v2_8.html",
+      "destination": "/",
+      "permanent": true
     }
   ],
   "headers": [
     {
       "source": "/internal/(.*)",
       "headers": [
-        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
       ]
     }
   ]
