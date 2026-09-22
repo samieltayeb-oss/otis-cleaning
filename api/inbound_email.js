@@ -3,6 +3,7 @@
 // ==============================================================================
 import crypto from 'crypto';
 import https from 'https';
+import nodemailer from 'nodemailer';
 import { addDocument, getCollection } from './firebase.js';
 
 // Cryptographic verification of SendGrid Webhook Signature (ECDSA prime256v1)
@@ -146,10 +147,35 @@ export default async function handler(req, res) {
   }
 
   if (req.method === 'POST' && (req.query.action === 'send' || req.body?.action === 'send')) {
-    const { to, subject, text } = req.body || {};
+    const { to, subject, text, html } = req.body || {};
+
+    // 1. Google Workspace Gmail SMTP (Primary)
+    if (process.env.SMTP_PASS) {
+      try {
+        const transporter = nodemailer.createTransport({
+          service: 'gmail',
+          auth: {
+            user: process.env.SMTP_USER || 'info@otiscc.ca',
+            pass: process.env.SMTP_PASS.replace(/\s+/g, '')
+          }
+        });
+        const info = await transporter.sendMail({
+          from: `"OTIS Commercial Cleaning" <${process.env.SMTP_USER || 'info@otiscc.ca'}>`,
+          to: to || 'info@otiscc.ca',
+          subject: subject || 'Message from OTIS Commercial Cleaning',
+          text: text || '',
+          html: html || undefined
+        });
+        return res.status(200).json({ success: true, provider: 'google_workspace_smtp', messageId: info.messageId, message: `Email dispatched to ${to || 'info@otiscc.ca'}` });
+      } catch (err) {
+        console.error('[GMAIL SMTP SEND ERROR]', err.message);
+      }
+    }
+
+    // 2. SendGrid Fallback
     const apiKey = process.env.SENDGRID_API_KEY;
     if (!apiKey) {
-      return res.status(200).json({ success: true, simulated: true, message: 'Simulated dispatch (SENDGRID_API_KEY unset)' });
+      return res.status(200).json({ success: true, simulated: true, message: 'Simulated dispatch (No email provider configured)' });
     }
     try {
       const sendRes = await fetch('https://api.sendgrid.com/v3/mail/send', {
@@ -166,7 +192,7 @@ export default async function handler(req, res) {
         })
       });
       if (sendRes.status >= 200 && sendRes.status < 300) {
-        return res.status(200).json({ success: true, message: `Email dispatched to ${to}` });
+        return res.status(200).json({ success: true, provider: 'sendgrid', message: `Email dispatched to ${to}` });
       } else {
         const errJson = await sendRes.json().catch(() => ({}));
         return res.status(200).json({ success: false, status: sendRes.status, error: errJson });
