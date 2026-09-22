@@ -493,13 +493,6 @@
             </div>
             <span style="color:var(--green); font-size:1.2rem;">📞</span>
           </div>
-          <div class="setting-item" style="cursor:pointer;" onclick="window.location.href='/internal/command-center'">
-            <div>
-              <div class="setting-label" id="lbl-back-hub">Executive ERP Hub</div>
-              <div class="setting-desc">Switch to Max (CEO) &amp; Zan (MD) Command Console</div>
-            </div>
-            <span style="color:var(--brand-orange); font-size:1.2rem;">⚡</span>
-          </div>
         </div>
 
         <div style="text-align:center; padding:1rem; font-size:0.75rem; color:#8FA6BE;">
@@ -715,8 +708,7 @@
         protoLockboxDesc: "If the physical lockbox is jammed or the code fails, call Bruno (Crew Dispatch) immediately at (514) 555-OTIS. Never force lockbox dials.",
         protoChemTitle: "WHMIS & Chemical Ratios",
         protoChemDesc: "Neutral Floor Cleaner: 1:64 ratio (cold water only). Use Anti-Foam / Defoamer in the Tennant auto-scrubber recovery tank for all heavy salt extractions.",
-        callDispatch: "Call Bruno (Dispatch)",
-        backHub: "Executive ERP Hub"
+        callDispatch: "Call Bruno (Dispatch)"
       },
       fr: {
         appBadge: "ÉQUIPE OS",
@@ -735,25 +727,24 @@
         secTitle: "🔑 Code Boîte à Clé (Porte ruelle arrière)",
         secNote: "Code actif. Se désactive automatiquement à 21h30.",
         notes: "Consignes de l'édifice :",
-        qaTitle: "Protocole QA obligatoire (5 points)",
-        qaSubtitle: "Cochez les 5 points d'inspection avant de terminer le quart.",
-        qa1: "Poubelles vidées et sacs neufs installés dans tous les bacs",
-        qa2: "Salles de bain désinfectées (toilettes, lavabos, miroirs)",
-        qa3: "Distributeurs réapprovisionnés (papier hygiénique, savon, essuie-mains)",
-        qa4: "Planchers récurés et lavés au détergent neutre",
-        qa5: "Portes extérieures verrouillées et alarme nocturne activée",
-        photoBtn: "Prendre photo de preuve (Optionnel)",
-        clockOutBtn: `Valider les 5 points QA (${checkedCount}/5)`,
+        qaTitle: "Validation d'assurance qualité (5/5)",
+        qaSubtitle: "La fin de quart requiert de cocher les 5 tâches et de joindre une photo",
+        qa1: "Salles de bain désinfectées & miroirs polis",
+        qa2: "Toutes les poubelles vidées et sacs neufs remplacés",
+        qa3: "Distributeurs de savon & papier réapprovisionnés",
+        qa4: "Lavage neutre des planchers (aucun résidu de sel)",
+        qa5: "Alarme armée & porte sécurisée vérifiée",
+        photoBtn: "📸 Joindre une photo du vestibule / plancher",
         navShifts: "Quarts",
         navEarnings: "Paie",
         navSettings: "Options",
-        earnWeek: "Paie nette cette semaine",
-        earnRate: "↑ 14,0 h @ 23,00 $/h Parité légale",
-        nextPay: "Prochain dépôt direct",
-        ytdGross: "Total cumulé cette année",
-        cpeepTitle: "Protégé par le Décret CPEEP",
-        cpeepDesc: "Tous les préposés OTIS bénéficient de la parité légale stricte de 23,00 $/h et de la couverture intégrale CNESST dans le Grand Montréal.",
-        recentShifts: "Derniers quarts rémunérés",
+        earnWeek: "Paie nette cette semaine (Estimée)",
+        earnRate: "Taux horaire garanti par décret CPEEP",
+        nextPay: "Prochain dépôt direct :",
+        ytdGross: "Total cumulé 2026 :",
+        cpeepTitle: "Protection Salariale Décret CPEEP",
+        cpeepDesc: "Votre taux horaire officiel de 23,00 $/h et les heures supplémentaires sont garantis par le décret de Montréal.",
+        recentShifts: "Historique des 5 derniers quarts",
         depositAccount: "Compte de dépôt direct",
         prefLang: "Langue de l'interface",
         descPrefLang: "Français québécois ou English (Canada)",
@@ -761,8 +752,7 @@
         protoLockboxDesc: "Si la boîte à clé est coincée ou si le code ne fonctionne pas, contactez immédiatement Bruno (Répartition) au (514) 555-OTIS.",
         protoChemTitle: "SIMDUT & Dilution des produits",
         protoChemDesc: "Nettoyant neutre à plancher : dilution 1:64 (eau froide). Mettre de l'anti-mousse dans le bac de récupération de l'autolaveuse Tennant.",
-        callDispatch: "Appeler Bruno (Répartition)",
-        backHub: "Console Exécutive ERP"
+        callDispatch: "Appeler Bruno (Répartition)"
       }
     };
 
@@ -825,7 +815,6 @@
       document.getElementById('title-proto-chem').innerText = t.protoChemTitle;
       document.getElementById('desc-proto-chem').innerText = t.protoChemDesc;
       document.getElementById('lbl-call-dispatch').innerText = t.callDispatch;
-      document.getElementById('lbl-back-hub').innerText = t.backHub;
 
       updateClock();
     }

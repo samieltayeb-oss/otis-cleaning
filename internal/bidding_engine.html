@@ -13,7 +13,61 @@
       --green: #10b981; --red: #ef4444; --blue: #38bdf8;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); display: flex; height: 100vh; overflow: hidden; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+    .app-container { display: flex; flex: 1; overflow: hidden; }
+    
+    /* Master Top Bar Navigation */
+    .top-bar {
+      position: sticky; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(11, 27, 43, 0.96); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border); padding: 0.65rem 2rem;
+      display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-shrink: 0;
+    }
+    .brand-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; flex-shrink: 0; }
+    .brand-logo img { height: 32px; max-width: 140px; width: auto; object-fit: contain; display: block; filter: none !important; }
+    .badge-pill {
+      font-size: 0.72rem; font-weight: 600; padding: 0.2rem 0.65rem; border-radius: 50px;
+      letter-spacing: 0.04em; background: rgba(247, 148, 29, 0.15); border: 1px solid rgba(247, 148, 29, 0.35);
+      color: var(--brand-orange); white-space: nowrap;
+    }
+    .nav-actions { display: flex; align-items: center; gap: 6px; flex-wrap: nowrap; overflow-x: auto; }
+    .btn-nav {
+      font-size: 0.78rem; font-weight: 600; padding: 0.4rem 0.75rem; border-radius: 8px; text-decoration: none;
+      transition: all 0.2s; display: inline-flex; align-items: center; gap: 5px; color: var(--text);
+      border: 1px solid var(--border); background: rgba(255, 255, 255, 0.04); white-space: nowrap;
+    }
+    .btn-nav:hover { background: rgba(255, 255, 255, 0.1); color: var(--white); border-color: rgba(255, 255, 255, 0.2); }
+    .btn-nav.active { background: rgba(247, 148, 29, 0.2); border-color: var(--brand-orange); color: var(--brand-orange); font-weight: 700; }
+    .btn-prototype { background: linear-gradient(135deg, var(--brand-orange), #d97706); color: #000 !important; font-weight: 700; border: none; }
+    .btn-prototype:hover { background: linear-gradient(135deg, #fb923c, var(--brand-orange)); transform: translateY(-1px); }
+    .nav-hamburger {
+      display: none; background: rgba(255, 255, 255, 0.06); border: 1px solid var(--border);
+      color: var(--white); font-size: 1.25rem; width: 38px; height: 38px; border-radius: 8px;
+      cursor: pointer; align-items: center; justify-content: center; transition: all 0.2s;
+    }
+    .nav-hamburger:hover { background: rgba(255, 255, 255, 0.12); border-color: var(--brand-orange); color: var(--brand-orange); }
+    .mobile-nav-drawer {
+      display: none; position: fixed; top: 54px; left: 0; right: 0; bottom: 0;
+      background: rgba(8, 13, 26, 0.98); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      z-index: 999; padding: 1.5rem 2rem 2.5rem; overflow-y: auto; flex-direction: column; gap: 0.65rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .mobile-nav-drawer.open { display: flex; }
+    .mobile-nav-drawer .mobile-link {
+      display: flex; align-items: center; justify-content: space-between; padding: 0.8rem 1.1rem;
+      background: rgba(255, 255, 255, 0.04); border: 1px solid var(--border); border-radius: 10px;
+      color: var(--text); text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: all 0.2s;
+    }
+    .mobile-nav-drawer .mobile-link:hover, .mobile-nav-drawer .mobile-link.active {
+      background: rgba(247, 148, 29, 0.15); border-color: var(--brand-orange); color: var(--white);
+    }
+    .mobile-nav-drawer .mobile-link.prototype-link {
+      background: linear-gradient(135deg, var(--brand-orange), #d97706); color: #000 !important; font-weight: 700; border: none;
+    }
+    @media (max-width: 1200px) {
+      .nav-actions { display: none; }
+      .nav-hamburger { display: inline-flex; }
+    }
     
     /* Left Panel: Inputs */
     .sidebar { width: 420px; background: var(--surface); border-right: 1px solid var(--border); padding: 2rem; display: flex; flex-direction: column; gap: 1.25rem; overflow-y: auto; }
@@ -84,6 +138,8 @@
     
     @media print {
       body { background: #FFF; overflow: visible; display: block; }
+      .top-bar, .mobile-nav-drawer { display: none !important; }
+      .app-container { display: block; overflow: visible; }
       .sidebar { display: none; }
       .preview-pane { padding: 0; background: none; display: block; }
       .document { box-shadow: none; max-width: 100%; padding: 0; }
@@ -92,20 +148,66 @@
 </head>
 <body>
 
-<div class="sidebar">
-  <div style="display:flex; justify-content:space-between; align-items:center;">
-    <h2>Bidding Engine</h2>
-    <div style="display:flex; gap:12px; align-items:center;">
-      <a href="/internal/blueprint" style="color:var(--brand-orange); text-decoration:none; font-size:0.8rem; font-weight:700;">📋 Blueprint</a>
-      <a href="/internal/command-center" style="color:#8FA6BE; text-decoration:none; font-size:0.8rem; font-weight:700;">Back to ERP ➔</a>
+  <!-- Master Sticky Top Navigation Bar -->
+  <header class="top-bar">
+    <a href="/internal/blueprint" class="brand-logo">
+      <img src="/imgs/otis-logo.png" alt="OTIS Commercial Cleaning">
+      <span class="badge-pill">CEO Strategy Briefing</span>
+    </a>
+    
+    <nav class="nav-actions">
+      <a href="/internal/blueprint" class="btn-nav"><span>🏠 Home</span></a>
+      <a href="/internal/operator_guide" class="btn-nav"><span>☀️ Max &amp; Zan's Playbook</span></a>
+      <a href="/internal/command-center" class="btn-nav" style="background: linear-gradient(135deg, rgba(247, 148, 29, 0.25), rgba(247, 148, 29, 0.1)); border: 1px solid var(--brand-orange); color: var(--brand-orange); font-weight: 800; box-shadow: 0 0 12px rgba(247, 148, 29, 0.3);"><span>⚡ Executive ERP Hub (Max &amp; Zan)</span></a>
+      <a href="/internal/blueprint#radar-to-erp" class="btn-nav" style="background: rgba(247, 148, 29, 0.15); border: 1px solid var(--brand-orange); color: var(--brand-orange); font-weight: 800; box-shadow: 0 0 10px rgba(247, 148, 29, 0.2);"><span>🎯 Radar → ERP</span></a>
+      <a href="/internal/blueprint#execution-phases" class="btn-nav" style="background: rgba(34, 197, 94, 0.2); border-color: rgba(34, 197, 94, 0.5); color: #4ade80; font-weight: 700;"><span>🚀 8 Phases</span></a>
+      <a href="/internal/leads" class="btn-nav"><span>📋 37 Leads</span></a>
+      <a href="/internal/crm" class="btn-nav"><span>🤖 AI Staff</span></a>
+      <a href="/internal/erp" class="btn-nav"><span>📊 ERP</span></a>
+      <a href="/zan-review.html" class="btn-nav"><span>⚖️ Strategy Review</span></a>
+      <a href="/internal/equipment" class="btn-nav"><span>🛠️ Equipment</span></a>
+      <a href="/discovery.html" class="btn-nav"><span>🔍 Discovery</span></a>
+      <a href="/internal/social_center" class="btn-nav"><span>📱 Ads</span></a>
+      <a href="/" class="btn-nav btn-prototype" target="_blank"><span>Prototype →</span></a>
+    </nav>
+
+    <button class="nav-hamburger" id="nav-toggle" aria-label="Toggle navigation" onclick="toggleNavMenu()">☰</button>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav-drawer" id="mobile-nav-drawer">
+    <div style="font-size: 0.72rem; color: #8FA6BE; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.25rem;">
+      Command Center Navigation
     </div>
+    <a href="/internal/bidding_engine" class="mobile-link active" style="border-color: var(--brand-orange); color: var(--brand-orange); font-weight: 800; background: rgba(247, 148, 29, 0.15);"><span>📐 Bidding &amp; Route Density Engine</span> <span style="background:var(--brand-orange); color:#000; padding:2px 6px; border-radius:4px; font-weight:800; font-size:0.65rem;">ACTIVE</span></a>
+    <a href="/internal/operator_guide" class="mobile-link"><span>☀️ Max &amp; Zan's Operator Playbook</span> <span style="color:var(--brand-orange);">GUIDE</span></a>
+    <a href="/internal/command-center" class="mobile-link" style="border-color: var(--brand-orange); color: var(--brand-orange); font-weight: 800; background: rgba(247, 148, 29, 0.15); box-shadow: 0 0 10px rgba(247, 148, 29, 0.2);"><span>⚡ Executive ERP Hub (Max &amp; Zan Command)</span> <span style="background:var(--brand-orange); color:#000; padding:2px 6px; border-radius:4px; font-weight:800; font-size:0.65rem;">PIN: 8842</span></a>
+    <a href="/internal/blueprint#radar-to-erp" class="mobile-link"><span>🎯 How Radar to ERP Works</span> <span style="color:var(--brand-orange); font-weight:800;">EXPLAINED</span></a>
+    <a href="/internal/blueprint#execution-phases" class="mobile-link" style="border-color: rgba(34, 197, 94, 0.5); color: #4ade80; font-weight: 700; background: rgba(34, 197, 94, 0.1);"><span>🚀 8 Execution Phases (Start Here)</span> <span style="color:#4ade80;">PRIORITY</span></a>
+    <a href="/internal/blueprint" class="mobile-link"><span>🏠 Executive Blueprint Home</span> <span style="color:var(--brand-orange);">Blueprint</span></a>
+    <a href="/internal/leads" class="mobile-link"><span>📋 37 Accounts Master Tracker</span> <span>37 Verified</span></a>
+    <a href="/internal/crm" class="mobile-link"><span>🤖 AI Staff &amp; Command Console</span> <span>8 Agents</span></a>
+    <a href="/internal/erp" class="mobile-link"><span>📊 OTIS ERP Master System</span> <span>8 Modules</span></a>
+    <a href="/zan-review.html" class="mobile-link"><span>⚖️ Honest Zan Review &amp; Audit</span> <span>5.5 vs 9.6</span></a>
+    <a href="/internal/equipment" class="mobile-link"><span>🛠️ Operational Equipment Truth</span> <span>Verified</span></a>
+    <a href="/discovery.html" class="mobile-link"><span>🔍 Montreal SEO + AEO + GEO Engine</span> <span>Live</span></a>
+    <a href="/internal/social_center" class="mobile-link"><span>📱 FB/IG Social Media Ad Center</span> <span>3 Ads</span></a>
+    <div style="height: 1px; background: var(--border); margin: 0.4rem 0;"></div>
+    <a href="/" class="mobile-link prototype-link" target="_blank"><span>🚀 Open Customer-Facing Prototype</span> <span>↗</span></a>
   </div>
-  <p>Verify 15-minute route clustering and generate mathematically protected commercial proposals.</p>
-  
-  <div class="form-group">
-    <label>Target Postal Code / City Area</label>
-    <select id="inp-zone" class="form-control" onchange="checkRoute()">
-      <option value="westmount">Westmount (H3Z, H3Y)</option>
+
+  <div class="app-container">
+    <div class="sidebar">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <h2>Bidding Engine</h2>
+        <span class="badge-pill">Step 4 Deal Closing</span>
+      </div>
+      <p>Verify 15-minute route clustering and generate mathematically protected commercial proposals.</p>
+      
+      <div class="form-group">
+        <label>Target Postal Code / City Area</label>
+        <select id="inp-zone" class="form-control" onchange="checkRoute()">
+          <option value="westmount">Westmount (H3Z, H3Y)</option>
       <option value="ndg" selected>NDG / CDN (H4A, H4B, H3W)</option>
       <option value="westisland">West Island (Pointe-Claire, DDO, Kirkland)</option>
       <option value="saintlaurent">Saint-Laurent / TMR (H4R, H4S)</option>
@@ -242,6 +344,7 @@
 
   </div>
 </div>
+</div><!-- .app-container -->
 
 <script>
   function checkRoute() {
@@ -342,6 +445,15 @@
   
   // Run on load
   checkRoute();
+
+  function toggleNavMenu() {
+    const drawer = document.getElementById('mobile-nav-drawer');
+    const toggle = document.getElementById('nav-toggle');
+    if (drawer) {
+      drawer.classList.toggle('open');
+      if (toggle) toggle.innerText = drawer.classList.contains('open') ? '✕' : '☰';
+    }
+  }
 </script>
 
 </body>

@@ -209,16 +209,25 @@
   <div class="nav-group" style="border-bottom:none; margin-top:auto; padding-bottom:1.5rem;">
     <div class="nav-title">Portals & System</div>
     <div class="nav-item" style="color:var(--brand-orange); font-weight:700;" onclick="window.location.href='/internal/operator_guide'">
-      <div class="nav-icon">☀️</div> Max (CEO) &amp; Zan (MD) Playbook
+      <div class="nav-icon">☀️</div> Max &amp; Zan's Playbook
     </div>
     <div class="nav-item" onclick="window.location.href='/internal/blueprint'">
-      <div class="nav-icon">📋</div> Master Blueprint
+      <div class="nav-icon">🏠</div> Executive Blueprint
     </div>
-    <div class="nav-item" onclick="window.open('/', '_blank')">
-      <div class="nav-icon">🌐</div> Customer Website ↗
+    <div class="nav-item" onclick="window.location.href='/internal/blueprint#radar-to-erp'">
+      <div class="nav-icon">🎯</div> Radar → ERP Flow
+    </div>
+    <div class="nav-item" onclick="window.location.href='/internal/blueprint#execution-phases'">
+      <div class="nav-icon">🚀</div> 8 Execution Phases
+    </div>
+    <div class="nav-item" onclick="window.location.href='/zan-review.html'">
+      <div class="nav-icon">⚖️</div> Strategy Review
     </div>
     <div class="nav-item" onclick="window.location.href='/internal/execution'">
       <div class="nav-icon">⚙️</div> Manual Generators
+    </div>
+    <div class="nav-item" onclick="window.open('/', '_blank')">
+      <div class="nav-icon">🌐</div> Customer Website ↗
     </div>
   </div>
 </div>
@@ -226,7 +235,10 @@
 <div class="main-pane">
   <div class="top-bar">
     <h1 id="top-title">Tri-State Command Console</h1>
-    <div style="display:flex; gap:12px; align-items:center;">
+    <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+      <a href="/internal/blueprint" style="color:var(--text); text-decoration:none; font-size:0.75rem; font-weight:700; background:rgba(255,255,255,0.06); padding:6px 12px; border-radius:6px; border:1px solid var(--border); display:flex; align-items:center; gap:5px;"><span>🏠</span> Blueprint</a>
+      <a href="/internal/operator_guide" style="color:var(--brand-orange); text-decoration:none; font-size:0.75rem; font-weight:700; background:rgba(247,148,29,0.12); padding:6px 12px; border-radius:6px; border:1px solid rgba(247,148,29,0.35); display:flex; align-items:center; gap:5px;"><span>☀️</span> Max &amp; Zan's Playbook</a>
+      <a href="/internal/blueprint#radar-to-erp" style="color:var(--brand-orange); text-decoration:none; font-size:0.75rem; font-weight:700; background:rgba(247,148,29,0.08); padding:6px 12px; border-radius:6px; border:1px solid rgba(247,148,29,0.25); display:flex; align-items:center; gap:5px;"><span>🎯</span> Radar → ERP</a>
       <button id="OTIS-sync-btn" style="background:rgba(168, 85, 247, 0.15); border:1px solid rgba(168, 85, 247, 0.4); color:var(--purple); padding:6px 14px; border-radius:20px; font-size:0.75rem; font-weight:700; cursor:pointer; transition:0.2s;" onclick="syncOdooData()">🔄 Sync Firebase Data</button>
       <div class="live-indicator" id="live-indicator-badge">
         <div class="pulse"></div> AI System Fully Automated

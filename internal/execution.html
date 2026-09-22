@@ -17,11 +17,61 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { background: var(--navy); color: var(--text-body); font-family: 'DM Sans', sans-serif; min-height: 100vh; padding-bottom: 4rem; }
     
-    /* Top Bar */
-    .top-bar { position: sticky; top: 0; z-index: 100; background: rgba(11,27,43,0.96); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); padding: 0.65rem 2rem; display: flex; justify-content: space-between; align-items: center; }
-    .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 0.4rem 0.8rem; border-radius: 6px; transition: 0.2s; }
-    .nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.05); }
-    .nav-links a.active { color: var(--white); background: rgba(247, 148, 29, 0.1); border: 1px solid rgba(247, 148, 29, 0.2); }
+    /* Master Sticky Top Navigation Bar */
+    .top-bar {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(8, 13, 26, 0.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.6rem 1.5rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    }
+    .brand-logo { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; }
+    .brand-logo img { height: 28px; width: auto; object-fit: contain; }
+    .badge-pill {
+      font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
+      padding: 0.2rem 0.55rem; border-radius: 999px;
+      background: rgba(247, 148, 29, 0.15); color: var(--orange); border: 1px solid rgba(247, 148, 29, 0.35);
+    }
+    .nav-actions { display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; }
+    .btn-nav {
+      font-size: 0.78rem; font-weight: 600; padding: 0.4rem 0.75rem; border-radius: 8px; text-decoration: none;
+      transition: all 0.2s; display: inline-flex; align-items: center; gap: 5px; color: var(--text-body);
+      border: 1px solid var(--border); background: rgba(255, 255, 255, 0.04); white-space: nowrap;
+    }
+    .btn-nav:hover { background: rgba(255, 255, 255, 0.1); color: var(--white); border-color: rgba(255, 255, 255, 0.2); }
+    .btn-nav.active { background: rgba(247, 148, 29, 0.2); border-color: var(--orange); color: var(--orange); font-weight: 700; }
+    .btn-prototype { background: linear-gradient(135deg, var(--orange), #d97706); color: #000 !important; font-weight: 700; border: none; }
+    .btn-prototype:hover { background: linear-gradient(135deg, #fb923c, var(--orange)); transform: translateY(-1px); }
+    .nav-hamburger {
+      display: none; background: rgba(255, 255, 255, 0.06); border: 1px solid var(--border);
+      color: var(--white); font-size: 1.25rem; width: 38px; height: 38px; border-radius: 8px;
+      cursor: pointer; align-items: center; justify-content: center; transition: all 0.2s;
+    }
+    .nav-hamburger:hover { background: rgba(255, 255, 255, 0.12); border-color: var(--orange); color: var(--orange); }
+    .mobile-nav-drawer {
+      display: none; position: fixed; top: 54px; left: 0; right: 0; bottom: 0;
+      background: rgba(8, 13, 26, 0.98); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      z-index: 999; padding: 1.5rem 2rem 2.5rem; overflow-y: auto; flex-direction: column; gap: 0.65rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .mobile-nav-drawer.active, .mobile-nav-drawer.open { display: flex; }
+    .mobile-nav-drawer .mobile-link {
+      display: flex; align-items: center; justify-content: space-between; padding: 0.8rem 1.1rem;
+      background: rgba(255, 255, 255, 0.04); border: 1px solid var(--border); border-radius: 10px;
+      color: var(--text-body); text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: all 0.2s;
+    }
+    .mobile-nav-drawer .mobile-link:hover, .mobile-nav-drawer .mobile-link.active {
+      background: rgba(247, 148, 29, 0.15); border-color: var(--orange); color: var(--white);
+    }
+    .mobile-nav-drawer .mobile-link.prototype-link {
+      background: linear-gradient(135deg, var(--orange), #d97706); color: #000 !important; font-weight: 700; border: none;
+    }
+    @media (max-width: 1200px) {
+      .nav-actions { display: none; }
+      .nav-hamburger { display: inline-flex; }
+    }
     
     /* Header */
     .header { padding: 3rem 2rem 2rem; max-width: 1200px; margin: 0 auto; border-bottom: 1px solid var(--border); }
@@ -70,20 +120,53 @@
 </head>
 <body>
 
-<div class="top-bar">
-  <div style="display:flex; align-items:center; gap:12px;">
-    <div style="font-family:'Syne',sans-serif; font-size:1.4rem; font-weight:800; color:var(--white); letter-spacing:1px;">
-      OTIS<span style="color:var(--orange)">.</span>
+  <!-- Master Sticky Top Navigation Bar -->
+  <header class="top-bar">
+    <a href="/internal/blueprint" class="brand-logo">
+      <img src="/imgs/otis-logo.png" alt="OTIS Commercial Cleaning">
+      <span class="badge-pill">CEO Strategy Briefing</span>
+    </a>
+    
+    <nav class="nav-actions">
+      <a href="/internal/blueprint" class="btn-nav"><span>🏠 Home</span></a>
+      <a href="/internal/operator_guide" class="btn-nav"><span>☀️ Max &amp; Zan's Playbook</span></a>
+      <a href="/internal/command-center" class="btn-nav" style="background: linear-gradient(135deg, rgba(247, 148, 29, 0.25), rgba(247, 148, 29, 0.1)); border: 1px solid var(--orange); color: var(--orange); font-weight: 800; box-shadow: 0 0 12px rgba(247, 148, 29, 0.3);"><span>⚡ Executive ERP Hub (Max &amp; Zan)</span></a>
+      <a href="/internal/blueprint#radar-to-erp" class="btn-nav" style="background: rgba(247, 148, 29, 0.15); border: 1px solid var(--orange); color: var(--orange); font-weight: 800; box-shadow: 0 0 10px rgba(247, 148, 29, 0.2);"><span>🎯 Radar → ERP</span></a>
+      <a href="/internal/blueprint#execution-phases" class="btn-nav" style="background: rgba(34, 197, 94, 0.2); border-color: rgba(34, 197, 94, 0.5); color: #4ade80; font-weight: 700;"><span>🚀 8 Phases</span></a>
+      <a href="/internal/leads" class="btn-nav"><span>📋 37 Leads</span></a>
+      <a href="/internal/crm" class="btn-nav"><span>🤖 AI Staff</span></a>
+      <a href="/internal/erp" class="btn-nav"><span>📊 ERP</span></a>
+      <a href="/zan-review.html" class="btn-nav"><span>⚖️ Strategy Review</span></a>
+      <a href="/internal/equipment" class="btn-nav"><span>🛠️ Equipment</span></a>
+      <a href="/discovery.html" class="btn-nav"><span>🔍 Discovery</span></a>
+      <a href="/internal/social_center" class="btn-nav"><span>📱 Ads</span></a>
+      <a href="/" class="btn-nav btn-prototype" target="_blank"><span>Prototype →</span></a>
+    </nav>
+
+    <button class="nav-hamburger" id="nav-toggle" aria-label="Toggle navigation" onclick="toggleNavMenu()">☰</button>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div class="mobile-nav-drawer" id="mobile-nav-drawer">
+    <div style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.25rem;">
+      Command Center Navigation
     </div>
+    <a href="/internal/execution" class="mobile-link active" style="border-color: var(--orange); color: var(--orange); font-weight: 800; background: rgba(247, 148, 29, 0.15);"><span>⚙️ Manual Execution Center</span> <span style="background:var(--orange); color:#000; padding:2px 6px; border-radius:4px; font-weight:800; font-size:0.65rem;">ACTIVE</span></a>
+    <a href="/internal/operator_guide" class="mobile-link"><span>☀️ Max &amp; Zan's Operator Playbook</span> <span style="color:var(--orange);">GUIDE</span></a>
+    <a href="/internal/command-center" class="mobile-link" style="border-color: var(--orange); color: var(--orange); font-weight: 800; background: rgba(247, 148, 29, 0.15); box-shadow: 0 0 10px rgba(247, 148, 29, 0.2);"><span>⚡ Executive ERP Hub (Max &amp; Zan Command)</span> <span style="background:var(--orange); color:#000; padding:2px 6px; border-radius:4px; font-weight:800; font-size:0.65rem;">PIN: 8842</span></a>
+    <a href="/internal/blueprint#radar-to-erp" class="mobile-link"><span>🎯 How Radar to ERP Works</span> <span style="color:var(--orange); font-weight:800;">EXPLAINED</span></a>
+    <a href="/internal/blueprint#execution-phases" class="mobile-link" style="border-color: rgba(34, 197, 94, 0.5); color: #4ade80; font-weight: 700; background: rgba(34, 197, 94, 0.1);"><span>🚀 8 Execution Phases (Start Here)</span> <span style="color:#4ade80;">PRIORITY</span></a>
+    <a href="/internal/blueprint" class="mobile-link"><span>🏠 Executive Blueprint Home</span> <span style="color:var(--orange);">Blueprint</span></a>
+    <a href="/internal/leads" class="mobile-link"><span>📋 37 Accounts Master Tracker</span> <span>37 Verified</span></a>
+    <a href="/internal/crm" class="mobile-link"><span>🤖 AI Staff &amp; Command Console</span> <span>8 Agents</span></a>
+    <a href="/internal/erp" class="mobile-link"><span>📊 OTIS ERP Master System</span> <span>8 Modules</span></a>
+    <a href="/zan-review.html" class="mobile-link"><span>⚖️ Honest Zan Review &amp; Audit</span> <span>5.5 vs 9.6</span></a>
+    <a href="/internal/equipment" class="mobile-link"><span>🛠️ Operational Equipment Truth</span> <span>Verified</span></a>
+    <a href="/discovery.html" class="mobile-link"><span>🔍 Montreal SEO + AEO + GEO Engine</span> <span>Live</span></a>
+    <a href="/internal/social_center" class="mobile-link"><span>📱 FB/IG Social Media Ad Center</span> <span>3 Ads</span></a>
+    <div style="height: 1px; background: var(--border); margin: 0.4rem 0;"></div>
+    <a href="/" class="mobile-link prototype-link" target="_blank"><span>🚀 Open Customer-Facing Prototype</span> <span>↗</span></a>
   </div>
-  <div class="nav-links">
-    <a href="/internal/command-center">⚡ Command Center</a>
-    <a href="/internal/crm">🤖 CRM & AI</a>
-    <a href="/internal/execution" class="active">🚀 Execution Center</a>
-    <a href="/internal/erp">📊 ERP</a>
-    <a href="/internal/blueprint">📋 Blueprint</a>
-  </div>
-</div>
 
 <div class="header">
   <h1>4-Phase Execution Center</h1>
@@ -279,9 +362,17 @@
     res.style.display = 'block';
     
     if(action === 'review') {
-      res.innerHTML = `> MOCKING TWILIO SMS API...<br>> DESTINATION: All Phase-1 Clients<br><br>[SMS CONTENT]<br>"Hi [Name], Zan from OTIS here! Thanks for trusting us with the deep clean. If you were happy with the result, it would mean the world if you tapped this link to leave a quick Google Review! 🌟 [LINK]"`
+      res.innerHTML = `> MOCKING TWILIO SMS API...<br>> DESTINATION: All Phase-1 Clients<br><br>[SMS CONTENT]<br>"Hi [Name], Zan from OTIS here! Thanks for trusting us with the deep clean. If you were happy with the result, it would mean the world if you tapped this link to leave a quick Google Review! 🌟 [LINK]"`;
     } else {
-      res.innerHTML = `> MOCKING SENDGRID EMAIL API...<br>> DESTINATION: Existing Portfolio<br><br>[EMAIL CONTENT]<br>"Subject: Save time on washroom supplies (OTIS Consumables)<br><br>Hi [Name], we noticed your team manually orders toilet paper and hand soap. OTIS now offers wholesale supply management. We will automatically restock your dispensers during our cleans at wholesale cost + 20%, saving your management team 3 hours a month."`
+      res.innerHTML = `> MOCKING SENDGRID EMAIL API...<br>> DESTINATION: Existing Portfolio<br><br>[EMAIL CONTENT]<br>"Subject: Save time on washroom supplies (OTIS Consumables)<br><br>Hi [Name], we noticed your team manually orders toilet paper and hand soap. OTIS now offers wholesale supply management. We will automatically restock your dispensers during our cleans at wholesale cost + 20%, saving your management team 3 hours a month."`;
+    }
+  }
+
+  function toggleNavMenu() {
+    const drawer = document.getElementById('mobileNavDrawer') || document.getElementById('mobile-nav-drawer');
+    if (drawer) {
+      drawer.classList.toggle('active');
+      drawer.classList.toggle('open');
     }
   }
 </script>
