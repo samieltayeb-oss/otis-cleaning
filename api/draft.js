@@ -45,7 +45,11 @@ ${langPrompt}`;
 
         const payload = JSON.stringify({
           contents: [{ parts: [{ text: prompt }] }],
-          generationConfig: { temperature: 0.6, maxOutputTokens: 1000 }
+          generationConfig: {
+            temperature: 0.6,
+            maxOutputTokens: 1000,
+            thinkingConfig: { thinkingBudget: 0 }
+          }
         });
 
         const draft = await new Promise((resolve, reject) => {

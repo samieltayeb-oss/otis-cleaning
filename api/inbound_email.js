@@ -48,7 +48,11 @@ Key rules:
       const payload = JSON.stringify({
         systemInstruction: { parts: [{ text: systemPrompt }] },
         contents: [{ parts: [{ text: prompt }] }],
-        generationConfig: { temperature: 0.6, maxOutputTokens: 1000 }
+        generationConfig: {
+          temperature: 0.6,
+          maxOutputTokens: 1000,
+          thinkingConfig: { thinkingBudget: 0 }
+        }
       });
 
       return await new Promise((resolve, reject) => {

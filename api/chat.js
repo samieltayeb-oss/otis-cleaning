@@ -44,7 +44,11 @@ Your primary goals:
         const payload = JSON.stringify({
           systemInstruction: { parts: [{ text: systemPrompt }] },
           contents: [{ parts: [{ text: userPrompt }] }],
-          generationConfig: { temperature: 0.7, maxOutputTokens: 1000 }
+          generationConfig: {
+            temperature: 0.7,
+            maxOutputTokens: 1000,
+            thinkingConfig: { thinkingBudget: 0 }
+          }
         });
 
         const reply = await new Promise((resolve, reject) => {
