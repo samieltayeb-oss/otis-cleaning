@@ -25,26 +25,26 @@ export default async function handler(req, res) {
 
     if (apiKey) {
       try {
-        const langPrompt = language === 'fr'
+        const langInstruction = language === 'fr'
           ? "Rédigez le courriel en français québécois impeccable, formel et persuasif (vouvoiement)."
           : "Write the email in highly polished, formal Quebec-compliant English.";
 
-        const prompt = `Vous êtes Valérie, Architecte des Ventes pour OTIS Nettoyage Commercial à Montréal.
-Rédigez un courriel de prospection percutant ("The Pre-Winter Wedge") pour:
-Entreprise: ${business}
-Secteur: ${sector}
-Emplacement: ${location}
+        const systemPrompt = `You are Valérie, Director of Sales and Proposal Architect for OTIS Commercial Cleaning in Montreal, Quebec.
+Draft an executive, highly targeted cold outreach pitch ("The Pre-Winter Wedge") for:
+Business: ${business}
+Sector: ${sector}
+Location: ${location}
 
-Éléments stratégiques obligatoires:
-1. L'impact du sel et du calcium hivernal sur leurs revêtements de sol.
-2. La conformité stricte au Décret CPEEP (salaire légal de 23,00 $/h) protégeant le client contre la responsabilité conjointe et les amendes de la CNESST.
-3. Proposition d'un audit de conformité gratuit de 10 minutes et d'une démonstration sans engagement de décapage/récurage mécanique avec équipement Tennant.
-4. Moins de 130 mots. Ton exécutif, expert, rassurant.
-
-${langPrompt}`;
+Strategic Requirements:
+1. Explain how winter salt/calcium degrades commercial floor sealant without high-speed mechanical scrubbers.
+2. Emphasize OTIS's full compliance with the Quebec CPEEP cleaning decree ($23.00/h legal wage floor), protecting building owners and managers from joint liability fines (responsabilité solidaire) under Article 14.
+3. Propose a free 10-minute compliance inspection and on-site Tennant mechanical scrubber demonstration by Zan.
+4. Keep under 130 words.
+${langInstruction}`;
 
         const payload = JSON.stringify({
-          contents: [{ parts: [{ text: prompt }] }],
+          systemInstruction: { parts: [{ text: systemPrompt }] },
+          contents: [{ parts: [{ text: `Generate cold pitch for ${business}` }] }],
           generationConfig: {
             temperature: 0.6,
             maxOutputTokens: 1000,
@@ -56,7 +56,7 @@ ${langPrompt}`;
           const draftReq = https.request({
             hostname: 'generativelanguage.googleapis.com',
             port: 443,
-            path: `/v1beta/models/gemini-3.6-flash:generateContent?key=${apiKey}`,
+            path: `/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -81,7 +81,7 @@ ${langPrompt}`;
           draftReq.end();
         });
 
-        if (draft) {
+        if (draft && draft.trim().length > 0) {
           return res.status(200).json({ email: draft, draft, mode: 'gemini_live' });
         }
       } catch (geminiErr) {
@@ -110,27 +110,31 @@ Cordialement,
 Valérie | Direction des Ventes
 OTIS Nettoyage Commercial
 Tél. : (514) 555-OTIS | info@otiscc.ca`
-      : `Subject: Pre-Winter Floor Defense & CPEEP Compliance — ${business}
+      : `Subject: Pre-Winter Floor Protection & Quebec CPEEP Compliance — ${business}
 
 Hello,
 
-With the upcoming winter weather, road salt and calcium buildup pose an immediate threat to the flooring assets at ${business}.
+With winter approaching, calcium and salt buildup cause irreversible deterioration to commercial floor surfaces at ${business}.
 
-Beyond aesthetics, the Quebec CPEEP cleaning decree mandates a strict $23.00/h legal wage. Utilizing non-compliant providers exposes property managers directly to joint-liability fines under Quebec law.
+Beyond visual cleanliness, Quebec's collective decree (CPEEP) mandates a strict legal parity wage floor of $23.00/h. Commercial property managers face direct joint-and-several liability fines under Article 14 if subcontractors pay below decree rates.
 
-OTIS Commercial Cleaning guarantees 100% legal compliance, eco-certified neutral cleaners, and industrial Tennant scrubbing technology.
+OTIS Commercial Cleaning guarantees 100% legal decree compliance, backed by industrial Tennant high-speed auto-scrubbers and $5,000,000 commercial liability coverage.
 
-Zan, our founder, is available for a brief 10-minute technical evaluation at your ${location} facility.
+Zan, our operator, is offering a complimentary 10-minute on-site assessment at your ${location} facility this week.
 
-Would you be open to a quick walkthrough this week?
+Would you be open to a brief walkthrough on Tuesday or Wednesday?
 
-Sincerely,
+Best regards,
 
-Valérie | Proposal Architect
+Valérie | Sales Architect
 OTIS Commercial Cleaning
-(514) 555-OTIS | info@otiscc.ca`;
+Phone: (514) 555-OTIS | info@otiscc.ca`;
 
-    return res.status(200).json({ email: fallbackDraft, draft: fallbackDraft, mode: 'valerie_simulated' });
+    return res.status(200).json({
+      email: fallbackDraft,
+      draft: fallbackDraft,
+      mode: 'valerie_simulated'
+    });
 
   } catch (error) {
     console.error('[DRAFT API ERROR]', error);
