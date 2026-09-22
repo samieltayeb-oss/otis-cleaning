@@ -554,7 +554,78 @@ footer {
   .card-grid { grid-template-columns: 1fr; }
 }
 
-  </style>
+  
+/* ── BULLETPROOF DROPDOWN NAVIGATION ── */
+.has-dd {
+  position: relative;
+}
+.srv-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.5rem 0.9rem;
+  color: var(--gray2);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: 'DM Sans', sans-serif;
+  white-space: nowrap;
+  transition: color 0.2s;
+}
+.has-dd:hover .srv-btn,
+.srv-btn:hover,
+.has-dd.active-dd .srv-btn {
+  color: var(--white);
+}
+.chevron {
+  font-size: 0.65rem;
+  transition: transform 0.2s ease;
+  display: inline-block;
+}
+.has-dd:hover .chevron,
+.has-dd.active-dd .chevron {
+  transform: rotate(180deg);
+}
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--card);
+  border: 1px solid var(--bO, rgba(247,148,29,0.3));
+  border-radius: 16px;
+  padding: 0.8rem;
+  min-width: 275px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-4px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+  z-index: 99999;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.65), 0 0 30px rgba(247,148,29,0.12);
+}
+/* Wide and tall invisible hover bridge to eliminate diagonal dead-zones */
+.dropdown::before {
+  content: '';
+  position: absolute;
+  top: -24px;
+  left: -25px;
+  right: -25px;
+  height: 32px;
+  background: transparent;
+}
+.has-dd:hover .dropdown,
+.has-dd:focus-within .dropdown,
+.has-dd.active-dd .dropdown,
+.dropdown:hover {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: all !important;
+  transform: translateY(0) !important;
+}
+
+</style>
 </head>
 <body>
 
@@ -643,7 +714,7 @@ footer {
 </div>
 
 <!-- HERO -->
-<section class="hero" style="background-image: linear-gradient(90deg, rgba(8,13,26,0.92) 0%, rgba(8,13,26,0.68) 50%, rgba(8,13,26,0.3) 100%), url('/imgs/otis-hero-condo.jpg');">
+<section class="hero" style="background-image: linear-gradient(90deg, rgba(8,13,26,0.92) 0%, rgba(8,13,26,0.68) 50%, rgba(8,13,26,0.3) 100%), url('/imgs/otis-hero-deep-cleaning.jpg');">
   <div class="hero-content">
     <div class="badge">Greater Montreal · ISSA Canada Member · Insured $2M</div>
     <h1>Thorough Deep Cleaning & Sanitization Services</h1>
@@ -786,6 +857,42 @@ function toggleMob() {
   if(o) o.classList.toggle('open');
   document.body.style.overflow = m.classList.contains('open') ? 'hidden' : '';
 }
+</script>
+
+
+<script>
+// Bulletproof Dropdown Click & Touch Toggle
+(function() {
+  function initDropdown() {
+    var btns = document.querySelectorAll('.srv-btn');
+    btns.forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var parent = btn.closest('.has-dd');
+        if (parent) {
+          var isOpen = parent.classList.contains('active-dd');
+          document.querySelectorAll('.has-dd.active-dd').forEach(function(el) { el.classList.remove('active-dd'); });
+          if (!isOpen) {
+            parent.classList.add('active-dd');
+          }
+        }
+      });
+    });
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.has-dd')) {
+        document.querySelectorAll('.has-dd.active-dd').forEach(function(el) {
+          el.classList.remove('active-dd');
+        });
+      }
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initDropdown);
+  } else {
+    initDropdown();
+  }
+})();
 </script>
 
 </body>
