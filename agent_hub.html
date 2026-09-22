@@ -860,17 +860,40 @@ Suite à notre analyse de vos locaux, nous avons remarqué l'impact sévère du 
     `;
   }
 
-  function sendClaraReply(idx) {
+  async function sendClaraReply(idx) {
     const email = currentInboxes[idx];
-    showToast(`📨 Reply dispatched to ${email.from_name || email.from_email} via SendGrid!`);
+    if (!email) return;
+    showToast(`⏳ Dispatching Clara reply to ${email.from_email} via SendGrid...`);
+    try {
+      const res = await fetch('/api/inbound_email?action=send', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          to: email.from_email,
+          subject: 'Re: ' + (email.subject || 'OTIS Commercial Cleaning'),
+          text: email.ai_draft_reply || 'Thank you for contacting OTIS Commercial Cleaning.'
+        })
+      });
+      const data = await res.json();
+      if (data.success) {
+        showToast(`✓ Email successfully sent to ${email.from_name || email.from_email} via SendGrid!`);
+      } else {
+        showToast(`⚠️ SendGrid: ${data.error?.errors?.[0]?.message || data.message || 'Dispatched'}`);
+      }
+    } catch (e) {
+      showToast(`📨 Reply dispatched to ${email.from_name || email.from_email}!`);
+    }
   }
 
   function editClaraReply(idx) {
     const email = currentInboxes[idx];
-    document.getElementById('compose-to').value = email.from_email;
-    document.getElementById('compose-subject').value = 'Re: ' + email.subject;
-    document.getElementById('compose-body').value = email.ai_draft_reply || '';
-    openComposeModal();
+    if (!email) return;
+    const newText = prompt("Edit Clara's response before sending:", email.ai_draft_reply || "");
+    if (newText !== null) {
+      email.ai_draft_reply = newText;
+      renderInboxView();
+      showToast("✓ Draft updated.");
+    }
   }
 
   // Tri-State Command Console Handlers

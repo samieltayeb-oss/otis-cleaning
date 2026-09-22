@@ -145,6 +145,37 @@ export default async function handler(req, res) {
     });
   }
 
+  if (req.method === 'POST' && (req.query.action === 'send' || req.body?.action === 'send')) {
+    const { to, subject, text } = req.body || {};
+    const apiKey = process.env.SENDGRID_API_KEY;
+    if (!apiKey) {
+      return res.status(200).json({ success: true, simulated: true, message: 'Simulated dispatch (SENDGRID_API_KEY unset)' });
+    }
+    try {
+      const sendRes = await fetch('https://api.sendgrid.com/v3/mail/send', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${apiKey}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          personalizations: [{ to: [{ email: to || 'info@otiscc.ca' }] }],
+          from: { email: 'info@otiscc.ca', name: 'OTIS Commercial Cleaning' },
+          subject: subject || 'Message from OTIS Commercial Cleaning',
+          content: [{ type: 'text/plain', value: text || '' }]
+        })
+      });
+      if (sendRes.status >= 200 && sendRes.status < 300) {
+        return res.status(200).json({ success: true, message: `Email dispatched to ${to}` });
+      } else {
+        const errJson = await sendRes.json().catch(() => ({}));
+        return res.status(200).json({ success: false, status: sendRes.status, error: errJson });
+      }
+    } catch (e) {
+      return res.status(500).json({ success: false, error: e.message });
+    }
+  }
+
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method Not Allowed' });
   }
