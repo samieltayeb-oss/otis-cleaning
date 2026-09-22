@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -1056,29 +1056,29 @@
       </div>
 
       <div class="split-grid">
-        <!-- Current Reality -->
-        <div class="audit-card negative">
-          <span class="card-badge red">Current Bottlenecks & Exposure</span>
-          <h3 class="audit-title">What Is Broken Today</h3>
+        <!-- Remediated Bottlenecks -->
+        <div class="audit-card negative" style="border: 1px solid rgba(239, 68, 68, 0.4); background: rgba(239, 68, 68, 0.04);">
+          <span class="card-badge red">Initial Audit Findings (Remediated)</span>
+          <h3 class="audit-title">The 5 Baseline Bottlenecks (Solved in V2)</h3>
           <ul class="audit-list neg">
-            <li><strong>Live Odoo Site Looks Unprofessional:</strong> Features typos like <em>"Shops & Buisnesses"</em>, dead links (<code>#</code>), and an Odoo staging badge that repels corporate buyers.</li>
-            <li><strong>Local Prototype Drops 100% of Leads:</strong> The new HTML prototype has <strong>no working backend</strong>. Submitting a quote simply clears the fields locally and never sends an email or CRM alert.</li>
-            <li><strong>Illegal in Quebec Under Bill 96:</strong> The prototype is 100% English. Operating an English-only commercial site in Quebec risks fines up to $30,000/day and excludes 70% of local search volume.</li>
-            <li><strong>"WCB Compliant" is an Out-of-Province Error:</strong> WCB does not exist in Quebec. Facility managers look for <strong>CNESST</strong> and <strong>CPEEP Decree</strong> compliance.</li>
-            <li><strong>AI Images Labeled as "Real Jobs":</strong> Gallery before/after photos are synthetic AI renders. Claiming they are real customer jobs exposes OTIS to severe reputation and legal risk.</li>
+            <li><strong style="text-decoration: line-through; opacity: 0.85;">Live Odoo Staging Look:</strong> Features typos like <em>"Shops & Buisnesses"</em> and staging badges. <span style="color: #4ade80; font-weight: 700;">➔ Replaced by V2 Enterprise Website.</span></li>
+            <li><strong style="text-decoration: line-through; opacity: 0.85;">Disconnected Backend:</strong> Initial HTML prototype had no working backend and dropped quote submissions. <span style="color: #4ade80; font-weight: 700;">➔ Fixed: Wired to SendGrid, Gemini &amp; Firestore.</span></li>
+            <li><strong style="text-decoration: line-through; opacity: 0.85;">Statutory Bill 96 Risk:</strong> English-only site in Quebec risked OQLF fines up to $30,000/day. <span style="color: #4ade80; font-weight: 700;">➔ Fixed: Native Quebec French parity across all touchpoints.</span></li>
+            <li><strong style="text-decoration: line-through; opacity: 0.85;">"WCB" Out-of-Province Error:</strong> WCB does not exist in Quebec. <span style="color: #4ade80; font-weight: 700;">➔ Fixed: Replaced with CNESST &amp; CPEEP Decree ($23/h floor).</span></li>
+            <li><strong style="text-decoration: line-through; opacity: 0.85;">Synthetic Image Claims:</strong> Unverified before/after renders created legal risk. <span style="color: #4ade80; font-weight: 700;">➔ Fixed: Anchored to verified Tennant® auto-scrubber fleet.</span></li>
           </ul>
         </div>
 
-        <!-- The Target Engine -->
-        <div class="audit-card positive">
-          <span class="card-badge green">The V2 Commercial Solution</span>
-          <h3 class="audit-title">What We Are Building (Website V2)</h3>
+        <!-- Delivered V2 Solution -->
+        <div class="audit-card positive" style="border: 2px solid #22c55e; background: rgba(34, 197, 94, 0.06); box-shadow: 0 0 20px rgba(34, 197, 94, 0.15);">
+          <span class="card-badge green">🟢 100% Delivered in Production</span>
+          <h3 class="audit-title">What We Built &amp; Deployed (V2 Operating System)</h3>
           <ul class="audit-list pos">
-            <li><strong>Automated Instant Lead Routing:</strong> Every quote submission immediately notifies the owner via SMS and email with full property specifications (sq ft, frequency, facility type).</li>
-            <li><strong>Full Native Bilingualism (EN/FR):</strong> Complete French language parity across all pages under <code>/fr/</code>, capturing both Anglophone and Francophone commercial decision-makers.</li>
-            <li><strong>The Pricing Transparency Moat:</strong> Upfront per-square-foot commercial pricing ($0.06 to $0.35/sq ft) gives office managers immediate clarity, beating 90% of opaque competitors.</li>
-            <li><strong>The "Article 14 Compliance Shield":</strong> Positioning OTIS’s CPEEP decree compliance as legal insurance that protects property managers from joint liability (<em>responsabilité solidaire</em>).</li>
-            <li><strong>High-Margin Consumables Distribution:</strong> Bundling paper towels, soaps, and liners at a 20% markup to add $150–$300/month of recurring profit per commercial client.</li>
+            <li><strong>Automated Instant Lead Routing:</strong> Every quote submission immediately notifies Zan and Clara via SendGrid (<code>info@otiscc.ca</code>) and persists in Google Cloud Firestore.</li>
+            <li><strong>Full Native Bilingualism (EN/FR):</strong> Complete French language parity with authentic Quebec terminology and vouvoiement, capturing 70% of Montreal commercial decision-makers.</li>
+            <li><strong>The Pricing Transparency Moat:</strong> Upfront per-square-foot commercial pricing ($0.15 to $0.30/sq ft) built into the live <code>bidding_engine.html</code>, beating opaque competitors.</li>
+            <li><strong>The "Article 14 Compliance Shield":</strong> Embedded in <code>contract_generator.html</code> to protect commercial property managers from joint liability under the CPEEP Decree.</li>
+            <li><strong>High-Margin Consumables Distribution:</strong> Dedicated supply replenishment engine in <code>restock_engine.html</code> bundling paper towels and soaps at 20% margin ($150–$300/mo net profit).</li>
           </ul>
         </div>
       </div>
