@@ -902,93 +902,175 @@
         <!-- ========================================================================= -->
         <!-- 🎯 THE COMPLETE OPERATIONAL WORKFLOW: FROM RADAR TO ERP TO CREW DISPATCH -->
         <!-- ========================================================================= -->
-        <div id="radar-to-erp" style="scroll-margin-top: 80px; margin-top: 2rem; background: linear-gradient(135deg, rgba(15, 36, 62, 0.95), rgba(10, 25, 47, 0.95)); border: 2px solid var(--orange); border-radius: 16px; padding: 2rem; box-shadow: 0 15px 40px rgba(0,0,0,0.4);">
-          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 1.2rem; border-bottom: 1px solid rgba(247, 148, 29, 0.3); padding-bottom: 1rem;">
+        <div id="radar-to-erp" style="scroll-margin-top: 80px; margin-top: 2rem; background: linear-gradient(135deg, rgba(15, 36, 62, 0.98), rgba(10, 25, 47, 0.98)); border: 2px solid var(--orange); border-radius: 16px; padding: 2.2rem; box-shadow: 0 15px 50px rgba(0,0,0,0.5);">
+          
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 1.5rem; border-bottom: 1px solid rgba(247, 148, 29, 0.35); padding-bottom: 1.2rem;">
             <div>
-              <span style="background: rgba(247, 148, 29, 0.2); color: var(--orange); font-size: 0.75rem; font-weight: 800; padding: 4px 10px; border-radius: 20px; text-transform: uppercase;">
+              <span style="background: rgba(247, 148, 29, 0.25); color: var(--orange); font-size: 0.78rem; font-weight: 800; padding: 5px 12px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.5px;">
                 EXECUTIVE OPERATIONAL ARCHITECTURE
               </span>
-              <h3 style="font-family: 'Syne', sans-serif; font-size: 1.4rem; color: var(--white); margin: 0.4rem 0 0.2rem;">
+              <h3 style="font-family: 'Syne', sans-serif; font-size: clamp(1.4rem, 2.5vw, 1.85rem); color: var(--white); margin: 0.5rem 0 0.3rem;">
                 🎯 How the Machine Works: From Hunter Radar to Automatic ERP Execution
               </h3>
-              <p style="font-size: 0.86rem; color: var(--text-muted); margin: 0;">
+              <p style="font-size: 0.92rem; color: var(--text-muted); margin: 0;">
                 Designed specifically for <strong>Max (CEO)</strong> and <strong>Zan (Managing Director)</strong>. Zero technical busywork.
               </p>
             </div>
-            <a href="/internal/lead_engine" target="_blank" style="background: var(--orange); color: #000; font-size: 0.82rem; font-weight: 800; padding: 0.5rem 1.1rem; border-radius: 8px; text-decoration: none;">
-              Launch Live Lead Radar ↗
-            </a>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+              <a href="/internal/lead_engine" target="_blank" style="background: var(--orange); color: #000; font-size: 0.85rem; font-weight: 800; padding: 0.6rem 1.2rem; border-radius: 8px; text-decoration: none; box-shadow: 0 4px 12px rgba(247,148,29,0.35);">
+                Launch Lead Radar ↗
+              </a>
+              <a href="/internal/command-center" style="background: rgba(255,255,255,0.08); border: 1px solid var(--border); color: var(--white); font-size: 0.85rem; font-weight: 700; padding: 0.6rem 1.2rem; border-radius: 8px; text-decoration: none;">
+                Command Center (PIN: 8842) →
+              </a>
+            </div>
           </div>
 
-          <!-- Step by Step Visual Pipeline -->
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 1.8rem;">
+          <!-- Quick Architecture Blueprint Diagram (Stylized Monospace Card) -->
+          <div style="background: rgba(5, 13, 20, 0.9); border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem; font-family: 'Courier New', Courier, monospace; font-size: 0.9rem; line-height: 1.65; overflow-x: auto; box-shadow: inset 0 2px 12px rgba(0,0,0,0.6);">
+            <div style="color: var(--orange); font-weight: 800; margin-bottom: 0.7rem; font-family: 'Syne', sans-serif; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px;">
+              ⚡ THE 5-STEP AUTONOMOUS PIPELINE FLOW
+            </div>
+            <div style="color: #e2e8f0; white-space: pre-wrap; font-family: 'Courier New', Courier, monospace;">
+<span style="color: #f7941d; font-weight: bold;">[Step 1: Hunter Radar (/internal/lead_engine)]</span>
+      │  • Max or Zan selects a sector (e.g., Dental Clinics in Westmount)
+      │  • Alex verifies the 15-minute drive-time cluster from Madison Ave
+      │  • Click [Push All to CRM]
+      ▼
+<span style="color: #c084fc; font-weight: bold;">[Step 2: Autonomous AI Preparation]</span>
+      │  • Leads sync automatically to cloud database
+      │  • Valérie &amp; Émile draft bilingual outreach tailored to floor care &amp; CPEEP compliance
+      │  • Marcus prepares Tennant scrubber protocols
+      ▼
+<span style="color: #eab308; font-weight: bold;">[Step 3: Executive 1-Click Approval (/internal/command-center)]</span>
+      │  • Max &amp; Zan open the Tri-State Approval Feed (PIN 8842)
+      │  • Review the email card and click [✅ APPROVE]
+      │  • The email fires automatically from info@otiscc.ca via Google Workspace SMTP
+      ▼
+<span style="color: #38bdf8; font-weight: bold;">[Step 4: Prospect Replies &amp; Deal Closing]</span>
+      │  • Clara alerts you of inbound replies
+      │  • Bidding Engine (/internal/bidding_engine): Enter square footage -> generates protected CPEEP price
+      │  • Contract Generator (/internal/contract_generator): Generates Article 14 PDF in 60s
+      ▼
+<span style="color: #10b981; font-weight: bold;">[Step 5: Cleaner Execution on Mobile (/crew)]</span>
+         • Cleaners arrive on site and slide to clock in (GPS verified)
+         • Lockbox code (4 1 9 2) unlocks automatically
+         • Cleaners cannot clock out until all 5 QA checklist items &amp; photos are verified</div>
+          </div>
+
+          <!-- Step-by-Step Vertical Cards with Connecting Arrows -->
+          <div style="display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 2rem;">
             
-            <!-- Step 1 -->
-            <div style="background: rgba(0,0,0,0.3); border: 1px solid var(--border); border-radius: 10px; padding: 1.2rem;">
-              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.6rem;">
-                <span style="background: rgba(56, 189, 248, 0.2); color: #38bdf8; font-weight: 800; font-size: 0.72rem; padding: 2px 8px; border-radius: 12px;">STEP 1</span>
-                <span style="font-size: 1.3rem;">🎯</span>
+            <!-- Step 1 Card -->
+            <div style="background: rgba(0,0,0,0.35); border: 1px solid rgba(247, 148, 29, 0.4); border-left: 5px solid var(--orange); border-radius: 12px; padding: 1.4rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem; flex-wrap: wrap; gap: 8px;">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                  <span style="background: var(--orange); color: #000; font-weight: 800; font-size: 0.75rem; padding: 3px 10px; border-radius: 20px;">STEP 1</span>
+                  <h4 style="color: var(--white); font-family: 'Syne', sans-serif; font-size: 1.15rem; margin: 0;">🎯 Hunter Radar: Target &amp; Scrape</h4>
+                </div>
+                <a href="/internal/lead_engine" target="_blank" style="color: var(--orange); font-size: 0.82rem; font-weight: 700; text-decoration: none;">Open /internal/lead_engine ↗</a>
               </div>
-              <h5 style="color: var(--white); font-family: 'Syne', sans-serif; font-size: 0.98rem; margin-bottom: 0.4rem;">Target &amp; Scan</h5>
-              <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.5;">
-                Zan or Max opens <a href="/internal/lead_engine" style="color:var(--orange); font-weight:700;">/internal/lead_engine</a>. Type a sector (e.g. <em>Dental Clinics</em>) and a borough (e.g. <em>Westmount</em>). Click <strong>"Start Radar Scan"</strong>.
-              </p>
+              <ul style="color: var(--text-body); font-size: 0.88rem; line-height: 1.6; margin: 0 0 0 1.2rem;">
+                <li><strong>Max or Zan selects a commercial sector</strong> (e.g., Dental Clinics, Medical Centres, Law Offices) and a target territory (e.g., Westmount, NDG, Saint-Laurent).</li>
+                <li><strong>Alex enforces the 15-minute cluster rule</strong> from Madison Ave so cleaners never waste travel time across the island.</li>
+                <li><strong>One Click Action:</strong> Click <strong style="color:var(--orange);">[Push All to CRM]</strong>. Hunter pushes the verified records directly to the cloud database.</li>
+              </ul>
             </div>
 
-            <!-- Step 2 -->
-            <div style="background: rgba(0,0,0,0.3); border: 1px solid var(--border); border-radius: 10px; padding: 1.2rem;">
-              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.6rem;">
-                <span style="background: rgba(34, 197, 94, 0.2); color: #4ade80; font-weight: 800; font-size: 0.72rem; padding: 2px 8px; border-radius: 12px;">STEP 2</span>
-                <span style="font-size: 1.3rem;">📥</span>
+            <!-- Down Arrow -->
+            <div style="text-align: center; color: var(--orange); font-size: 1.4rem; line-height: 1;">▼</div>
+
+            <!-- Step 2 Card -->
+            <div style="background: rgba(0,0,0,0.35); border: 1px solid rgba(168, 85, 247, 0.4); border-left: 5px solid #a855f7; border-radius: 12px; padding: 1.4rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem; flex-wrap: wrap; gap: 8px;">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                  <span style="background: #a855f7; color: #fff; font-weight: 800; font-size: 0.75rem; padding: 3px 10px; border-radius: 20px;">STEP 2</span>
+                  <h4 style="color: var(--white); font-family: 'Syne', sans-serif; font-size: 1.15rem; margin: 0;">🤖 Autonomous AI Staff Preparation</h4>
+                </div>
+                <span style="color: #c084fc; font-size: 0.82rem; font-weight: 700;">100% Automated ($0 Labor for Zan &amp; Max)</span>
               </div>
-              <h5 style="color: var(--white); font-family: 'Syne', sans-serif; font-size: 0.98rem; margin-bottom: 0.4rem;">Push to ERP</h5>
-              <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.5;">
-                Hunter extracts real addresses, estimates sq footage, and Alex enforces the <strong>15-minute cluster rule</strong>. Click <strong>"Push All to CRM"</strong>. Leads are safely stored in Firestore cloud.
-              </p>
+              <ul style="color: var(--text-body); font-size: 0.88rem; line-height: 1.6; margin: 0 0 0 1.2rem;">
+                <li><strong>Cloud Database Sync:</strong> Leads sync instantly into Google Cloud Firestore.</li>
+                <li><strong>Valérie &amp; Émile Draft Outbound Pitches:</strong> Sector-tailored pitches are prepared in authentic Quebec French and English, highlighting Montreal winter calcium protection, floor preservation, and Quebec labor compliance.</li>
+                <li><strong>Marcus Stages Equipment:</strong> Verifies whether the account requires wet mops, neutral chemicals, or the Tennant mechanical auto-scrubber.</li>
+              </ul>
             </div>
 
-            <!-- Step 3 -->
-            <div style="background: rgba(0,0,0,0.3); border: 1px solid var(--border); border-radius: 10px; padding: 1.2rem;">
-              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.6rem;">
-                <span style="background: rgba(168, 85, 247, 0.2); color: #c084fc; font-weight: 800; font-size: 0.72rem; padding: 2px 8px; border-radius: 12px;">STEP 3</span>
-                <span style="font-size: 1.3rem;">🤖</span>
+            <!-- Down Arrow -->
+            <div style="text-align: center; color: #eab308; font-size: 1.4rem; line-height: 1;">▼</div>
+
+            <!-- Step 3 Card -->
+            <div style="background: rgba(0,0,0,0.35); border: 1px solid rgba(234, 179, 8, 0.4); border-left: 5px solid #eab308; border-radius: 12px; padding: 1.4rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem; flex-wrap: wrap; gap: 8px;">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                  <span style="background: #eab308; color: #000; font-weight: 800; font-size: 0.75rem; padding: 3px 10px; border-radius: 20px;">STEP 3</span>
+                  <h4 style="color: var(--white); font-family: 'Syne', sans-serif; font-size: 1.15rem; margin: 0;">⚡ Executive 1-Click Approval (Zan &amp; Max)</h4>
+                </div>
+                <a href="/internal/command-center" style="color: #eab308; font-size: 0.82rem; font-weight: 700; text-decoration: none;">Open Command Center (PIN: 8842) ↗</a>
               </div>
-              <h5 style="color: var(--white); font-family: 'Syne', sans-serif; font-size: 0.98rem; margin-bottom: 0.4rem;">Autonomous AI Prep</h5>
-              <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.5;">
-                <strong>Valérie</strong> drafts custom Quebec French / English cold emails. <strong>Émile</strong> audits CPEEP legal compliance ($23/h). <strong>Marcus</strong> stages Tennant scrubber protocols.
-              </p>
+              <ul style="color: var(--text-body); font-size: 0.88rem; line-height: 1.6; margin: 0 0 0 1.2rem;">
+                <li><strong>Morning Routine (08:30 AM · ~3 min):</strong> Max and Zan log in to the Command Center with PIN <strong style="color:var(--orange);">8842</strong>.</li>
+                <li><strong>Review the Card:</strong> View the pre-drafted email, prospect details, and phone number in the Tri-State Feed.</li>
+                <li><strong>Click [✅ APPROVE]:</strong> The email fires automatically from <code>info@otiscc.ca</code> via Google Workspace SMTP. No manual typing required.</li>
+              </ul>
             </div>
 
-            <!-- Step 4 -->
-            <div style="background: rgba(247, 148, 29, 0.1); border: 1px solid var(--orange); border-radius: 10px; padding: 1.2rem;">
-              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.6rem;">
-                <span style="background: var(--orange); color: #000; font-weight: 800; font-size: 0.72rem; padding: 2px 8px; border-radius: 12px;">STEP 4</span>
-                <span style="font-size: 1.3rem;">⚡</span>
+            <!-- Down Arrow -->
+            <div style="text-align: center; color: #38bdf8; font-size: 1.4rem; line-height: 1;">▼</div>
+
+            <!-- Step 4 Card -->
+            <div style="background: rgba(0,0,0,0.35); border: 1px solid rgba(56, 189, 248, 0.4); border-left: 5px solid #38bdf8; border-radius: 12px; padding: 1.4rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem; flex-wrap: wrap; gap: 8px;">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                  <span style="background: #38bdf8; color: #000; font-weight: 800; font-size: 0.75rem; padding: 3px 10px; border-radius: 20px;">STEP 4</span>
+                  <h4 style="color: var(--white); font-family: 'Syne', sans-serif; font-size: 1.15rem; margin: 0;">💼 Prospect Replies &amp; Deal Closing</h4>
+                </div>
+                <span style="color: #38bdf8; font-size: 0.82rem; font-weight: 700;">60-Second Bids &amp; Legal Shield</span>
               </div>
-              <h5 style="color: var(--white); font-family: 'Syne', sans-serif; font-size: 0.98rem; margin-bottom: 0.4rem;">1-Click Approval</h5>
-              <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.5;">
-                In the <strong>Command Center (/internal/command-center)</strong>, Zan or Max reviews the draft. Click <strong>[✅ APPROVE]</strong>. The email fires instantly via <code>info@otiscc.ca</code>!
-              </p>
+              <ul style="color: var(--text-body); font-size: 0.88rem; line-height: 1.6; margin: 0 0 0 1.2rem;">
+                <li><strong>Clara Alerts You of Inbound Inquiries:</strong> Inbound leads land immediately in the <code>info@otiscc.ca</code> inbox and notify Max &amp; Zan.</li>
+                <li><strong>Bidding Engine (<a href="/internal/bidding_engine" style="color:#38bdf8; font-weight:700;">/internal/bidding_engine</a>):</strong> Enter square footage (e.g., 2,500 sqft) $\to$ calculates protected pricing above the $31.15/h CPEEP break-even floor.</li>
+                <li><strong>Contract Generator (<a href="/internal/contract_generator" style="color:#38bdf8; font-weight:700;">/internal/contract_generator</a>):</strong> Issues a formal Article 14 PDF agreement shielding commercial property managers from decree liability.</li>
+              </ul>
+            </div>
+
+            <!-- Down Arrow -->
+            <div style="text-align: center; color: #10b981; font-size: 1.4rem; line-height: 1;">▼</div>
+
+            <!-- Step 5 Card -->
+            <div style="background: rgba(0,0,0,0.35); border: 1px solid rgba(16, 185, 129, 0.4); border-left: 5px solid #10b981; border-radius: 12px; padding: 1.4rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem; flex-wrap: wrap; gap: 8px;">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                  <span style="background: #10b981; color: #000; font-weight: 800; font-size: 0.75rem; padding: 3px 10px; border-radius: 20px;">STEP 5</span>
+                  <h4 style="color: var(--white); font-family: 'Syne', sans-serif; font-size: 1.15rem; margin: 0;">📱 Cleaner Execution on Mobile</h4>
+                </div>
+                <a href="/crew" target="_blank" style="color: #10b981; font-size: 0.82rem; font-weight: 700; text-decoration: none;">Open /crew Mobile Portal ↗</a>
+              </div>
+              <ul style="color: var(--text-body); font-size: 0.88rem; line-height: 1.6; margin: 0 0 0 1.2rem;">
+                <li><strong>Cleaners Arrive On Site:</strong> They open the mobile portal (<a href="/crew" target="_blank" style="color:#10b981; font-weight:700;">/crew</a>) on their phones and slide to clock in (GPS location verified).</li>
+                <li><strong>Keybox Code Unlocked:</strong> Clocking in automatically reveals the lockbox key code (<strong style="color:var(--orange);">4 1 9 2</strong>) and site-specific instructions.</li>
+                <li><strong>Mandatory 5-Point QA Audit:</strong> Cleaners cannot clock out until all 5 checklist items (restrooms, trash, dispensers, neutral floor wash, perimeter alarm) and photo proof are submitted.</li>
+                <li><strong>Verified Payroll:</strong> Automatically logs cleaner hours at Quebec decree minimum ($23.00/h) for Friday payroll export.</li>
+              </ul>
             </div>
 
           </div>
 
           <!-- Deep-Dive FAQ / Answers for Zan & Max -->
-          <div style="background: rgba(0,0,0,0.25); border-radius: 10px; padding: 1.4rem; border-left: 4px solid var(--orange);">
-            <h4 style="color: var(--white); font-size: 1.05rem; margin-bottom: 0.6rem;">
-              💡 "What else needs to be done once leads are added to the ERP?"
+          <div style="background: rgba(0,0,0,0.35); border-radius: 12px; padding: 1.6rem; border-left: 4px solid var(--orange);">
+            <h4 style="color: var(--white); font-size: 1.15rem; margin-bottom: 0.8rem; display: flex; align-items: center; gap: 8px;">
+              <span>💡</span> "What else needs to be done once leads are added to the ERP?"
             </h4>
-            <div style="font-size: 0.85rem; color: var(--text-body); line-height: 1.6;">
-              <p style="margin-bottom: 0.6rem;">
-                <strong>Short answer: Practically nothing manual.</strong> The AI staff handles all research, compliance filtering, and email drafting. Here is the exact lifecycle:
+            <div style="font-size: 0.9rem; color: var(--text-body); line-height: 1.65;">
+              <p style="margin-bottom: 0.8rem;">
+                <strong>Short answer: Practically nothing manual.</strong> The AI staff handles all research, compliance filtering, and email drafting. Once leads are pushed to the CRM, Max &amp; Zan only have to make one decision per prospect:
               </p>
-              <ul style="padding-left: 1.2rem; margin-bottom: 0.8rem; color: var(--text-muted);">
-                <li><strong style="color:var(--white);">1. Outreach Dispatch:</strong> Once Zan or Max clicks <code>[APPROVE]</code> in the Tri-State Feed, the cold outreach is sent automatically from <code>info@otiscc.ca</code> using Google Workspace SMTP.</li>
-                <li><strong style="color:var(--white);">2. Inbound Lead Notification:</strong> When a client replies or fills out the "Free Quote" form on the website, a real-time email alert lands directly in the <code>info@otiscc.ca</code> inbox.</li>
-                <li><strong style="color:var(--white);">3. Pricing &amp; Contract Generation:</strong> When the client agrees to a walkthrough, Max or Zan opens the <a href="/internal/bidding_engine" style="color:var(--orange);">Bidding Engine</a> (enter square footage to calculate protected CPEEP margins) and the <a href="/internal/contract_generator" style="color:var(--orange);">Contract Generator</a> to issue the Article 14 PDF agreement in 60 seconds.</li>
-                <li><strong style="color:var(--white);">4. Field Cleaner Execution:</strong> Cleaners log into the mobile web portal (<a href="/crew" style="color:var(--orange);">/crew</a>). GPS clock-in reveals the lockbox code (<code>4 1 9 2</code>), locks clock-out until a 5-point QA audit is ticked, and logs verified payroll at $23.00/h.</li>
-              </ul>
-              <div style="color: var(--green-light); font-weight: 700; font-size: 0.82rem;">
+              <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 1rem;">
+                <span style="background: rgba(16, 185, 129, 0.2); color: #4ade80; border: 1px solid rgba(16, 185, 129, 0.4); padding: 5px 12px; border-radius: 6px; font-weight: 700; font-size: 0.85rem;">[✅ YES / APPROVED] &rarr; Fires outreach email</span>
+                <span style="background: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.4); padding: 5px 12px; border-radius: 6px; font-weight: 700; font-size: 0.85rem;">[❌ NOT APPROVED] &rarr; Discards prospect</span>
+                <span style="background: rgba(234, 179, 8, 0.2); color: #fbbf24; border: 1px solid rgba(234, 179, 8, 0.4); padding: 5px 12px; border-radius: 6px; font-weight: 700; font-size: 0.85rem;">[✏️ DO IT THIS WAY] &rarr; Adjusts pitch wording</span>
+              </div>
+              <div style="color: var(--green-light); font-weight: 700; font-size: 0.85rem; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 0.8rem;">
                 ✓ Max (CEO) and Zan (Managing Director) maintain complete executive veto power while the autonomous software runs 95% of daily administrative labor.
               </div>
             </div>

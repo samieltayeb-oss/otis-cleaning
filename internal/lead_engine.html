@@ -98,11 +98,45 @@
       </div>
 
       <!-- Executive Workflow Indicator for Max & Zan -->
-      <div style="background:rgba(247,148,29,0.08); border:1px solid rgba(247,148,29,0.25); border-radius:8px; padding:0.9rem 1.2rem; margin-top:1.5rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;">
-        <div style="font-size:0.83rem; color:var(--text);">
-          <strong style="color:var(--brand-orange);">How it works for Max &amp; Zan:</strong> Once you click <strong>"Push All to CRM"</strong>, the leads enter Firestore cloud. Valérie drafts custom bilingual emails. You then simply click <strong>[✅ APPROVE]</strong> in your Command Center to dispatch them from <code>info@otiscc.ca</code>.
+      <div style="background:rgba(247,148,29,0.08); border:1px solid rgba(247,148,29,0.25); border-radius:8px; padding:0.9rem 1.2rem; margin-top:1.5rem;">
+        <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; margin-bottom:0.8rem;">
+          <div style="font-size:0.85rem; color:var(--text);">
+            <strong style="color:var(--brand-orange);">How it works for Max &amp; Zan:</strong> Once you click <strong>"Push All to CRM"</strong>, the leads enter Firestore cloud. Valérie drafts custom bilingual emails. You then simply click <strong>[✅ APPROVE]</strong> in your Command Center to dispatch them from <code>info@otiscc.ca</code>.
+          </div>
+          <a href="/internal/command-center" style="color:var(--brand-orange); font-size:0.8rem; font-weight:700; text-decoration:none;">Open Command Center ➔</a>
         </div>
-        <a href="/internal/command-center" style="color:var(--brand-orange); font-size:0.8rem; font-weight:700; text-decoration:none;">Open Command Center ➔</a>
+        
+        <!-- 5-Step Pipeline Flow Box -->
+        <details style="background:rgba(0,0,0,0.4); border:1px solid rgba(255,255,255,0.08); border-radius:6px; padding:0.6rem 0.9rem;">
+          <summary style="font-size:0.78rem; font-weight:700; color:var(--brand-orange); cursor:pointer; outline:none;">
+            👁️ Click to View Complete 5-Step Radar to Field Crew Pipeline
+          </summary>
+          <div style="font-family:'Courier New', Courier, monospace; font-size:0.8rem; line-height:1.6; color:#e2e8f0; margin-top:0.7rem; white-space:pre-wrap;">
+<span style="color:#f7941d; font-weight:bold;">[Step 1: Hunter Radar (/internal/lead_engine)]</span>
+      │  • Max or Zan selects a sector (e.g., Dental Clinics in Westmount)
+      │  • Alex verifies the 15-minute drive-time cluster from Madison Ave
+      │  • Click [Push All to CRM]
+      ▼
+<span style="color:#c084fc; font-weight:bold;">[Step 2: Autonomous AI Preparation]</span>
+      │  • Leads sync automatically to cloud database
+      │  • Valérie &amp; Émile draft bilingual outreach tailored to floor care &amp; CPEEP compliance
+      │  • Marcus prepares Tennant scrubber protocols
+      ▼
+<span style="color:#eab308; font-weight:bold;">[Step 3: Executive 1-Click Approval (/internal/command-center)]</span>
+      │  • Max &amp; Zan open the Tri-State Approval Feed (PIN 8842)
+      │  • Review the email card and click [✅ APPROVE]
+      │  • The email fires automatically from info@otiscc.ca via Google Workspace SMTP
+      ▼
+<span style="color:#38bdf8; font-weight:bold;">[Step 4: Prospect Replies &amp; Deal Closing]</span>
+      │  • Clara alerts you of inbound replies
+      │  • Bidding Engine (/internal/bidding_engine): Enter square footage -> generates protected CPEEP price
+      │  • Contract Generator (/internal/contract_generator): Generates Article 14 PDF in 60s
+      ▼
+<span style="color:#10b981; font-weight:bold;">[Step 5: Cleaner Execution on Mobile (/crew)]</span>
+         • Cleaners arrive on site and slide to clock in (GPS verified)
+         • Lockbox code (4 1 9 2) unlocks automatically
+         • Cleaners cannot clock out until all 5 QA checklist items &amp; photos are verified</div>
+        </details>
       </div>
     </div>
 
