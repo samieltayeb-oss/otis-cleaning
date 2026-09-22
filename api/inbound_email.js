@@ -48,7 +48,7 @@ Key rules:
       const payload = JSON.stringify({
         systemInstruction: { parts: [{ text: systemPrompt }] },
         contents: [{ parts: [{ text: prompt }] }],
-        generationConfig: { temperature: 0.6, maxOutputTokens: 250 }
+        generationConfig: { temperature: 0.6, maxOutputTokens: 1000 }
       });
 
       return await new Promise((resolve, reject) => {
@@ -67,7 +67,8 @@ Key rules:
           res.on('end', () => {
             try {
               const json = JSON.parse(data);
-              const text = json.candidates?.[0]?.content?.parts?.[0]?.text;
+              const parts = json.candidates?.[0]?.content?.parts || [];
+              const text = parts.map(p => p.text).filter(Boolean).join('\n');
               resolve(text || fallbackClaraReply(subject, bodyText));
             } catch (e) {
               resolve(fallbackClaraReply(subject, bodyText));

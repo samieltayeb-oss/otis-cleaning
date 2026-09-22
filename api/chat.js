@@ -44,7 +44,7 @@ Your primary goals:
         const payload = JSON.stringify({
           systemInstruction: { parts: [{ text: systemPrompt }] },
           contents: [{ parts: [{ text: userPrompt }] }],
-          generationConfig: { temperature: 0.7, maxOutputTokens: 200 }
+          generationConfig: { temperature: 0.7, maxOutputTokens: 1000 }
         });
 
         const reply = await new Promise((resolve, reject) => {
@@ -63,7 +63,8 @@ Your primary goals:
             geminiRes.on('end', () => {
               try {
                 const parsed = JSON.parse(data);
-                const text = parsed.candidates?.[0]?.content?.parts?.[0]?.text;
+                const parts = parsed.candidates?.[0]?.content?.parts || [];
+                const text = parts.map(p => p.text).filter(Boolean).join('\n');
                 resolve(text);
               } catch (e) {
                 reject(e);

@@ -45,7 +45,7 @@ ${langPrompt}`;
 
         const payload = JSON.stringify({
           contents: [{ parts: [{ text: prompt }] }],
-          generationConfig: { temperature: 0.6, maxOutputTokens: 250 }
+          generationConfig: { temperature: 0.6, maxOutputTokens: 1000 }
         });
 
         const draft = await new Promise((resolve, reject) => {
@@ -64,7 +64,8 @@ ${langPrompt}`;
             draftRes.on('end', () => {
               try {
                 const parsed = JSON.parse(data);
-                const text = parsed.candidates?.[0]?.content?.parts?.[0]?.text;
+                const parts = parsed.candidates?.[0]?.content?.parts || [];
+                const text = parts.map(p => p.text).filter(Boolean).join('\n');
                 resolve(text);
               } catch (e) {
                 reject(e);
