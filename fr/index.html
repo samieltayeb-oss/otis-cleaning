@@ -2205,6 +2205,13 @@ function nav(id){
   document.querySelectorAll('.mm-link').forEach(function(b){b.classList.remove('active');});
   if(mmIds[id]){var mel=document.getElementById(mmIds[id]);if(mel)mel.classList.add('active');}
 }
+function checkHashNav(){
+  var h = (window.location.hash || '').replace('#', '');
+  if(h && document.getElementById('page-' + h)) { nav(h); }
+}
+window.addEventListener('DOMContentLoaded', checkHashNav);
+window.addEventListener('hashchange', checkHashNav);
+checkHashNav();
 // ── MOBILE MENU ──────────────────────────────────────────────────────────
 function toggleMob(){
   var m=document.getElementById('mob-menu'),o=document.getElementById('mob-overlay'),b=document.getElementById('hbg');
