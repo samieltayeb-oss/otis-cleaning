@@ -1,681 +1,790 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Services d'Entretien Ménager Commercial Montréal | OTIS</title>
-<meta name="description" content="Services professionnels d'entretien ménager commercial dans le Grand Montréal. Équipes fiables, tarification transparente et protocoles rigoureux.">
-<link rel="canonical" href="https://otis-cleaning.vercel.app/fr/services/nettoyage-fin-de-bail">
-<link rel="alternate" hreflang="en-CA" href="https://otis-cleaning.vercel.app/services/turnover-cleaning">
-<link rel="alternate" hreflang="fr-CA" href="https://otis-cleaning.vercel.app/fr/services/nettoyage-fin-de-bail">
-<link rel="alternate" hreflang="x-default" href="https://otis-cleaning.vercel.app/services/turnover-cleaning">
-<meta property="og:url" content="https://otis-cleaning.vercel.app/fr/services/nettoyage-fin-de-bail">
-<meta property="og:title" content="Services d'Entretien Ménager Commercial Montréal | OTIS">
-<meta property="og:description" content="Services professionnels d'entretien ménager commercial dans le Grand Montréal. Équipes fiables, tarification transparente et protocoles rigoureux.">
-<meta property="og:locale" content="fr_CA">
-<meta property="og:locale:alternate" content="en_CA">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ménage Fin de Bail & Déménagement Montréal | OTIS</title>
+  <meta name="description" content="Nettoyage complet d'emménagement et de déménagement pour gestionnaires immobiliers, propriétaires et locataires de Montréal. Impeccable et prêt pour l'inspection.">
+  <link rel="canonical" href="https://otis-cleaning.vercel.app/fr/services/nettoyage-fin-de-bail">
+  <link rel="alternate" hreflang="en-CA" href="https://otis-cleaning.vercel.app/services/turnover-cleaning">
+  <link rel="alternate" hreflang="fr-CA" href="https://otis-cleaning.vercel.app/fr/services/nettoyage-fin-de-bail">
+  <link rel="alternate" hreflang="x-default" href="https://otis-cleaning.vercel.app/services/turnover-cleaning">
+  <meta property="og:title" content="Ménage Fin de Bail & Déménagement Montréal | OTIS">
+  <meta property="og:description" content="Nettoyage complet d'emménagement et de déménagement pour gestionnaires immobiliers, propriétaires et locataires de Montréal. Impeccable et prêt pour l'inspection.">
+  <meta property="og:url" content="https://otis-cleaning.vercel.app/fr/services/nettoyage-fin-de-bail">
+  <meta property="og:type" content="website">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  
+  <style>
 
-<style>*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{--navy:#080D1A;--navy2:#0F1628;--card:#141C2E;--orange:#F7941D;--orange2:#E07B0A;--orange3:rgba(247,148,29,.12);--green:#1E7B34;--green2:#22A045;--green3:rgba(30,123,52,.12);--white:#fff;--gray:#7E8CA3;--gray2:#B0BBC9;--border:rgba(255,255,255,.07);--bO:rgba(247,148,29,.2);--bG:rgba(30,123,52,.2)}
-html{scroll-behavior:smooth}body{font-family:'DM Sans',sans-serif;background:var(--navy);color:var(--white);overflow-x:hidden}
-.page{display:none}.page.active{display:block;animation:fadeIn .3s ease}
-@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-@keyframes slideUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.5)}}
-nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:68px;background:rgba(8,13,26,.96);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
-.nav-logo{cursor:pointer;display:flex;align-items:center}.nav-logo img{height:40px;object-fit:contain}
-.nav-links{display:flex;align-items:center;list-style:none}
-.nav-links>li>a{display:block;padding:.5rem 1rem;color:var(--gray2);text-decoration:none;font-size:.875rem;cursor:pointer;transition:color .2s;white-space:nowrap}
-.nav-links>li>a:hover,.nav-links>li>a.active{color:var(--orange)}
-.srv-btn{display:flex;align-items:center;gap:4px;padding:.5rem 1rem;color:var(--gray2);font-size:.875rem;cursor:pointer;transition:color .2s;background:none;border:none;font-family:'DM Sans',sans-serif;white-space:nowrap}
-.srv-btn:hover{color:var(--white)}.has-dd{position:relative}.has-dd:hover .chevron{transform:rotate(180deg)}.chevron{font-size:.65rem;transition:transform .2s;display:inline-block}
-.dropdown{position:absolute;top:100%;left:0;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:.5rem;min-width:230px;opacity:0;pointer-events:none;transform:translateY(-6px);transition:opacity .2s,transform .2s;z-index:9999}
-.has-dd:hover .dropdown{opacity:1;pointer-events:all;transform:translateY(0)}
-.dd-label{padding:.3rem .6rem .1rem;font-size:.68rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--gray)}
-.dropdown a{display:block;padding:.42rem .75rem;color:var(--gray2);text-decoration:none;font-size:.84rem;border-radius:8px;transition:background .15s,color .15s;cursor:pointer}
-.dropdown a:hover{background:rgba(247,148,29,.08);color:var(--orange)}.dd-div{height:1px;background:var(--border);margin:.4rem}
-.nav-cta{background:var(--orange);color:var(--white);padding:.55rem 1.3rem;border-radius:50px;font-weight:600;font-size:.85rem;cursor:pointer;transition:background .2s,transform .15s;border:none;font-family:'DM Sans',sans-serif;white-space:nowrap}
-.nav-cta:hover{background:var(--orange2);transform:translateY(-1px)}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
-.hamburger span{display:block;width:24px;height:2px;background:var(--white);border-radius:2px;transition:all .3s}
-.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}.hamburger.open span:nth-child(2){opacity:0}.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
-.mob-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:997;display:none;opacity:0;transition:opacity .3s}.mob-overlay.open{display:block;opacity:1}
-.mob-menu{position:fixed;top:0;right:-310px;width:290px;height:100%;background:var(--navy2);z-index:998;padding:70px 0 2rem;overflow-y:auto;transition:right .3s;border-left:1px solid var(--border)}.mob-menu.open{right:0}
-.mob-header{padding:0 1.4rem 1rem;border-bottom:1px solid var(--border);margin-bottom:.5rem}.mob-header img{height:34px;object-fit:contain}
-.mm-link,.mm-sub{display:block;width:100%;text-align:left;padding:.75rem 1.4rem;color:var(--gray2);font-size:.9rem;cursor:pointer;transition:all .2s;border:none;background:none;font-family:'DM Sans',sans-serif}
-.mm-link:hover,.mm-link.active,.mm-sub:hover{color:var(--orange);background:rgba(247,148,29,.06)}.mm-sub{padding:.6rem 1.4rem .6rem 2rem;font-size:.82rem;color:var(--gray)}
-.mm-section{padding:.4rem 1.4rem .1rem;font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);margin-top:.5rem}
-.mm-divider{height:1px;background:var(--border);margin:.5rem 1.4rem}
-.mm-cta{display:block;margin:1rem 1.4rem 0;width:calc(100% - 2.8rem);background:var(--orange);color:var(--white);padding:.75rem;border-radius:50px;font-weight:600;font-size:.9rem;text-align:center;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;transition:background .2s}.mm-cta:hover{background:var(--orange2)}
-.mm-contact{padding:1.2rem 1.4rem .5rem;font-size:.78rem;color:var(--gray);line-height:1.7}.mm-contact a{color:var(--orange);text-decoration:none}
-.pt{padding-top:68px}section{padding:5rem 5%}
-.lbl{font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin-bottom:.7rem}
-.ttl{font-family:'Syne',sans-serif;font-size:clamp(1.9rem,4vw,2.8rem);font-weight:800;line-height:1.08;letter-spacing:-.025em;margin-bottom:.9rem}
-.sub{font-size:.95rem;color:var(--gray);line-height:1.75;max-width:520px}
-.btn-o{background:var(--orange);color:var(--white);font-weight:600;padding:.75rem 1.7rem;border-radius:50px;font-size:.9rem;cursor:pointer;transition:all .2s;border:none;font-family:'DM Sans',sans-serif;display:inline-block}
-.btn-o:hover{background:var(--orange2);transform:translateY(-2px)}
-.btn-g{background:var(--green);color:var(--white);font-weight:600;padding:.75rem 1.7rem;border-radius:50px;font-size:.9rem;cursor:pointer;transition:all .2s;border:none;font-family:'DM Sans',sans-serif;display:inline-block}
-.btn-g:hover{background:var(--green2);transform:translateY(-2px)}.acts{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.8rem}
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:68px 5% 0;position:relative;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 55% 55% at 70% 50%,rgba(247,148,29,.07) 0%,transparent 70%),radial-gradient(ellipse 40% 40% at 25% 65%,rgba(30,123,52,.06) 0%,transparent 60%)}
-.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(247,148,29,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(247,148,29,.03) 1px,transparent 1px);background-size:65px 65px}
-.hero-content{position:relative;z-index:2;max-width:740px}
-.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(247,148,29,.1);border:1px solid var(--bO);border-radius:50px;padding:.38rem 1rem;margin-bottom:1.8rem;font-size:.78rem;font-weight:500;color:var(--orange)}
-.dot{width:6px;height:6px;border-radius:50%;background:var(--orange);animation:pulse 2s infinite}
-h1{font-family:'Syne',sans-serif;font-size:clamp(2rem,5.8vw,4.6rem);font-weight:800;line-height:1.05;letter-spacing:-.03em;word-break:break-word}h1 .ac-o{color:var(--orange);display:block}
-.hero-sub{margin-top:1.3rem;max-width:500px;font-size:1.05rem;color:var(--gray);line-height:1.75;font-weight:300}
-.hero-meta{margin-top:2.2rem;display:flex;align-items:center;gap:12px}.meta-icon{width:40px;height:40px;border-radius:50%;background:rgba(247,148,29,.1);border:1px solid var(--bO);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
-.meta-text{font-size:.82rem;color:var(--gray)}.meta-text a{color:var(--white);text-decoration:none;font-weight:500}
-.floats{position:absolute;right:5%;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:.9rem;z-index:2}
-.fcard{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.1rem 1.3rem;min-width:185px;transition:transform .3s}.fcard:hover{transform:translateX(-5px)}
-.fnum{font-family:'Syne',sans-serif;font-size:1.9rem;font-weight:700;color:var(--orange);line-height:1}.fnum.g{color:var(--green2)}.flbl{font-size:.78rem;color:var(--gray);margin-top:3px}
-.fbar{margin-top:8px;height:3px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden}.ffill{height:100%;background:linear-gradient(90deg,var(--orange),var(--green2));border-radius:2px}
-.trust{background:rgba(247,148,29,.04);border-top:1px solid rgba(247,148,29,.12);border-bottom:1px solid rgba(247,148,29,.12);padding:1.4rem 5%}
-.trust-inner{display:flex;gap:2rem;align-items:center;justify-content:center;flex-wrap:wrap}
-.tlw{display:flex;align-items:center;justify-content:center;height:44px;padding:0 .8rem}.tlw img{max-height:40px;max-width:90px;object-fit:contain;display:block}
-.tdiv{width:1px;height:36px;background:var(--border);flex-shrink:0}.ti{display:flex;align-items:center;gap:8px;font-size:.82rem;color:var(--gray)}.ti strong{color:var(--white)}
-.sector-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:2.5rem}
-@media(max-width:1100px){.sector-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:640px){.sector-grid{grid-template-columns:1fr}}
-.sc{border-radius:20px;overflow:hidden;cursor:pointer;background:var(--card);border:1px solid var(--border);transition:transform .35s,border-color .3s,box-shadow .35s;display:flex;flex-direction:column;isolation:isolate}
-.sc:hover{transform:translateY(-6px);border-color:rgba(247,148,29,.4);box-shadow:0 12px 40px rgba(247,148,29,.15)}
-.sc-img{height:220px;overflow:hidden;position:relative;display:block;flex-shrink:0}.sc-img img{width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .5s;display:block}
-.sc:hover .sc-img img{transform:scale(1.07)}.sc-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(8,13,26,.85) 100%);pointer-events:none}
-.sc-tag{position:absolute;top:.9rem;left:.9rem;z-index:2;background:var(--orange);color:var(--white);font-size:.68rem;font-weight:700;padding:.28rem .8rem;border-radius:50px;letter-spacing:.08em;text-transform:uppercase}
-.sc-tag.g{background:var(--green)}.sc-hint{position:absolute;bottom:.9rem;right:.9rem;z-index:2;background:rgba(247,148,29,.2);border:1px solid rgba(247,148,29,.4);color:var(--orange);font-size:.72rem;font-weight:600;padding:.28rem .8rem;border-radius:50px;opacity:0;transform:translateY(6px);transition:opacity .3s,transform .3s}
-.sc:hover .sc-hint{opacity:1;transform:translateY(0)}.sc-info{padding:1.3rem;flex:1}
-.sc-info h3{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:800;margin-bottom:.4rem}.sc-info p{font-size:.82rem;color:var(--gray);line-height:1.6;margin-bottom:.9rem}
-.sc-chips{display:flex;flex-wrap:wrap;gap:.4rem}.chip{font-size:.72rem;font-weight:500;padding:.22rem .7rem;border-radius:50px;background:var(--orange3);color:var(--orange);border:1px solid var(--bO)}
-.chip.g{background:var(--green3);color:var(--green2);border-color:var(--bG)}.sc-bot{display:flex;justify-content:space-between;align-items:center;margin-top:.9rem;padding-top:.8rem;border-top:1px solid rgba(255,255,255,.06)}
-.sc-price{font-size:.75rem;font-weight:600;color:var(--orange)}.sc-more{font-size:.75rem;color:var(--gray);transition:color .2s}.sc:hover .sc-more{color:var(--orange)}
-.svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.2rem}
-.scard{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:1.8rem;transition:all .3s;cursor:pointer;position:relative;overflow:hidden}
-.scard::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(247,148,29,.06),transparent 60%);opacity:0;transition:opacity .3s}
-.scard:hover{border-color:rgba(247,148,29,.3);transform:translateY(-4px)}.scard:hover::before{opacity:1}
-.sicon{width:46px;height:46px;border-radius:11px;background:var(--orange3);display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:1.1rem}
-.scard h3{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;margin-bottom:.5rem}.scard p{font-size:.84rem;color:var(--gray);line-height:1.6}
-.tag{display:inline-block;margin-top:.9rem;font-size:.71rem;font-weight:500;color:var(--orange);background:var(--orange3);padding:.28rem .75rem;border-radius:50px;border:1px solid var(--bO)}
-.tag.g{color:var(--green2);background:var(--green3);border-color:var(--bG)}
-.stats{background:linear-gradient(135deg,var(--orange),var(--orange2));padding:5rem 5%}.stats .lbl{color:rgba(255,255,255,.6)}.stats .ttl{color:var(--white)}
-.sgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:2rem;margin-top:2.5rem}.snum{font-family:'Syne',sans-serif;font-size:3rem;font-weight:800;color:var(--white);line-height:1}.slbl{font-size:.88rem;color:rgba(255,255,255,.7);margin-top:.4rem}
-.cert-sec{background:var(--navy2);padding:3rem 5%}.cert-inner{display:flex;align-items:center;justify-content:center;gap:2.5rem;flex-wrap:wrap}.cert-item{text-align:center}.cert-item img{display:block;margin:0 auto 8px;object-fit:contain}.cert-lbl{font-size:.72rem;color:var(--gray);margin-top:4px}
-.cert-pill{background:var(--orange3);border:1px solid var(--bO);border-radius:12px;padding:.6rem 1rem;display:flex;align-items:center;justify-content:center;height:50px}.cert-pill span{font-family:'Syne',sans-serif;font-size:.9rem;font-weight:800;color:var(--orange)}.cert-div{width:1px;height:50px;background:var(--border)}
-.pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:rgba(255,255,255,.06);border-radius:18px;overflow:hidden;margin-top:2.5rem}
-.pstep{background:var(--navy);padding:1.8rem;transition:background .3s}.pstep:hover{background:var(--card)}.pnum{font-family:'Syne',sans-serif;font-size:2.8rem;font-weight:800;color:rgba(247,148,29,.1);line-height:1;margin-bottom:.9rem}.pstep h4{font-family:'Syne',sans-serif;font-size:.95rem;font-weight:700;margin-bottom:.45rem}.pstep p{font-size:.83rem;color:var(--gray);line-height:1.6}
-.phero{background:var(--navy2);padding:7rem 5% 3.5rem;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
-.phero::after{content:'';position:absolute;top:0;right:0;width:50%;height:100%;background:radial-gradient(ellipse 70% 80% at 80% 50%,rgba(247,148,29,.05),transparent 70%)}.phero-c{position:relative;z-index:1;max-width:680px}
-.ctabox{background:var(--card);border-radius:24px;margin:0 5% 5rem;padding:4rem;text-align:center;border:1px solid var(--bO);position:relative;overflow:hidden}
-.ctabox::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:500px;height:300px;border-radius:50%;background:radial-gradient(ellipse,rgba(247,148,29,.07),transparent 70%);pointer-events:none}.ctabox .ttl,.ctabox p{position:relative}.ctabox p{color:var(--gray);margin:.9rem auto 0;max-width:460px;line-height:1.7}
-.ptier-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.5rem;margin-top:2.5rem}
-.ptier{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:2rem;transition:border-color .3s;position:relative}.ptier.feat{border-color:rgba(247,148,29,.45)}
-.feat-badge{position:absolute;top:1.2rem;right:1.2rem;background:var(--orange);color:var(--white);font-size:.68rem;font-weight:700;padding:.28rem .8rem;border-radius:50px}
-.ideal-box{background:var(--orange3);border:1px solid var(--bO);border-radius:10px;padding:.9rem 1rem;margin-bottom:1.2rem}.ideal-lbl{font-size:.72rem;color:var(--orange);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem}
-.inc-lbl{font-size:.75rem;color:var(--gray);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.7rem;font-weight:500}
-.tier-items{list-style:none;display:flex;flex-direction:column;gap:.55rem}.tier-items li{display:flex;align-items:flex-start;gap:9px;font-size:.82rem;color:var(--gray2);line-height:1.4}.tier-items li::before{content:'✓';color:var(--green2);font-weight:700;flex-shrink:0;margin-top:1px}
-.rate-row{margin-top:1.5rem;border-top:1px solid var(--border);padding-top:1.2rem}.rate-lbl{font-size:.72rem;color:var(--gray);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem}
-.rate-val{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:700;color:var(--orange)}.rate-val span{font-size:.78rem;color:var(--gray);font-family:'DM Sans',sans-serif;font-weight:400}
-.price-table{overflow-x:auto;margin-top:2rem}.price-table table{width:100%;border-collapse:collapse;font-size:.83rem;min-width:560px}
-.price-table th{text-align:left;padding:.8rem 1rem;color:var(--gray);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;font-weight:500;border-bottom:1px solid var(--border)}
-.price-table td{padding:.65rem 1rem;border-bottom:1px solid rgba(255,255,255,.04);color:var(--gray2)}.price-table tr:hover td{background:rgba(255,255,255,.02)}.price-table td:first-child{color:var(--white);font-weight:500}.otd{color:var(--orange)!important;font-weight:500}
-.addon-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1rem;margin-top:1.5rem}.addon{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.2rem}.addon h4{font-size:.9rem;font-weight:500;margin-bottom:.4rem}.addon p{font-size:.8rem;color:var(--gray);line-height:1.5}.addon .ph{color:var(--orange);font-size:.8rem;margin-top:.5rem;font-weight:500}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
-.val{display:flex;align-items:flex-start;gap:12px;padding:.9rem 1.1rem;background:var(--card);border-radius:12px;border:1px solid var(--border);margin-bottom:.8rem}.val h4{font-size:.88rem;font-weight:500;margin-bottom:.15rem}.val p{font-size:.81rem;color:var(--gray);line-height:1.5}
-.ss{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.2rem;text-align:center}.ss .n{font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;color:var(--orange)}.ss .l{font-size:.78rem;color:var(--gray);margin-top:3px}
-.cgrid{display:grid;grid-template-columns:1fr 1.3fr;gap:3rem;align-items:start}
-.cinfo-list{display:flex;flex-direction:column;gap:.9rem;margin-top:1.5rem}.cinfo{display:flex;align-items:flex-start;gap:13px;padding:1rem 1.2rem;background:var(--card);border-radius:12px;border:1px solid var(--border)}
-.cinfo-icon{width:38px;height:38px;border-radius:9px;background:var(--orange3);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}.cinfo h4{font-size:.87rem;font-weight:500;margin-bottom:.12rem}.cinfo p{font-size:.81rem;color:var(--gray);margin:0;line-height:1.4}.cinfo a{color:var(--orange);text-decoration:none}
-.cform{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:2rem}.cform h3{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:1.5rem}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}.fg{display:flex;flex-direction:column;gap:.4rem;margin-bottom:.9rem}.fg label{font-size:.78rem;color:var(--gray2);font-weight:500}
-.fg input,.fg select,.fg textarea{background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:10px;padding:.65rem .9rem;color:var(--white);font-family:'DM Sans',sans-serif;font-size:.87rem;outline:none;transition:border-color .2s;resize:none;width:100%}
-.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:rgba(247,148,29,.45)}.fg select option{background:var(--card)}.fg input.err,.fg select.err,.fg textarea.err{border-color:rgba(255,80,80,.5)}
-.err-msg{font-size:.75rem;color:#ff6b6b;margin-top:2px;display:none}.err-msg.show{display:block}
-.success-banner{background:rgba(30,123,52,.12);border:1px solid rgba(30,123,52,.3);border-radius:14px;padding:1.5rem;text-align:center;display:none;margin-top:1rem}.success-banner h4{color:var(--green2);font-family:'Syne',sans-serif;font-size:1.1rem;margin-bottom:.4rem}
-.det-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.8rem;margin-top:2rem}.dcard{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.5rem}.dcard h4{font-family:'Syne',sans-serif;font-size:.95rem;font-weight:700;margin-bottom:.8rem;color:var(--orange)}.dcard ul{list-style:none;display:flex;flex-direction:column;gap:.5rem}.dcard ul li{font-size:.83rem;color:var(--gray2);padding-left:1.1rem;position:relative;line-height:1.5}.dcard ul li::before{content:'→';position:absolute;left:0;color:var(--orange);font-size:.8rem}
-.phl{background:var(--orange3);border:1px solid var(--bO);border-radius:14px;padding:1.4rem}.phl .pl{font-size:.72rem;color:var(--orange);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem}.phl .pv{font-size:1.1rem;font-weight:500;color:var(--white)}
-footer{background:var(--navy2);border-top:1px solid var(--border);padding:3rem 5% 0}.footer-inner{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr 1fr;gap:2rem;padding-bottom:2.5rem}.footer-col-title{font-family:'Syne',sans-serif;font-size:.82rem;font-weight:700;color:var(--white);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.9rem}.flink{text-decoration:none; display:block;display:block;font-size:.82rem;color:var(--gray);background:none;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;padding:.3rem 0;text-align:left;transition:color .2s;width:100%}.flink:hover{color:var(--orange)}.footer-bottom{border-top:1px solid var(--border);padding:1.2rem 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem;font-size:.78rem;color:var(--gray)}
-.gallery-card{background:var(--card);border:1px solid var(--border);border-radius:18px;overflow:hidden;transition:all .3s;display:none}.gallery-card.show{display:block}.gallery-card:hover{border-color:var(--bO);transform:translateY(-3px)}
-.gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.4rem}
-.ba-wrap{position:relative;height:220px;overflow:hidden;cursor:col-resize;user-select:none}.ba-bg,.ba-fg{position:absolute;inset:0;overflow:hidden}.ba-bg{background:#111}.ba-fg{clip-path:inset(0 50% 0 0)}
-.ba-div{position:absolute;top:0;bottom:0;left:50%;width:3px;background:var(--orange);z-index:10;cursor:col-resize}.ba-handle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:32px;height:32px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;font-size:.75rem;color:var(--white);box-shadow:0 2px 8px rgba(0,0,0,.4)}
-.gal-info{padding:1.2rem}.gal-info h4{font-family:'Syne',sans-serif;font-size:.95rem;font-weight:700;margin-bottom:.3rem}.gal-info p{font-size:.8rem;color:var(--gray);line-height:1.5}
-.gbadge{display:inline-flex;align-items:center;gap:5px;font-size:.7rem;font-weight:600;padding:.22rem .65rem;border-radius:50px;margin-top:.6rem;background:var(--orange3);color:var(--orange);border:1px solid var(--bO)}.gbadge.g{background:var(--green3);color:var(--green2);border-color:var(--bG)}
-.gal-tabs{display:flex;gap:.5rem;margin-bottom:2rem;flex-wrap:wrap}.gtab{padding:.55rem 1.3rem;border-radius:50px;font-size:.85rem;font-weight:500;cursor:pointer;border:1px solid var(--border);background:transparent;color:var(--gray2);font-family:'DM Sans',sans-serif;transition:all .2s}.gtab.active{background:var(--orange);color:var(--white);border-color:var(--orange);font-weight:600}
-.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:10000;display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(6px)}.modal-overlay.open{display:flex;animation:fadeIn .25s ease}
-.modal-box{background:var(--navy2);border:1px solid var(--bO);border-radius:24px;width:100%;max-width:780px;max-height:90vh;overflow-y:auto;position:relative;animation:slideUp .3s cubic-bezier(.34,1.56,.64,1)}.modal-box::-webkit-scrollbar{width:5px}.modal-box::-webkit-scrollbar-thumb{background:rgba(247,148,29,.3);border-radius:3px}
-.mhdr{background:linear-gradient(135deg,rgba(247,148,29,.12),rgba(30,123,52,.08));padding:2rem 2rem 1.5rem;border-bottom:1px solid rgba(255,255,255,.06);border-radius:24px 24px 0 0;position:sticky;top:0;z-index:2;backdrop-filter:blur(10px)}
-.mclose{position:absolute;top:1.2rem;right:1.2rem;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);color:var(--gray2);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}.mclose:hover{background:rgba(247,148,29,.2);color:var(--orange)}
-.micon{width:56px;height:56px;border-radius:14px;background:var(--orange3);display:flex;align-items:center;justify-content:center;font-size:1.8rem;margin-bottom:1rem}
-.mtag{display:inline-block;font-size:.7rem;font-weight:600;padding:.25rem .75rem;border-radius:50px;margin-bottom:.6rem;background:var(--orange3);color:var(--orange);border:1px solid var(--bO);letter-spacing:.06em;text-transform:uppercase}.mtag.g{background:var(--green3);color:var(--green2);border-color:var(--bG)}
-.mtitle{font-family:'Syne',sans-serif;font-size:1.7rem;font-weight:800;line-height:1.1;margin-bottom:.4rem}.msub{font-size:.95rem;color:var(--gray);line-height:1.6;max-width:580px}
-.mbody{padding:1.8rem 2rem}.msec{margin-bottom:1.8rem}.msec-title{font-family:'Syne',sans-serif;font-size:.82rem;font-weight:700;color:var(--orange);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.9rem;display:flex;align-items:center;gap:8px}.msec-title::after{content:'';flex:1;height:1px;background:rgba(247,148,29,.15)}
-.mincludes{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;list-style:none}.mincludes li{display:flex;align-items:flex-start;gap:8px;font-size:.86rem;color:var(--gray2);line-height:1.5;padding:.4rem .6rem;background:rgba(255,255,255,.03);border-radius:8px;border:1px solid rgba(255,255,255,.05)}.mincludes li::before{content:'✓';color:var(--green2);font-weight:700;flex-shrink:0;margin-top:1px}
-.mwhy-grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}.mwhy-card{background:rgba(247,148,29,.05);border:1px solid rgba(247,148,29,.12);border-radius:12px;padding:.9rem 1rem}.mwhy-card h5{font-size:.86rem;font-weight:600;color:var(--white);margin-bottom:.3rem}.mwhy-card p{font-size:.79rem;color:var(--gray);line-height:1.5}
-.mideal{background:rgba(30,123,52,.08);border:1px solid rgba(30,123,52,.2);border-radius:12px;padding:1rem 1.2rem;font-size:.88rem;color:var(--gray2);line-height:1.7}
-.mprice{background:linear-gradient(135deg,rgba(247,148,29,.1),rgba(30,123,52,.06));border:1px solid var(--bO);border-radius:14px;padding:1.2rem 1.4rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
-.mfooter{padding:1.2rem 2rem 1.8rem;display:flex;gap:.8rem;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.06)}
-#chat-bubble{position:fixed;bottom:24px;right:24px;z-index:9998}.chat-btn{width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,var(--orange),var(--green));border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 4px 20px rgba(247,148,29,.4);transition:transform .2s;position:relative}.chat-btn:hover{transform:scale(1.08)}.chat-notif{position:absolute;top:-3px;right:-3px;width:16px;height:16px;background:#ef4444;border-radius:50%;border:2px solid var(--navy);font-size:.55rem;display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
-#chat-win{position:fixed;bottom:92px;right:24px;width:380px;background:var(--card);border:1px solid var(--bO);border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,.5);display:none;flex-direction:column;z-index:9997;max-height:560px;overflow:hidden}#chat-win.open{display:flex}
-.chat-hdr{background:linear-gradient(135deg,var(--orange),var(--orange2));padding:1rem 1.2rem;display:flex;align-items:center;justify-content:space-between;border-radius:20px 20px 0 0}.chat-av{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}.chat-ttl{font-family:'Syne',sans-serif;font-size:.95rem;font-weight:700;color:white}.chat-st{font-size:.7rem;color:rgba(255,255,255,.8)}.odot{width:7px;height:7px;background:#4ade80;border-radius:50%;display:inline-block;margin-right:4px;animation:pulse 2s infinite}.chat-close{background:rgba(255,255,255,.2);border:none;color:white;width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center}
-#chat-msgs{flex:1;overflow-y:auto;padding:1rem;display:flex;flex-direction:column;gap:.8rem;max-height:360px}#chat-msgs::-webkit-scrollbar{width:4px}#chat-msgs::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:2px}
-.msg-bot{display:flex;gap:8px;align-items:flex-end;max-width:95%;align-self:flex-start}.msg-usr{display:flex;flex-direction:row-reverse;gap:8px;align-items:flex-end;max-width:95%;align-self:flex-end}
-.bubble-bot{padding:.65rem .9rem;border-radius:4px 16px 16px 16px;font-size:.83rem;line-height:1.55;background:var(--navy2);color:var(--gray2);max-width:280px}.bubble-usr{padding:.65rem .9rem;border-radius:16px 4px 16px 16px;font-size:.83rem;line-height:1.55;background:linear-gradient(135deg,var(--orange),var(--orange2));color:white;max-width:260px}
-.msg-time{font-size:.65rem;color:var(--gray);margin-top:3px}
-#chat-typing{margin:0 1rem .5rem;display:none;align-items:center;gap:4px;padding:.65rem .9rem;background:var(--navy2);border-radius:4px 16px 16px 16px;width:fit-content}
-#chat-typing span{width:6px;height:6px;background:var(--gray);border-radius:50%;display:inline-block;animation:typing .8s infinite}#chat-typing span:nth-child(2){animation-delay:.15s}#chat-typing span:nth-child(3){animation-delay:.3s}
-@keyframes typing{0%,80%,100%{opacity:.3;transform:scale(.8)}40%{opacity:1;transform:scale(1)}}
-.chat-sugs{padding:.5rem 1rem;display:flex;gap:.4rem;flex-wrap:wrap;border-top:1px solid var(--border)}.sug{background:var(--navy2);border:1px solid var(--border);color:var(--gray2);font-size:.72rem;padding:.3rem .7rem;border-radius:50px;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;white-space:nowrap}.sug:hover{border-color:var(--orange);color:var(--orange)}
-.chat-inp-row{display:flex;gap:.5rem;padding:.8rem 1rem;border-top:1px solid var(--border)}.chat-inp{flex:1;background:rgba(255,255,255,.06);border:1px solid var(--border);border-radius:50px;padding:.55rem 1rem;color:var(--white);font-family:'DM Sans',sans-serif;font-size:.85rem;outline:none;transition:border-color .2s}.chat-inp:focus{border-color:var(--bO)}.chat-send{width:36px;height:36px;border-radius:50%;background:var(--orange);border:none;cursor:pointer;color:white;font-size:1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .2s}.chat-send:hover{background:var(--orange2)}
-@media(max-width:900px){.floats,.about-grid .rc{display:none}.about-grid,.cgrid,.det-grid,.form-row{grid-template-columns:1fr}.ctabox{margin:0 3% 4rem;padding:2.5rem 1.5rem}.nav-links{display:none}.hamburger{display:flex}.nav-cta{display:none}.footer-inner{grid-template-columns:1fr 1fr}.mincludes,.mwhy-grid{grid-template-columns:1fr}#chat-win{width:calc(100vw - 32px);right:16px;bottom:80px}}
-@media(max-width:500px){h1{font-size:clamp(1.75rem,7vw,2.3rem)!important;line-height:1.1!important}.hero{padding:75px 4% 1.5rem!important;min-height:auto!important}.ttl{font-size:clamp(1.4rem,5.5vw,2rem)!important}.footer-inner{grid-template-columns:1fr}}
-
-/* ── HIGH-END MOTION GRAPHICS & ANIMATION SUITE ── */
-#hero-particles{position:absolute;inset:0;width:100%;height:100%;pointer-events:auto;z-index:1}
-.radar-badge{position:relative;overflow:visible!important;display:inline-flex;align-items:center;gap:10px}
-.sonar-ring{position:absolute;left:13px;top:50%;transform:translateY(-50%);width:12px;height:12px;border-radius:50%;border:2px solid var(--green2);animation:sonarPulse 2.2s cubic-bezier(0,0.2,0.8,1) infinite;pointer-events:none}
-@keyframes sonarPulse{0%{width:10px;height:10px;opacity:1;transform:translateY(-50%) scale(1)}100%{width:34px;height:34px;opacity:0;transform:translateY(-50%) scale(2.8)}}
-.radar-dot{background:#22c55e!important;box-shadow:0 0 14px #22c55e!important}
-.btn-shimmer{position:relative;overflow:hidden}
-.btn-shimmer::before{content:\x27\x27;position:absolute;top:-50%;left:-100%;width:50%;height:200%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);transform:rotate(25deg);animation:btnShine 4.5s infinite cubic-bezier(0.4,0,0.2,1)}
-@keyframes btnShine{0%{left:-100%}18%{left:200%}100%{left:200%}}
-
-/* Kinetic Typography Shimmer */
-.ac-o-kinetic {
-  background: linear-gradient(120deg, #f7941d 0%, #fbbf24 25%, #22c55e 50%, #f7941d 75%, #38bdf8 100%);
-  background-size: 250% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: kineticShimmer 4s linear infinite;
-  display: inline-block;
+:root {
+  --bg: #080D1A;
+  --navy: #0B132B;
+  --navy2: #0F1628;
+  --card: #141C2E;
+  --border: rgba(255,255,255,0.08);
+  --orange: #F7941D;
+  --orange2: #E07B0A;
+  --orange3: rgba(247,148,29,0.12);
+  --bO: rgba(247,148,29,0.3);
+  --green: #1E7B34;
+  --green2: #22c55e;
+  --green3: rgba(34,197,94,0.12);
+  --bG: rgba(34,197,94,0.3);
+  --white: #FFFFFF;
+  --gray: #7e8ca3;
+  --gray2: #C2D3E5;
 }
-@keyframes kineticShimmer {
-  0% { background-position: 0% center; }
-  100% { background-position: 250% center; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--gray2);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+h1, h2, h3, h4, .ttl {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: -0.02em;
 }
 
-/* Top Executive Portal Switcher Bar */
-.exec-quick-bar {
+/* ── NAVBAR ── */
+nav {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 34px;
-  background: linear-gradient(90deg, #080d1a, #0f172a);
-  border-bottom: 1px solid rgba(247,148,29,0.3);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 5%;
+  top: 0; left: 0; right: 0;
+  height: 68px;
   z-index: 1000;
-  font-size: 0.76rem;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-}
-.exec-quick-links {
   display: flex;
   align-items: center;
-  gap: 12px;
-}
-.exec-quick-links a {
-  text-decoration: none;
-  font-weight: 600;
-  transition: opacity 0.2s;
-}
-.exec-quick-links a:hover { opacity: 0.8; }
-nav { top: 34px !important; }
-.hero { padding-top: 110px !important; }
-
-/* Interactive Montreal Dispatch Radar HUD */
-.hero-motion-graphic {
-  position: absolute;
-  right: 5%;
-  top: 52%;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  z-index: 10;
-  width: 360px;
-}
-@media(max-width: 1024px) {
-  .hero-motion-graphic {
-    position: relative;
-    right: auto;
-    top: auto;
-    transform: none;
-    width: 100%;
-    max-width: 440px;
-    margin: 2.2rem auto 0;
-  }
-}
-.radar-hud-card {
-  background: rgba(15, 22, 40, 0.92);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border: 1px solid rgba(247, 148, 29, 0.35);
-  border-radius: 20px;
-  padding: 1.3rem;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.55), 0 0 30px rgba(247,148,29,0.12);
-}
-.hud-header {
-  display: flex;
   justify-content: space-between;
-  align-items: center;
-  font-size: 0.72rem;
-  margin-bottom: 0.9rem;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  padding-bottom: 0.55rem;
+  padding: 0 5%;
+  background: rgba(8,13,26,0.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
 }
-.hud-live-tag {
+.nav-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+.nav-logo img {
+  height: 38px;
+  object-fit: contain;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 0.5rem;
+}
+.nav-links > li > a {
+  display: block;
+  padding: 0.5rem 0.9rem;
+  color: var(--gray2);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+.nav-links > li > a:hover,
+.nav-links > li > a.active {
+  color: var(--orange);
+}
+
+/* ── DROPDOWN WITH BULLETPROOF HOVER ── */
+.has-dd {
+  position: relative;
+}
+.srv-btn {
   display: flex;
   align-items: center;
   gap: 6px;
-  color: #22c55e;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  padding: 0.5rem 0.9rem;
+  color: var(--gray2);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: 'DM Sans', sans-serif;
+  white-space: nowrap;
+  transition: color 0.2s;
 }
-.radar-ping {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #22c55e;
-  box-shadow: 0 0 10px #22c55e;
-  animation: pingDot 1.6s cubic-bezier(0,0,0.2,1) infinite;
+.has-dd:hover .srv-btn,
+.srv-btn:hover {
+  color: var(--white);
 }
-@keyframes pingDot {
-  0% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.7); opacity: 0.4; }
-  100% { transform: scale(1); opacity: 1; }
-}
-.hud-coords {
-  color: #7e8ca3;
-  font-family: monospace;
-  font-size: 0.68rem;
-}
-.radar-scope-wrapper {
-  position: relative;
-  width: 100%;
-  height: 180px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  border-radius: 14px;
-  background: radial-gradient(circle, rgba(11,27,43,0.98) 0%, rgba(6,12,24,1) 100%);
-  border: 1px solid rgba(34, 197, 94, 0.25);
-  margin-bottom: 0.9rem;
-}
-.radar-scope {
-  position: relative;
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  border: 1px solid rgba(34, 197, 94, 0.35);
-}
-.radar-ring {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  border: 1px dashed rgba(34, 197, 94, 0.25);
-  pointer-events: none;
-}
-.ring-1 { width: 55px; height: 55px; }
-.ring-2 { width: 105px; height: 105px; }
-.ring-3 { width: 155px; height: 155px; }
-.radar-crosshairs {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-.radar-crosshairs::before {
-  content: \x27\x27;
-  position: absolute;
-  top: 0; bottom: 0; left: 50%; width: 1px;
-  background: rgba(34, 197, 94, 0.2);
-}
-.radar-crosshairs::after {
-  content: \x27\x27;
-  position: absolute;
-  left: 0; right: 0; top: 50%; height: 1px;
-  background: rgba(34, 197, 94, 0.2);
-}
-.radar-sweep {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 80px;
-  height: 80px;
-  transform-origin: top left;
-  background: conic-gradient(from 0deg, rgba(34, 197, 94, 0.5) 0deg, transparent 65deg);
-  border-radius: 100% 0 0 0;
-  animation: radarRotate 3.6s linear infinite;
-  pointer-events: none;
-}
-@keyframes radarRotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-.radar-blip {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  gap: 5px;
+.chevron {
   font-size: 0.65rem;
+  transition: transform 0.2s;
+  display: inline-block;
+}
+.has-dd:hover .chevron {
+  transform: rotate(180deg);
+}
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--card);
+  border: 1px solid var(--bO);
+  border-radius: 16px;
+  padding: 0.8rem;
+  min-width: 270px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 99999;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.65), 0 0 30px rgba(247,148,29,0.12);
+}
+/* Invisible hover bridge */
+.dropdown::before {
+  content: '';
+  position: absolute;
+  top: -14px;
+  left: 0;
+  right: 0;
+  height: 14px;
+}
+.has-dd:hover .dropdown,
+.has-dd:focus-within .dropdown,
+.dropdown:hover {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0);
+}
+.dd-label {
+  padding: 0.4rem 0.7rem 0.2rem;
+  font-size: 0.68rem;
   font-weight: 700;
-  color: #fff;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+.dropdown a {
+  display: block;
+  padding: 0.45rem 0.75rem;
+  color: var(--gray2);
+  text-decoration: none;
+  font-size: 0.84rem;
+  border-radius: 8px;
+  transition: background 0.15s, color 0.15s;
   white-space: nowrap;
 }
-.blip-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #22c55e;
-  box-shadow: 0 0 9px #22c55e;
-  animation: blipGlow 1.8s infinite alternate;
+.dropdown a:hover {
+  background: rgba(247,148,29,0.1);
+  color: var(--orange);
 }
-@keyframes blipGlow {
-  0% { transform: scale(0.9); opacity: 0.6; }
-  100% { transform: scale(1.6); opacity: 1; }
+.dd-div {
+  height: 1px;
+  background: var(--border);
+  margin: 0.45rem 0;
 }
-.blip-label {
-  background: rgba(8, 13, 26, 0.88);
-  border: 1px solid rgba(255,255,255,0.18);
-  padding: 1px 5px;
-  border-radius: 4px;
+
+/* ── NAV ACTIONS ── */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
 }
-.blip-ndg { top: 38%; left: 45%; }
-.blip-dt { top: 22%; left: 66%; }
-.blip-pc { top: 62%; left: 18%; }
-.blip-vsl { top: 66%; left: 56%; }
-.hud-telemetry {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-  text-align: center;
+.lang-btn {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--border);
+  color: var(--white);
+  font-weight: 700;
+  padding: 0.35rem 0.85rem;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  text-decoration: none;
+  transition: all 0.2s;
 }
-.telemetry-item {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 10px;
-  padding: 0.55rem 0.25rem;
+.lang-btn:hover {
+  border-color: var(--orange);
+  color: var(--orange);
 }
-.t-val {
-  font-family: \x27Syne\x27, sans-serif;
-  font-size: 0.95rem;
-  font-weight: 800;
-  color: #fff;
+.nav-cta {
+  background: var(--orange);
+  color: var(--white);
+  padding: 0.55rem 1.3rem;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  font-family: 'DM Sans', sans-serif;
+  white-space: nowrap;
+  transition: background 0.2s, transform 0.15s;
 }
-.t-val.g { color: #22c55e; }
-.t-val.o { color: #f7941d; }
-.t-lbl {
-  font-size: 0.62rem;
-  color: #7e8ca3;
+.nav-cta:hover {
+  background: var(--orange2);
+  transform: translateY(-1px);
+}
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--white);
+  border-radius: 2px;
+}
+
+/* ── MOBILE MENU ── */
+.mob-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  z-index: 10001;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.mob-overlay.open { display: block; opacity: 1; }
+.mob-menu {
+  position: fixed;
+  top: 0; right: -320px;
+  width: 300px;
+  height: 100%;
+  background: var(--navy2);
+  z-index: 10002;
+  padding: 2rem 1.5rem;
+  overflow-y: auto;
+  transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-left: 1px solid var(--border);
+}
+.mob-menu.open { right: 0; }
+.mob-close {
+  background: none;
+  border: none;
+  color: var(--white);
+  font-size: 1.5rem;
+  cursor: pointer;
+  float: right;
+}
+.mob-section-title {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
-  margin-top: 2px;
+  color: var(--orange);
+  margin: 1.2rem 0 0.5rem;
 }
-.hero-metric-row {
+.mob-link {
+  display: block;
+  padding: 0.55rem 0;
+  color: var(--gray2);
+  text-decoration: none;
+  font-size: 0.92rem;
+}
+.mob-link:hover { color: var(--orange); }
+
+/* ── HERO SECTION ── */
+.hero {
+  min-height: 70vh;
+  padding: 130px 5% 5rem;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 780px;
+}
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(247,148,29,0.12);
+  border: 1px solid var(--bO);
+  border-radius: 50px;
+  padding: 0.4rem 1.1rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--orange);
+}
+h1 {
+  font-size: clamp(2.3rem, 5vw, 3.8rem);
+  line-height: 1.1;
+  margin-bottom: 1.2rem;
+}
+.hero-sub {
+  font-size: 1.15rem;
+  color: var(--gray2);
+  line-height: 1.7;
+  max-width: 650px;
+  margin-bottom: 2rem;
+}
+.acts {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.btn-o {
+  background: var(--orange);
+  color: var(--white);
+  font-weight: 700;
+  padding: 0.85rem 2rem;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.2s;
+  box-shadow: 0 4px 20px rgba(247,148,29,0.35);
+}
+.btn-o:hover {
+  background: var(--orange2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(247,148,29,0.5);
+}
+.btn-g {
+  background: var(--green);
+  color: var(--white);
+  font-weight: 700;
+  padding: 0.85rem 2rem;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.2s;
+}
+.btn-g:hover {
+  background: #166527;
+  transform: translateY(-2px);
+}
+
+/* ── SECTIONS & CARDS ── */
+section {
+  padding: 5rem 5%;
+}
+.sec-lbl {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 0.6rem;
+}
+.sec-ttl {
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  margin-bottom: 1rem;
+}
+.sec-sub {
+  font-size: 1rem;
+  color: var(--gray);
+  max-width: 600px;
+  margin-bottom: 2.5rem;
+}
+.card-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.8rem;
 }
-.mini-stat {
-  background: rgba(20, 28, 46, 0.75);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 12px;
-  padding: 0.75rem 0.5rem;
-  text-align: center;
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2rem;
+  transition: transform 0.3s, border-color 0.3s;
 }
-.m-val {
-  font-family: \x27Syne\x27, sans-serif;
+.card:hover {
+  transform: translateY(-5px);
+  border-color: var(--bO);
+}
+.card-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.card h3 {
   font-size: 1.25rem;
+  margin-bottom: 0.7rem;
+}
+.card p {
+  font-size: 0.9rem;
+  color: var(--gray);
+  line-height: 1.6;
+}
+
+/* ── SCOPE CHECKLIST ── */
+.scope-sec {
+  background: var(--navy2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.scope-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+}
+.scope-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.1rem 1.3rem;
+  font-size: 0.95rem;
+  color: var(--gray2);
+  line-height: 1.5;
+}
+.scope-check {
+  color: var(--green2);
   font-weight: 800;
-  color: #fff;
+  font-size: 1.2rem;
+  line-height: 1;
 }
-.m-val.g { color: #22c55e; }
-.m-lbl {
-  font-size: 0.65rem;
-  color: #7e8ca3;
-  margin-top: 2px;
-}
-.radar-badge{position:relative;overflow:visible!important;display:inline-flex;align-items:center;gap:10px}
-.sonar-ring{position:absolute;left:13px;top:50%;transform:translateY(-50%);width:12px;height:12px;border-radius:50%;border:2px solid var(--green2);animation:sonarPulse 2.2s cubic-bezier(0,0.2,0.8,1) infinite;pointer-events:none}
-@keyframes sonarPulse{0%{width:10px;height:10px;opacity:1;transform:translateY(-50%) scale(1)}100%{width:34px;height:34px;opacity:0;transform:translateY(-50%) scale(2.8)}}
-.radar-dot{background:#22c55e!important;box-shadow:0 0 12px #22c55e!important}
-.btn-shimmer{position:relative;overflow:hidden}
-.btn-shimmer::before{content:'';position:absolute;top:-50%;left:-100%;width:50%;height:200%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);transform:rotate(25deg);animation:btnShine 4.5s infinite cubic-bezier(0.4,0,0.2,1)}
-@keyframes btnShine{0%{left:-100%}18%{left:200%}100%{left:200%}}
-.marquee-container{width:100%;overflow:hidden;white-space:nowrap;position:relative;background:rgba(247,148,29,.04);border-top:1px solid rgba(247,148,29,.15);border-bottom:1px solid rgba(247,148,29,.15);padding:.95rem 0}
-.marquee-track{display:inline-flex;align-items:center;gap:2.8rem;animation:marqueeSlide 42s linear infinite}
-.marquee-track:hover{animation-play-state:paused}
-.marquee-item{display:inline-flex;align-items:center;gap:9px;font-size:.85rem;font-weight:500;color:var(--gray2);letter-spacing:.02em}
-.marquee-item strong{color:var(--white);font-weight:700}
-.marquee-item .m-icon{font-size:1.1rem}
-@keyframes marqueeSlide{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.card-3d{transition:transform .18s ease-out,box-shadow .25s ease,border-color .25s ease;position:relative;overflow:hidden;transform-style:preserve-3d;will-change:transform}
-.card-3d::after{content:'';position:absolute;inset:0;background:radial-gradient(circle 220px at var(--mouse-x,50%) var(--mouse-y,50%),rgba(255,255,255,.14),transparent 75%);opacity:0;transition:opacity .25s;pointer-events:none;border-radius:inherit}
-.card-3d:hover::after{opacity:1}
-.card-3d:hover{box-shadow:0 18px 42px rgba(0,0,0,.45),0 0 24px rgba(247,148,29,.18)}
-.motion-comparison-section{margin:3.5rem 0;background:linear-gradient(180deg,rgba(20,28,46,.9) 0%,rgba(15,22,40,.96) 100%);border:1px solid rgba(247,148,29,.22);border-radius:24px;padding:2.8rem 5%;box-shadow:0 24px 60px rgba(0,0,0,.45);position:relative;overflow:hidden}
-.comp-container{position:relative;width:100%;height:400px;border-radius:18px;overflow:hidden;user-select:none;border:1px solid rgba(255,255,255,.1);box-shadow:0 12px 36px rgba(0,0,0,.6);touch-action:none;cursor:ew-resize}
-.comp-before{position:absolute;inset:0;width:100%;height:100%;background:#131924 radial-gradient(circle at 70% 30%,rgba(255,255,255,.03) 0%,transparent 60%);display:flex;flex-direction:column;justify-content:center;align-items:center;padding:2rem}
-.comp-after{position:absolute;top:0;left:0;height:100%;width:50%;overflow:hidden;border-right:3px solid var(--orange);box-shadow:4px 0 30px rgba(247,148,29,.6);background:#091220 radial-gradient(circle at 30% 30%,rgba(247,148,29,.12) 0%,transparent 60%);display:flex;flex-direction:column;justify-content:center;align-items:center;padding:2rem}
-.comp-slider-handle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:46px;height:46px;background:linear-gradient(135deg,var(--orange),var(--orange2));border:3px solid #fff;border-radius:50%;box-shadow:0 0 25px rgba(247,148,29,.9);cursor:ew-resize;display:flex;align-items:center;justify-content:center;z-index:10;color:white;font-size:1.15rem;pointer-events:none}
-.comp-label{position:absolute;bottom:16px;padding:6px 16px;border-radius:50px;font-size:.76rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;backdrop-filter:blur(10px);z-index:5}
-.comp-label.lbl-before{right:16px;background:rgba(0,0,0,.75);border:1px solid rgba(255,255,255,.2);color:#e2e8f0}
-.comp-label.lbl-after{left:16px;background:rgba(30,123,52,.9);border:1px solid rgba(34,160,69,.6);color:#fff}
-.comp-surface-viz{width:100%;height:100%;position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center}
-.comp-viz-content{position:relative;z-index:2;max-width:340px}
-</style>
 
-<style>
-  :root { --card: #141C2E; --text: #B0BBC9; --orange: #F7941D; --orange2: #E07B0A; --blue: #0a1f44; --light-blue: #143572; --gold: #cfa856; --gray: #4a4a4a; --light-gray: #f5f7fa; }
-  body { font-family: 'DM Sans', sans-serif; margin: 0; background: #080D1A; color: #B0BBC9; line-height: 1.6; }
-  header { background: #080D1A; border-bottom: 1px solid rgba(255,255,255,0.07); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; }
-  .logo { font-size: 1.5rem; font-weight: 800; color: var(--blue); text-decoration: none; letter-spacing: 2px; }
-  nav a { color: #fff; text-decoration: none; margin-left: 1.5rem; font-weight: 600; }
-  .btn { background: var(--orange); color: white; padding: 0.55rem 1.3rem; border-radius: 50px; text-decoration: none; font-weight: 600; display: inline-block; font-family: 'DM Sans', sans-serif; transition: background 0.2s, transform 0.15s; border: none; }
-  .btn:hover { background: var(--orange2); transform: translateY(-1px); }
-  
-  .hero { 
-    background-image: linear-gradient(90deg, rgba(8,13,26,0.88) 0%, rgba(8,13,26,0.45) 45%, rgba(8,13,26,0) 100%), url('/imgs/otis-hero-office-cleaning.jpg');
-    background-size: cover; background-position: center; color: white; padding: 6rem 2rem; min-height: 50vh; display: flex; flex-direction: column; justify-content: center;
-  }
-  .hero h1 { font-size: 4rem; margin-bottom: 1rem; max-width: 800px; line-height: 1.1; text-shadow: 0 4px 20px rgba(0,0,0,0.5); }
-  .hero p { font-size: 1.2rem; max-width: 500px; margin-bottom: 2rem; opacity: 0.9; }
-  
-  .section { padding: 4rem 2rem; max-width: 1200px; margin: 0 auto; }
-  h2 { color: #fff; font-size: 2rem; margin-bottom: 2rem; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-  .card { background: var(--card); border: 1px solid rgba(255,255,255,0.07); padding: 2rem; border-radius: 8px; }
-  .card h3 { color: #fff; margin-top: 0; }
-  
-  .faq { margin-bottom: 1rem; border-bottom: 1px solid #ddd; padding-bottom: 1rem; }
-  .faq h4 { color: #fff; margin: 0 0 0.5rem 0; font-size: 1.1rem; }
-  
-  footer { background: #0F1628; border-top: 1px solid rgba(255,255,255,0.07); color: white; padding: 3rem 2rem 1rem; margin-top: 4rem; }
-  .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto; }
-  .footer-grid a { color: #aaa; text-decoration: none; }
-  .footer-bottom { text-align: center; margin-top: 3rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1); color: #aaa; font-size: 0.9rem; }
-  
-  @media (max-width: 768px) {
-    .hero h1 { font-size: 2rem; }
-    header { padding: 1rem; }
-    nav a.hide-mobile { display: none; }
-  }
-
-h1, h2, h3 { font-family: 'Syne', sans-serif; font-weight: 800; letter-spacing: -0.02em; }
-</style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "name": "Entretien Ménager Commercial",
-  "provider": {
-    "@type": "LocalBusiness",
-    "name": "OTIS Entretien Commercial",
-    "telephone": "+1 (438) 935-9725",
-    "areaServed": "Grande Région de Montréal, Québec",
-    "url": "https://otis-cleaning.vercel.app/fr/"
-  },
-  "areaServed": "Grand Montréal",
-  "description": "Services professionnels d'entretien ménager commercial et de conciergerie pour les entreprises du Grand Montréal."
+/* ── FAQ ACCORDION CARDS ── */
+.faq-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
 }
-</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+.faq-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.8rem;
+}
+.faq-card h4 {
+  font-size: 1.1rem;
+  margin-bottom: 0.8rem;
+  color: var(--white);
+}
+.faq-card p {
+  font-size: 0.9rem;
+  color: var(--gray);
+  line-height: 1.6;
+}
+
+/* ── BOTTOM CTA ── */
+.bottom-cta {
+  background: linear-gradient(135deg, rgba(247,148,29,0.15) 0%, rgba(30,123,52,0.12) 100%);
+  border: 1px solid var(--bO);
+  border-radius: 24px;
+  padding: 4rem 2rem;
+  text-align: center;
+  margin: 0 5% 5rem;
+}
+.bottom-cta h2 {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  margin-bottom: 1rem;
+}
+.bottom-cta p {
+  font-size: 1.1rem;
+  color: var(--gray2);
+  max-width: 550px;
+  margin: 0 auto 2rem;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--navy2);
+  border-top: 1px solid var(--border);
+  padding: 4rem 5% 2rem;
+}
+.footer-inner {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr 1fr 1.2fr 1fr;
+  gap: 2.5rem;
+  padding-bottom: 3rem;
+}
+.footer-col-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 1.1rem;
+}
+.flink {
+  display: block;
+  color: var(--gray);
+  text-decoration: none;
+  font-size: 0.85rem;
+  margin-bottom: 0.55rem;
+  transition: color 0.2s;
+}
+.flink:hover {
+  color: var(--orange);
+}
+.footer-bottom {
+  border-top: 1px solid var(--border);
+  padding-top: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.8rem;
+  color: var(--gray);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .nav-links, .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  .scope-grid, .faq-grid { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+  .footer-inner { grid-template-columns: 1fr; }
+  .hero { padding-top: 110px; }
+  .card-grid { grid-template-columns: 1fr; }
+}
+
+  </style>
 </head>
 <body>
 
+<!-- NAVBAR -->
 <nav>
-<div class="nav-logo" onclick="nav('home')"><img src="/imgs/otis-logo.png" alt="OTIS Commercial Cleaning" style="height:38px;object-fit:contain;"></div>
-<ul class="nav-links">
-<li><a href="/" >Home</a></li>
-<li><a href="/#about" >Who We Are</a></li>
-<li class="has-dd"><button class="srv-btn">Services <span class="chevron">▾</span></button>
-<div class="dropdown">
-<div class="dd-label">Residential</div>
-<a href="/services/residential-cleaning">All Residential</a>
-<a href="/services/deep-cleaning">🏠 Deep Clean</a>
-<a href="/services/deep-cleaning">📦 Move In / Move Out</a>
-<a href="/services/post-renovation">🏗️ Post-Construction</a>
-<div class="dd-div"></div>
-<div class="dd-label">Commercial</div>
-<a href="/services/residential-cleaning">All Commercial</a>
-<a href="/services/office-cleaning">🧹 Janitorial</a>
-<a href="/services/office-cleaning">🏢 Commercial Cleaning</a>
-<a href="/sectors/event-cleaning">🎉 Events Cleaning</a>
-<a href="/services/floor-maintenance">🧽 Carpet Services</a>
-<a href="/services/floor-maintenance">✨ Floor Waxing</a>
-</div></li>
-<li><a href="/#pricing" >Pricing</a></li>
-<li><a href="/#gallery" >Gallery</a></li>
-<li><a href="/#contact" >Contact</a></li>
-</ul>
-<div style="display:flex;align-items:center;gap:.8rem">
-
-<a href="/fr/" id="lang-btn" style="text-decoration:none; display:inline-flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.1); color:#fff; border-radius:20px; padding:6px 14px; font-size:0.85rem; font-weight:600; margin-right:1rem; border:1px solid rgba(255,255,255,0.2); transition:background 0.2s;">FR</a>
-<button class="nav-cta" onclick="window.location.href='/#quote'" >Free Quote</button>
-<button class="hamburger" id="hbg" ><span></span><span></span><span></span></button>
-</div></nav>
-
-
-
-<div class="hero">
-  <h1>Ménage de Déménagement et Fin de Bail</h1>
-  <p>Protocoles rigoureux, équipes d'entretien dévouées et tarification transparente. Nous rehaussons votre espace de travail pour que vous puissiez vous concentrer sur vos affaires.</p>
-  <div>
-    <a href="/fr/#quote" class="btn" style="padding: 1rem 2rem; font-size: 1.1rem;">Demander une soumission gratuite</a>
-  </div>
-</div>
-
-<div class="section">
-  <h2>La Norme OTIS</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>Qualité Constante</h3>
-      <p>Nous assignons la même équipe dédiée à vos locaux, garantissant ainsi une parfaite compréhension de vos exigences spécifiques et de vos protocoles de sécurité.</p>
-    </div>
-    <div class="card">
-      <h3>Équipements de Qualité Commerciale</h3>
-      <p>Nos équipes utilisent des vadrouilles professionnelles, des systèmes en microfibre et des agents nettoyants commerciaux à pH neutre qui éliminent efficacement la saleté sans endommager vos surfaces.</p>
-    </div>
-    <div class="card">
-      <h3>Communication Transparente</h3>
-      <p>Aucun frais caché. Vous bénéficiez d'une tarification claire au pied carré et d'un support réactif de la part de notre équipe de gestion locale à Montréal.</p>
-    </div>
-  </div>
-</div>
-
-<div class="section" style="background: #0F1628; max-width: none;">
-  <div style="max-width: 1200px; margin: 0 auto;">
-    <h2>Ce Qui Est Inclus Dans Notre Service</h2>
-    <div class="grid">
-      <div>
-        <ul style="line-height: 2;">
-          <li>Services de conciergerie quotidiens, hebdomadaires ou sur mesure</li>
-          <li>Nettoyage des surfaces à contact élevé</li>
-          <li>Entretien des toilettes et réapprovisionnement des consommables</li>
-          <li>Nettoyage des salles de pause et cuisinettes</li>
-        </ul>
-      </div>
-      <div>
-        <ul style="line-height: 2;">
-          <li>Balayage et lavage à la vadrouille humide des planchers durs</li>
-          <li>Passage de l'aspirateur sur les tapis</li>
-          <li>Collecte des déchets et du recyclage</li>
-          <li>Couvert par une assurance responsabilité civile de 2 M$</li>
-          <li>Lavage des vitres intérieures et cloisons vitrées</li>
-        </ul>
-      </div>
-    </div>
-    <p style="margin-top: 2rem;"><strong>Services Additionnels :</strong> Récurage professionnel (autolaveuse) pour grandes surfaces, nettoyage après rénovation et ménage fin de bail.</p>
-  </div>
-</div>
-
-<div class="section">
-  <h2>Foire Aux Questions</h2>
+  <a href="/fr/" class="nav-logo">
+    <img src="/imgs/otis-logo.png" alt="OTIS Commercial Cleaning">
+  </a>
   
-  <div class="faq">
-    <h4>Opérez-vous en dehors des heures de bureau ?</h4>
-    <p>Oui. La majorité de notre entretien commercial s'effectue le soir ou la fin de semaine pour assurer zéro perturbation de vos opérations quotidiennes. Nous maintenons des protocoles stricts de gestion des clés et de sécurité.</p>
-  </div>
-  
-  <div class="faq">
-    <h4>Desservez-vous toute la grande région de Montréal ?</h4>
-    <p>Absolument. Nous desservons les bureaux corporatifs, les cliniques et les installations commerciales à travers la grande région de Montréal.</p>
-  </div>
-  
-  <div class="faq">
-    <h4>Dois-je signer un contrat à long terme ?</h4>
-    <p>Nous proposons des accords flexibles selon vos besoins, généralement standardisés sur des ententes de service de 6 ou 10 mois afin de garantir votre place dans notre itinéraire, mais nous sommes fiers de nos conditions transparentes et équitables.</p>
-  </div>
-  
-  <div class="faq">
-    <h4>Êtes-vous membre de l'ISSA Canada ?</h4>
-    <p>Oui, OTIS est un fier membre de l'ISSA Canada (#102438), respectant les normes de nettoyage commercial de premier plan de l'industrie.</p>
-  </div>
-</div>
-
-<div class="section" style="text-align: center; padding-bottom: 6rem;">
-  <h2>Prêt à optimiser l'entretien de vos installations ?</h2>
-  <p style="font-size: 1.2rem; margin-bottom: 2rem;">Planifiez une brève visite d'évaluation sur place et recevez une soumission transparente.</p>
-  <a href="/fr/#quote" class="btn" style="padding: 1rem 2rem; font-size: 1.1rem; margin-right: 1rem;">Obtenir une Soumission</a>
-  <a href="tel:+14389359725" style="color: var(--orange); font-weight: 600; text-decoration: none;">ou appelez le +1 (438) 935-9725</a>
-</div>
-
-<footer><div class="footer-inner">
-<div><img src="data:image/webp;base64,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" alt="OTIS" style="height:36px;object-fit:contain;margin-bottom:.8rem;display:block"><p style="font-size:.82rem;color:var(--gray);line-height:1.6;max-width:220px">Professional cleaning for businesses and homes across Montreal since 2020.</p><div style="margin-top:.9rem"><a href="tel:+14389359725" style="font-size:.8rem;color:var(--orange);text-decoration:none;font-weight:500;display:block;margin-bottom:4px">📞 +1 (438) 935-9725</a><a href="mailto:info@otiscc.ca" style="font-size:.8rem;color:var(--orange);text-decoration:none;font-weight:500">✉️ info@otiscc.ca</a></div></div>
-<div><div class="footer-col-title">Company</div><button class="flink" onclick="nav('home')">Home</button><button class="flink" onclick="nav('about')">Who We Are</button><button class="flink" onclick="nav('gallery')">Gallery</button><button class="flink" onclick="nav('pricing')">Pricing</button><button class="flink" onclick="nav('contact')">Contact Us</button><button class="flink" onclick="nav('quote')" style="color:var(--orange)">Get a Free Quote →</button></div>
-<div><div class="footer-col-title">Residential</div><button class="flink" onclick="nav('srv-residential')">All Residential</button><button class="flink" onclick="nav('srv-deep')">Deep Clean</button><button class="flink" onclick="nav('srv-moveinout')">Move In / Move Out</button><button class="flink" onclick="nav('srv-postconstruction')">Post-Construction</button></div>
-<div><div class="footer-col-title">Commercial</div><a class="flink" href="/services/turnover-cleaning">All Commercial</a><a class="flink" href="/services/office-cleaning">Office Cleaning</a><a class="flink" href="/sectors/clinic-cleaning">Clinics</a><a class="flink" href="/sectors/event-cleaning">Events</a><a class="flink" href="/services/floor-maintenance">Floor Maintenance</a><a class="flink" href="/services/post-renovation">Post-Renovation</a></div>
-<div><div class="footer-col-title">Certifications</div><p style="font-size:.8rem;color:var(--gray2);line-height:1.8">ISSA Canada Member<br>$2M General Liability Insurance<br>Conforme CNESST<br>Proudly Canadian 🍁</p><div style="margin-top:.8rem;font-size:.78rem;color:var(--gray)">📍 2447 Ave Madison<br>Montreal, QC H4B 2T5</div></div>
-<div><div class="footer-col-title">Internal</div><a href="/internal/blueprint" class="flink">Executive Blueprint</a><a href="/internal/command-center" class="flink">Command Center</a></div>
-</div>
-    <div class="footer-bottom">
-      <div style="text-align:center; margin-bottom:1rem;">
+  <ul class="nav-links">
+    <li><a href="/fr/">Accueil</a></li>
+    <li><a href="/fr/#about">À Propos</a></li>
+    <li class="has-dd">
+      <button class="srv-btn" aria-haspopup="true">Services <span class="chevron">▾</span></button>
+      <div class="dropdown">
         
-      </div><span>© 2025 OTIS Maintenance. All rights reserved.</span><span>Built by <a href="https://nexorayyc.io" target="_blank" style="color:var(--gray); text-decoration:none;">NEXORA</a></span></div></footer>
+          <div class="dd-label">Résidentiel</div>
+          <a href="/fr/services/nettoyage-residentiel">🏠 Tous les Résidentiels</a>
+          <a href="/fr/services/grand-menage">🧽 Grand Ménage</a>
+          <a href="/fr/services/nettoyage-fin-de-bail">📦 Fin de Bail & Déménagement</a>
+          <a href="/fr/services/nettoyage-apres-renovation">🏗️ Après Rénovation</a>
+          <div class="dd-div"></div>
+          <div class="dd-label">Commercial</div>
+          <a href="/fr/services/entretien-commercial">🏢 Entretien Commercial</a>
+          <a href="/fr/services/entretien-bureaux">💼 Entretien de Bureaux</a>
+          <a href="/fr/services/entretien-planchers">✨ Entretien de Planchers</a>
+          <div class="dd-div"></div>
+          <div class="dd-label">Secteurs</div>
+          <a href="/fr/secteurs/nettoyage-cliniques">🏥 Cliniques Médicales</a>
+          <a href="/fr/secteurs/nettoyage-commerces">🛍️ Commerces & Boutiques</a>
+          <a href="/fr/secteurs/nettoyage-espaces-communs">🏢 Espaces Communs de Condos</a>
+          <a href="/fr/secteurs/nettoyage-ecoles">🎓 Écoles & Garderies</a>
+          <a href="/fr/secteurs/nettoyage-evenementiel">🎉 Nettoyage Événementiel</a>
+        
+      </div>
+    </li>
+    <li><a href="/fr/#pricing">Tarification</a></li>
+    <li><a href="/fr/#gallery">Galerie</a></li>
+    <li><a href="/fr/#contact">Contact</a></li>
+  </ul>
+  
+  <div class="nav-actions">
+    <a href="/services/turnover-cleaning" class="lang-btn">EN</a>
+    <a href="/fr/#quote" class="nav-cta">Soumission Gratuite</a>
+    <button class="hamburger" onclick="toggleMob()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
 
+<!-- MOBILE MENU -->
+<div class="mob-overlay" id="mob-overlay" onclick="toggleMob()"></div>
+<div class="mob-menu" id="mob-menu">
+  <button class="mob-close" onclick="toggleMob()">&times;</button>
+  <div style="clear:both; margin-bottom: 1rem;"></div>
+  <a class="mob-link" href="/fr/"><strong>Accueil</strong></a>
+  <a class="mob-link" href="/fr/#about"><strong>À Propos</strong></a>
+  
+  
+          <div class="mob-section-title">Résidentiel</div>
+          <a class="mob-link" href="/fr/services/nettoyage-residentiel">🏠 Tous les Résidentiels</a>
+          <a class="mob-link" href="/fr/services/grand-menage">🧽 Grand Ménage</a>
+          <a class="mob-link" href="/fr/services/nettoyage-fin-de-bail">📦 Fin de Bail & Déménagement</a>
+          <a class="mob-link" href="/fr/services/nettoyage-apres-renovation">🏗️ Après Rénovation</a>
+          <div class="mob-section-title">Commercial</div>
+          <a class="mob-link" href="/fr/services/entretien-commercial">🏢 Entretien Commercial</a>
+          <a class="mob-link" href="/fr/services/entretien-bureaux">💼 Entretien de Bureaux</a>
+          <a class="mob-link" href="/fr/services/entretien-planchers">✨ Entretien de Planchers</a>
+          <div class="mob-section-title">Secteurs</div>
+          <a class="mob-link" href="/fr/secteurs/nettoyage-cliniques">🏥 Cliniques Médicales</a>
+          <a class="mob-link" href="/fr/secteurs/nettoyage-commerces">🛍️ Commerces & Boutiques</a>
+          <a class="mob-link" href="/fr/secteurs/nettoyage-espaces-communs">🏢 Espaces Communs de Condos</a>
+          <a class="mob-link" href="/fr/secteurs/nettoyage-ecoles">🎓 Écoles & Garderies</a>
+          <a class="mob-link" href="/fr/secteurs/nettoyage-evenementiel">🎉 Nettoyage Événementiel</a>
+        
+  
+  <div class="mob-section-title">Compagnie</div>
+  <a class="mob-link" href="/fr/#pricing">Tarification</a>
+  <a class="mob-link" href="/fr/#gallery">Galerie</a>
+  <a class="mob-link" href="/fr/#contact">Contact</a>
+  <a class="mob-link" href="/services/turnover-cleaning"><strong>🌐 EN</strong></a>
+  
+  <div style="margin-top: 2rem;">
+    <a href="/fr/#quote" class="btn-o" style="display:block; text-align:center; padding:0.75rem;">Demander une Soumission</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero" style="background-image: linear-gradient(90deg, rgba(8,13,26,0.92) 0%, rgba(8,13,26,0.68) 50%, rgba(8,13,26,0.3) 100%), url('/imgs/otis-hero-condo.jpg');">
+  <div class="hero-content">
+    <div class="badge">Grand Montréal · Membre ISSA Canada · Assuré 2M$</div>
+    <h1>Ménage de Déménagement et Fin de Bail à Montréal</h1>
+    <p class="hero-sub">Nettoyage complet d'emménagement et de déménagement pour gestionnaires immobiliers, propriétaires et locataires de Montréal. Impeccable et prêt pour l'inspection.</p>
+    <div class="acts">
+      <a href="/fr/#quote" class="btn-o">Demander une Soumission</a>
+      <a href="tel:+14389359725" class="btn-g">📞 +1 (438) 935-9725</a>
+    </div>
+  </div>
+</section>
+
+<!-- THE OTIS STANDARD -->
+<section>
+  <div class="sec-lbl">Excellence Opérationnelle</div>
+  <h2 class="sec-ttl">Pourquoi Choisir OTIS pour Vos Espaces</h2>
+  <p class="sec-sub">Protocoles rigoureux, personnel de confiance et matériel haut de gamme pour une tranquillité d'esprit totale.</p>
+  <div class="card-grid">
+    
+          <div class="card">
+            <div class="card-icon">⭐</div>
+            <h3>Qualité Constante</h3>
+            <p>Même équipe dédiée assignée à chaque visite, protocoles vérifiés et inspection rigoureuse à chaque passage.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">⚡</div>
+            <h3>Équipement Professionnel</h3>
+            <p>Autolaveuses industrielles Tennant®, microfibres électrostatiques et détergents neutres conformes aux normes écologiques.</p>
+          </div>
+          <div class="card">
+            <div class="card-icon">🛡️</div>
+            <h3>Conformité & Sécurité</h3>
+            <p>Assurance responsabilité civile de 2M$, conformité totale au décret CPEEP et accréditation CNESST sans coresponsabilité.</p>
+          </div>
+        
+  </div>
+</section>
+
+<!-- SCOPE OF WORK -->
+<section class="scope-sec">
+  <div class="sec-lbl">Devis des Travaux</div>
+  <h2 class="sec-ttl">Ce Qui Est Inclus Dans Notre Service</h2>
+  <p class="sec-sub">Chaque tâche fait l'objet d'un suivi méthodique pour garantir un résultat impeccable et constant.</p>
+  <div class="scope-grid">
+    <div class="scope-item"><span class="scope-check">✓</span><span>Nettoyage minutieux intérieur et extérieur des armoires de cuisine et tiroirs</span></div><div class="scope-item"><span class="scope-check">✓</span><span>Nettoyage et dégraissage en profondeur des électroménagers (four, hotte, réfrigérateur)</span></div><div class="scope-item"><span class="scope-check">✓</span><span>Détartrage complet de la salle de bain, brossage des joints de céramique et polissage</span></div><div class="scope-item"><span class="scope-check">✓</span><span>Lavage manuel des plinthes, cadrages de portes, moulures et interrupteurs</span></div><div class="scope-item"><span class="scope-check">✓</span><span>Dépoussiérage et aspiration des garde-robes et rails de portes coulissantes</span></div><div class="scope-item"><span class="scope-check">✓</span><span>Lavage et récurage approfondi des planchers en bois franc, stratifié ou céramique</span></div><div class="scope-item"><span class="scope-check">✓</span><span>Nettoyage impeccable des vitres intérieures et portes-patio</span></div><div class="scope-item"><span class="scope-check">✓</span><span>Balayage du balcon et élimination des résidus sur demande</span></div>
+  </div>
+</section>
+
+<!-- FAQS -->
+<section>
+  <div class="sec-lbl">Foire Aux Questions</div>
+  <h2 class="sec-ttl">Questions Fréquemment Posées</h2>
+  <p class="sec-sub">Tout ce que vous devez savoir pour votre entretien ménager commercial ou résidentiel.</p>
+  <div class="faq-grid">
+    <div class="faq-card"><h4>En combien de temps pouvez-vous nettoyer un logement entre deux locataires?</h4><p>Nous sommes spécialisés dans les rotations rapides. Lors des périodes de déménagement à Montréal, nos équipes mobiles remettent un logement à neuf en 3 à 5 heures.</p></div><div class="faq-card"><h4>Le nettoyage des électroménagers est-il inclus?</h4><p>Oui! L'intérieur et l'extérieur du four, du réfrigérateur, de la cuisinière et du micro-ondes sont systématiquement inclus dans notre forfait fin de bail.</p></div><div class="faq-card"><h4>Travaillez-vous directement avec les gestionnaires d'immeubles?</h4><p>Absolument. Nous collaborons avec des syndicats de copropriété, gestionnaires de parcs locatifs et propriétaires avec facturation centralisée.</p></div><div class="faq-card"><h4>Que se passe-t-il en cas d'insatisfaction lors de l'état des lieux?</h4><p>Nous offrons une Garantie d'Inspection à 100%. Si un détail nécessite une retouche dans les 24h, notre équipe réintervient immédiatement sans frais.</p></div>
+  </div>
+</section>
+
+<!-- BOTTOM CTA -->
+<div class="bottom-cta">
+  <h2>Prêt à Rehausser la Propreté de Vos Locaux?</h2>
+  <p>Contactez nos spécialistes montréalais pour une évaluation gratuite sans engagement.</p>
+  <div class="acts" style="justify-content: center;">
+    <a href="/fr/#quote" class="btn-o">Obtenir Ma Soumission Gratuite</a>
+    <a href="tel:+14389359725" class="btn-g">📞 +1 (438) 935-9725</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <img src="/imgs/otis-logo.png" alt="OTIS" style="height:36px; object-fit:contain; margin-bottom:1rem; display:block;">
+      <p style="font-size:0.85rem; color:var(--gray); line-height:1.6; max-width:240px;">
+        Entretien ménager professionnel pour entreprises et résidences à Montréal depuis 2020.
+      </p>
+      <div style="margin-top:1rem;">
+        <a href="tel:+14389359725" style="color:var(--orange); text-decoration:none; font-weight:600; display:block; margin-bottom:4px;">📞 +1 (438) 935-9725</a>
+        <a href="mailto:info@otiscc.ca" style="color:var(--orange); text-decoration:none; font-weight:600;">✉️ info@otiscc.ca</a>
+      </div>
+    </div>
+    
+    <div>
+      <div class="footer-col-title">Compagnie</div>
+      <a class="flink" href="/fr/">Accueil</a>
+      <a class="flink" href="/fr/#about">À Propos</a>
+      <a class="flink" href="/fr/#gallery">Galerie</a>
+      <a class="flink" href="/fr/#pricing">Tarification</a>
+      <a class="flink" href="/fr/#contact">Contact</a>
+      <a class="flink" href="/fr/#quote" style="color:var(--orange); font-weight:600;">Soumission Gratuite →</a>
+    </div>
+    
+    <div>
+      <div class="footer-col-title">Résidentiel</div>
+      <a class="flink" href="/fr/services/nettoyage-residentiel">Tous les Résidentiels</a>
+      <a class="flink" href="/fr/services/grand-menage">Grand Ménage</a>
+      <a class="flink" href="/fr/services/nettoyage-fin-de-bail">Fin de Bail & Déménagement</a>
+      <a class="flink" href="/fr/services/nettoyage-apres-renovation">Après Rénovation</a>
+    </div>
+    
+    <div>
+      <div class="footer-col-title">Commercial</div>
+      <a class="flink" href="/fr/services/entretien-commercial">Entretien Commercial</a>
+      <a class="flink" href="/fr/services/entretien-bureaux">Entretien de Bureaux</a>
+      <a class="flink" href="/fr/secteurs/nettoyage-cliniques">Cliniques Médicales</a>
+      <a class="flink" href="/fr/services/entretien-planchers">Entretien de Planchers</a>
+      <a class="flink" href="/fr/secteurs/nettoyage-commerces">Commerces & Boutiques</a>
+      <a class="flink" href="/fr/secteurs/nettoyage-espaces-communs">Espaces Communs de Condos</a>
+    </div>
+    
+    <div>
+      <div class="footer-col-title">Certifications</div>
+      <p style="font-size:0.85rem; color:var(--gray); line-height:1.8;">
+        ISSA Canada Member<br>
+        $2M Liability Insurance<br>
+        Conforme CNESST<br>
+        Proudly Canadian 🍁
+      </p>
+      <div style="margin-top:1rem; font-size:0.8rem; color:var(--gray);">
+        📍 2447 Ave Madison<br>Montreal, QC H4B 2T5
+      </div>
+      <div style="margin-top:1rem;">
+        <a class="flink" href="/internal/blueprint">Blueprint</a>
+        <a class="flink" href="/internal/command-center">Command Center</a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <span>© 2026 OTIS Commercial Cleaning Inc. Tous droits réservés.</span>
+    <span>Grand Montréal, QC</span>
+  </div>
+</footer>
 
 <script>
 function toggleMob() {
-    var m = document.getElementById('mob-menu');
-    var o = document.getElementById('mob-overlay');
-    var b = document.getElementById('hbg');
-    if(!m) return;
-    if(m.classList.contains('open')) {
-        m.classList.remove('open');
-        if(o) o.classList.remove('open');
-        if(b) b.classList.remove('open');
-        document.body.style.overflow = '';
-    } else {
-        m.classList.add('open');
-        if(o) o.classList.add('open');
-        if(b) b.classList.add('open');
-        document.body.style.overflow = 'hidden';
-    }
+  var m = document.getElementById('mob-menu');
+  var o = document.getElementById('mob-overlay');
+  if(!m) return;
+  m.classList.toggle('open');
+  if(o) o.classList.toggle('open');
+  document.body.style.overflow = m.classList.contains('open') ? 'hidden' : '';
 }
 </script>
 

@@ -128,7 +128,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:cen
 .nav-links>li>a:hover,.nav-links>li>a.active{color:var(--orange)}
 .srv-btn{display:flex;align-items:center;gap:4px;padding:.5rem 1rem;color:var(--gray2);font-size:.875rem;cursor:pointer;transition:color .2s;background:none;border:none;font-family:'DM Sans',sans-serif;white-space:nowrap}
 .srv-btn:hover{color:var(--white)}.has-dd{position:relative}.has-dd:hover .chevron{transform:rotate(180deg)}.chevron{font-size:.65rem;transition:transform .2s;display:inline-block}
-.dropdown{position:absolute;top:100%;left:0;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:.5rem;min-width:230px;opacity:0;pointer-events:none;transform:translateY(-6px);transition:opacity .2s,transform .2s;z-index:9999}
+.dropdown{position:absolute;top:100%;left:0;background:var(--card);border:1px solid var(--bO, rgba(247,148,29,0.3));border-radius:14px;padding:.6rem;min-width:260px;opacity:0;pointer-events:none;transform:translateY(-4px);transition:opacity .2s,transform .2s;z-index:99999;box-shadow:0 16px 40px rgba(0,0,0,0.6)}
+.dropdown::before{content:'';position:absolute;top:-14px;left:0;right:0;height:14px}
+.has-dd:hover .dropdown,.has-dd:focus-within .dropdown,.dropdown:hover{opacity:1;pointer-events:all;transform:translateY(0)}
 .has-dd:hover .dropdown{opacity:1;pointer-events:all;transform:translateY(0)}
 .dd-label{padding:.3rem .6rem .1rem;font-size:.68rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--gray)}
 .dropdown a{display:block;padding:.42rem .75rem;color:var(--gray2);text-decoration:none;font-size:.84rem;border-radius:8px;transition:background .15s,color .15s;cursor:pointer}
@@ -598,7 +600,7 @@ nav { top: 34px !important; }
 <div class="mob-header"><img src="/imgs/otis-logo.png" alt="OTIS" style="height:34px;object-fit:contain;"></div>
 <div style="padding:0 1.4rem 0.75rem; display:flex; justify-content:space-between; align-items:center;">
   <span style="font-size:0.75rem; color:var(--gray); text-transform:uppercase; font-weight:700;">Langue</span>
-  <button id="mob-lang-btn" onclick="toggleLang()" style="background:rgba(247,148,29,0.15); border:1px solid var(--bO); color:var(--orange); font-weight:700; padding:0.3rem 0.8rem; border-radius:20px; cursor:pointer; font-size:0.8rem;">Passer en Français</button>
+  <button id="mob-lang-btn" onclick="window.location.href='/fr/'" style="background:rgba(247,148,29,0.15); border:1px solid var(--bO); color:var(--orange); font-weight:700; padding:0.3rem 0.8rem; border-radius:20px; cursor:pointer; font-size:0.8rem;">Passer en Français</button>
 </div>
 
 
@@ -609,17 +611,22 @@ nav { top: 34px !important; }
 <button class="mm-link" id="mm-about" onclick="nav('about');closeMob()">👥 Who We Are</button>
 <div class="mm-divider"></div>
 <div class="mm-section">Residential</div>
-<button class="mm-sub" onclick="nav('srv-deep');closeMob()">🏠 Deep Clean</button>
-<button class="mm-sub" onclick="nav('srv-moveinout');closeMob()">📦 Move In / Move Out</button>
-<button class="mm-sub" onclick="nav('srv-postconstruction');closeMob()">🏗️ Post-Construction</button>
+<a class="mm-sub" href="/services/residential-cleaning">🏠 All Residential</a>
+<a class="mm-sub" href="/services/deep-cleaning">🧽 Deep Clean</a>
+<a class="mm-sub" href="/services/turnover-cleaning">📦 Move In / Move Out</a>
+<a class="mm-sub" href="/services/post-renovation">🏗️ Post-Construction</a>
 <div class="mm-section">Commercial</div>
-<button class="mm-sub" onclick="nav('srv-commercialclean');closeMob()">🏢 Commercial Cleaning</button>
-<button class="mm-sub" onclick="nav('srv-janitorial');closeMob()">🧹 Janitorial Services</button>
-<button class="mm-sub" onclick="nav('srv-events');closeMob()">🎉 Events Cleaning</button>
-<button class="mm-sub" onclick="nav('srv-carpet');closeMob()">🧽 Carpet Services</button>
-<button class="mm-sub" onclick="nav('srv-floor');closeMob()">✨ Floor Waxing</button>
+<a class="mm-sub" href="/services/commercial-cleaning">🏢 Commercial Cleaning</a>
+<a class="mm-sub" href="/services/office-cleaning">💼 Office Cleaning</a>
+<a class="mm-sub" href="/services/floor-maintenance">✨ Floor Maintenance</a>
+<div class="mm-section">Sectors</div>
+<a class="mm-sub" href="/sectors/clinic-cleaning">🏥 Medical Clinics</a>
+<a class="mm-sub" href="/sectors/retail-cleaning">🛍️ Retail & Shops</a>
+<a class="mm-sub" href="/sectors/condo-cleaning">🏢 Condo Common Areas</a>
+<a class="mm-sub" href="/sectors/school-cleaning">🎓 Schools & Daycares</a>
+<a class="mm-sub" href="/sectors/event-cleaning">🎉 Event Venues</a>
 <div class="mm-divider"></div>
-<button class="mm-link" id="mm-pricing" onclick="nav('pricing');closeMob()">💰 Pricing</button>
+<button class="mm-link" id="mm-pricing"  onclick="nav('pricing');closeMob()">💰 Pricing</button>
 <button class="mm-link" id="mm-gallery" onclick="nav('gallery');closeMob()">📸 Gallery</button>
 <button class="mm-link" id="mm-contact" onclick="nav('contact');closeMob()">✉️ Contact Us</button>
 <button class="mm-cta" onclick="nav('quote');closeMob()">Get a Free Quote →</button>
@@ -634,18 +641,22 @@ nav { top: 34px !important; }
 <li class="has-dd"><button class="srv-btn">Services <span class="chevron">▾</span></button>
 <div class="dropdown">
 <div class="dd-label">Residential</div>
-<a href="#" onclick="nav('srv-residential');return false">All Residential</a>
-<a href="#" onclick="nav('srv-deep');return false">🏠 Deep Clean</a>
-<a href="#" onclick="nav('srv-moveinout');return false">📦 Move In / Move Out</a>
-<a href="#" onclick="nav('srv-postconstruction');return false">🏗️ Post-Construction</a>
+<a href="/services/residential-cleaning">🏠 All Residential</a>
+<a href="/services/deep-cleaning">🧽 Deep Clean</a>
+<a href="/services/turnover-cleaning">📦 Move In / Move Out</a>
+<a href="/services/post-renovation">🏗️ Post-Construction</a>
 <div class="dd-div"></div>
 <div class="dd-label">Commercial</div>
-<a href="#" onclick="nav('srv-commercial');return false">All Commercial</a>
-<a href="#" onclick="nav('srv-janitorial');return false">🧹 Janitorial</a>
-<a href="#" onclick="nav('srv-commercialclean');return false">🏢 Commercial Cleaning</a>
-<a href="#" onclick="nav('srv-events');return false">🎉 Events Cleaning</a>
-<a href="#" onclick="nav('srv-carpet');return false">🧽 Carpet Services</a>
-<a href="#" onclick="nav('srv-floor');return false">✨ Floor Waxing</a>
+<a href="/services/commercial-cleaning">🏢 Commercial Cleaning</a>
+<a href="/services/office-cleaning">💼 Office Cleaning</a>
+<a href="/services/floor-maintenance">✨ Floor Maintenance</a>
+<div class="dd-div"></div>
+<div class="dd-label">Sectors</div>
+<a href="/sectors/clinic-cleaning">🏥 Medical Clinics</a>
+<a href="/sectors/retail-cleaning">🛍️ Retail & Shops</a>
+<a href="/sectors/condo-cleaning">🏢 Condo Common Areas</a>
+<a href="/sectors/school-cleaning">🎓 Schools & Daycares</a>
+<a href="/sectors/event-cleaning">🎉 Event Venues</a>
 </div></li>
 <li><a id="nl-pricing" href="#" onclick="nav('pricing');return false">Pricing</a></li>
 <li><a id="nl-gallery" href="#" onclick="nav('gallery');return false">Gallery</a></li>
@@ -653,7 +664,7 @@ nav { top: 34px !important; }
 </ul>
 <div style="display:flex;align-items:center;gap:.8rem">
 
-<button id="lang-btn" onclick="toggleLang()" style="background:rgba(255,255,255,0.08);border:1px solid var(--border);color:var(--white);font-weight:700;padding:.45rem .85rem;border-radius:50px;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:.82rem;transition:all .2s;" title="Basculer en français / Switch to English">FR</button>
+<button id="lang-btn" onclick="window.location.href='/fr/'" style="background:rgba(255,255,255,0.08);border:1px solid var(--border);color:var(--white);font-weight:700;padding:.45rem .85rem;border-radius:50px;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:.82rem;transition:all .2s;" title="Basculer en français / Switch to English">FR</button>
 <button class="nav-cta" onclick="nav('quote')">Free Quote</button>
 <button class="hamburger" id="hbg" onclick="toggleMob()"><span></span><span></span><span></span></button>
 </div></nav>
@@ -890,8 +901,20 @@ nav { top: 34px !important; }
 <footer><div class="footer-inner">
 <div><img src="data:image/webp;base64,UklGRpwgAABXRUJQVlA4WAoAAAAwAAAAPQIAjwAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZBTFBIRxEAAAHwRmubIjfStkUkVEKBWDLIzG1maibDLHvczK2xl5uZmZmZzMxs94yhLTMzyyhPS7Jl2WWViiszI/4oq5QRGaX09Mx9OyImAFz2/2X/X/b//8dVgJd6IC+KosBD6MyEn78f2sgrXHKBguIr6HjtHaOffveDr7777rvvPn//zadG3Xptp4YZigvSwPEpcvU7V3E8Wrb8y6Le2YpwqQS6fM263v716guhaFwzEE6KDC0eDQW2fT+6b+tcRYAkoNjyxltuTXrLjf2T9+3SNXmn9snbtUmxeZPkhfl5pvkZLpiMk1R3impyRZYkycVRAnnBJatub0ZOXl7DJk2aNMrLy8v0uVVZEnnOsjU6xhhp4YPfjujYQBW5Sx2QdxW+tvtsBGGSiQvHZw6WRQ5a5nqpCmFLjViK4UDyan/yC+cqkpeXnjLf964KzfjCX9atT7pu1bKkS+d///XXX7/VUoCEICeIoujrMuTFnxYV7yo5cfLUvysqKv48depkyf71i8d9NPKq5pIoigIPoTWmKHi6+MkmLpHn4KULrtfnOyK6gTBhhAytfMEjDaFVbSoQphBRaujFBWZ9K3XDWr126AOJBIRKr4e+nrulNKRpum4YBqqjYRi6riUCJzbP++axa7IgtAxjZOjRkiXvDMnlLk3A7L/9Kxg3MKVIi/p/7KdCSzr7MUuDA0y4Jw1MElUWWsbl9H5sQWUwmtANhMkiZOiJWOj8mkcLoWW1kR4PV6165fo2Cqwbx/McdG6878G9QR1TjbQLG/u7mRcZaPY0JlvdyiL3FV+UnI/rCFOMjOiBtjyJ2siI15Tt+XlIgZeHqcDu2/btXDbutUGFGaLzgu6hKyII028EZlyjMC5sIz7rrrlVGsL067NlUuZ6rGLlN//oka3wSa4OYYz0RKxyww/3NJM5R8U3+TmMsD2NwLuN+XoJ7x24Po6wLdFWDx2mWmTvN8M6N1J4AOC1IZwUJc581dvLOyYoDKjQsX2NkvYCrH9whUuj2K5oG021UbhyRcs61A6vbC1Ch6S+7jewnZH/WTntVTaqC190XMdpA2NU088CZERmd+AcUcFPMYTtjSLfZ6XULZCGyhqkBt0fhQ2cTnCovwUYI6380WwHlDE7hu0fWZqbSp8QU0IDTIRXaOI8k2MIs2K1nTBGkeIWvNPJnBnDLIzOzeEYVdPFRPyUIpg9U8e2Tk2crVF0jQUY6/sHi44G+sbEMBsTv3ggmwKdTVw0qR8kMEOm0XStJRhduF2GDkZ8IYZZqb8t1RO40WFst60pTY5qum4gKrghYUswijwjQcciDA0gZuDgIL5+0Pwospux0p0CbHHd7c9+v+x4jIqhFmEUfkV2KrDREYTZiU53qBfIizRsu+VqCgByvEtWvTntb37k/fFLNh89b9CHcfVdkkNR5xiYpdoEtR4Ar6zGbEkOOV6Q3Jl5jTr//bWZByNE4o/fG6kLqh7KOxJ+eBiz9eIImP74KQk2QUHyZOa3vfL+Z7+ctmJ7aYJIqHfbi3XB6EBr6ESyVmPGot3ZtTqcQSzxd6CjNM8MNq9BbIGi4ito0+PqYaM/nLm1IhrXdIQtDfZMJdizTd2wvinbgcAXohQgXUuYappBAY7cDgEA4i3+hGalQQwZSVGqhrbcQ8fBHDPxiQSmEhm6rmmapuu6YSBEgh+5+M9ILKEjTPhiW1I49gbvPDJ2IApOfzS0W/PGBc3bXzV6UYwCVOqDAAA+r+fVptcNSj74nqINBqHoujmza8/9Y13S9TsPLXzAA+lSZuhUaLunffDCyAceKHru5U8nLt93DtVBn6WkIE6NI4QweQpQzfW84xgaxKS1vUXZEs/B2pyodvzhDDEcu08AAADIWSiIt0XJGB94FVPVndzjzVAFCEyl3yhRdxrk/PPva+VVJJcoCKIkS7Lbm9W0370v/rZ4z0UT/UBXLpVpGqaSAqwXe5yGfEInFZ6bz4OUodxpr05K/12uZfHwEBn9SQiIymMo8VYiUujEAA8HQV0h5HiXO6vgxi82nFj2dAEHWIT1J1zOghsYxoTD72aCOnPNFmuEULgVZ5snABOyQpj0vzvwgCDkRUngQcp03R4hg483hY5C+CRBKPqZG1gIPSsMMhh/KKU12BgTf8gF6Kbr/qhJ+NpeNdagF1yOQj5lkEFLM4ClsKAcEdqdYxftcTY0QMQ6c+xDQT+yBvtbOQn+ag0TNY43htYA/q4IoYtt7RK7iwkgI0zsYZF9GCFssf4K5yCkbwwysSIBWAzVNRoZdJdglzvZ4CtHpA42TAMEN2c4CM86REQ/IkOrAGjpJ4PnqJYVRdKButEglfjKl8ZCtziIrEoyoVsAQXWFQaYs37LHYizblmkmT9RJ4cjPXhb5W9Ohr5IcA98LE0UlDUiAx6JkavqlpU0+M6EoQQzHZzWA7DlfmIoRiSGr8OlmjsH1Khl9OiRSUE4mfjeblGmUwLwQOazvbsAxLTjoCd2yyDDH4C4mExoMiCozyKDXOSa5l1IC+B8T5LBxciDPsqpmV0cs0+ZCp5BfTuZYHhn+MYMI/l5Ma7CrnwKMqooUFj1gdrbB4Jhl6HwmdAgdq8ksVcmA66NkFqlpDYgz4xRgHPw0hz380zGTM7lD4pbh6HWcQ7gyQgR9JhDqUE1me0Z6A40OIRpweGUzyJxnaIg/JziEYRoR7TFAOKeCzNFsm9zKDG50lAqsH77eBdOPNlFyCA9gotFbSLn/IFOeb4/wEGYA+SudCoxjj6sw7RhbZGfAP0umph8p+Ucy1c3SHczbRAmOLylMO6jK6wxc75Gp7kjK9TKZmr5WvcC0td5UAF+w3KADJ3bcxKUZjJpAZ/ATmQvNSIn3kwkOsOrFOMt+d6cE+II1cTqwfqHIDQmNp6SqETX4Ot4RyBPInG9ISriF0FAmeUgtU1MDsMGCKB0YR8dnCWS+S9BxLo+ep0Wz7kVFg28279HdvF1T88b5eea5OeZZmaYZXre5KpsqilzbxaUhdQaZsjx7hYczybuaLgA830YpwWhLbxcDqvLpeVcy+xjh5KjO0cqzpuVHDpke2Lje/PfZs0yn/vJz7cmTfq797SNZsJ5R4quH+DbSBlwvRSnBOHyPixHPmpXnjEiQGCObfWCkYP/E18IlKOi63k8LCv8iM0F4L26y33O7RmIqi1CFfAkKAKHvOo0OjGJL23Is+NBsr5vMXMXsE8SSKqW+NYJMcKA9QjexB8BG84N0YKwd6OtKF8WqCfcLdnDiQ2Rq+tujpg+DAPA9HkB0YFQ2XEkTsxQT/tf6nULoZDYp1ztkAu3sEejJJCDcfEijA+PIK0p6mCo7AuknMucbklLGkvEXWvWxlo4A8C2JITpw4hslLfyW5BemnElD35PxtyLlXk/mZG46mixZB9VREUpwfIWcDj6RkqA62isxWUg/75IJdCVVUEVmZ2Y6mkAAQNfAzTodOLEkF9qlPIeep10msP0NtYcNN7/b/J6ix58wfeaNN03f/vJb8wkzZ5kuXF1sumbPvuQ7fyiEaYd/gkz4ZlKdAmSWu5mUsd0+AHC5v9bQgfXf8zibbPfSM0QwsR6ac4K5KMnmquo29fgyTDOzU8xUQBq+yyCSGElqUJTMeIlNh+0EgHdYmUEFNtZnQ3ts86Syz3OHQQC15AjVm2+KEzHe4cnwjxlE0Lt8PQQIPZcnEA1Y/06x0acJk83e0dh65PcAZ9g3RATPVcgoMzBR7SFQHwFAGR9ENODos7xt+PGaye9uEsYO2SG09JMpzSbTsJxM+OZ6ChBuv0AFKm9unwk0aBMkh5BRQiZ8B5mRUTL+Fja52Jl5wNV7NaIA6xvdLIu/JDoEZSIZfZlEQlpkkNnks+wTUh3YB4TcCVFEDkdu5RgWvZl3COItZHBFWxIFFZjs+5JlXxppD0D11aBBTl8vQWahUBZ0CDA/SCY+RoSWCePiZOL9OctmYJaNoQQAeGe5Tgxr1/PM0pZD4BS9OxERHL2et4rrGcJky5qDtPStTAsA1xw2iBlTZWaFbweOUZlskDEOe6BFrqU6oZUeRmWyg2tbQgwd8dK3m5Y/WzoHYYROBhvzs6yR30wgMuhBkVG555gBhBarECEcb8FRt9RNh7FGcg4wq9wgg2Of50ML1Dv9CBNF57Iho/L87AB8w+06IXyvSN0CNZVFnmcsi9wLHKTwTYIQjs7N5OoC3SNrMGFtvATqP0C4O0ZqrGyPOWZjvC9ZtjfTSXDXhUlhbVMfmYMpcK6Gv1Zj0tFBfH2IaxohVey2hfBP3eQ367R3BCcBlH0GKYwT3w/IEXmO4zhe8HR98RzCpI3tLmAbfztWQA5Ccl2IbWRUZSfgKOFVIXJY12Jr3x/es9utr66IJHSEiQdvhPY535ANUPB2aqK4ICH5o0RaQh9KzgK41yFyGCM9HgmFIjEdYQqNLRkgzfFtiqtCgdJN01/ol+3ieYug9+0gIrWWTX+2gQ4D3hmggW7/UEiCX8g2ySR7C8K1jWj16XVj3ho5uHfTTMkl8DzPQQg5nhekJncsCWPiE5UU3mIHel0CTtM9Q2eLNl4FJIUlTHtfMOlUhVPXIxcry9bP+fLZe4f07dq1a++h93+48mwEUzhKTCa8HWeFscsDHQfoFmAKqugE0te7nEnXi3WwbaIZxx4UGSYA5yneF2VJeBjPssJ0go76AHULycV/44ATVacY7ECTFMCyK6rTiDFHoe9HObWXLUCHc4Ej5QpWaazQFmVxTOuYThLX8zb5l9kX3o8sONWDcyaAu2K/xgZta2sOOARtuQRtss3sQ9+ndat+0AUca+sSjQWJo20A8XoTCt/MAZtsN0y291tVp/CzCnCusNt2zX6JzZ2A7cqz6wvxyS5gs7qj+Gc+4Gjb/6HZTVvcDtivxFdPMLZlA8ag+NcycLacb0wU2So6PgPSIC6uH1X2gawJvyFChwM497By3T562S0qB2hUVzHtLbPeQdsF/iYCtqCzd6nAAfPNf6w07GGcH9NegIBKN9PQU8C0b8hmxvFBEmCLtuVmCThjpd+Gah1RZ9RsuVYFtNqtU4CM8SQTUHxvJxHYAWnBT13WGNULGvDAKUPP9fOCcYMmlAgVD8qEIE0MrGGfHvypkAPUIT0eKvlmaEPOCiO6a6gMHDXs+s3+hIHoQIZ2esK1IqDZbldT0rvGPkjbcpcALCSEDO3CqveuliCoLexIDWn7n/cBpw0Fqefk0iCiIFax5jZV4ABLjrKhYK9ttBOPeDhAW7Rs6W0+keeAuXgcpRI+MkrlgRPn5YKOfx97IhTXkUVIi1Qtf6Z3E1WAgHJhqkZmq5vQVQFCT5jxzeaENESfHl41uJEIAU1Ijxx5u09jVYAgRbHUDGnhw2/2yBYhcOyCmt1x+KMfjFmy6fDZYDgcqR0OB84cWD/vx1eLBhZ6XRDYELaYWhONxxPJtRR1XY8f6CsQyv5DIxIYYgY4T/dR3636MxLXESVIj51d9mo/HwestkaPHp/6VL8siQN1FPacrSzbv27GZ6P7Z0kQOH9edmfm5Lft1Mu8fauCnAy3CIF9obvdLaOeS/7C518m/23Kb6NzBECYb/brnv37Dx9JWnKs9HTystLd/1CSAACg5M3r/9y4zYdKq0KxuKYbyBJk6IlYqPLY1jF3Fnp4QLBuRvzCkZm3FSgQWMjlFhTkZWcoPASX2CGEgEbozsjIK0jeuGWr5O1aZnCg7tCV27L7Dfe/8vPSzcerAzXBUCgcMQ2HgjUB/7F1c94beUOXxjIEhFNDWiy4/fk++Tz4jzkEAHK8nNm0S98rh48wHdSvV/N8N88BAAGNKSA9cWrOE1cIEPwnHkLIJYcQQkBvspojEwZIIg/BXyyFt+MoEVh+X7tcmQd/wRRe3PLDfR29AgR/zYT5GRIEl/1/2f+XYQsAVlA4IF4NAACwTACdASo+ApAAPpFAnUsloyYhplCKIMASCU3Z8TerfN3gqyfuy/nf7R+0vhiyL43+l/jf/a/2/7C3ebup8h+XH6n5V+nf7n+u+2z+7/2b2U/pj2AP1B/XT0APZJ/N/2A9gH6p/9/+/e8j/yv0g9xHoAf0r/Hf+H2sP997Fn7oewL/Kv83///Zx/3P7d//D5G/3E/dn4Hv2g////T9wD0AOon7J/5n1v7HnEAdEiV9cP7AZRPmGifxR9439d13eoB0UP3X9l39SSlxnOUibVsTatibVsTatibVsTatiZrt3bkioXXPH/zuVXpU5mn253PSRhsuH5/D0f+mDc984j82C+N3hKWyZ1K/nJGC7HJ+9jt9cYYm1bE2qwkR5KhchnevFG0PCAmw9ydWaxV5poCHOpkXfs4b7v/oSOXh68NzqpNy7m05WxNq2HMbeskSQJaORQx6QHo9koYM+4pLC07HfSk2U04tcJbH9T7/aKNGWTZ2y2RE8hMfjlbE2qrir+7b2j40EUSZTkwXIB/UFE4c+qVtim5247epBJeh64se7wJHhbLDCu0mRLjELg/2t6HiJ4JCOHl92Nhb++JhERTpVkeeophrynRf1TEynIfxBPt+cid/GZkHmRO9ZoRcfxSRN1Ck0RPjwoH3OrYmURW3dMB0lkBDPGg5tHH07vVUdirwq4MOzli64uqSa54buyHHnjaFexolxitQXSfFa/BdAyOdSeJLZdcdOWNkVOv6PGwo0lb+sfFTD6BT+pmSVqEh0/dV9t8l0JmcDf7Qvos4ZQW07OUNxnOUlZH3q2lNUNw2GBvJrgbYZLUpEyAAAP7vnoAAAAAAAVn711F60wKPH+jkKR7Bp68155FlOWE/UtyOsIC2gbJl5k33+syL8kf5X2PDbI9BEj3hN4or0VN+HgYfPwZvQsAYxoGN0+bgITcoEKfHmEIJxi0fXP/ry5ZS9/qcZI01V8de/CHIMNbWJeQMTLqFfK9DGSyjmC27krVFa8MOpPQUACaAnhMLg4cPx4wEawnMAb+26liX/kVomauTBxcSvAVZ4C53dEuut8dTNb3ckYFOMiAHmla9/RE1tF0tVfW0QPnFksqCaMFABAk4+NNwvUmjAjVG+yjH0IWfnGrEilbDrLeAlhnDx1NNEK8Qbbw+UCWfY2ciwhcpl/LWsbOatymcSzx76fng/uELQGYkloOlK90EvjIDjmCDcilCjE3PJ+s3zLKoaqJ+XVwJMgNYAkxMMMRHiz0OCG1xeZ2GlEaT1wgQ2j0nwchl9wcBMEfkXHdEimvJsuWvZXq3zBOcR4TImbiuzVBmRYEsIsi7bceAxzHDX5NrAM6QAAIPPVWZHd1r7umHGhBAAMfLMbHAwj5Chjfc/HfKmQU/+AACZ/atCHEsxzRXQJbbLA3/enBfN/k4CuyPB4HbDPjJJz3FacA5KfznFf7fS20leCi99FTsqwU5tLL+BQ9+pMTKFPAiJHCcm9p22lB4+zYKuqkikcSSgsuXSrpIb5GvTdHgxHRzYd3uTqHb2dA+iVW3bDoWUx+0kNSOIwe8+XO/t52oFP1aBq12gQH0ZWAGbETR0nX3fjG2Nlm56E5NLyLRY0ox+zFBesxp8M9oYhXST6TW1t3n9D0Z1lRmjZAFcivRrQSiiUVcGdE3IDzpRpmLCqRoeiyoc/fCjC8v//btMExAqGVErbgDCeeSypzOTvrdlX92CGLNGwnjVI5GMHKz5h3/jkh0/fZK40C9uztuWVPuVMA2neXlMlp999yuJF7/UQlYP1kcPe6Ejf1DYBXvi+02zvsm+3vPuwOMdcVrVrqgVI9pYxuOGZAIxVVzSMtHlzN6h4eh+pcccQqhH5wXhAAKvSmzqFiJ34e57jO/8zJl3uUcVfUCsmR2ChpBeGfDW/NI4s3AuccPJbhmdHqRnmnOWt4fupPFnlTOxjcSX4AvJS0lf6J7mc0mjc+NvraCSiltEcBgTceJ3azRlPR4KgP0KWgRBwLEsVS1uRqR9kzIQ7nkfTvdzdsiOyknn9WkIsZE+i13YGD/tsEW1WK/We4D0mpY34XYyb9YEKOooldSX/xQCiAQiBRaiqzxOarLw+HpPy9G9UsYtxYDpa+7dxSyEWjv3GMHIeuuBYZkOoN2viA3ZHy8xeYu6c5UW34rXzzAX8NeNFqVJQFVMhtPvZS7W+IuA+v/6eLnFwxrj+v+f/9UMgBOs4RGrJL80VbyGqiVoO3lyNqxjx5FzTQ3V4OnsKmRMasLvSNhBL7Eosf0R/WMcnACwKDu/4/X//2BTPG4FRD4RsICQMuv0hbNnDRoLvUunb7uslA6+/O0KgEye4acQbi2lAniaPjiTCxNz43uiSJZ/D+mZQC0ejMABNSsrGfMme6JhFQXtx43UVQTdEEycZwGo8wtPE1SkHYVAol0v8ax3lPQl4Oi8HwBIHDXVk6ZZxtcqBtjhzNGyqg54aj/oDI5gMtv1GkmbtYtA4GzW/YLe3wU4kOydK0Pv3Ooh0mrdBgQj4lZJDvZxp8sMSrS+Y81E0CK/7yA7rWSUAAD+I2NdOnXPfiKObBe2UxLl544CZ9tqhPhePdU6j+pOpNSzolfWaRCtM269WxNky0/e46wx60jz/QkzKsJ6qJiic9Yqgouv0ej3/1Ie54bJ+tqUmYLmdhQIsBY79PS0QqoN98Qy14QVoUco5XfpG54IyHjgeDVh7IPXPujIlXykE33YX+fK8tvLgvpnwvKADGSxN47tyxyv4pz72+LH+WhII8YTCVRQzn6cCSjFQ6TUqxY6HR0cbVEWcamDicJZms993OP8SalyARjWKEbmAwpy7AjWX1vIeHS8iLEXJcNPPFFLmSF9DN45RgPDw3Uyk2S5gTlEbSIAnx2eJCtFSaGPc2flPpyxic4G5gr01wAXb/0EI9mnwTpxG/kTD50nFoMXLLIxdMekCeOgJKBVV3mNU05QKMRvZrfFdgqaCCoLv3kwPAMSLNmX5SB82hrs3i2xnVpHUarwge0X6fp/gse4QPomXit8bcL6WyO9O8PS5awDl9Vs/Mlur5Qlr5d2sASdCPPbheN5etiD8yD1QTBTtArpFPy3KjkPfIS3AjLQqRwiMExxEMA3+AVOgscqrm8W3G6x75h8nH+8z0WzCLcIJXFvMWExWbrdplZV+Y4/j6k72bUc8KFkOKEomG+yahJcE4rIgNwRd2ZzdeNDE/z7YUoF/iNPD+nJlk+qZ1FL5Z1jM3zZ/WObXmr9igJ8raGkXyD5gIkwJ9NDsbb/hrSlyY+zurEBXgP465SW+u74kQZSaU3+XBz4a1BS8omkRvRof+F7Wplc4jgqgOSyFXFwo225XuZ/SrnyBLUCviugTgmga7RTkO8F0x6JOTShbTlY9YPKyZkqZ2LYWTVDX/+oMvXoKYe753qFNWPXokdDkCG7c8HpgK5kGHdO6wZCP4as//Egjeylaht2wogNTcmOFX+mI2Y1uuKxgCxsnc3bBBwyj98XncvvLhjacKsbonksiLt+ewAYUhiUAPTwkV07B4Lg1ocDiy7SGbCL7W9FLrs5IgM6fhJ+wBp4XO6iOqC3n3xBF3ypAHD6NUc8Umgj3NIHFw5d9Sy2XB+YDDvWuZVyJpzEwYXw3PyQBMayKzKknz1fUzg1KFEGfJ+zucCL7NCR2gYWnd9SuR/TmtKzFV680sADRq7Krk/O1IYdg/jl3IMHHxkzDIPIcm18+oMYSUqDF7YG+97Dsizpea1kOsXLCpJ7eJnNofCbDsUQVHLp2yMP+ChCejhjNKriLGpaKMPV+U3r1IQN37gqBTXDwC210EIReMmhQ1jRd35lVnVxbipsW025pG0A0WI+YVo6fbfbX3L4UYButn+4FdIVeZJxNZavT/DyuWsB0sIr54zfvpQ1ZDFhGZAAApuM1oCZXmM3aQjJdWP8VpPqG/7tWmbkz3pB0NNWf8OkRtDdBb9Dvi0A/32RWu3A15uQKNQpLpcQ+pcyI5VW5PqELy5i69VQEoYUeSuW2Be9rf4RMPvGyuMWkiW/fA/STM3OxATeQHFOrwYMRa1xhebD/+AtF3P8UavXkgKI4aUrKIDBbHbUU5SALx54jiLhMdmQvmeAclDvTeqmDOaRkUlGYK0iNk9pMhUDO3FHwPrICPvB4gM8HHXro7HOq8hP3h5akQNXV1gdlcx+SkV/2+uIGw5pyuwoQuK71ZHiABbLecWScPVq9CT354l+EJbZuMozQRu+I4AiwqGhp4jjE0ICQuuAELberVKNMOxhgAiB+5+99T+p3SXwGxRasd7lG6pIytYJc2/fsxKesW5cqgPK2igKvdJeKgWCaLhBtmL3cdWcTbDDkqjxGIRdP4vrVAeXgvd/XWaBeHpHERfXEpNV9VUHjWia7/KCwR1F5Y0Vz/rCzNFmXTPX3h81W75p4T4AGE7WzQ6ju9mrlEQ7TgKjuyzPKhN29qlG1cYeZSKGhW1XEJ+SubnPS+0Mvuir6+IVG1an+/griWRUQQQVAfCSvhYZ9Wl/xZAf5C//uX+f//+bl39WXlSvQGQAAAAAAAAAcOxRwAAAAAAAA==" alt="OTIS" style="height:36px;object-fit:contain;margin-bottom:.8rem;display:block"><p style="font-size:.82rem;color:var(--gray);line-height:1.6;max-width:220px">Professional cleaning for businesses and homes across Montreal since 2020.</p><div style="margin-top:.9rem"><a href="tel:+14389359725" style="font-size:.8rem;color:var(--orange);text-decoration:none;font-weight:500;display:block;margin-bottom:4px">📞 +1 (438) 935-9725</a><a href="mailto:info@otiscc.ca" style="font-size:.8rem;color:var(--orange);text-decoration:none;font-weight:500">✉️ info@otiscc.ca</a></div></div>
 <div><div class="footer-col-title">Company</div><button class="flink" onclick="nav('home')">Home</button><button class="flink" onclick="nav('about')">Who We Are</button><button class="flink" onclick="nav('gallery')">Gallery</button><button class="flink" onclick="nav('pricing')">Pricing</button><button class="flink" onclick="nav('contact')">Contact Us</button><button class="flink" onclick="nav('quote')" style="color:var(--orange)">Get a Free Quote →</button></div>
-<div><div class="footer-col-title">Residential</div><button class="flink" onclick="nav('srv-residential')">All Residential</button><button class="flink" onclick="nav('srv-deep')">Deep Clean</button><button class="flink" onclick="nav('srv-moveinout')">Move In / Move Out</button><button class="flink" onclick="nav('srv-postconstruction')">Post-Construction</button></div>
-<div><div class="footer-col-title">Commercial</div><button class="flink" onclick="nav('srv-commercial')">All Commercial</button><button class="flink" onclick="nav('srv-commercialclean')">Commercial Cleaning</button><button class="flink" onclick="nav('srv-janitorial')">Janitorial Services</button><button class="flink" onclick="nav('srv-events')">Events Cleaning</button><button class="flink" onclick="nav('srv-carpet')">Carpet Services</button><button class="flink" onclick="nav('srv-floor')">Floor Waxing</button></div>
+<div><div class="footer-col-title">Residential</div>
+<a class="flink" href="/services/residential-cleaning">All Residential</a>
+<a class="flink" href="/services/deep-cleaning">Deep Clean</a>
+<a class="flink" href="/services/turnover-cleaning">Move In / Move Out</a>
+<a class="flink" href="/services/post-renovation">Post-Construction</a>
+</div>
+<div><div class="footer-col-title">Commercial</div>
+<a class="flink" href="/services/commercial-cleaning">Commercial Cleaning</a>
+<a class="flink" href="/services/office-cleaning">Office Cleaning</a>
+<a class="flink" href="/sectors/clinic-cleaning">Medical Clinics</a>
+<a class="flink" href="/services/floor-maintenance">Floor Maintenance</a>
+<a class="flink" href="/sectors/retail-cleaning">Retail & Stores</a>
+<a class="flink" href="/sectors/condo-cleaning">Condo Common Areas</a>
+</div>
 <div><div class="footer-col-title">Certifications</div><p style="font-size:.8rem;color:var(--gray2);line-height:1.8">ISSA Canada Member<br>Fully Insured &amp; Bonded<br>UL Eco-Certified<br>Conforme CNESST<br>Proudly Canadian 🍁</p><div style="margin-top:.8rem;font-size:.78rem;color:var(--gray)">📍 2447 Ave Madison,<br>Montreal H4B2T5, QC</div></div>
 <div><div class="footer-col-title">Internal</div><a href="/internal/blueprint" class="flink">Executive Blueprint</a><a href="/internal/command-center" class="flink">Command Center</a></div>
 </div>
