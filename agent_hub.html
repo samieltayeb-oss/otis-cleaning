@@ -26,8 +26,10 @@
     body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); display: flex; height: 100vh; overflow: hidden; }
     
     /* Left Sidebar: Modules */
-    .sidebar { width: 260px; background: var(--surface); border-right: 1px solid var(--border); display: flex; flex-direction: column; z-index: 20; }
-    .logo-area { padding: 1.5rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 15px; }
+    .sidebar { width: 270px; background: var(--surface); border-right: 1px solid var(--border); display: flex; flex-direction: column; z-index: 20; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--border) var(--surface); }
+    .sidebar::-webkit-scrollbar { width: 5px; }
+    .sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    .logo-area { padding: 1.5rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 15px; flex-shrink: 0; }
     .logo-area img { height: 35px; filter: brightness(0) invert(1); }
     .logo-area div { color: var(--brand-orange); font-size: 0.65rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; }
     
@@ -187,9 +189,44 @@
     </div>
   </div>
 
-  <div class="nav-group" style="border-bottom:none; margin-top:auto;">
+  <div class="nav-group">
+    <div class="nav-title">Autonomous Engines (8 Phases)</div>
+    <div class="nav-item" onclick="window.location.href='lead_engine.html'">
+      <div class="nav-icon">🎯</div> Lead Radar (Phase 1)
+    </div>
+    <div class="nav-item" onclick="window.location.href='bidding_engine.html'">
+      <div class="nav-icon">📐</div> Bidding Engine (Phase 4)
+    </div>
+    <div class="nav-item" onclick="window.location.href='contract_generator.html'">
+      <div class="nav-icon">📝</div> Contract Generator (Phase 4)
+    </div>
+    <div class="nav-item" onclick="window.location.href='field_app.html'">
+      <div class="nav-icon">📱</div> Cleaner Mobile App (Phase 5)
+    </div>
+    <div class="nav-item" onclick="window.location.href='audit/mobile/index.html'">
+      <div class="nav-icon">🛡️</div> QA Inspection (Phase 6)
+    </div>
+    <div class="nav-item" onclick="window.location.href='invoice_generator.html'">
+      <div class="nav-icon">💳</div> Invoice Generator (Phase 6)
+    </div>
+    <div class="nav-item" onclick="window.location.href='restock_engine.html'">
+      <div class="nav-icon">📦</div> Restock Engine (Phase 7)
+    </div>
+    <div class="nav-item" onclick="window.location.href='seo_engine.html'">
+      <div class="nav-icon">📡</div> SEO & Citations (Phase 7)
+    </div>
+    <div class="nav-item" onclick="window.location.href='social_center.html'">
+      <div class="nav-icon">🎨</div> Campaign Ad Center
+    </div>
+  </div>
+
+  <div class="nav-group" style="border-bottom:none; margin-top:auto; padding-bottom:1.5rem;">
+    <div class="nav-title">Portals & System</div>
     <div class="nav-item" onclick="window.location.href='index.html'">
-      <div class="nav-icon">🌍</div> Public Website
+      <div class="nav-icon">📋</div> Master Blueprint
+    </div>
+    <div class="nav-item" onclick="window.open('otis-final-v2_11.html', '_blank')">
+      <div class="nav-icon">🌐</div> Customer Website ↗
     </div>
     <div class="nav-item" onclick="window.location.href='execution.html'">
       <div class="nav-icon">⚙️</div> Manual Generators
