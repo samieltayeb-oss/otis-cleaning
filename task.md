@@ -1,0 +1,3 @@
+- `[x]` Modify `api/leads.js` to include `nodemailer`
+- `[x]` Deploy to Vercel
+- `[x]` Provide Vercel environment variable instructions to the user

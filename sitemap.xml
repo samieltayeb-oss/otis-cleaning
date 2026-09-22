@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- EN Homepage -->
+  <url>
+    <loc>https://otis-cleaning.vercel.app/</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://otis-cleaning.vercel.app/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://otis-cleaning.vercel.app/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://otis-cleaning.vercel.app/"/>
+  </url>
+  
+  <!-- FR Homepage -->
+  <url>
+    <loc>https://otis-cleaning.vercel.app/fr/</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://otis-cleaning.vercel.app/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://otis-cleaning.vercel.app/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://otis-cleaning.vercel.app/"/>
+  </url>
+
+  <!-- Service Pages (EN) -->
+  <url><loc>https://otis-cleaning.vercel.app/services/commercial-cleaning</loc><priority>0.8</priority></url>
+  <url><loc>https://otis-cleaning.vercel.app/services/office-cleaning</loc><priority>0.8</priority></url>
+  <url><loc>https://otis-cleaning.vercel.app/services/turnover-cleaning</loc><priority>0.7</priority></url>
+  <url><loc>https://otis-cleaning.vercel.app/services/post-renovation</loc><priority>0.7</priority></url>
+  <url><loc>https://otis-cleaning.vercel.app/services/floor-maintenance</loc><priority>0.7</priority></url>
+
+  <!-- Sector Pages (EN) -->
+  <url><loc>https://otis-cleaning.vercel.app/sectors/clinic-cleaning</loc><priority>0.7</priority></url>
+  <url><loc>https://otis-cleaning.vercel.app/sectors/retail-cleaning</loc><priority>0.7</priority></url>
+  <url><loc>https://otis-cleaning.vercel.app/sectors/condo-cleaning</loc><priority>0.7</priority></url>
+  <url><loc>https://otis-cleaning.vercel.app/sectors/school-cleaning</loc><priority>0.7</priority></url>
+  <url><loc>https://otis-cleaning.vercel.app/sectors/event-cleaning</loc><priority>0.7</priority></url>
+
+  <!-- Service Pages (FR) -->
+  <url><loc>https://otis-cleaning.vercel.app/fr/services/entretien-commercial</loc><priority>0.8</priority></url>
+  <url><loc>https://otis-cleaning.vercel.app/fr/services/entretien-bureaux</loc><priority>0.8</priority></url>
+  <url><loc>https://otis-cleaning.vercel.app/fr/services/nettoyage-fin-de-bail</loc><priority>0.7</priority></url>
+  <url><loc>https://otis-cleaning.vercel.app/fr/services/nettoyage-apres-renovation</loc><priority>0.7</priority></url>
+  <url><loc>https://otis-cleaning.vercel.app/fr/services/entretien-planchers</loc><priority>0.7</priority></url>
+
+  <!-- Sector Pages (FR) -->
+  <url><loc>https://otis-cleaning.vercel.app/fr/secteurs/nettoyage-cliniques</loc><priority>0.7</priority></url>
+  <url><loc>https://otis-cleaning.vercel.app/fr/secteurs/nettoyage-commerces</loc><priority>0.7</priority></url>
+  <url><loc>https://otis-cleaning.vercel.app/fr/secteurs/nettoyage-espaces-communs</loc><priority>0.7</priority></url>
+  <url><loc>https://otis-cleaning.vercel.app/fr/secteurs/nettoyage-ecoles</loc><priority>0.7</priority></url>
+  <url><loc>https://otis-cleaning.vercel.app/fr/secteurs/nettoyage-evenementiel</loc><priority>0.7</priority></url>
+
+</urlset>
