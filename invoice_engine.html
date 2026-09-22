@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -87,7 +87,18 @@
 <div class="sidebar">
   <div style="display:flex; justify-content:space-between; align-items:center;">
     <h2>Invoice Engine</h2>
-    <a href="execution.html" style="color:var(--pdf-orange); text-decoration:none; font-size:0.8rem; font-weight:700;">◀ BACK</a>
+    <a href="agent_hub.html" style="color:var(--pdf-orange); text-decoration:none; font-size:0.8rem; font-weight:700;">◀ BACK</a>
+  </div>
+  
+  <div class="form-group" style="background: rgba(247, 148, 29, 0.05); padding: 1rem; border: 1px solid rgba(247, 148, 29, 0.3); border-radius: 6px; margin-bottom: 0.5rem;">
+    <label style="color: var(--pdf-orange);">Load Ledger Invoice (Database)</label>
+    <select id="inp-saved" class="form-control" onchange="loadSavedInvoice()" style="background: #051324;">
+      <option value="">-- Create New Blank Invoice --</option>
+      <option value="1">INV-2026-1042 - Placements Sergakis (Paid)</option>
+      <option value="2">INV-2026-1043 - Epic Quebec (Paid)</option>
+      <option value="3">INV-2026-1044 - Clinique Dentaire NDG (Pending)</option>
+      <option value="4">INV-2026-1045 - Centre Dentaire Lakeshore (Draft)</option>
+    </select>
   </div>
   
   <div class="form-group">
@@ -206,6 +217,32 @@
 </div>
 
 <script>
+  function loadSavedInvoice() {
+    const val = document.getElementById('inp-saved').value;
+    const invMap = {
+      '1': { inv: 'INV-2026-1042', client: 'Placements Sergakis', addr: '123 Main St, Montreal, QC', qty: 1, price: 1379.70, desc: 'Commercial Cleaning', sub: 'Sept 2026' },
+      '2': { inv: 'INV-2026-1043', client: 'Epic Quebec', addr: '456 Business Blvd, Laval, QC', qty: 1, price: 2471.93, desc: 'Enterprise Cleaning', sub: 'Sept 2026' },
+      '3': { inv: 'INV-2026-1044', client: 'Clinique Dentaire NDG', addr: '5500 Sherbrooke St W, Montreal', qty: 1, price: 1250.00, desc: 'Medical Grade Sanitization', sub: 'Oct 2026' },
+      '4': { inv: 'INV-2026-1045', client: 'Centre Dentaire Lakeshore', addr: '789 Lakeshore Rd, Pointe-Claire', qty: 1, price: 1800.00, desc: 'Medical Grade Sanitization', sub: 'Oct 2026' }
+    };
+    
+    if (invMap[val]) {
+      const data = invMap[val];
+      document.getElementById('inp-inv').value = data.inv;
+      document.getElementById('inp-client').value = data.client;
+      document.getElementById('inp-addr').value = data.addr;
+      
+      const entries = document.querySelectorAll('.item-entry');
+      if (entries.length > 0) {
+        entries[0].querySelector('.inp-desc').value = data.desc;
+        entries[0].querySelector('.inp-sub').value = data.sub;
+        entries[0].querySelector('.inp-qty').value = data.qty;
+        entries[0].querySelector('.inp-price').value = data.price;
+      }
+      generate();
+    }
+  }
+
   function addLineItem() {
     const cont = document.getElementById('line-items-container');
     const div = document.createElement('div');
