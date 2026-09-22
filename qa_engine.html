@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OTIS QA Inspection Engine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Syne:wght@700;800&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0B1B2B; --surface: #102438; --border: #1E3D5C; --text: #C2D3E5; --white: #FFF;
+      --brand-navy: #0B1B2B; --brand-orange: #F7941D; --brand-gray: #475569; --light-gray: #f8fafc;
+      --green: #10b981; --red: #ef4444; --blue: #38bdf8;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); display: flex; height: 100vh; overflow: hidden; }
+    
+    .sidebar { width: 420px; background: var(--surface); border-right: 1px solid var(--border); padding: 2rem; display: flex; flex-direction: column; gap: 1.25rem; overflow-y: auto; }
+    .sidebar h2 { color: var(--white); font-size: 1.2rem; margin-bottom: 0.5rem; font-family: 'Syne', sans-serif; }
+    .sidebar p { font-size: 0.85rem; color: #8FA6BE; margin-bottom: 1rem; line-height: 1.5; }
+    
+    .form-group label { display: block; font-size: 0.75rem; font-weight: 700; color: #8FA6BE; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 1px; }
+    .form-control { width: 100%; padding: 0.85rem; border-radius: 4px; border: 1px solid var(--border); background: rgba(0,0,0,0.2); color: var(--white); font-family: inherit; font-size: 0.95rem; transition: 0.2s; }
+    
+    .btn { padding: 1rem; border-radius: 4px; font-weight: 700; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; text-align: center; border: none; font-size: 0.85rem; width: 100%; transition: 0.2s; }
+    .btn-primary { background: var(--brand-orange); color: #FFF; margin-top: 1rem; }
+    .btn-print { background: transparent; color: #38bdf8; border: 1px solid #38bdf8; margin-top: 0.5rem; }
+    
+    .preview-pane { flex: 1; background: #cbd5e1; padding: 3rem; overflow-y: auto; display: flex; justify-content: center; }
+    
+    .doc { background: #FFF; width: 100%; max-width: 800px; padding: 4rem; color: #1e293b; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); }
+    .doc-header { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2px solid #e2e8f0; padding-bottom: 1.5rem; margin-bottom: 2rem; }
+    .doc-logo { height: 40px; }
+    .doc-title { text-align: right; }
+    .doc-title h1 { font-family: 'Syne', sans-serif; font-size: 2rem; color: #0f172a; margin-bottom: 0.25rem; }
+    .doc-title p { color: #64748b; font-size: 0.9rem; font-weight: 500; }
+    
+    .score-banner { display: flex; justify-content: space-between; background: #f0fdf4; border: 1px solid #bbf7d0; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem; }
+    .score-banner.fail { background: #fef2f2; border-color: #fecaca; }
+    .score-text { font-weight: 700; font-size: 0.9rem; color: #166534; text-transform: uppercase; letter-spacing: 1px; }
+    .fail .score-text { color: #991b1b; }
+    .score-val { font-family: 'Syne', sans-serif; font-size: 2.5rem; font-weight: 800; color: #15803d; }
+    .fail .score-val { color: #b91c1c; }
+    
+    .section-title { font-size: 1.1rem; font-weight: 700; color: #0f172a; margin-bottom: 1rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.5rem; margin-top: 2rem; }
+    
+    .check-item { display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px dashed #e2e8f0; }
+    .check-left { display: flex; align-items: center; gap: 10px; font-size: 0.95rem; font-weight: 500; }
+    .status-pass { color: #16a34a; font-weight: 700; }
+    .status-fail { color: #dc2626; font-weight: 700; }
+    
+    .back-btn { position: absolute; top: 1rem; left: 1rem; color: #8FA6BE; text-decoration: none; font-size: 0.85rem; font-weight: 700; }
+    .back-btn:hover { color: #FFF; }
+  </style>
+</head>
+<body>
+
+  <a href="agent_hub.html" class="back-btn">&larr; Back to Hub</a>
+
+  <div class="sidebar">
+    <div style="margin-top: 1.5rem;">
+      <h2>QA Inspection Center</h2>
+      <p>Review 100-point field operative inspections directly from the mobile app.</p>
+    </div>
+
+    <div class="form-group">
+      <label>Select Recent Job</label>
+      <select id="inp-job" class="form-control" onchange="loadReport()">
+        <option value="ndg">Clinique Dentaire NDG - Jan 15</option>
+        <option value="startup">Tech Startup HQ - Jan 14</option>
+        <option value="law">Smith & Co Law - Jan 14</option>
+      </select>
+    </div>
+    
+    <div class="form-group">
+      <label>Inspector</label>
+      <input type="text" class="form-control" value="Marco Diaz" disabled>
+    </div>
+
+    <button class="btn btn-primary" onclick="loadReport()">Refresh Data</button>
+    <button class="btn btn-print" onclick="window.print()">Export to PDF</button>
+  </div>
+
+  <div class="preview-pane">
+    <div class="doc" id="doc-content">
+      <div class="doc-header">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/OTIS_Logo.svg" alt="OTIS" class="doc-logo" style="filter: grayscale(100%) contrast(200%); opacity: 0.8;">
+        <div class="doc-title">
+          <h1>QA Report</h1>
+          <p id="out-date">January 15, 2026 &bull; 08:30 AM</p>
+        </div>
+      </div>
+      
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem; font-size: 0.95rem; line-height: 1.6;">
+        <div>
+          <div style="color:#64748b; font-size:0.75rem; font-weight:700; text-transform:uppercase;">Client</div>
+          <div style="font-weight:700; color:#0f172a;" id="out-client">Clinique Dentaire NDG</div>
+          <div>5500 Sherbrooke St W</div>
+        </div>
+        <div>
+          <div style="color:#64748b; font-size:0.75rem; font-weight:700; text-transform:uppercase;">Crew</div>
+          <div style="font-weight:700; color:#0f172a;">Marco Diaz (Lead)</div>
+          <div>Duration: 2h 15m</div>
+        </div>
+      </div>
+
+      <div class="score-banner" id="score-banner">
+        <div>
+          <div class="score-text" id="score-text">Inspection Passed</div>
+          <div style="color: #475569; font-size: 0.85rem; margin-top: 4px;">Meets the 90+ quality threshold.</div>
+        </div>
+        <div class="score-val" id="score-val">96/100</div>
+      </div>
+
+      <div class="section-title">Reception & Lobby</div>
+      <div class="check-item">
+        <div class="check-left">☑ Floors swept and mopped without streaks</div>
+        <div class="status-pass">PASS</div>
+      </div>
+      <div class="check-item">
+        <div class="check-left">☑ Desks and counters dusted and sanitized</div>
+        <div class="status-pass">PASS</div>
+      </div>
+      <div class="check-item">
+        <div class="check-left">☑ Trash bins emptied and relined</div>
+        <div class="status-pass">PASS</div>
+      </div>
+
+      <div class="section-title">Clinical Rooms</div>
+      <div class="check-item">
+        <div class="check-left">☑ Medical-grade sanitation on high-touch surfaces</div>
+        <div class="status-pass">PASS</div>
+      </div>
+      <div class="check-item">
+        <div class="check-left">☑ Sink and fixtures polished</div>
+        <div class="status-pass">PASS</div>
+      </div>
+      <div class="check-item">
+        <div class="check-left">☒ Restocking of paper towels and soap</div>
+        <div class="status-fail" id="fail-item">FAIL (-4)</div>
+      </div>
+      
+      <div style="margin-top: 3rem; border-top: 1px solid #e2e8f0; padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <div style="font-family: 'Syne', sans-serif; font-size: 1.5rem; color: #0f172a; opacity: 0.7;">Marco Diaz</div>
+          <div style="font-size: 0.75rem; color: #64748b; font-weight: 700; text-transform: uppercase;">Digital Signature</div>
+        </div>
+        <div style="font-size: 0.85rem; color: #64748b;">
+          Geolocation: 45.4712° N, 73.6146° W<br>
+          Verified via OTIS Field App
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    function loadReport() {
+      const job = document.getElementById('inp-job').value;
+      const banner = document.getElementById('score-banner');
+      const sText = document.getElementById('score-text');
+      const sVal = document.getElementById('score-val');
+      const client = document.getElementById('out-client');
+      const failItem = document.getElementById('fail-item');
+      
+      if(job === 'ndg') {
+        client.innerText = "Clinique Dentaire NDG";
+        banner.className = "score-banner";
+        sText.innerText = "Inspection Passed";
+        sVal.innerText = "96/100";
+        failItem.innerText = "FAIL (-4)";
+        failItem.className = "status-fail";
+      } else if(job === 'startup') {
+        client.innerText = "Tech Startup HQ";
+        banner.className = "score-banner";
+        sText.innerText = "Inspection Passed";
+        sVal.innerText = "100/100";
+        failItem.innerText = "PASS";
+        failItem.className = "status-pass";
+      } else {
+        client.innerText = "Smith & Co Law";
+        banner.className = "score-banner fail";
+        sText.innerText = "Inspection Failed";
+        sVal.innerText = "82/100";
+        failItem.innerText = "FAIL (-18)";
+        failItem.className = "status-fail";
+      }
+    }
+  </script>
+</body>
+</html>
