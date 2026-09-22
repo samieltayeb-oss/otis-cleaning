@@ -26,3 +26,6 @@ Thumbs.db
 # Archives & Duplicates
 *.zip
 OTIS_Full_Project/
+
+.vercel
+.env*

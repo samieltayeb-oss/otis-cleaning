@@ -1,4 +1,4 @@
-# DRAFT — LEGAL REVIEW REQUIRED BEFORE CUSTOMER USE
+﻿# DRAFT — LEGAL REVIEW REQUIRED BEFORE CUSTOMER USE
 
 ***
 
@@ -81,7 +81,7 @@ NOW, THEREFORE, IN CONSIDERATION OF THE MUTUAL COVENANTS CONTAINED HEREIN, THE P
 
 ### 7. QUALITY ASSURANCE & REMEDIATION PROTOCOL
 7.1. **Performance Standard:** OTIS shall perform all services in a professional, workmanlike manner, in accordance with industry standards established by ISSA Canada and in compliance with Quebec workplace safety standards.  
-7.2. **Deficiency Reporting:** If the Client determines that any portion of the Scope of Work was not performed or was performed deficiently, the Client shall provide written notice to OTIS via email at `operations@otiscc.ca` within twenty-four (24) hours following the clean.  
+7.2. **Deficiency Reporting:** If the Client determines that any portion of the Scope of Work was not performed or was performed deficiently, the Client shall provide written notice to OTIS via email at `info@otiscc.ca` within twenty-four (24) hours following the clean.  
 7.3. **The 24-Hour Cure Obligation:** Upon receipt of written deficiency notice, OTIS shall acknowledge receipt within two (2) hours during business hours, and shall dispatch supervisory or cleaning staff to **re-clean and remediate the deficient area within twenty-four (24) hours at zero additional cost to the Client**.  
 7.4. **Initial 30-Day Performance Review:** During the first thirty (30) days following the Start Date, if the Contractor materially fails to meet the agreed Scope of Work and fails to remediate repeated written deficiencies within the 24-hour cure window, the Client may cancel this Agreement at Day 30 without any Early Termination Fee by providing written notice.  
 

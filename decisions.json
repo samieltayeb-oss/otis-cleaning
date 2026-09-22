@@ -1,4 +1,4 @@
-[
+﻿[
   {
     "id": "DOSS-01",
     "leadId": "LEAD-10",
@@ -17,7 +17,7 @@
     "statusLabel": "⏳ Awaiting Zan Review",
     "proposedOffer": "Pre-Winter Tennant Machine Scrub & Operatory Disinfection Trial",
     "proposedPricing": "$1,480 Paid Trial → $2,100 / mo Recurring",
-    "dispatchChannel": "quotes@otiscc.ca + Direct Phone Call from Max",
+    "dispatchChannel": "info@otiscc.ca + Direct Phone Call from Max",
     "agentBreakdown": [
       {
         "agent": "Hunter",
@@ -40,7 +40,7 @@
         "note": "Drafted 2-page bilingual PDF trial scope: Friday evening auto-scrubbing test with zero clinical downtime. Door 2 backup clause included."
       }
     ],
-    "aiRecommendation": "RECOMMENDED: Approve dispatch of bilingual trial proposal via quotes@otiscc.ca, with automated SMS task to Max for 2:00 PM phone follow-up.",
+    "aiRecommendation": "RECOMMENDED: Approve dispatch of bilingual trial proposal via info@otiscc.ca, with automated SMS task to Max for 2:00 PM phone follow-up.",
     "draftPreview": "Bonjour Catalina,\n\nFélicitations pour vos nouveaux locaux au 1 Avenue Holiday. Avec l'hiver montréalais qui approche, le sel et la gadoue vont rapidement ternir les planchers de votre clinique.\n\nOTIS propose un essai pré-hivernal de récurage mécanique avec notre autorécureuse Tennant spécialisée pour cliniques médicales sans interrompre vos patients.\n\nDisponibles ce vendredi dès 18h00. Consultez notre proposition ci-jointe.",
     "executiveDecision": null,
     "decisionTimestamp": null,
@@ -64,7 +64,7 @@
     "statusLabel": "⏳ Awaiting Zan Review",
     "proposedOffer": "Door 2 On-Call Backup Agreement & Common Corridors Scrubbing Trial",
     "proposedPricing": "$1,950 Entrance & Lobby Scrub → $4,200 / mo Common Area MRR",
-    "dispatchChannel": "Direct Email to Sylvie Filion (quotes@otiscc.ca)",
+    "dispatchChannel": "Direct Email to Sylvie Filion (info@otiscc.ca)",
     "agentBreakdown": [
       {
         "agent": "Hunter",

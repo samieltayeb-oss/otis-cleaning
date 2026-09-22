@@ -1,4 +1,4 @@
-# DRAFT — LEGAL REVIEW REQUIRED BEFORE CUSTOMER USE
+﻿# DRAFT — LEGAL REVIEW REQUIRED BEFORE CUSTOMER USE
 
 ***
 
@@ -78,7 +78,7 @@ In consideration of the 10-Month term commitment, OTIS grants the Client the fol
 
 ### 8. QUALITY ASSURANCE & SERVICE REMEDIATION PROTOCOL
 8.1. **The Performance Guarantee:** OTIS warrants that all services shall meet or exceed professional ISSA Canada commercial standards.  
-8.2. **Formal Deficiency Notice:** If the Client observes any service deficiency, notice shall be transmitted in writing within twenty-four (24) hours to `operations@otiscc.ca`.  
+8.2. **Formal Deficiency Notice:** If the Client observes any service deficiency, notice shall be transmitted in writing within twenty-four (24) hours to `info@otiscc.ca`.  
 8.3. **The 24-Hour Cure Obligation:** OTIS shall acknowledge receipt within two (2) hours, and shall dispatch staff to **re-clean and remediate the reported area within twenty-four (24) hours at zero expense to the Client**.  
 8.4. **Chronic Uncured Default Protection:** If OTIS incurs more than three (3) verified, uncured material service deficiencies within any sixty (60) day period, the Client shall have the right to **terminate this Agreement immediately with zero early termination fee**, pursuant to Section 13.2.  
 

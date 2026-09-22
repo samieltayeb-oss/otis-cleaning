@@ -1,4 +1,4 @@
-# 🏢 OTIS Commercial Cleaning — Autonomous ERP & B2B Platform
+﻿# 🏢 OTIS Commercial Cleaning — Autonomous ERP & B2B Platform
 
 [![Vercel Deployment](https://img.shields.io/badge/Vercel-Deployed-black?style=flat&logo=vercel)](https://otis-cleaning.vercel.app)
 [![Node.js Version](https://img.shields.io/badge/Node.js-18%2B-green?style=flat&logo=node.js)](https://nodejs.org/)
@@ -119,7 +119,7 @@ FIREBASE_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFA
 # 2. Odoo ERP XML-RPC Integration
 ODOO_URL="https://otis.odoo.com"
 ODOO_DB="otis"
-ODOO_USER="zan@otiscc.ca"
+ODOO_USER="info@otiscc.ca"
 ODOO_PASSWORD="your-odoo-api-key-or-password"
 
 # 3. Google Gemini AI API

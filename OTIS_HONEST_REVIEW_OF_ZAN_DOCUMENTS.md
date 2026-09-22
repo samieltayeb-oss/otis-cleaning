@@ -1,4 +1,4 @@
-# Honest Executive Review of Zan's Strategy Documents (2026)
+﻿# Honest Executive Review of Zan's Strategy Documents (2026)
 **Target:** CEO & Leadership, Entretien Ménager OTIS Inc.  
 **Evaluator:** Antigravity Strategic Recon & Intelligence  
 **Documents Analyzed:**
@@ -57,7 +57,7 @@
 
 ### BEFORE · Zan's Original Proposal
 * **CASL Reliance:** Relied on manual research to find email addresses conspicuously published on public websites under CASL Section 10(9).
-* **Domain Strategy:** Suggested sending cold emails from `quotes@otiscc.ca` directly.
+* **Domain Strategy:** Suggested sending cold emails from `info@otiscc.ca` directly.
 * **Data Handling:** Commendably rejected purchased third-party scraper lists (Apollo, ZoomInfo).
 
 ### THE SEVERE LEGAL & TECHNICAL FLAW

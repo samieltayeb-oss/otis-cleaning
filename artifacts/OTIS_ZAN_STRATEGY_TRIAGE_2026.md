@@ -1,4 +1,4 @@
-# OTIS Commercial Cleaning — Strategy Evaluation & Validation Matrix
+﻿# OTIS Commercial Cleaning — Strategy Evaluation & Validation Matrix
 **Subject:** Forensic Triage & Strategic Integration of Zan's Strategy Documents (Golden Thread Solutions)  
 **Date:** September 19, 2026  
 **Evaluator:** Antigravity Intelligence & Strategic Recon Engine  
@@ -98,7 +98,7 @@ Comparing our **Empirical Market Recon** vs **Zan's Outbound Master Plan**:
 | **Pricing Transparency** | Website must show sq ft ranges ($0.15–$0.30/sq ft) for B2B authority. | Never quote cold before walkthrough; 6¢ floor anchors too low. | **Unified Compromise:** Keep bracketed ranges on website to anchor high; never quote specific bids cold over phone without walkthrough. |
 | **Quebec Bill 96 & Language** | 65–70% of Montreal cleaning searches are in French; Bill 96 fines up to $30k/day. | "English only for now. French comes later." | **Critical Fix Needed:** For West Island anglophone private offices, English is fine. For the **6 CPEs, public schools, and French property managers**, outreach MUST be native Quebec French. |
 | **Decree Article 14** | Property managers jointly liable for contractor underpayment. | Positions decree joint liability as the primary pitch against cheap rivals. | **100% Adopt Zan.** Brilliant enterprise positioning: OTIS is compliance insurance. |
-| **Email Deliverability** | Cold B2B mail requires dedicated sub-domain/alias + DKIM/DMARC. | Mandates `quotes@otiscc.ca`, DKIM in Workspace, and DMARC `p=none`. | **100% Adopt Zan.** Takes 30 minutes, costs $0, protects main domain reputation. |
+| **Email Deliverability** | Cold B2B mail requires dedicated sub-domain/alias + DKIM/DMARC. | Mandates `info@otiscc.ca`, DKIM in Workspace, and DMARC `p=none`. | **100% Adopt Zan.** Takes 30 minutes, costs $0, protects main domain reputation. |
 | **Website & Tech Stack** | Current prototype has broken form handlers (0% lead capture). | Relies on Google Sheet tracker; notes 65 Google visitors. | **Unified Synergy:** Connect prototype form to Google Sheet webhook / SMS so inbound leads drop directly into Zan's tracker. |
 
 ---
@@ -125,9 +125,9 @@ Comparing our **Empirical Market Recon** vs **Zan's Outbound Master Plan**:
 
 ## 6. Next 72 Hours Checklist for Max & CEO
 1. **Google Workspace Setup (30 min)**:
-   - Add alias `quotes@otiscc.ca` in Google Admin Console.
+   - Add alias `info@otiscc.ca` in Google Admin Console.
    - Generate DKIM TXT record in Google Workspace and paste into DNS.
-   - Add TXT record `v=DMARC1; p=none; sp=none; rua=mailto:dmarc-reports@otiscc.ca`.
+   - Add TXT record `v=DMARC1; p=none; sp=none; rua=mailto:info@otiscc.ca`.
 2. **Floor Care Rate Card Sign-Off (10 min)**:
    - Base stripping & waxing: **$0.40 / sq ft** (minimum $500).
    - Routine deep clean: **$0.25 / sq ft** (minimum $350).

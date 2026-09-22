@@ -313,7 +313,7 @@ Two working rules follow from this:
 * Contact-data brokers are never a source. ZoomInfo, RocketReach, Lusha, Apollo, ContactOut and the rest sell addresses the business never published, so they give no basis at all. They rank first for almost any "company + contact" search, which makes this an easy mistake to make quietly.
 * Relevance counts as much as publication. An admissions@ address at a school is published, but it is not the facilities buyer — so that is a call, not an email.
 Competition Act s.74.011 — sender identity
-Never invent a sender name. False or misleading sender information is reviewable conduct, and s.74.011(3.2) removed the defence that nobody was actually deceived. Mail goes from quotes@otiscc.ca under a real person's name.
+Never invent a sender name. False or misleading sender information is reviewable conduct, and s.74.011(3.2) removed the defence that nobody was actually deceived. Mail goes from info@otiscc.ca under a real person's name.
 CNESST and the décret
 * The attestation de conformité releases a client from liability for a contractor's unpaid contributions. Facilities managers ask for it.
 * The décret carries a 0.50% payroll levy plus a 0.50% employee deduction, monthly reports by the 15th, and three-year record retention.
@@ -336,7 +336,7 @@ The system is built. This is the only thing between it and the first job.
 	Why
 	Cost
 	1
-	quotes@otiscc.ca — alias or seat
+	info@otiscc.ca — alias or seat
 	Role-based, so it transfers and stays yours. It also keeps the results separate from info@, the address your paying clients already use
 	$0 as an alias · ~$110 CAD/yr as a seat
 	2
