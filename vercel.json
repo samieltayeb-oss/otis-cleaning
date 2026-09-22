@@ -5,7 +5,8 @@
     { "source": "/services/imgs/:path*", "destination": "/imgs/:path*" },
     { "source": "/sectors/imgs/:path*", "destination": "/imgs/:path*" },
     { "source": "/fr/services/imgs/:path*", "destination": "/imgs/:path*" },
-    { "source": "/fr/sectors/imgs/:path*", "destination": "/imgs/:path*" },
+    { "source": "/crew", "destination": "/internal/field_app.html" },
+    { "source": "/app", "destination": "/internal/field_app.html" },
     { "source": "/api/:endpoint", "destination": "/api/:endpoint.js" },
     { "source": "/api/internal/:endpoint", "destination": "/api/internal/:endpoint.js" }
   ],
