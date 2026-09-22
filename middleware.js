@@ -1,3 +1,5 @@
+import { next } from '@vercel/edge';
+
 export default function middleware(request) {
   const url = new URL(request.url);
   
@@ -20,9 +22,9 @@ export default function middleware(request) {
     }
   }
 
-  // Continue to the destination by returning nothing
+  return next();
 }
 
 export const config = {
-  matcher: ['/internal/(.*)', '/api/internal/(.*)']
+  matcher: ['/internal/:path*', '/api/internal/:path*']
 };

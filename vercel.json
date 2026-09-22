@@ -1,7 +1,8 @@
 {
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/api/:endpoint", "destination": "/api/:endpoint.js" }
+    { "source": "/api/:endpoint", "destination": "/api/:endpoint.js" },
+    { "source": "/api/internal/:endpoint", "destination": "/api/internal/:endpoint.js" }
   ],
   "redirects": [
     {
