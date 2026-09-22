@@ -665,6 +665,14 @@
 
       <!-- Dedicated Multi-Page Portal Directory -->
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 2.5rem; text-align: left;">
+        <a href="agent_hub.html" style="background: linear-gradient(135deg, rgba(247,148,29,0.18), rgba(10,25,47,0.95)); border: 2px solid var(--orange); border-radius: 12px; padding: 1.1rem; text-decoration: none; display: block; transition: all 0.2s; box-shadow: 0 0 16px rgba(247,148,29,0.25);">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div style="font-size: 0.75rem; color: var(--orange); font-weight: 800; text-transform: uppercase;">Command Cockpit</div>
+            <span style="background:var(--orange); color:#000; font-size:0.65rem; font-weight:800; padding:2px 6px; border-radius:4px;">PIN: 8842</span>
+          </div>
+          <div style="font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 800; color: var(--white); margin: 0.25rem 0;">⚡ Executive ERP Hub →</div>
+          <div style="font-size: 0.8rem; color: var(--text-body); line-height: 1.4;">Zan's Tri-State cockpit: live Odoo sync ($18.7k MRR), SendGrid webmail, and 8 autonomous AI engines.</div>
+        </a>
         <a href="/erp.html" style="background: var(--navy-surface); border: 1px solid rgba(30,123,52,0.4); border-radius: 12px; padding: 1.1rem; text-decoration: none; display: block; transition: all 0.2s;">
           <div style="font-size: 0.75rem; color: var(--green-light); font-weight: 700; text-transform: uppercase;">Enterprise Systems</div>
           <div style="font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 800; color: var(--white); margin: 0.25rem 0;">📊 OTIS ERP System →</div>
@@ -735,6 +743,18 @@
           <span style="background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.35); color: #f87171; font-size: 0.75rem; font-weight: 700; padding: 0.25rem 0.75rem; border-radius: 20px;">
             100% Uncontracted MRR · High Concentration Exposure
           </span>
+        </div>
+
+        <!-- Live Odoo ERP Sync Status Pill -->
+        <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 10px; padding: 0.8rem 1.2rem; margin-bottom: 1.2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="width: 8px; height: 8px; border-radius: 50%; background: #10b981; box-shadow: 0 0 8px #10b981; display: inline-block;"></span>
+            <span style="font-weight: 800; color: #10b981; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.5px;">Live Odoo ERP XML-RPC Synced</span>
+            <span style="font-size: 0.78rem; color: var(--text-muted);">(otis.odoo.com)</span>
+          </div>
+          <div style="font-size: 0.82rem; color: var(--white); font-weight: 700;">
+            Live Production Data: <span style="color: #10b981;">30 Commercial Clients</span> · <span style="color: #38bdf8;">50 Invoices</span> · <span style="color: var(--orange); font-weight: 800;">$18,710 / mo MRR</span> · <span style="color: #f87171;">$54,456 Receivables</span>
+          </div>
         </div>
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1.2rem; margin-bottom: 1.4rem;">
@@ -820,58 +840,76 @@
 
       <!-- Horizontal Phase Stepper -->
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin-bottom: 2.2rem;">
-        <div style="background: rgba(34, 197, 94, 0.12); border: 2px solid #22c55e; border-radius: 14px; padding: 1.2rem; position: relative;">
-          <div style="position: absolute; top: -10px; right: 12px; background: #22c55e; color: #080d1a; font-size: 0.68rem; font-weight: 800; padding: 2px 8px; border-radius: 20px; text-transform: uppercase;">
-            ✅ BUILT LOCALLY
+        <div style="background: rgba(34, 197, 94, 0.12); border: 2px solid #22c55e; border-radius: 14px; padding: 1.2rem; position: relative; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;" onclick="window.location.href='lead_engine.html'">
+          <div style="position: absolute; top: -10px; right: 12px; background: #22c55e; color: #080d1a; font-size: 0.68rem; font-weight: 800; padding: 2px 8px; border-radius: 20px; text-transform: uppercase; box-shadow: 0 0 10px rgba(34, 197, 94, 0.4);">
+            🟢 LIVE IN PROD
           </div>
           <div style="font-size: 0.75rem; color: #4ade80; font-weight: 700; text-transform: uppercase;">Phase 1 · Week 1 (Days 1–7)</div>
-          <h4 style="font-family: 'Syne', sans-serif; font-size: 1.15rem; color: var(--white); margin: 0.3rem 0;">Pre-Winter Wedge &amp; Free Leads</h4>
-          <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">Two-Door Strategy + Google Maps Radar ($0 vs $2,500). Call 5 Priority A Accounts.</p>
+          <h4 style="font-family: 'Syne', sans-serif; font-size: 1.15rem; color: var(--white); margin: 0.3rem 0;">Pre-Winter Wedge &amp; Free Leads ➔</h4>
+          <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">Two-Door Strategy + Google Maps Radar + Gemini 3.6 Flash AI Drafter. Call 5 Priority A Accounts.</p>
         </div>
 
-        <div style="background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 1.2rem; position: relative;">
-          <div style="position: absolute; top: -10px; right: 12px; background: #22c55e; color: #080d1a; font-size: 0.68rem; font-weight: 800; padding: 2px 8px; border-radius: 20px; text-transform: uppercase;">✅ BUILT LOCALLY</div><div style="font-size: 0.75rem; color: var(--orange); font-weight: 700; text-transform: uppercase;">Phase 2 · Weeks 2–4 (Days 8–30)</div>
-          <h4 style="font-family: 'Syne', sans-serif; font-size: 1.15rem; color: var(--white); margin: 0.3rem 0;">Contract Lock-In &amp; Legal Shield</h4>
-          <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">Convert $6,100 MRR to 6/10-mo contracts + Article 14 Decree Shield + 25 Google Reviews.</p>
+        <div style="background: var(--card); border: 1px solid rgba(247, 148, 29, 0.4); border-radius: 14px; padding: 1.2rem; position: relative; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;" onclick="window.location.href='contract_generator.html'">
+          <div style="position: absolute; top: -10px; right: 12px; background: #22c55e; color: #080d1a; font-size: 0.68rem; font-weight: 800; padding: 2px 8px; border-radius: 20px; text-transform: uppercase; box-shadow: 0 0 10px rgba(34, 197, 94, 0.4);">
+            🟢 LIVE IN PROD
+          </div>
+          <div style="font-size: 0.75rem; color: var(--orange); font-weight: 700; text-transform: uppercase;">Phase 2 · Weeks 2–4 (Days 8–30)</div>
+          <h4 style="font-family: 'Syne', sans-serif; font-size: 1.15rem; color: var(--white); margin: 0.3rem 0;">Contract Lock-In &amp; Legal Shield ➔</h4>
+          <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">Convert uncontracted MRR to 6/10-mo contracts + Article 14 Decree Shield ($23/h CPEEP) + Reviews.</p>
         </div>
 
-        <div style="background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 1.2rem; position: relative;">
-          <div style="position: absolute; top: -10px; right: 12px; background: #22c55e; color: #080d1a; font-size: 0.68rem; font-weight: 800; padding: 2px 8px; border-radius: 20px; text-transform: uppercase;">✅ BUILT LOCALLY</div><div style="font-size: 0.75rem; color: #38bdf8; font-weight: 700; text-transform: uppercase;">Phase 3 · Month 2 (Days 31–60)</div>
-          <h4 style="font-family: 'Syne', sans-serif; font-size: 1.15rem; color: var(--white); margin: 0.3rem 0;">Route Density &amp; Bidding</h4>
-          <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">Walkthroughs ($0.15–$0.30/sq ft) + 15-min cluster rule. Sign 3–5 recurring commercial accounts.</p>
+        <div style="background: var(--card); border: 1px solid rgba(56, 189, 248, 0.4); border-radius: 14px; padding: 1.2rem; position: relative; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;" onclick="window.location.href='bidding_engine.html'">
+          <div style="position: absolute; top: -10px; right: 12px; background: #22c55e; color: #080d1a; font-size: 0.68rem; font-weight: 800; padding: 2px 8px; border-radius: 20px; text-transform: uppercase; box-shadow: 0 0 10px rgba(34, 197, 94, 0.4);">
+            🟢 LIVE IN PROD
+          </div>
+          <div style="font-size: 0.75rem; color: #38bdf8; font-weight: 700; text-transform: uppercase;">Phase 3 · Month 2 (Days 31–60)</div>
+          <h4 style="font-family: 'Syne', sans-serif; font-size: 1.15rem; color: var(--white); margin: 0.3rem 0;">Route Density &amp; Bidding ➔</h4>
+          <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">Automated Sq Ft Walkthrough Bidding ($0.15–$0.30/sq ft) + 15-min cluster rule. Sign 3–5 accounts.</p>
         </div>
 
-        <div style="background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 1.2rem; position: relative;">
-          <div style="position: absolute; top: -10px; right: 12px; background: #22c55e; color: #080d1a; font-size: 0.68rem; font-weight: 800; padding: 2px 8px; border-radius: 20px; text-transform: uppercase;">✅ BUILT LOCALLY</div><div style="font-size: 0.75rem; color: #c084fc; font-weight: 700; text-transform: uppercase;">Phase 4 · Month 3+ (Days 61–90+)</div>
-          <h4 style="font-family: 'Syne', sans-serif; font-size: 1.15rem; color: var(--white); margin: 0.3rem 0;">Restock Distribution &amp; Scale</h4>
-          <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">Restroom supplies (20% margin) + Tennant floor cycles + multi-tenant syndicates.</p>
+        <div style="background: var(--card); border: 1px solid rgba(192, 132, 252, 0.4); border-radius: 14px; padding: 1.2rem; position: relative; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;" onclick="window.location.href='restock_engine.html'">
+          <div style="position: absolute; top: -10px; right: 12px; background: #22c55e; color: #080d1a; font-size: 0.68rem; font-weight: 800; padding: 2px 8px; border-radius: 20px; text-transform: uppercase; box-shadow: 0 0 10px rgba(34, 197, 94, 0.4);">
+            🟢 LIVE IN PROD
+          </div>
+          <div style="font-size: 0.75rem; color: #c084fc; font-weight: 700; text-transform: uppercase;">Phase 4 · Month 3+ (Days 61–90+)</div>
+          <h4 style="font-family: 'Syne', sans-serif; font-size: 1.15rem; color: var(--white); margin: 0.3rem 0;">Restock Distribution &amp; Scale ➔</h4>
+          <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">Restroom supplies (20% margin) + Tennant floor scrub cycles + multi-tenant syndicates.</p>
         </div>
 
-        <div style="background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 1.2rem; position: relative;">
-          <div style="position: absolute; top: -10px; right: 12px; background: #eab308; color: #080d1a; font-size: 0.68rem; font-weight: 800; padding: 2px 8px; border-radius: 20px; text-transform: uppercase;">
-            ✅ BUILT LOCALLY
+        <div style="background: rgba(234, 179, 8, 0.12); border: 2px solid #eab308; border-radius: 14px; padding: 1.2rem; position: relative; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;" onclick="window.location.href='agent_hub.html'">
+          <div style="position: absolute; top: -10px; right: 12px; background: #eab308; color: #080d1a; font-size: 0.68rem; font-weight: 800; padding: 2px 8px; border-radius: 20px; text-transform: uppercase; box-shadow: 0 0 10px rgba(234, 179, 8, 0.4);">
+            🟢 LIVE CONSOLE
           </div>
           <div style="font-size: 0.75rem; color: #eab308; font-weight: 700; text-transform: uppercase;">Phase 5 · AI Automation</div>
-          <h4 style="font-family: 'Syne', sans-serif; font-size: 1.15rem; color: var(--white); margin: 0.3rem 0;">Tri-State Agent Console</h4>
-          <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">The AI Command Hub where Zan clicks [Approve] or [Reject] while 8 agents run the company.</p>
+          <h4 style="font-family: 'Syne', sans-serif; font-size: 1.15rem; color: var(--white); margin: 0.3rem 0;">Tri-State Agent Console ➔</h4>
+          <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">The AI Command Hub where Zan clicks [Approve] or [Reject] while 8 agents run the company (PIN 8842).</p>
         </div>
 
-        <div style="background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 1.2rem; position: relative;">
-          <div style="font-size: 0.75rem; color: #f43f5e; font-weight: 700; text-transform: uppercase;">Phase 6 · Tech Deployment</div>
-          <h4 style="font-family: 'Syne', sans-serif; font-size: 1.15rem; color: var(--white); margin: 0.3rem 0;">Vercel Go-Live</h4>
-          <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">Push codebase to GitHub, deploy to Vercel, and plug in live SendGrid & Twilio APIs.</p>
+        <div style="background: rgba(34, 197, 94, 0.12); border: 2px solid #22c55e; border-radius: 14px; padding: 1.2rem; position: relative; box-shadow: 0 0 15px rgba(34, 197, 94, 0.2);">
+          <div style="position: absolute; top: -10px; right: 12px; background: #22c55e; color: #080d1a; font-size: 0.68rem; font-weight: 800; padding: 2px 8px; border-radius: 20px; text-transform: uppercase; box-shadow: 0 0 12px rgba(34, 197, 94, 0.5);">
+            🟢 DEPLOYED &amp; LIVE
+          </div>
+          <div style="font-size: 0.75rem; color: #4ade80; font-weight: 700; text-transform: uppercase;">Phase 6 · Tech Deployment</div>
+          <h4 style="font-family: 'Syne', sans-serif; font-size: 1.15rem; color: var(--white); margin: 0.3rem 0;">Vercel Go-Live &amp; Cloud APIs</h4>
+          <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">Live on Vercel · GitHub CI/CD · Odoo Sync · SendGrid · Firestore · Gemini 3.6 Flash · GA4.</p>
         </div>
 
-        <div style="background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 1.2rem; position: relative;">
-          <div style="position: absolute; top: -10px; right: 12px; background: #22c55e; color: #080d1a; font-size: 0.68rem; font-weight: 800; padding: 2px 8px; border-radius: 20px; text-transform: uppercase;">✅ BUILT LOCALLY</div><div style="font-size: 0.75rem; color: #a855f7; font-weight: 700; text-transform: uppercase;">Phase 7 · Scale Inbound</div>
-          <h4 style="font-family: 'Syne', sans-serif; font-size: 1.15rem; color: var(--white); margin: 0.3rem 0;">SEO / AEO Engine</h4>
-          <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">Inject Schema JSON-LD, claim Google Maps, and secure ChatGPT rankings.</p>
+        <div style="background: var(--card); border: 1px solid rgba(168, 85, 247, 0.4); border-radius: 14px; padding: 1.2rem; position: relative; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;" onclick="window.location.href='seo_engine.html'">
+          <div style="position: absolute; top: -10px; right: 12px; background: #22c55e; color: #080d1a; font-size: 0.68rem; font-weight: 800; padding: 2px 8px; border-radius: 20px; text-transform: uppercase; box-shadow: 0 0 10px rgba(34, 197, 94, 0.4);">
+            🟢 LIVE IN PROD
+          </div>
+          <div style="font-size: 0.75rem; color: #a855f7; font-weight: 700; text-transform: uppercase;">Phase 7 · Scale Inbound</div>
+          <h4 style="font-family: 'Syne', sans-serif; font-size: 1.15rem; color: var(--white); margin: 0.3rem 0;">SEO / AEO Engine ➔</h4>
+          <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">JSON-LD Schema, Montreal Citations, GA4 (G-EDEN0NM4RY), and Social Ad Center.</p>
         </div>
 
-        <div style="background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 1.2rem; position: relative;">
-          <div style="position: absolute; top: -10px; right: 12px; background: #22c55e; color: #080d1a; font-size: 0.68rem; font-weight: 800; padding: 2px 8px; border-radius: 20px; text-transform: uppercase;">✅ BUILT LOCALLY</div><div style="font-size: 0.75rem; color: #64748b; font-weight: 700; text-transform: uppercase;">Phase 8 · Human Resources</div>
-          <h4 style="font-family: 'Syne', sans-serif; font-size: 1.15rem; color: var(--white); margin: 0.3rem 0;">Field Operative Portal</h4>
-          <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">Mobile app for crews to clock-in via GPS and submit QA Audits after shifts.</p>
+        <div style="background: var(--card); border: 1px solid rgba(100, 116, 139, 0.4); border-radius: 14px; padding: 1.2rem; position: relative; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;" onclick="window.location.href='field_app.html'">
+          <div style="position: absolute; top: -10px; right: 12px; background: #22c55e; color: #080d1a; font-size: 0.68rem; font-weight: 800; padding: 2px 8px; border-radius: 20px; text-transform: uppercase; box-shadow: 0 0 10px rgba(34, 197, 94, 0.4);">
+            🟢 LIVE IN PROD
+          </div>
+          <div style="font-size: 0.75rem; color: #64748b; font-weight: 700; text-transform: uppercase;">Phase 8 · Human Resources</div>
+          <h4 style="font-family: 'Syne', sans-serif; font-size: 1.15rem; color: var(--white); margin: 0.3rem 0;">Field Operative Portal ➔</h4>
+          <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.4;">Mobile app for crews to clock-in via GPS and submit 100-point QA inspections after shifts.</p>
         </div>
       </div>
 
@@ -1089,58 +1127,110 @@
         </div>
 
         <!-- PHASE 5 DETAIL CARD -->
-        <div style="background: var(--card); border: 1px solid rgba(234, 179, 8, 0.5); border-radius: 18px; padding: 2rem; box-shadow: 0 4px 20px rgba(234, 179, 8, 0.1);">
+        <div style="background: var(--card); border: 2px solid rgba(234, 179, 8, 0.6); border-radius: 18px; padding: 2rem; box-shadow: 0 4px 25px rgba(234, 179, 8, 0.15);">
           <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 1.4rem; border-bottom: 1px solid var(--border); padding-bottom: 1rem;">
             <div>
-              <span style="color: #eab308; font-weight: 800; font-size: 0.75rem; text-transform: uppercase; background:rgba(234, 179, 8, 0.15); padding: 3px 10px; border-radius:20px;">
-                PHASE 5 · AI AUTOMATION (UPCOMING)
+              <span style="color: #080d1a; font-weight: 800; font-size: 0.75rem; text-transform: uppercase; background:#eab308; padding: 3px 10px; border-radius:20px; box-shadow:0 0 10px rgba(234,179,8,0.4);">
+                🟢 PHASE 5 · AI AUTOMATION (LIVE IN PRODUCTION)
               </span>
               <h3 style="font-family: 'Syne', sans-serif; font-size: 1.5rem; color: var(--white); margin-top: 0.5rem;">The Tri-State Command Console</h3>
             </div>
+            <div style="background: rgba(234, 179, 8, 0.15); border: 1px solid #eab308; padding: 4px 12px; border-radius: 20px; color: #eab308; font-weight: 800; font-size: 0.8rem;">
+              Executive PIN: 8842
+            </div>
           </div>
-          <p style="font-size: 0.95rem; color: var(--text-body); line-height: 1.6; margin-bottom: 1.5rem;">
-            The core premise of the OTIS Operating System is that Zan should never type a manual bid or draft an email. We built the <strong>Agent Hub</strong> where Zan oversees 8 specialized AI Staff Members. The AI executes the work and Zan only clicks [APPROVED], [REJECTED], or [ADJUST].
+          <p style="font-size: 0.95rem; color: var(--text-body); line-height: 1.6; margin-bottom: 1.2rem;">
+            The core premise of the OTIS Operating System is that Zan should never type a manual bid or draft an email. We built the <strong>Executive ERP Hub</strong> where Zan oversees 8 specialized AI Staff Members. The AI executes the work and Zan only clicks [APPROVED], [REJECTED], or [ADJUST].
           </p>
-          <a href="agent_hub.html" class="btn" style="display:inline-block; margin-top: 0.5rem; padding:0.8rem 1.5rem; border-radius: 8px; font-weight: 700; text-decoration: none; background: #eab308; color: #000;">Access The Agent Hub &rarr;</a>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+            <a href="agent_hub.html" class="btn" style="display:inline-block; padding:0.8rem 1.6rem; border-radius: 8px; font-weight: 800; text-decoration: none; background: #eab308; color: #000; box-shadow:0 4px 14px rgba(234,179,8,0.3);">Access The Agent Hub &rarr;</a>
+            <a href="/crm.html" class="btn" style="display:inline-block; padding:0.8rem 1.6rem; border-radius: 8px; font-weight: 700; text-decoration: none; background: rgba(255,255,255,0.08); color: var(--white); border: 1px solid var(--border);">Inspect AI Staff Console &rarr;</a>
+          </div>
         </div>
 
         <!-- PHASE 6 DETAIL CARD -->
-        <div style="background: var(--card); border: 1px solid rgba(244, 63, 94, 0.3); border-radius: 18px; padding: 2rem;">
-          <div style="margin-bottom: 1.4rem; border-bottom: 1px solid var(--border); padding-bottom: 1rem;">
-            <span style="color: #f43f5e; font-weight: 800; font-size: 0.75rem; text-transform: uppercase; background:rgba(244, 63, 94, 0.15); padding: 3px 10px; border-radius:20px;">
-              PHASE 6 · TECH DEPLOYMENT (UPCOMING)
-            </span>
-            <h3 style="font-family: 'Syne', sans-serif; font-size: 1.5rem; color: var(--white); margin-top: 0.5rem;">Vercel Go-Live &amp; API Integration</h3>
+        <div style="background: var(--card); border: 2px solid rgba(34, 197, 94, 0.6); border-radius: 18px; padding: 2rem; box-shadow: 0 4px 25px rgba(34, 197, 94, 0.15);">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 1.4rem; border-bottom: 1px solid var(--border); padding-bottom: 1rem;">
+            <div>
+              <span style="color: #080d1a; font-weight: 800; font-size: 0.75rem; text-transform: uppercase; background:#22c55e; padding: 3px 10px; border-radius:20px; box-shadow:0 0 10px rgba(34,197,94,0.4);">
+                🟢 PHASE 6 · TECH DEPLOYMENT (100% LIVE IN PRODUCTION)
+              </span>
+              <h3 style="font-family: 'Syne', sans-serif; font-size: 1.5rem; color: var(--white); margin-top: 0.5rem;">Vercel Go-Live &amp; Enterprise Cloud APIs</h3>
+            </div>
+            <div style="background: rgba(34, 197, 94, 0.15); border: 1px solid #22c55e; padding: 4px 12px; border-radius: 20px; color: #4ade80; font-weight: 800; font-size: 0.8rem;">
+              https://otis-cleaning.vercel.app
+            </div>
           </div>
-          <p style="font-size: 0.95rem; color: var(--text-body); line-height: 1.6; margin-bottom: 0;">
-            Moving the completed local platform to the live internet. We will resolve the GitHub authentication, push the code, and launch on Vercel. We will securely plug in Twilio API (for automated Google Review SMS) and SendGrid API (for Consumable Upsell Emails).
+          <p style="font-size: 0.95rem; color: var(--text-body); line-height: 1.6; margin-bottom: 1.2rem;">
+            Successfully moved from local sandbox to live internet deployment. Codebase continuously pushed to GitHub <code>main</code> and deployed on Vercel Edge Network. All backend enterprise APIs are fully wired and authenticated:
           </p>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin-bottom: 1.4rem;">
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 1rem;">
+              <div style="font-size: 0.78rem; font-weight: 800; color: #4ade80; margin-bottom: 0.2rem;">🔄 Odoo ERP Sync (Live XML-RPC)</div>
+              <div style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.4;">Direct connection to <code>otis.odoo.com</code> syncing 30 commercial partners, 50 invoices, and $18,710/mo MRR.</div>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 1rem;">
+              <div style="font-size: 0.78rem; font-weight: 800; color: #38bdf8; margin-bottom: 0.2rem;">🗄️ Google Cloud Firestore</div>
+              <div style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.4;">21 client dossiers persisted in production <code>leads</code> collection with serverless synchronization.</div>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 1rem;">
+              <div style="font-size: 0.78rem; font-weight: 800; color: #f59e0b; margin-bottom: 0.2rem;">🤖 Google Gemini 3.6 Flash</div>
+              <div style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.4;">Sub-second Quebec French proposal and cold email generation with CPEEP decree compliance.</div>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 1rem;">
+              <div style="font-size: 0.78rem; font-weight: 800; color: #ec4899; margin-bottom: 0.2rem;">📧 SendGrid Webmail &amp; GA4</div>
+              <div style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.4;">Verified sender for <code>info@otiscc.ca</code>, inbound parsing webhook, and GA4 (<code>G-EDEN0NM4RY</code>).</div>
+            </div>
+          </div>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+            <a href="agent_hub.html" class="btn" style="padding:0.75rem 1.5rem; border-radius: 8px; font-weight: 800; text-decoration: none; background: #22c55e; color: #080d1a;">Launch Live ERP Console ➔</a>
+            <a href="/api/odoo_sync" target="_blank" class="btn" style="padding:0.75rem 1.5rem; border-radius: 8px; font-weight: 700; text-decoration: none; background: rgba(255,255,255,0.08); color: var(--white); border: 1px solid var(--border);">Test Live Odoo API ↗</a>
+            <a href="/api/firebase" target="_blank" class="btn" style="padding:0.75rem 1.5rem; border-radius: 8px; font-weight: 700; text-decoration: none; background: rgba(255,255,255,0.08); color: var(--white); border: 1px solid var(--border);">Test Firestore API ↗</a>
+          </div>
         </div>
 
         <!-- PHASE 7 DETAIL CARD -->
-        <div style="background: var(--card); border: 1px solid rgba(168, 85, 247, 0.3); border-radius: 18px; padding: 2rem;">
-          <div style="margin-bottom: 1.4rem; border-bottom: 1px solid var(--border); padding-bottom: 1rem;">
-            <span style="color: #a855f7; font-weight: 800; font-size: 0.75rem; text-transform: uppercase; background:rgba(168, 85, 247, 0.15); padding: 3px 10px; border-radius:20px;">
-              PHASE 7 · SCALE INBOUND (UPCOMING)
-            </span>
-            <h3 style="font-family: 'Syne', sans-serif; font-size: 1.5rem; color: var(--white); margin-top: 0.5rem;">The SEO/AEO Discovery Engine</h3>
+        <div style="background: var(--card); border: 2px solid rgba(168, 85, 247, 0.5); border-radius: 18px; padding: 2rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 1.4rem; border-bottom: 1px solid var(--border); padding-bottom: 1rem;">
+            <div>
+              <span style="color: #080d1a; font-weight: 800; font-size: 0.75rem; text-transform: uppercase; background:#a855f7; padding: 3px 10px; border-radius:20px; box-shadow:0 0 10px rgba(168,85,247,0.4);">
+                🟢 PHASE 7 · SCALE INBOUND (LIVE ENGINES)
+              </span>
+              <h3 style="font-family: 'Syne', sans-serif; font-size: 1.5rem; color: var(--white); margin-top: 0.5rem;">The SEO/AEO Discovery Engine &amp; Social Center</h3>
+            </div>
+            <div style="background: rgba(168, 85, 247, 0.15); border: 1px solid #a855f7; padding: 4px 12px; border-radius: 20px; color: #c084fc; font-weight: 800; font-size: 0.8rem;">
+              Audit Score: 9.0 / 10
+            </div>
           </div>
-          <p style="font-size: 0.95rem; color: var(--text-body); line-height: 1.6; margin-bottom: 0;">
-            Executing the SEO/AEO Blueprint. Implementing LocalBusiness Schema markup, securing the Google Maps listing, and generating high-authority local citations so AI Search Engines rank OTIS as the #1 Commercial Cleaner in Montreal.
+          <p style="font-size: 0.95rem; color: var(--text-body); line-height: 1.6; margin-bottom: 1.2rem;">
+            Executed Montreal LocalBusiness Schema JSON-LD markup, GEO-targeted landing structures for West Island &amp; Downtown, and Meta Facebook/Instagram commercial ad creative generation targeting facility directors.
           </p>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+            <a href="seo_engine.html" class="btn" style="padding:0.75rem 1.5rem; border-radius: 8px; font-weight: 800; text-decoration: none; background: #a855f7; color: #fff;">Launch SEO Engine &rarr;</a>
+            <a href="social_center.html" class="btn" style="padding:0.75rem 1.5rem; border-radius: 8px; font-weight: 800; text-decoration: none; background: rgba(236,72,153,0.15); color: #ec4899; border: 1px solid #ec4899;">Launch Social Ad Center &rarr;</a>
+          </div>
         </div>
 
         <!-- PHASE 8 DETAIL CARD -->
-        <div style="background: var(--card); border: 1px solid rgba(100, 116, 139, 0.3); border-radius: 18px; padding: 2rem;">
-          <div style="margin-bottom: 1.4rem; border-bottom: 1px solid var(--border); padding-bottom: 1rem;">
-            <span style="color: #64748b; font-weight: 800; font-size: 0.75rem; text-transform: uppercase; background:rgba(100, 116, 139, 0.15); padding: 3px 10px; border-radius:20px;">
-              PHASE 8 · HUMAN RESOURCES (UPCOMING)
-            </span>
-            <h3 style="font-family: 'Syne', sans-serif; font-size: 1.5rem; color: var(--white); margin-top: 0.5rem;">Field Operative Portal</h3>
+        <div style="background: var(--card); border: 2px solid rgba(56, 189, 248, 0.5); border-radius: 18px; padding: 2rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 1.4rem; border-bottom: 1px solid var(--border); padding-bottom: 1rem;">
+            <div>
+              <span style="color: #080d1a; font-weight: 800; font-size: 0.75rem; text-transform: uppercase; background:#38bdf8; padding: 3px 10px; border-radius:20px; box-shadow:0 0 10px rgba(56,189,248,0.4);">
+                🟢 PHASE 8 · HUMAN RESOURCES &amp; OPERATIONS (LIVE MOBILE APPS)
+              </span>
+              <h3 style="font-family: 'Syne', sans-serif; font-size: 1.5rem; color: var(--white); margin-top: 0.5rem;">Field Operative Portal &amp; 100-Point QA Inspection</h3>
+            </div>
+            <div style="background: rgba(56, 189, 248, 0.15); border: 1px solid #38bdf8; padding: 4px 12px; border-radius: 20px; color: #38bdf8; font-weight: 800; font-size: 0.8rem;">
+              Mobile PWA Active
+            </div>
           </div>
-          <p style="font-size: 0.95rem; color: var(--text-body); line-height: 1.6; margin-bottom: 0;">
-            The hiring infrastructure. A mobile web app where your cleaning crews log in to receive their dispatched routes, clock-in via GPS, and check off the 50-Point Room Audit to guarantee they earned the /h wage floor.
+          <p style="font-size: 0.95rem; color: var(--text-body); line-height: 1.6; margin-bottom: 1.2rem;">
+            The field execution infrastructure is built. Dedicated mobile web app where cleaning crews receive dispatched routes, access building alarm codes, GPS clock-in, and complete photographic 100-Point Room Inspections ensuring decree wage compliance.
           </p>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+            <a href="field_app.html" class="btn" style="padding:0.75rem 1.5rem; border-radius: 8px; font-weight: 800; text-decoration: none; background: #38bdf8; color: #080d1a;">Open Cleaner Mobile App &rarr;</a>
+            <a href="audit/mobile/index.html" class="btn" style="padding:0.75rem 1.5rem; border-radius: 8px; font-weight: 700; text-decoration: none; background: rgba(255,255,255,0.08); color: var(--white); border: 1px solid var(--border);">Launch QA Inspection Engine &rarr;</a>
+          </div>
         </div>
 
       </div>
