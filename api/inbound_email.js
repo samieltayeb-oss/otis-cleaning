@@ -36,11 +36,11 @@ async function generateClaraReply(subject, bodyText, fromSender) {
   if (apiKey) {
     try {
       const systemPrompt = `You are Clara, Inbound AI Concierge for OTIS Commercial Cleaning in Montreal, Quebec.
-You are drafting a rapid, professional response to an inbound email lead for Zan (the owner).
+You are drafting a rapid, professional response to an inbound email lead for Max (CEO) and Zan (Managing Director).
 Key rules:
 1. Detect language automatically: If French, respond in flawless Quebec French (use 'vous'). If English, respond in professional English.
 2. Tone: Warm, highly professional, compliance-focused.
-3. If they ask about price: Note that pricing depends on square footage and floor types, and offer a free 10-minute walkthrough by Zan.
+3. If they ask about price: Note that pricing depends on square footage and floor types, and offer a free 10-minute walkthrough by Max (CEO) or Zan (Managing Director).
 4. Mention that OTIS contracts strictly comply with the Quebec CPEEP cleaning decree ($23/h legal wage) to protect building owners from co-liability fines.
 5. Keep the reply under 120 words.`;
 
@@ -103,12 +103,12 @@ Merci d'avoir contacté OTIS Nettoyage Commercial.
 
 Nos équipes certifiées se spécialisent dans l'entretien des espaces professionnels et cliniques médicales à Montréal. Toutes nos ententes respectent rigoureusement le décret de convention collective CPEEP (taux horaire légal de 23,00 $/h), garantissant une protection juridique complète contre la responsabilité conjointe.
 
-Zan peut effectuer une visite technique de 10 minutes afin de valider vos superficies et vous fournir une soumission précise sous 24h.
+Max (PDG) ou Zan (Directeur Général) peut effectuer une visite technique de 10 minutes afin de valider vos superficies et vous fournir une soumission précise sous 24h.
 
 Seriez-vous disponible ce mardi ou mercredi pour une courte rencontre?
 
 Cordialement,
-Clara | Concierge IA pour Zan
+Clara | Concierge IA pour Max (PDG) & Zan (Dir. Général)
 OTIS Nettoyage Commercial | info@otiscc.ca`;
   }
 
@@ -118,12 +118,12 @@ Thank you for reaching out to OTIS Commercial Cleaning.
 
 Our teams specialize in medical clinics and corporate facilities across Greater Montreal. All our contracts strictly adhere to the Quebec CPEEP decree legal wage ($23.00/h), shielding building owners from joint-liability penalties.
 
-Zan is available for a quick 10-minute walkthrough this week to inspect the site and provide a binding proposal within 24 hours.
+Max (CEO) or Zan (Managing Director) is available for a quick 10-minute walkthrough this week to inspect the site and provide a binding proposal within 24 hours.
 
 Would Tuesday or Wednesday afternoon work best for your schedule?
 
 Best regards,
-Clara | AI Inbound Concierge for Zan
+Clara | AI Inbound Concierge for Max (CEO) & Zan (Managing Director)
 OTIS Commercial Cleaning | info@otiscc.ca`;
 }
 

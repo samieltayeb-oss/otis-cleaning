@@ -209,7 +209,7 @@
   <div class="nav-group" style="border-bottom:none; margin-top:auto; padding-bottom:1.5rem;">
     <div class="nav-title">Portals & System</div>
     <div class="nav-item" style="color:var(--brand-orange); font-weight:700;" onclick="window.location.href='/internal/operator_guide'">
-      <div class="nav-icon">☀️</div> Zan's Daily Playbook
+      <div class="nav-icon">☀️</div> Max (CEO) &amp; Zan (MD) Playbook
     </div>
     <div class="nav-item" onclick="window.location.href='/internal/blueprint'">
       <div class="nav-icon">📋</div> Master Blueprint
@@ -283,7 +283,7 @@
         </div>
         <div class="task-body">
           <h3 style="color:var(--white); font-family:'Syne'; font-size:1.3rem; margin-bottom:0.5rem;">Fire Cold Email to "Centre Dentaire Lakeshore"</h3>
-          <p style="color:var(--text); font-size:0.95rem; line-height:1.6; margin-bottom:1rem;">Hunter identified this clinic via Maps API. CASL checked. Valérie wrote the 'Pre-Winter Wedge' pitch targeting their dirty floors. Awaiting Zan's approval to trigger SendGrid.</p>
+          <p style="color:var(--text); font-size:0.95rem; line-height:1.6; margin-bottom:1rem;">Hunter identified this clinic via Maps API. CASL checked. Valérie wrote the 'Pre-Winter Wedge' pitch targeting their dirty floors. Awaiting Max (CEO) &amp; Zan (Managing Director) approval to trigger SendGrid.</p>
           <div style="background:rgba(0,0,0,0.3); padding:1rem; border-radius:6px; font-size:0.85rem;">
             <div style="display:flex; justify-content:space-between; margin-bottom:5px;"><span style="color:var(--brand-gray)">Lead:</span> <span style="color:var(--white); font-weight:700;">Dr. Tremblay (Owner)</span></div>
             <div style="display:flex; justify-content:space-between;"><span style="color:var(--brand-gray)">Expected MRR:</span> <span style="color:var(--green); font-weight:700;">$1,800/mo</span></div>
@@ -718,7 +718,7 @@ Suite à notre analyse de vos locaux, nous avons remarqué l'impact sévère du 
       if (data.success && data.token) {
         sessionStorage.setItem('otis_erp_token', data.token);
         document.getElementById('auth-overlay').style.display = 'none';
-        showToast('🔓 Executive console unlocked. Welcome Zan.');
+        showToast('🔓 Executive console unlocked. Welcome Max (CEO) & Zan (Managing Director).');
         initializeDashboardData();
       } else {
         errDiv.innerText = data.error || 'Invalid Executive PIN';
@@ -951,7 +951,7 @@ Suite à notre analyse de vos locaux, nous avons remarqué l'impact sévère du 
           address: 'Pointe-Claire, Montreal, QC',
           status: 'approved',
           estValue: '$1,800/mo',
-          approvedBy: 'Zan (Owner)'
+          approvedBy: 'Max (CEO) & Zan (MD)'
         })
       });
     } catch (e) {}

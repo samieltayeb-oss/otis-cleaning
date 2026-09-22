@@ -38,7 +38,7 @@ Location: ${location}
 Strategic Requirements:
 1. Explain how winter salt/calcium degrades commercial floor sealant without high-speed mechanical scrubbers.
 2. Emphasize OTIS's full compliance with the Quebec CPEEP cleaning decree ($23.00/h legal wage floor), protecting building owners and managers from joint liability fines (responsabilité solidaire) under Article 14.
-3. Propose a free 10-minute compliance inspection and on-site Tennant mechanical scrubber demonstration by Zan.
+3. Propose a free 10-minute compliance inspection and on-site Tennant mechanical scrubber demonstration by Max (CEO) or Zan (Managing Director).
 4. Keep under 130 words.
 ${langInstruction}`;
 
@@ -101,7 +101,7 @@ Au-delà de la propreté, la réglementation québécoise (Décret sur l'entreti
 
 OTIS Nettoyage Commercial garantit une conformité légale totale et l'utilisation d'équipements autolaveurs Tennant de grade industriel.
 
-Zan, notre fondateur, peut passer réaliser une évaluation technique sans engagement de 10 minutes dans vos locaux à ${location}.
+Max (PDG) ou Zan (Directeur Général) peuvent passer réaliser une évaluation technique sans engagement de 10 minutes dans vos locaux à ${location}.
 
 Seriez-vous ouvert à une courte démonstration cette semaine ?
 
@@ -120,7 +120,7 @@ Beyond visual cleanliness, Quebec's collective decree (CPEEP) mandates a strict 
 
 OTIS Commercial Cleaning guarantees 100% legal decree compliance, backed by industrial Tennant high-speed auto-scrubbers and $5,000,000 commercial liability coverage.
 
-Zan, our operator, is offering a complimentary 10-minute on-site assessment at your ${location} facility this week.
+Max (CEO) or Zan (Managing Director) are offering a complimentary 10-minute on-site assessment at your ${location} facility this week.
 
 Would you be open to a brief walkthrough on Tuesday or Wednesday?
 

@@ -33,13 +33,13 @@ export default async function handler(req, res) {
     if (apiKey) {
       try {
         const systemPrompt = `You are Clara, the 24/7 Bilingual Inbound Concierge for OTIS Commercial Cleaning in Montreal, Quebec.
-You work directly for Zan, the owner and operator.
+You work directly for Max (CEO) and Zan (Managing Director), the owners of OTIS.
 Your primary goals:
 1. Qualify inbound commercial leads (offices, medical/dental clinics, daycares, condo syndicates).
 2. Gather: approximate square footage, cleaning frequency, business name, and phone number.
 3. Automatically match user's language (Quebec French or English).
 4. Emphasize OTIS's compliance with the Quebec CPEEP cleaning decree ($23/h legal wage parity) protecting building owners from co-liability fines.
-5. Keep answers courteous, concise (under 80 words), and professional. Offer a 10-minute site walkthrough with Zan.`;
+5. Keep answers courteous, concise (under 80 words), and professional. Offer a 10-minute site walkthrough with Max (CEO) or Zan (Managing Director).`;
 
         const payload = JSON.stringify({
           systemInstruction: { parts: [{ text: systemPrompt }] },
@@ -91,8 +91,8 @@ Your primary goals:
     // Intelligent Fallback simulation
     const isFrench = /bonjour|salut|prix|combien|estimation|devis|nettoyage|service|bureau|clinique/i.test(userPrompt);
     const reply = isFrench
-      ? `Bonjour ! Je suis Clara, concierge IA pour OTIS Nettoyage Commercial à Montréal. Nous desservons les cliniques et espaces corporatifs avec des contrats conformes au décret CPEEP ($23/h). Quelle est la superficie approximative de vos locaux et le meilleur numéro pour que Zan communique avec vous ?`
-      : `Hello! I'm Clara, AI Concierge for OTIS Commercial Cleaning in Montreal. We specialize in medical clinics and corporate facilities under Quebec's CPEEP compliance standards. What is your approximate square footage, and what is the best number for Zan to reach you for a quick walkthrough?`;
+      ? `Bonjour ! Je suis Clara, concierge IA pour OTIS Nettoyage Commercial à Montréal. Nous desservons les cliniques et espaces corporatifs avec des contrats conformes au décret CPEEP ($23/h). Quelle est la superficie approximative de vos locaux et le meilleur numéro pour que Max (PDG) ou Zan (Directeur Général) communique avec vous ?`
+      : `Hello! I'm Clara, AI Concierge for OTIS Commercial Cleaning in Montreal. We specialize in medical clinics and corporate facilities under Quebec's CPEEP compliance standards. What is your approximate square footage, and what is the best number for Max (CEO) or Zan (Managing Director) to reach you for a quick walkthrough?`;
 
     return res.status(200).json({ reply, mode: 'clara_simulated' });
 

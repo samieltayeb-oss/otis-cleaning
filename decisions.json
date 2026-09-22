@@ -1,4 +1,4 @@
-﻿[
+[
   {
     "id": "DOSS-01",
     "leadId": "LEAD-10",
@@ -14,7 +14,7 @@
     "sqFt": "3,400 sq ft",
     "trigger": "Relocated to new Holiday Ave premises & Pre-Winter floor protection window (Nov 1)",
     "status": "pending",
-    "statusLabel": "⏳ Awaiting Zan Review",
+    "statusLabel": "⏳ Awaiting Zan & Max Review",
     "proposedOffer": "Pre-Winter Tennant Machine Scrub & Operatory Disinfection Trial",
     "proposedPricing": "$1,480 Paid Trial → $2,100 / mo Recurring",
     "dispatchChannel": "info@otiscc.ca + Direct Phone Call from Max",
@@ -61,7 +61,7 @@
     "sqFt": "13,260 sq ft common areas",
     "trigger": "Multi-tenant office common area upkeep & pre-winter entrance vestibule salt sealing",
     "status": "pending",
-    "statusLabel": "⏳ Awaiting Zan Review",
+    "statusLabel": "⏳ Awaiting Zan & Max Review",
     "proposedOffer": "Door 2 On-Call Backup Agreement & Common Corridors Scrubbing Trial",
     "proposedPricing": "$1,950 Entrance & Lobby Scrub → $4,200 / mo Common Area MRR",
     "dispatchChannel": "Direct Email to Sylvie Filion (info@otiscc.ca)",
@@ -108,7 +108,7 @@
     "sqFt": "4,200 sq ft",
     "trigger": "Strict Quebec Daycare Regulation (Disinfection outside children hours) & Nov 1 floor care",
     "status": "pending",
-    "statusLabel": "⏳ Awaiting Zan Review",
+    "statusLabel": "⏳ Awaiting Zan & Max Review",
     "proposedOffer": "Evening Plant-Safe Disinfection & Linoleum Auto-Scrubbing Contract",
     "proposedPricing": "$850 Deep Clean Trial → $1,750 / mo Recurring (3x/week)",
     "dispatchChannel": "Phone Call Outreach (No email published / CASL safe)",
@@ -155,7 +155,7 @@
     "sqFt": "42,000 sq ft (Largest Lead in Batch)",
     "trigger": "Winter salt & high-traffic rubber floor degradation (Nov 1 Deadline)",
     "status": "pending",
-    "statusLabel": "⏳ Awaiting Zan Review",
+    "statusLabel": "⏳ Awaiting Zan & Max Review",
     "proposedOffer": "High-Capacity Overnight Tennant Auto-Scrubbing & Locker Room Sanitization",
     "proposedPricing": "$2,600 Main Circulation Track Trial → $5,400 / mo Recurring",
     "dispatchChannel": "In-Person Walk-in / Drop-by (3237 Des Sources)",
