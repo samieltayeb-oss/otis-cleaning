@@ -14,7 +14,7 @@ export default async function handler(req, res) {
 
   try {
     const { industry = 'Dental Clinics', location = 'Montreal, QC' } = req.method === 'POST' ? (req.body || {}) : req.query;
-    const apiKey = process.env.GOOGLE_PLACES_API_KEY || process.env.GOOGLE_MAPS_API_KEY;
+    const apiKey = process.env.GOOGLE_PLACES_API_KEY || process.env.GOOGLE_MAPS_API_KEY || process.env.GEMINI_API_KEY;
 
     // LIVE GOOGLE PLACES API QUERY
     if (apiKey) {
