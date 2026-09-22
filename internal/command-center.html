@@ -730,13 +730,7 @@ Suite à notre analyse de vos locaux, nous avons remarqué l'impact sévère du 
     }
   }
 
-  function lockExecutiveSession() {
-    sessionStorage.removeItem('otis_erp_token');
-    document.getElementById('auth-pin-input').value = '';
-    document.getElementById('auth-error').style.display = 'none';
-    document.getElementById('auth-overlay').style.display = 'flex';
-    showToast('🔒 Executive console locked.', false);
-  }
+  function lockExecutiveSession() { window.location.href = "/api/internal/logout"; }
 
   // OTIS XML-RPC Synchronization
   async function syncOdooData() {
