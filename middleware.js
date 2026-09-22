@@ -20,7 +20,7 @@ export default function middleware(request) {
     }
   }
 
-  return fetch(request);
+  // Continue to the destination by returning nothing
 }
 
 export const config = {
