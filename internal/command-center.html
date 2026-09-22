@@ -130,21 +130,7 @@
 </head>
 <body>
 
-<!-- EXECUTIVE AUTHENTICATION GATE OVERLAY -->
-<div id="auth-overlay" class="auth-overlay">
-  <div class="auth-card">
-    <img src="imgs/otis-logo.png" alt="OTIS" style="height: 38px; margin-bottom: 1.2rem; filter: brightness(0) invert(1);">
-    <h2 style="font-family: 'Syne', sans-serif; color: var(--white); font-size: 1.4rem; margin-bottom: 0.4rem;">Executive ERP Console</h2>
-    <p style="color: var(--brand-gray); font-size: 0.85rem; margin-bottom: 1.5rem;">Zan | Owner & Operator Access Control</p>
-    
-    <div style="margin-bottom: 1.2rem; text-align: left;">
-      <label style="display:block; font-size: 0.7rem; color: var(--brand-orange); text-transform: uppercase; font-weight: 700; margin-bottom: 0.4rem; letter-spacing: 1px;">Security PIN</label>
-      <input type="password" id="auth-pin-input" placeholder="Enter PIN (Default: 8842)" maxlength="8" style="width: 100%; padding: 0.8rem 1rem; border-radius: 6px; background: rgba(0,0,0,0.3); border: 1px solid var(--border); color: #fff; font-size: 1.1rem; outline: none; text-align: center; letter-spacing: 4px;" onkeyup="if(event.key==='Enter') handleExecutiveLogin()">
-    </div>
-    <button id="auth-unlock-btn" class="btn btn-approve" style="width: 100%; padding: 0.85rem; font-size: 0.85rem;" onclick="handleExecutiveLogin()">Unlock Executive Console</button>
-    <div id="auth-error" style="color: var(--red); font-size: 0.8rem; margin-top: 0.8rem; display: none;"></div>
-  </div>
-</div>
+
 
 <!-- TOAST CONTAINER -->
 <div id="toast-container"></div>
@@ -764,7 +750,7 @@ Suite à notre analyse de vos locaux, nous avons remarqué l'impact sévère du 
 
     try {
       const token = sessionStorage.getItem('otis_erp_token');
-      const res = await fetch('/api/ledger_sync', {
+      const res = await fetch('/api/internal/ledger_sync', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

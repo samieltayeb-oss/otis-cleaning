@@ -2,5 +2,25 @@
   "cleanUrls": true,
   "rewrites": [
     { "source": "/api/:endpoint", "destination": "/api/:endpoint.js" }
+  ],
+  "redirects": [
+    {
+      "source": "/otis-final-v2_11",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/otis-final-v2_11.html",
+      "destination": "/",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/internal/(.*)",
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex, nofollow" }
+      ]
+    }
   ]
 }
