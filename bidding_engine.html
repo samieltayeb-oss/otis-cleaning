@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>OTIS Route Density & Bidding Engine (Phase 3)</title>
+  <title>OTIS Route Density & Bidding Engine</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Syne:wght@700;800&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -97,7 +97,7 @@
     <h2>Bidding Engine</h2>
     <a href="execution.html" style="color:var(--brand-orange); text-decoration:none; font-size:0.8rem; font-weight:700;">◀ BACK</a>
   </div>
-  <p>Phase 3: Verify 15-minute route clustering and generate mathematically protected commercial proposals.</p>
+  <p>Verify 15-minute route clustering and generate mathematically protected commercial proposals.</p>
   
   <div class="form-group">
     <label>Target Postal Code / City Area</label>
@@ -275,7 +275,7 @@
   function generate() {
     const zone = document.getElementById('inp-zone').value;
     if (zone === 'laval' || zone === 'brossard') {
-      alert("WARNING: This lead is outside the 15-minute Route Cluster (Phase 3 strict rule). Do not bid.");
+      alert("WARNING: This lead is outside the 15-minute Route Cluster strict density rule. Do not bid.");
       return;
     }
 
