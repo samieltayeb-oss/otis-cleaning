@@ -7,6 +7,10 @@
     { "source": "/fr/services/imgs/:path*", "destination": "/imgs/:path*" },
     { "source": "/crew", "destination": "/internal/field_app.html" },
     { "source": "/app", "destination": "/internal/field_app.html" },
+    { "source": "/playbook", "destination": "/internal/operator_guide.html" },
+    { "source": "/operator", "destination": "/internal/operator_guide.html" },
+    { "source": "/internal/playbook", "destination": "/internal/operator_guide.html" },
+    { "source": "/internal/operator_guide", "destination": "/internal/operator_guide.html" },
     { "source": "/api/:endpoint", "destination": "/api/:endpoint.js" },
     { "source": "/api/internal/:endpoint", "destination": "/api/internal/:endpoint.js" }
   ],

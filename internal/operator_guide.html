@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OTIS Operator Playbook | Zan's Executive Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Syne:wght@700;800&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #050d14;
+      --surface: #0a192f;
+      --card: #0f243e;
+      --card-hover: #142f52;
+      --border: #1e3a5f;
+      --border-accent: rgba(247, 148, 29, 0.4);
+      --text: #C2D3E5;
+      --text-muted: #8FA6BE;
+      --white: #FFFFFF;
+      --orange: #F7941D;
+      --orange-tint: rgba(247, 148, 29, 0.12);
+      --green: #10b981;
+      --green-tint: rgba(16, 185, 129, 0.12);
+      --blue: #38bdf8;
+      --purple: #a855f7;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'DM Sans', sans-serif; }
+    body { background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh; padding-bottom: 5rem; }
+    
+    /* Top Bar */
+    .top-bar {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(10, 25, 47, 0.95);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.9rem 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .brand img { height: 28px; filter: brightness(0) invert(1); }
+    .badge-exec {
+      background: var(--orange-tint); color: var(--orange);
+      border: 1px solid var(--border-accent);
+      padding: 3px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 800; letter-spacing: 0.5px;
+    }
+    .nav-links { display: flex; gap: 12px; align-items: center; }
+    .nav-btn {
+      text-decoration: none; font-size: 0.82rem; font-weight: 700;
+      padding: 6px 14px; border-radius: 6px; transition: 0.2s;
+    }
+    .btn-command {
+      background: var(--orange); color: #000; font-weight: 800;
+    }
+    .btn-command:hover { background: #e08213; }
+    .btn-blueprint {
+      background: rgba(255,255,255,0.05); color: var(--white); border: 1px solid var(--border);
+    }
+    .btn-blueprint:hover { background: rgba(255,255,255,0.1); }
+
+    /* Layout Container */
+    .container { max-width: 1100px; margin: 0 auto; padding: 2.5rem 1.5rem; }
+
+    /* Hero Banner */
+    .hero-banner {
+      background: radial-gradient(circle at 80% 20%, rgba(247, 148, 29, 0.15) 0%, rgba(15, 36, 62, 0.6) 100%), var(--surface);
+      border: 1px solid var(--border-accent);
+      border-radius: 20px;
+      padding: 2.5rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--green-tint); color: var(--green); border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; margin-bottom: 1rem;
+    }
+    .hero-title {
+      font-family: 'Syne', sans-serif; font-size: clamp(2rem, 3.5vw, 2.8rem);
+      color: var(--white); font-weight: 800; line-height: 1.15; margin-bottom: 1rem;
+    }
+    .hero-desc {
+      font-size: 1.05rem; color: var(--text-muted); line-height: 1.7; max-width: 850px;
+    }
+
+    /* Section Headings */
+    .sec-header { margin-bottom: 1.8rem; }
+    .sec-title {
+      font-family: 'Syne', sans-serif; font-size: 1.6rem; color: var(--white); font-weight: 800; display: flex; align-items: center; gap: 10px;
+    }
+    .sec-desc { font-size: 0.95rem; color: var(--text-muted); margin-top: 0.3rem; }
+
+    /* Step Cards Timeline */
+    .timeline { display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: 3.5rem; }
+    .step-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+      padding: 2rem; display: flex; gap: 1.8rem; align-items: flex-start;
+      transition: all 0.2s; position: relative; overflow: hidden;
+    }
+    .step-card:hover { border-color: var(--orange); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+    .step-badge {
+      width: 54px; height: 54px; border-radius: 14px;
+      background: var(--orange-tint); border: 1px solid var(--border-accent);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      flex-shrink: 0; font-family: 'Syne', sans-serif; font-weight: 800; color: var(--orange); font-size: 1.2rem;
+    }
+    .step-content { flex: 1; }
+    .step-time { font-size: 0.78rem; font-weight: 800; color: var(--orange); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.3rem; }
+    .step-heading { font-family: 'Syne', sans-serif; font-size: 1.25rem; color: var(--white); font-weight: 700; margin-bottom: 0.6rem; }
+    .step-body { font-size: 0.95rem; color: var(--text); line-height: 1.6; margin-bottom: 1rem; }
+    .step-actions {
+      display: flex; gap: 10px; flex-wrap: wrap; background: rgba(0,0,0,0.25);
+      padding: 1rem; border-radius: 10px; border: 1px solid rgba(255,255,255,0.05);
+    }
+    .step-btn {
+      text-decoration: none; font-size: 0.82rem; font-weight: 700; padding: 7px 14px; border-radius: 6px;
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    .btn-orange { background: var(--orange); color: #000; }
+    .btn-blue { background: rgba(56, 189, 248, 0.15); color: var(--blue); border: 1px solid rgba(56, 189, 248, 0.3); }
+    .btn-green { background: var(--green-tint); color: var(--green); border: 1px solid rgba(16, 185, 129, 0.3); }
+
+    /* AI Staff Grid */
+    .staff-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.2rem; margin-bottom: 3.5rem;
+    }
+    .staff-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+      padding: 1.5rem; transition: 0.2s; display: flex; flex-direction: column;
+    }
+    .staff-card:hover { border-color: rgba(56, 189, 248, 0.4); transform: translateY(-3px); }
+    .staff-hdr { display: flex; align-items: center; gap: 12px; margin-bottom: 1rem; }
+    .staff-avatar { font-size: 2rem; }
+    .staff-name { font-family: 'Syne', sans-serif; font-size: 1.15rem; color: var(--white); font-weight: 800; }
+    .staff-role { font-size: 0.75rem; font-weight: 700; color: var(--orange); text-transform: uppercase; }
+    .staff-desc { font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 1rem; flex: 1; }
+    .staff-proof {
+      background: rgba(0,0,0,0.3); border-radius: 6px; padding: 8px 10px;
+      font-size: 0.78rem; color: var(--blue); font-weight: 600; display: flex; align-items: center; gap: 6px;
+    }
+
+    /* Crew App Feature Box */
+    .crew-box {
+      background: linear-gradient(135deg, var(--surface), var(--card));
+      border: 1px solid var(--border-accent); border-radius: 20px; padding: 2.5rem;
+      margin-bottom: 3.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+    }
+    @media (max-width: 800px) { .crew-box { grid-template-columns: 1fr; } }
+    .crew-feature { display: flex; gap: 12px; margin-bottom: 1.2rem; }
+    .crew-icon { font-size: 1.4rem; flex-shrink: 0; }
+    .crew-title { font-weight: 700; color: var(--white); font-size: 0.95rem; margin-bottom: 0.2rem; }
+    .crew-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
+
+    /* Quick Launch Grid */
+    .cockpit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+    .cockpit-card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+      padding: 1.3rem; text-decoration: none; color: inherit; transition: 0.2s; display: block;
+    }
+    .cockpit-card:hover { border-color: var(--orange); background: var(--card); transform: translateY(-3px); }
+    .cockpit-icon { font-size: 1.8rem; margin-bottom: 0.6rem; }
+    .cockpit-title { font-family: 'Syne', sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--white); margin-bottom: 0.3rem; }
+    .cockpit-sub { font-size: 0.78rem; color: var(--text-muted); }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <header class="top-bar">
+    <a href="/internal/command-center" class="brand">
+      <img src="/imgs/otis-logo.png" alt="OTIS Commercial Cleaning">
+      <span class="badge-exec">CEO OPERATOR PLAYBOOK</span>
+    </a>
+    <div class="nav-links">
+      <a href="/internal/command-center" class="nav-btn btn-command">⚡ Executive Command Center (PIN: 8842)</a>
+      <a href="/internal/blueprint" class="nav-btn btn-blueprint">📋 Master Blueprint</a>
+      <a href="/crew" target="_blank" class="nav-btn btn-blueprint">📱 Crew App ↗</a>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <!-- HERO BANNER -->
+    <div class="hero-banner">
+      <div class="hero-tag">● Operating System Ready &amp; Automated</div>
+      <h1 class="hero-title">Good Morning, Zan.<br>Here is how your company runs.</h1>
+      <p class="hero-desc">
+        You are the CEO and final authority of OTIS. You do not need to do manual data entry, cold-call gatekeepers, calculate complex square-foot pricing by hand, or text lockbox codes to cleaners. Your <strong>8 autonomous AI staff</strong> do the preparation, and your <strong>Field Crew App</strong> holds cleaners strictly accountable on-site. You hold the approval keys.
+      </p>
+    </div>
+
+    <!-- SECTION 1: ZAN'S DAILY ROUTINE -->
+    <div class="sec-header">
+      <h2 class="sec-title">☀️ Your 3-Step Daily Routine</h2>
+      <p class="sec-desc">A total of 6 to 8 minutes of executive oversight per day keeps the entire machine operating at peak performance.</p>
+    </div>
+
+    <div class="timeline">
+      
+      <!-- STEP 1: MORNING -->
+      <div class="step-card">
+        <div class="step-badge">1</div>
+        <div class="step-content">
+          <div class="step-time">08:30 AM • ~3 Minutes</div>
+          <h3 class="step-heading">Review the Tri-State Approval Feed &amp; Clara's Inbox</h3>
+          <p class="step-body">
+            Log in to the <strong>Executive Command Center</strong> with PIN <strong style="color:var(--orange);">8842</strong>. In your Tri-State Feed, <strong>Hunter</strong> (Lead Radar) and <strong>Valérie</strong> (Sales Proposals) will have queued up fresh cold email pitches to targeted Montreal clinics. 
+            Click <strong>[Approve]</strong> to fire them off, or <strong>[Adjust Pitch]</strong> to tweak wording. Then, glance at your <strong>Corporate Inbox</strong> to see what website inquiries Clara qualified overnight.
+          </p>
+          <div class="step-actions">
+            <a href="/internal/command-center" class="step-btn btn-orange">⚡ Open Tri-State Console ➔</a>
+            <a href="/internal/lead_engine" class="step-btn btn-blue">🎯 Run Hunter Radar Scan</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 2: MIDDAY -->
+      <div class="step-card">
+        <div class="step-badge">2</div>
+        <div class="step-content">
+          <div class="step-time">01:00 PM (When a client wants pricing) • ~3 Minutes</div>
+          <h3 class="step-heading">Generate Protected Commercial Bids &amp; Contracts</h3>
+          <p class="step-body">
+            When a dental clinic or corporate office requests a formal proposal, open the <strong>Bidding Engine</strong>. Enter their square footage (e.g. 2,800 sqft) and select their borough. The engine mathematically enforces Quebec's <strong>CPEEP Cleaning Decree ($31.15/hr break-even floor)</strong> so you never underbid. In 60 seconds, download an executive PDF proposal or generate a signed contract.
+          </p>
+          <div class="step-actions">
+            <a href="/internal/bidding_engine" class="step-btn btn-orange">📐 Launch Bidding Engine</a>
+            <a href="/internal/contract_generator" class="step-btn btn-blue">📝 Open Contract Generator</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 3: EVENING -->
+      <div class="step-card">
+        <div class="step-badge">3</div>
+        <div class="step-content">
+          <div class="step-time">08:00 PM • ~1 Minute</div>
+          <h3 class="step-heading">Verify Cleaners' GPS Clock-In &amp; 5-Point QA Audit</h3>
+          <p class="step-body">
+            Open the <strong>HR &amp; Fleet Map</strong> in your Command Center to verify that your evening cleaning crew arrived at the client site. Then open the <strong>QA Inspection Center</strong> to confirm they checked off all 5 mandatory inspection points (restrooms, trash, dispensers, neutral floor wash, perimeter alarm) and inspect their uploaded photo proof before they clocked out.
+          </p>
+          <div class="step-actions">
+            <a href="/internal/qa_engine" class="step-btn btn-green">🛡️ Inspect QA Audit Reports</a>
+            <a href="/crew" target="_blank" class="step-btn btn-blue">📱 View Live Crew App</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SECTION 2: MEET YOUR 8 AI STAFF MEMBERS -->
+    <div class="sec-header">
+      <h2 class="sec-title">🤖 Meet Your 8 AI Staff Members</h2>
+      <p class="sec-desc">These 8 specialized autonomous roles work for you 24 hours a day, 7 days a week, for $0 in payroll.</p>
+    </div>
+
+    <div class="staff-grid">
+      
+      <!-- 1. Hunter -->
+      <div class="staff-card">
+        <div class="staff-hdr">
+          <div class="staff-avatar">🎯</div>
+          <div>
+            <div class="staff-name">Hunter</div>
+            <div class="staff-role">Director of Sourcing</div>
+          </div>
+        </div>
+        <div class="staff-desc">
+          Continuously scans Montreal commercial clusters (clinics, law firms, offices) within 15 minutes of your routes. Estimates square footage and checks anti-spam compliance.
+        </div>
+        <div class="staff-proof">✓ Powered by Live OpenStreetMap ($0 Cost)</div>
+      </div>
+
+      <!-- 2. Clara -->
+      <div class="staff-card">
+        <div class="staff-hdr">
+          <div class="staff-avatar">💬</div>
+          <div>
+            <div class="staff-name">Clara</div>
+            <div class="staff-role">24/7 Inbound Concierge</div>
+          </div>
+        </div>
+        <div class="staff-desc">
+          Sits on your public website day and night. Greets visitors in French or English, qualifies their building size and frequency, and captures their phone number for a 10-minute walkthrough with you.
+        </div>
+        <div class="staff-proof">✓ Live on otiscc.ca Website Chat</div>
+      </div>
+
+      <!-- 3. Valérie -->
+      <div class="staff-card">
+        <div class="staff-hdr">
+          <div class="staff-avatar">✍️</div>
+          <div>
+            <div class="staff-name">Valérie</div>
+            <div class="staff-role">Proposal Architect</div>
+          </div>
+        </div>
+        <div class="staff-desc">
+          Writes targeted, high-converting cold pitches targeting Montreal winter calcium and floor degradation. Drafts customized commercial proposals and contracts.
+        </div>
+        <div class="staff-proof">✓ Linked to Bidding &amp; Contract Engines</div>
+      </div>
+
+      <!-- 4. Alex -->
+      <div class="staff-card">
+        <div class="staff-hdr">
+          <div class="staff-avatar">🗺️</div>
+          <div>
+            <div class="staff-name">Alex</div>
+            <div class="staff-role">Route Density Coordinator</div>
+          </div>
+        </div>
+        <div class="staff-desc">
+          Strictly enforces your 15-minute driving radius. Flags and rejects far-away jobs that would waste cleaners' transit time and fuel across the island.
+        </div>
+        <div class="staff-proof">✓ 15-Minute Cluster Rule Guard</div>
+      </div>
+
+      <!-- 5. Émile -->
+      <div class="staff-card">
+        <div class="staff-hdr">
+          <div class="staff-avatar">⚖️</div>
+          <div>
+            <div class="staff-name">Émile</div>
+            <div class="staff-role">Compliance Sentinel</div>
+          </div>
+        </div>
+        <div class="staff-desc">
+          Audits every contract and document to guarantee 100% compliance with Quebec Bill 96 French requirements and the mandatory CPEEP wage parity decree ($23.00/h).
+        </div>
+        <div class="staff-proof">✓ Protects Against Legal Co-Liability</div>
+      </div>
+
+      <!-- 6. Marcus -->
+      <div class="staff-card">
+        <div class="staff-hdr">
+          <div class="staff-avatar">🧰</div>
+          <div>
+            <div class="staff-name">Marcus</div>
+            <div class="staff-role">Equipment &amp; CapEx Manager</div>
+          </div>
+        </div>
+        <div class="staff-desc">
+          Monitors your commercial equipment truth: ensures Tennant auto-scrubber machine time, neutral cleaner dilution (1:64), and anti-foam usage are tracked.
+        </div>
+        <div class="staff-proof">✓ Restock &amp; Machine Utilization</div>
+      </div>
+
+      <!-- 7. Bruno -->
+      <div class="staff-card">
+        <div class="staff-hdr">
+          <div class="staff-avatar">🚐</div>
+          <div>
+            <div class="staff-name">Bruno</div>
+            <div class="staff-role">Crew Dispatch &amp; Ops</div>
+          </div>
+        </div>
+        <div class="staff-desc">
+          Coordinates human field cleaners directly through the Crew App. Unlocks building keybox codes only upon verified GPS arrival and monitors shift progress.
+        </div>
+        <div class="staff-proof">✓ 100% Free Web App (No Twilio SMS)</div>
+      </div>
+
+      <!-- 8. Sophie -->
+      <div class="staff-card">
+        <div class="staff-hdr">
+          <div class="staff-avatar">⭐</div>
+          <div>
+            <div class="staff-name">Sophie</div>
+            <div class="staff-role">Retention &amp; Upsell</div>
+          </div>
+        </div>
+        <div class="staff-desc">
+          Follows up with facility managers after shifts to collect 5-star Google reviews. Automatically pitches restock consumables (paper towels, soap, TP) at a 20% profit margin.
+        </div>
+        <div class="staff-proof">✓ 5-Star Reviews &amp; Supply Margins</div>
+      </div>
+
+    </div>
+
+    <!-- SECTION 3: THE CREW PLATFORM -->
+    <div class="sec-header">
+      <h2 class="sec-title">📱 The Crew Mobile Platform (`/crew`)</h2>
+      <p class="sec-desc">How your field cleaners execute the work with complete transparency and zero guesswork.</p>
+    </div>
+
+    <div class="crew-box">
+      <div>
+        <h3 style="font-family:'Syne', sans-serif; color:var(--white); font-size:1.3rem; margin-bottom:1rem;">
+          Give Your Cleaners Exactly One Link:
+        </h3>
+        <div style="background:rgba(0,0,0,0.4); padding:1rem; border-radius:10px; border:1px solid var(--border); margin-bottom:1.5rem;">
+          <code style="color:var(--orange); font-size:1rem; font-weight:700;">https://otis-cleaning.vercel.app/crew</code>
+        </div>
+        <p style="color:var(--text); font-size:0.92rem; line-height:1.6; margin-bottom:1.5rem;">
+          Cleaners do not need to download an app from an app store or memorize a login password. They open the link in Safari or Chrome and tap <strong>"Add to Home Screen"</strong>. It functions like a native mobile app.
+        </p>
+        <a href="/crew" target="_blank" class="step-btn btn-orange" style="font-size:0.9rem; padding:10px 18px;">
+          🚀 Open Cleaner Crew App Preview ↗
+        </a>
+      </div>
+
+      <div>
+        <div class="crew-feature">
+          <div class="crew-icon">📍</div>
+          <div>
+            <div class="crew-title">GPS-Gated Keybox Security</div>
+            <div class="crew-desc">Cleaners cannot view the lockbox code from home. The code (`4 1 9 2`) only reveals on screen when they slide to clock in at the facility.</div>
+          </div>
+        </div>
+
+        <div class="crew-feature">
+          <div class="crew-icon">🔒</div>
+          <div>
+            <div class="crew-title">Mandatory 5-Point QA Lockout</div>
+            <div class="crew-desc">The app locks the "Clock Out" button until all 5 inspection points are checked: Trash, Restrooms, Dispensers, Neutral Floor Wash, and Security Alarm.</div>
+          </div>
+        </div>
+
+        <div class="crew-feature">
+          <div class="crew-icon">📸</div>
+          <div>
+            <div class="crew-title">Timestamped Proof of Work</div>
+            <div class="crew-desc">Cleaners attach a quick photo of the clean floors before leaving. This eliminates client disputes over clean quality.</div>
+          </div>
+        </div>
+
+        <div class="crew-feature">
+          <div class="crew-icon">⚖️</div>
+          <div>
+            <div class="crew-title">Quebec CPEEP Decree Parity</div>
+            <div class="crew-desc">Shift hours and earnings ($23.00/h legal parity) are logged automatically into your ERP ledger to keep you 100% CNESST compliant.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 4: QUICK LAUNCH COCKPIT -->
+    <div class="sec-header">
+      <h2 class="sec-title">🎛️ Zan's Quick Access Cockpit</h2>
+      <p class="sec-desc">Direct links to every system tool across your enterprise.</p>
+    </div>
+
+    <div class="cockpit-grid">
+      <a href="/internal/command-center" class="cockpit-card">
+        <div class="cockpit-icon">⚡</div>
+        <div class="cockpit-title">Executive Hub</div>
+        <div class="cockpit-sub">Master Tri-State approval console (PIN: 8842)</div>
+      </a>
+      <a href="/internal/lead_engine" class="cockpit-card">
+        <div class="cockpit-icon">🎯</div>
+        <div class="cockpit-title">Hunter Radar</div>
+        <div class="cockpit-sub">Live Montreal commercial lead scraper ($0)</div>
+      </a>
+      <a href="/internal/bidding_engine" class="cockpit-card">
+        <div class="cockpit-icon">📐</div>
+        <div class="cockpit-title">Bidding Engine</div>
+        <div class="cockpit-sub">Route-clustered square foot price calculator</div>
+      </a>
+      <a href="/internal/contract_generator" class="cockpit-card">
+        <div class="cockpit-icon">📝</div>
+        <div class="cockpit-title">Contract Generator</div>
+        <div class="cockpit-sub">Article 14 protected commercial agreements</div>
+      </a>
+      <a href="/internal/qa_engine" class="cockpit-card">
+        <div class="cockpit-icon">🛡️</div>
+        <div class="cockpit-title">QA Inspection</div>
+        <div class="cockpit-sub">Review cleaners' 5-point audits &amp; photos</div>
+      </a>
+      <a href="/crew" target="_blank" class="cockpit-card">
+        <div class="cockpit-icon">📱</div>
+        <div class="cockpit-title">Crew Mobile App</div>
+        <div class="cockpit-sub">Cleaner portal for shifts, lockbox &amp; earnings</div>
+      </a>
+      <a href="/internal/blueprint" class="cockpit-card">
+        <div class="cockpit-icon">📋</div>
+        <div class="cockpit-title">Master Blueprint</div>
+        <div class="cockpit-sub">Complete strategic playbook &amp; financial math</div>
+      </a>
+      <a href="/" target="_blank" class="cockpit-card">
+        <div class="cockpit-icon">🌐</div>
+        <div class="cockpit-title">Client Website</div>
+        <div class="cockpit-sub">Public customer-facing site (EN &amp; FR)</div>
+      </a>
+    </div>
+
+  </div>
+
+</body>
+</html>
