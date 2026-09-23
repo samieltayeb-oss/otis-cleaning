@@ -2,8 +2,8 @@ import crypto from 'crypto';
 import jwt from 'jsonwebtoken';
 
 const SESSION_SECRET = process.env.OTIS_SESSION_SECRET || 'fallback-secret-otis-2026';
-// Expected hash for PIN. (e.g. SHA-256 of 8842 is 5aa765d61d8327c3f392efae5dfdf02a2468305c6d3bc01e69b50bf699477e77)
-const PIN_HASH = process.env.OTIS_INTERNAL_PIN_HASH || '5aa765d61d8327c3f392efae5dfdf02a2468305c6d3bc01e69b50bf699477e77'; 
+// Expected hash for PIN. (e.g. SHA-256 of 8842 is 95af09711f8d31b36e9e3e86f8fd40d302e6963050af4c1a9a91ed3b025bfe30)
+const PIN_HASH = process.env.OTIS_INTERNAL_PIN_HASH || '95af09711f8d31b36e9e3e86f8fd40d302e6963050af4c1a9a91ed3b025bfe30'; 
 
 // Simple rate limiter (in-memory, per-instance)
 const rateLimit = new Map();
