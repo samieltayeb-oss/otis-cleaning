@@ -86,7 +86,7 @@ PASS
 ## ENVIRONMENT VARIABLES REQUIRED
 (Configure these in your Vercel Project Settings -> Environment Variables)
 - `OTIS_SESSION_SECRET` (Provide a strong random string)
-- `OTIS_INTERNAL_PIN_HASH` (Provide the SHA-256 hash of your desired Executive PIN. For example, `8842` is `5aa765d61d8327c3f392efae5dfdf02a2468305c6d3bc01e69b50bf699477e77`)
+- `OTIS_INTERNAL_PIN_HASH` (Provide the SHA-256 hash of your desired Executive PIN. For example, `8842` is `95af09711f8d31b36e9e3e86f8fd40d302e6963050af4c1a9a91ed3b025bfe30`)
 
 ## SECURITY DECISIONS
 - Used Vercel Edge Middleware (`middleware.js`) to intercept any request to `/internal/*` and `/api/internal/*`.
