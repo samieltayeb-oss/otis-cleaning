@@ -982,6 +982,317 @@ html.font-scale-2 { font-size: 125% !important; }
   100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
 }
 
+
+/* ==========================================================================
+   ENHANCED MOBILE RESPONSIVE SYSTEM (OTIS 2026 MOBILE VIEW OVERHAUL)
+   ========================================================================== */
+
+/* 1. iOS Safari Auto-Zoom Fix & Form Sizing */
+@media (max-width: 768px) {
+  .fg input,
+  .fg select,
+  .fg textarea,
+  #chat-input {
+    font-size: 16px !important; /* Prevents iOS auto-zoom on field focus */
+    min-height: 48px;
+  }
+  .cform {
+    padding: 1.25rem 1rem !important;
+  }
+  .form-row {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+  }
+}
+
+/* 2. Mobile Header & Navigation */
+@media (max-width: 768px) {
+  nav {
+    padding: 0 4% !important;
+    height: 64px !important;
+  }
+  /* Hide desktop a11y toolbar from top navbar on small screens to prevent crowded header; featured inside mobile drawer */
+  nav .a11y-toolbar {
+    display: none !important;
+  }
+  #lang-btn {
+    padding: 0.35rem 0.65rem !important;
+    font-size: 0.78rem !important;
+  }
+  .hamburger {
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* 3. Mobile Menu Drawer Polish */
+.mob-menu {
+  width: min(320px, 86vw) !important;
+  right: -340px !important;
+  padding: 1.2rem 0 env(safe-area-inset-bottom, 24px) !important;
+}
+.mob-menu.open {
+  right: 0 !important;
+}
+.mob-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 0 1.2rem 1rem !important;
+}
+.mob-close-btn {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  color: var(--white);
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.mob-close-btn:hover {
+  background: rgba(247, 148, 29, 0.25);
+  color: var(--orange);
+}
+.mm-link, .mm-sub {
+  min-height: 44px;
+  display: flex !important;
+  align-items: center;
+  gap: 10px;
+}
+
+/* 4. Mobile Sticky Quick-Action Conversion Bar */
+.mobile-sticky-bar {
+  display: none;
+}
+@media (max-width: 768px) {
+  .mobile-sticky-bar {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 996;
+    background: rgba(8, 13, 26, 0.95);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-top: 1px solid rgba(247, 148, 29, 0.25);
+    padding: 0.6rem 0.8rem calc(0.6rem + env(safe-area-inset-bottom, 0px));
+    gap: 8px;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
+  }
+  body {
+    padding-bottom: 70px; /* Offset for sticky bar */
+  }
+  .msb-btn {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    height: 46px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+  }
+  .msb-btn:active {
+    transform: scale(0.97);
+  }
+  .msb-call {
+    background: rgba(34, 197, 94, 0.18);
+    border: 1px solid rgba(34, 197, 94, 0.4);
+    color: #4ade80;
+  }
+  .msb-quote {
+    background: linear-gradient(135deg, var(--orange), var(--orange2));
+    border: 1px solid var(--bO);
+    color: #FFFFFF;
+    box-shadow: 0 2px 10px rgba(247, 148, 29, 0.35);
+  }
+}
+
+/* 5. Hero Section on Mobile */
+@media (max-width: 640px) {
+  .hero {
+    padding: 70px 4% 1.8rem !important;
+  }
+  .hero h1 {
+    font-size: clamp(1.75rem, 6.8vw, 2.25rem) !important;
+    line-height: 1.15 !important;
+  }
+  .hero h2 {
+    font-size: clamp(1.05rem, 4vw, 1.3rem) !important;
+    margin-bottom: 0.8rem !important;
+  }
+  .hero-sub {
+    font-size: 0.95rem !important;
+    line-height: 1.6 !important;
+  }
+  .hero-service-pillars {
+    gap: 6px !important;
+    margin: 1rem 0 1.2rem !important;
+  }
+  .pillar-chip {
+    padding: 0.38rem 0.75rem !important;
+    font-size: 0.76rem !important;
+    min-height: 38px;
+  }
+  .acts {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 0.75rem !important;
+  }
+  .acts .btn-o,
+  .acts .btn-g {
+    width: 100% !important;
+    justify-content: center !important;
+    min-height: 48px;
+    font-size: 0.95rem !important;
+    padding: 0.75rem 1.2rem !important;
+  }
+  .hero-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    margin-top: 1.4rem;
+  }
+}
+
+/* 6. Showcase Card & Mini Stats */
+@media (max-width: 480px) {
+  .cleaning-hero-card {
+    border-radius: 16px !important;
+  }
+  .cleaning-card-media {
+    height: 210px !important;
+  }
+  .card-badge-top-left,
+  .card-badge-top-right {
+    top: 8px !important;
+    padding: 0.28rem 0.55rem !important;
+    font-size: 0.68rem !important;
+    max-width: 46%;
+  }
+  .card-badge-top-left { left: 8px !important; }
+  .card-badge-top-right { right: 8px !important; }
+  .card-badge-bottom {
+    left: 8px !important;
+    right: 8px !important;
+    bottom: 8px !important;
+    padding: 0.4rem 0.6rem !important;
+    flex-wrap: wrap !important;
+    gap: 5px !important;
+  }
+  .card-insurance-tag {
+    font-size: 0.7rem !important;
+    padding: 0.15rem 0.5rem !important;
+  }
+  .hero-metric-row {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 6px !important;
+  }
+  .mini-stat {
+    padding: 0.55rem 0.35rem !important;
+    border-radius: 10px !important;
+    text-align: center;
+  }
+  .mini-stat .m-val {
+    font-size: 1.15rem !important;
+  }
+  .mini-stat .m-lbl {
+    font-size: 0.67rem !important;
+    line-height: 1.2 !important;
+  }
+}
+
+/* 7. Before & After Touch Comparison */
+.ba-wrap {
+  touch-action: pan-y !important; /* Allows vertical scrolling while dragging horizontal slider */
+}
+.ba-handle {
+  width: 42px !important;
+  height: 42px !important;
+  font-size: 1rem !important;
+}
+
+/* 8. Modals & Dialogs on Mobile */
+@media (max-width: 600px) {
+  .modal-overlay {
+    padding: 8px !important;
+  }
+  .modal-box {
+    max-height: 94vh !important;
+    border-radius: 18px !important;
+  }
+  .mhdr {
+    padding: 1.25rem 1rem !important;
+    border-radius: 18px 18px 0 0 !important;
+  }
+  .mclose {
+    width: 44px !important;
+    height: 44px !important;
+    font-size: 1.25rem !important;
+    top: 0.8rem !important;
+    right: 0.8rem !important;
+  }
+  .mbody {
+    padding: 1.2rem 1rem !important;
+  }
+  .mfooter {
+    padding: 1rem !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+  .mfooter .btn-o,
+  .mfooter .btn-g {
+    width: 100% !important;
+    min-height: 46px;
+    justify-content: center;
+  }
+}
+
+/* 9. Chatbot Mobile Fix */
+@media (max-width: 480px) {
+  #otis-chat-widget {
+    bottom: 76px !important;
+    right: 14px !important;
+  }
+  #chat-toggle {
+    width: 52px !important;
+    height: 52px !important;
+  }
+  #chat-window {
+    position: fixed !important;
+    bottom: 76px !important;
+    left: 10px !important;
+    right: 10px !important;
+    width: auto !important;
+    height: auto !important;
+    max-height: calc(100vh - 100px) !important;
+    border-radius: 16px !important;
+  }
+  #chat-messages {
+    max-height: 280px !important;
+  }
+  #chat-close {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
 </style><link rel="canonical" href="https://otis-cleaning.vercel.app/fr/">
 <link rel="alternate" hreflang="fr-CA" href="https://otis-cleaning.vercel.app/fr/">
 <link rel="alternate" hreflang="en-CA" href="https://otis-cleaning.vercel.app/">
@@ -1022,7 +1333,7 @@ html.font-scale-2 { font-size: 125% !important; }
 </div></div>
 <div class="mob-overlay" id="mob-overlay" onclick="closeMob()"></div>
 <div class="mob-menu" id="mob-menu">
-<div class="mob-header"><img src="/imgs/otis-logo.png" alt="OTIS" style="height:34px;object-fit:contain;"></div>
+<div class="mob-header"><img src="/imgs/otis-logo.png" alt="OTIS" style="height:34px;object-fit:contain;"><button class="mob-close-btn" onclick="closeMob()" aria-label="Fermer le menu">&times;</button></div>
 <div style="padding:0 1.4rem 0.5rem; display:flex; justify-content:space-between; align-items:center;">
   <span style="font-size:0.75rem; color:var(--gray); text-transform:uppercase; font-weight:700;">Langue</span>
   <button id="mob-lang-btn" onclick="window.location.href='/'" style="background:rgba(247,148,29,0.15); border:1px solid var(--bO); color:var(--orange); font-weight:700; padding:0.3rem 0.8rem; border-radius:20px; cursor:pointer; font-size:0.8rem;">English (EN)</button>
@@ -3477,5 +3788,18 @@ window.addEventListener('load', startAllMotionGraphics);
   }
 })();
 </script>
+
+<!-- Barre d'Action Rapide Mobile (< 768px) -->
+<div class="mobile-sticky-bar" id="mobile-sticky-bar">
+  <a href="tel:+14389359725" class="msb-btn msb-call">
+    <svg class="a11y-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+    <span>Appeler (438) 935-9725</span>
+  </a>
+  <button onclick="nav('quote')" class="msb-btn msb-quote">
+    <svg class="a11y-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+    <span>Soumission Gratuite →</span>
+  </button>
+</div>
+
 </body>
 </html>
