@@ -141,7 +141,78 @@
       .preview-pane { padding: 0; background: none; display: block; }
       .document { box-shadow: none; max-width: 100%; padding: 0; }
     }
-  </style>
+  
+    /* HIGH-CONTRAST LIGHT WORKSPACE FOR OPERATIONAL INVOICING */
+    :root {
+      --bg: #F1F5F9; --surface: #FFFFFF; --border: #CBD5E1; --text: #334155; --white: #FFF;
+      --pdf-navy: #0F172A; --pdf-gray: #64748B; --pdf-orange: #EA580C; --pdf-table-head: #0F172A;
+      --brand-orange: #EA580C;
+    }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important; background: var(--bg) !important; color: var(--text) !important; }
+    .sidebar { background: #FFFFFF !important; border-right: 1px solid var(--border) !important; }
+    .sidebar h2 { color: #0F172A !important; }
+    .form-group label { color: #475569 !important; }
+    .form-control { background: #F8FAFC !important; color: #0F172A !important; border: 1px solid var(--border) !important; }
+    .form-control:focus { border-color: var(--brand-orange) !important; background: #FFFFFF !important; }
+    
+    .preview-pane { background: #E2E8F0 !important; padding: 2.5rem !important; }
+    .document { 
+      background: #FFFFFF !important; 
+      color: #1E293B !important; 
+      border: 1px solid #CBD5E1 !important; 
+      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1) !important;
+      border-radius: 6px !important;
+    }
+    [contenteditable="true"]:hover {
+      outline: 1.5px dashed #EA580C !important;
+      outline-offset: 3px !important;
+      cursor: text;
+    }
+    .edit-toolbar {
+      background: #FFFFFF;
+      border: 1px solid #CBD5E1;
+      border-radius: 8px;
+      padding: 0.75rem 1.25rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    .edit-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #FEF3C7;
+      color: #92400E;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 0.3rem 0.75rem;
+      border-radius: 9999px;
+      border: 1px solid #FCD34D;
+    }
+    .btn-tool {
+      background: #F8FAFC;
+      border: 1px solid #CBD5E1;
+      color: #334155;
+      padding: 0.4rem 0.8rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .btn-tool:hover {
+      background: #EA580C;
+      color: #FFFFFF;
+      border-color: #EA580C;
+    }
+    
+</style>
 </head>
 <body>
 
@@ -249,7 +320,7 @@
 </div>
 
 <div class="preview-pane">
-  <div class="document">
+  <div class="document" contenteditable="true" spellcheck="false">
     
     <!-- EXACT PDF HEADER -->
     <div class="pdf-header">
@@ -443,6 +514,23 @@
   }
   
   generate();
+
+  function addInvoiceRow() {
+    const tbody = document.getElementById('inv-items');
+    if (!tbody) return;
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>
+        <div class="item-title">Consumables Restocking & Facility Maintenance</div>
+        <div class="item-desc">Restocking of paper products, hand soap, and scheduled facility care.</div>
+      </td>
+      <td>1</td>
+      <td>$250.00</td>
+      <td>$250.00</td>
+    `;
+    tbody.appendChild(tr);
+  }
+    
 </script>
 
 </body>

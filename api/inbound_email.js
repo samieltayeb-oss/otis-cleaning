@@ -101,7 +101,7 @@ function fallbackClaraReply(subject, bodyText) {
 
 Merci d'avoir contacté OTIS Nettoyage Commercial.
 
-Nos équipes certifiées se spécialisent dans l'entretien des espaces professionnels et cliniques médicales à Montréal. Toutes nos ententes respectent rigoureusement le décret de convention collective CPEEP (taux horaire légal de 23,00 $/h), garantissant une protection juridique complète contre la responsabilité conjointe.
+Nos équipes certifiées se spécialisent dans l'entretien des espaces professionnels et cliniques médicales à Montréal. Toutes nos ententes respectent rigoureusement le décret de convention collective CPEEP (taux horaire légal de décret paritaire), garantissant une protection juridique complète contre la responsabilité conjointe.
 
 Max (PDG) ou Zan (Directeur Général) peut effectuer une visite technique de 10 minutes afin de valider vos superficies et vous fournir une soumission précise sous 24h.
 
@@ -116,7 +116,7 @@ OTIS Nettoyage Commercial | info@otiscc.ca`;
 
 Thank you for reaching out to OTIS Commercial Cleaning.
 
-Our teams specialize in medical clinics and corporate facilities across Greater Montreal. All our contracts strictly adhere to the Quebec CPEEP decree legal wage ($23.00/h), shielding building owners from joint-liability penalties.
+Our teams specialize in medical clinics and corporate facilities across Greater Montreal. All our contracts strictly adhere to the Quebec CPEEP decree legal wage (decree statutory rate), shielding building owners from joint-liability penalties.
 
 Max (CEO) or Zan (Managing Director) is available for a quick 10-minute walkthrough this week to inspect the site and provide a binding proposal within 24 hours.
 
