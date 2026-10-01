@@ -96,11 +96,11 @@ export interface ContentDictionary {
 
 export const contentEN: ContentDictionary = {
   nav: {
-    services: "Capabilities",
-    transformation: "Restoration",
+    services: "Services",
+    transformation: "Transformation",
     environments: "Sectors",
-    compliance: "Governance",
-    contact: "Dispatch",
+    compliance: "Compliance",
+    contact: "Contact",
     requestQuote: "Request Proposal",
     callNow: "+1 (438) 935-9725",
     telemetry: "MONTREAL HQ // 45.4678° N",
@@ -270,10 +270,10 @@ export const contentEN: ContentDictionary = {
 export const contentFR: ContentDictionary = {
   nav: {
     services: "Services",
-    transformation: "Restauration",
+    transformation: "Transformation",
     environments: "Secteurs",
-    compliance: "Gouvernance",
-    contact: "Répartition",
+    compliance: "Conformité",
+    contact: "Contact",
     requestQuote: "Demander une soumission",
     callNow: "+1 (438) 935-9725",
     telemetry: "SIÈGE MONTRÉAL // 45.4678° N",

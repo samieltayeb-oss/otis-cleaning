@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin, ShieldCheck, CheckCircle2 } from "lucide-react";
 
 interface OtisMasterFooterProps {
   lang?: "en" | "fr";
@@ -27,13 +27,13 @@ export const OtisMasterFooter: React.FC<OtisMasterFooterProps> = ({ lang = "en" 
             </Link>
             <p className="text-xs text-slate-400 leading-relaxed max-w-xs mb-6 font-normal">
               {lang === "fr"
-                ? "Entretien ménager professionnel pour entreprises et édifices à travers Montréal depuis 2020."
-                : "Professional cleaning for businesses and homes across Montreal since 2020."}
+                ? "Entretien commercial et maintenance d'installations à travers le Grand Montréal. Conforme au Décret CPEEP et assuré 2 M$."
+                : "Enterprise commercial janitorial, floor restoration, and facility maintenance across Greater Montreal. Decree-compliant and $2M insured."}
             </p>
             <div className="space-y-2 text-xs font-mono">
               <a
-                href="tel:+14389359725"
-                className="flex items-center gap-2 text-[#ff4b72] hover:text-white transition-colors font-medium"
+                href="tel:14389359725"
+                className="flex items-center gap-2 text-otis-greenBright hover:text-white transition-colors font-medium"
               >
                 <Phone className="w-3.5 h-3.5" />
                 <span>+1 (438) 935-9725</span>
@@ -48,192 +48,193 @@ export const OtisMasterFooter: React.FC<OtisMasterFooterProps> = ({ lang = "en" 
             </div>
           </div>
 
-          {/* Column 2: Company */}
+          {/* Column 2: Company Navigation */}
           <div>
             <div className="text-xs font-bold uppercase tracking-wider text-white mb-4 font-mono">
               {lang === "fr" ? "ENTREPRISE" : "COMPANY"}
             </div>
             <ul className="space-y-2.5 text-xs text-slate-300 font-normal">
               <li>
-                <Link href="/" className="hover:text-otis-orange hover:underline transition-colors">
+                <Link href="/" className="hover:text-otis-orange transition-colors">
                   {lang === "fr" ? "Accueil" : "Home"}
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="hover:text-otis-orange hover:underline transition-colors">
-                  {lang === "fr" ? "Qui Sommes-Nous" : "Who We Are"}
+                <Link href="/about" className="hover:text-otis-orange transition-colors">
+                  {lang === "fr" ? "À Propos & Équipe" : "Who We Are"}
                 </Link>
               </li>
               <li>
-                <Link href="/sectors" className="hover:text-otis-orange hover:underline transition-colors">
-                  {lang === "fr" ? "Réalisations" : "Gallery"}
+                <Link href="/services" className="hover:text-otis-orange transition-colors">
+                  {lang === "fr" ? "Nos Services" : "Cleaning Services"}
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="hover:text-otis-orange hover:underline transition-colors">
-                  {lang === "fr" ? "Tarification" : "Pricing"}
+                <Link href="/sectors" className="hover:text-otis-orange transition-colors">
+                  {lang === "fr" ? "Secteurs d'Activité" : "Commercial Sectors"}
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-otis-orange hover:underline transition-colors">
-                  {lang === "fr" ? "Nous Joindre" : "Contact Us"}
+                <Link href="/compliance" className="hover:text-otis-orange transition-colors">
+                  {lang === "fr" ? "Conformité & Décret" : "Compliance & Decree"}
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="hover:text-otis-orange transition-colors">
+                  {lang === "fr" ? "Nous Joindre" : "Contact & Audit"}
+                </Link>
+              </li>
+              <li className="pt-2">
+                <Link
+                  href="/contact"
+                  className="text-otis-orange hover:text-white font-semibold transition-colors inline-flex items-center gap-1.5"
+                >
+                  <span>{lang === "fr" ? "Demander un Devis →" : "Book Facility Walkthrough →"}</span>
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 3: Commercial Services (All 7 Verified Verticals) */}
+          <div>
+            <div className="text-xs font-bold uppercase tracking-wider text-white mb-4 font-mono">
+              {lang === "fr" ? "SERVICES COMMERCIAUX" : "CLEANING CAPABILITIES"}
+            </div>
+            <ul className="space-y-2.5 text-xs text-slate-300 font-normal">
+              <li>
+                <Link href="/services/commercial-cleaning" className="hover:text-otis-orange transition-colors">
+                  {lang === "fr" ? "Entretien Commercial Régulier" : "Commercial Janitorial"}
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/office-cleaning" className="hover:text-otis-orange transition-colors">
+                  {lang === "fr" ? "Entretien de Bureaux" : "Corporate Office Cleaning"}
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/floor-maintenance" className="hover:text-otis-orange transition-colors">
+                  {lang === "fr" ? "Décapage & Cirage de Sols" : "Floor Strip & Wax"}
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/consumables-restocking" className="hover:text-otis-orange transition-colors">
+                  {lang === "fr" ? "Gestion des Consommables" : "Consumables Restocking"}
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/carpet-cleaning" className="hover:text-otis-orange transition-colors">
+                  {lang === "fr" ? "Nettoyage Tapis par Extraction" : "Commercial Carpet Extraction"}
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/post-renovation" className="hover:text-otis-orange transition-colors">
+                  {lang === "fr" ? "Ménage Après Construction" : "Post-Construction Turnover"}
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/window-cleaning" className="hover:text-otis-orange transition-colors">
+                  {lang === "fr" ? "Lavage de Vitres Intérieures" : "Interior Window Care"}
                 </Link>
               </li>
               <li className="pt-1">
-                <Link
-                  href="/contact"
-                  className="text-otis-orange hover:text-white font-semibold transition-colors flex items-center gap-1"
-                >
-                  <span>{lang === "fr" ? "Soumission Gratuite →" : "Get a Free Quote →"}</span>
+                <Link href="/services" className="text-otis-orange hover:text-white font-mono text-[11px] transition-colors">
+                  {lang === "fr" ? "Voir les 7 protocoles →" : "View all 7 protocols →"}
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Column 3: Commercial Sectors */}
+          {/* Column 4: Commercial Sectors (All 5 Target Sectors) */}
           <div>
             <div className="text-xs font-bold uppercase tracking-wider text-white mb-4 font-mono">
-              {lang === "fr" ? "SECTEURS COMMERCIAUX" : "COMMERCIAL SECTORS"}
+              {lang === "fr" ? "SECTEURS D'ACTIVITÉ" : "TARGET SECTORS"}
             </div>
             <ul className="space-y-2.5 text-xs text-slate-300 font-normal">
               <li>
-                <Link href="/sectors/clinic-cleaning" className="underline hover:text-otis-orange transition-colors">
-                  {lang === "fr" ? "Cliniques Médicales" : "Medical Clinics"}
+                <Link href="/sectors/clinic-cleaning" className="hover:text-otis-orange transition-colors">
+                  {lang === "fr" ? "Cliniques Médicales & Dentaires" : "Medical & Dental Clinics"}
                 </Link>
               </li>
               <li>
-                <Link href="/sectors/retail-cleaning" className="underline hover:text-otis-orange transition-colors">
-                  {lang === "fr" ? "Commerces & Boutiques" : "Retail & Shops"}
+                <Link href="/sectors/retail-cleaning" className="hover:text-otis-orange transition-colors">
+                  {lang === "fr" ? "Commerces & Boutiques" : "Retail Boutiques & Showrooms"}
                 </Link>
               </li>
               <li>
-                <Link href="/sectors/condo-cleaning" className="underline hover:text-otis-orange transition-colors">
-                  {lang === "fr" ? "Espaces Communs Copropriété" : "Condo Common Areas"}
+                <Link href="/sectors/condo-cleaning" className="hover:text-otis-orange transition-colors">
+                  {lang === "fr" ? "Espaces Communs Copropriété" : "Condo Common Elements"}
                 </Link>
               </li>
               <li>
-                <Link href="/sectors/school-cleaning" className="underline hover:text-otis-orange transition-colors">
-                  {lang === "fr" ? "Écoles & Garderies" : "Schools & Daycares"}
+                <Link href="/sectors/school-cleaning" className="hover:text-otis-orange transition-colors">
+                  {lang === "fr" ? "Écoles & Garderies" : "Schools & Educational Facilities"}
                 </Link>
               </li>
               <li>
-                <Link href="/sectors/event-cleaning" className="underline hover:text-otis-orange transition-colors">
-                  {lang === "fr" ? "Salles d'Événements" : "Event Venues"}
+                <Link href="/sectors/event-cleaning" className="hover:text-otis-orange transition-colors">
+                  {lang === "fr" ? "Salles d'Événements" : "Commercial Event Venues"}
                 </Link>
               </li>
-              <li>
-                <Link href="/services/commercial-cleaning" className="underline hover:text-otis-orange transition-colors">
-                  {lang === "fr" ? "Grand Ménage Commercial" : "Deep Clean"}
-                </Link>
-              </li>
-              <li>
-                <Link href="/services/post-renovation" className="underline hover:text-otis-orange transition-colors">
-                  {lang === "fr" ? "Entretien de Transition" : "Move In / Move Out"}
-                </Link>
-              </li>
-              <li>
-                <Link href="/services/post-renovation" className="underline hover:text-otis-orange transition-colors">
-                  {lang === "fr" ? "Après Construction" : "Post-Construction"}
+              <li className="pt-2">
+                <Link href="/sectors" className="text-otis-orange hover:text-white font-mono text-[11px] transition-colors">
+                  {lang === "fr" ? "Voir tous les secteurs →" : "View all 5 sectors →"}
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Column 4: Commercial */}
+          {/* Column 5: Certifications & Institutional Trust */}
           <div>
             <div className="text-xs font-bold uppercase tracking-wider text-white mb-4 font-mono">
-              COMMERCIAL
+              {lang === "fr" ? "CONFORMITÉ INSTITUTIONNELLE" : "INSTITUTIONAL TRUST"}
             </div>
-            <ul className="space-y-2.5 text-xs text-slate-300 font-normal">
-              <li>
-                <Link href="/services/commercial-cleaning" className="underline hover:text-otis-orange transition-colors">
-                  {lang === "fr" ? "Entretien Commercial" : "Commercial Cleaning"}
-                </Link>
-              </li>
-              <li>
-                <Link href="/services/office-cleaning" className="underline hover:text-otis-orange transition-colors">
-                  {lang === "fr" ? "Entretien de Bureaux" : "Office Cleaning"}
-                </Link>
-              </li>
-              <li>
-                <Link href="/sectors/clinic-cleaning" className="underline hover:text-otis-orange transition-colors">
-                  {lang === "fr" ? "Cliniques Médicales" : "Medical Clinics"}
-                </Link>
-              </li>
-              <li>
-                <Link href="/services/floor-maintenance" className="underline hover:text-otis-orange transition-colors">
-                  {lang === "fr" ? "Entretien des Planchers" : "Floor Maintenance"}
-                </Link>
-              </li>
-              <li>
-                <Link href="/sectors/retail-cleaning" className="underline hover:text-otis-orange transition-colors">
-                  {lang === "fr" ? "Commerces de Détail" : "Retail & Stores"}
-                </Link>
-              </li>
-              <li>
-                <Link href="/sectors/condo-cleaning" className="underline hover:text-otis-orange transition-colors">
-                  {lang === "fr" ? "Espaces Communs Copropriété" : "Condo Common Areas"}
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Column 5: Certifications & Address */}
-          <div>
-            <div className="text-xs font-bold uppercase tracking-wider text-white mb-4 font-mono">
-              {lang === "fr" ? "CERTIFICATIONS" : "CERTIFICATIONS"}
-            </div>
-            <div className="space-y-1.5 text-xs text-slate-400 font-normal leading-relaxed mb-4">
-              <div>
+            <div className="space-y-2 text-xs text-slate-400 font-normal leading-relaxed mb-4">
+              <div className="flex items-center gap-2">
+                <ShieldCheck className="w-4 h-4 text-otis-greenBright shrink-0" />
                 <Link href="/compliance" className="hover:text-white transition-colors">
-                  CPEEP Decree Compliant &amp; Insured $2M
+                  {lang === "fr" ? "Décret CPEEP & Assuré 2 M$" : "CPEEP Decree Parity & $2M Insured"}
                 </Link>
               </div>
-              <div>Fully Insured &amp; Bonded</div>
-              <div>Conforme CNESST</div>
-              <div className="flex items-center gap-1 text-slate-300">
-                <span>Proudly Canadian</span>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-otis-greenBright shrink-0" />
+                <span>{lang === "fr" ? "Conforme CNESST & Cautionné" : "CNESST Compliant & Bonded"}</span>
+              </div>
+              <div className="flex items-center gap-2 text-slate-300">
+                <span className="w-2 h-2 rounded-full bg-otis-orange" />
+                <span>{lang === "fr" ? "Garantie Correctrice 24H" : "24-Hour Rectification Guarantee"}</span>
+              </div>
+              <div className="flex items-center gap-1.5 text-slate-300 pt-1">
+                <span>Proudly Montreal, QC</span>
                 <span>🍁</span>
               </div>
             </div>
-            <div className="pt-3 border-t border-white/5 text-xs text-slate-400 leading-relaxed font-normal flex items-start gap-1.5">
-              <MapPin className="w-3.5 h-3.5 text-[#ff4b72] shrink-0 mt-0.5" />
+            <div className="pt-3 border-t border-white/5 text-xs text-slate-400 leading-relaxed font-mono flex items-start gap-2">
+              <MapPin className="w-4 h-4 text-otis-orange shrink-0 mt-0.5" />
               <div>
-                2447 Ave Madison,<br />
-                Montreal H4B2T5, QC
+                2447 Ave Madison<br />
+                Montreal, QC H4B 2T5
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* Internal Navigation Section */}
-        <div className="py-8 border-b border-white/10">
-          <div className="text-xs font-bold uppercase tracking-wider text-white mb-3 font-mono">
-            INTERNAL
-          </div>
-          <div className="flex items-center gap-6 text-xs">
-            <Link
-              href="/compliance"
-              className="text-slate-300 underline hover:text-otis-orange transition-colors"
-            >
-              Executive Blueprint
-            </Link>
-            <Link
-              href="/contact"
-              className="text-slate-300 underline hover:text-otis-orange transition-colors"
-            >
-              Command Center
-            </Link>
           </div>
         </div>
 
         {/* Bottom Sub-Footer Bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 font-normal">
-          <div className="sm:flex-1" />
-          <div className="text-center text-slate-400">
-            © {new Date().getFullYear()} OTIS Maintenance. All rights reserved.
+          <div className="flex items-center gap-4 text-slate-400">
+            <Link href="/compliance" className="hover:text-white transition-colors">
+              {lang === "fr" ? "Conformité Légale" : "Legal Compliance"}
+            </Link>
+            <span>•</span>
+            <Link href="/contact" className="hover:text-white transition-colors">
+              {lang === "fr" ? "Planifier un Audit" : "Schedule Audit"}
+            </Link>
           </div>
-          <div className="sm:flex-1 text-center sm:text-right">
+
+          <div className="text-center text-slate-400">
+            © {new Date().getFullYear()} OTIS Commercial Cleaning. {lang === "fr" ? "Tous droits réservés." : "All rights reserved."}
+          </div>
+
+          <div className="text-center sm:text-right">
             <span>Built by </span>
             <a
               href="https://nexorayyc.io"

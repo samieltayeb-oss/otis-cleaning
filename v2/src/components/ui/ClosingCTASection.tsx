@@ -9,11 +9,13 @@ import { OtisMasterFooter } from "@/components/ui/OtisMasterFooter";
 interface ClosingCTASectionProps {
   content: ContentDictionary;
   onReturnToTop: () => void;
+  lang?: "en" | "fr";
 }
 
 export const ClosingCTASection: React.FC<ClosingCTASectionProps> = ({
   content,
   onReturnToTop,
+  lang = "en",
 }) => {
   const [submitted, setSubmitted] = useState(false);
   const [facilityType, setFacilityType] = useState("Corporate Office");
@@ -166,7 +168,7 @@ export const ClosingCTASection: React.FC<ClosingCTASectionProps> = ({
 
       {/* Exact Vercel Master Footer */}
       <div className="mt-16">
-        <OtisMasterFooter />
+        <OtisMasterFooter lang={lang} />
       </div>
     </section>
   );

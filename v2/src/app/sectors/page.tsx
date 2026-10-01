@@ -29,7 +29,7 @@ export default function SectorsHubPage() {
     <div className="min-h-screen bg-[#050811] text-slate-100 font-sans selection:bg-otis-orange selection:text-white">
       {/* Top Floating Navigation HUD */}
       <header className="fixed top-0 left-0 right-0 z-50 py-4 bg-[#050811]/90 backdrop-blur-md border-b border-white/10 shadow-2xl transition-all">
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 flex items-center justify-between gap-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-10 flex items-center justify-between gap-4">
           <div className="flex items-center gap-6">
             <Link href="/" className="flex items-center gap-3 group">
               <div className="relative h-9 w-28 sm:w-32 transition-transform duration-300 group-hover:scale-105">

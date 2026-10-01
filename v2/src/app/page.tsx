@@ -223,6 +223,7 @@ export default function Home() {
         <ClosingCTASection
           content={currentContent}
           onReturnToTop={handleReturnToTop}
+          lang={lang}
         />
       </div>
     </main>
