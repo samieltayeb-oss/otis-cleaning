@@ -125,7 +125,7 @@ export const contentEN: ContentDictionary = {
     paragraph: "Commercial facilities in Montreal face aggressive calcium chloride salt tracking, high foot-traffic wear, and heavy biological loads. We restore surfaces down to their true architectural substrate rather than masking residue with scented surfactants.",
     metric1Val: "100%",
     metric1Lbl: "CPEEP Parity Compliance",
-    metric2Val: "$2,000,000",
+    metric2Val: "$2M",
     metric2Lbl: "Commercial Liability Shield",
   },
   services: {
@@ -298,7 +298,7 @@ export const contentFR: ContentDictionary = {
     paragraph: "Les édifices commerciaux montréalais subissent des agressions sévères de sel de déglaçage, de fort achalandage piétonnier et de poussières fines. Nous restaurons la matière jusqu'à son lustre authentique sans masque superficiel.",
     metric1Val: "100%",
     metric1Lbl: "Conformité Décret Paritaire",
-    metric2Val: "2 000 000 $",
+    metric2Val: "2 M$",
     metric2Lbl: "Bouclier d'Assurance Responsabilité",
   },
   services: {

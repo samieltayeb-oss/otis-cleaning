@@ -34,21 +34,21 @@ export const TransformationSection: React.FC<TransformationSectionProps> = ({ co
               {content.transformation.paragraph}
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6 border-t border-white/10">
-              <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.03] border border-white/10">
-                <div className="text-3xl sm:text-4xl font-black font-display text-otis-orange mb-1">
+            <div className="grid grid-cols-2 gap-6 pt-6 border-t border-white/10">
+              <div>
+                <div className="text-3xl sm:text-4xl lg:text-5xl font-black font-display text-otis-orange mb-2 tracking-tight">
                   {content.transformation.metric1Val}
                 </div>
-                <div className="text-xs font-mono uppercase tracking-wider text-slate-400">
+                <div className="text-xs font-mono uppercase tracking-wider text-slate-400 leading-snug">
                   {content.transformation.metric1Lbl}
                 </div>
               </div>
 
-              <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.03] border border-white/10">
-                <div className="text-2xl sm:text-3xl font-black font-display text-otis-greenBright mb-1 whitespace-nowrap tracking-tight">
+              <div>
+                <div className="text-3xl sm:text-4xl lg:text-5xl font-black font-display text-otis-greenBright mb-2 tracking-tight">
                   {content.transformation.metric2Val}
                 </div>
-                <div className="text-xs font-mono uppercase tracking-wider text-slate-400">
+                <div className="text-xs font-mono uppercase tracking-wider text-slate-400 leading-snug">
                   {content.transformation.metric2Lbl}
                 </div>
               </div>
