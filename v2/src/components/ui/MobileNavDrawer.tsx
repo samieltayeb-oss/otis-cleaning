@@ -236,6 +236,17 @@ export const MobileNavDrawer: React.FC<MobileNavDrawerProps> = ({
               <MapPin className="w-3.5 h-3.5 text-slate-400 shrink-0" />
               <span>Montreal, QC H4B 2T5</span>
             </div>
+
+            <div className="pt-3 border-t border-white/10 flex items-center justify-between">
+              <span className="text-[10px] text-slate-500 uppercase tracking-widest font-bold">INTERNAL OPS</span>
+              <a
+                href="/internal/command-center"
+                onClick={close}
+                className="text-xs text-otis-orange hover:underline font-mono font-bold flex items-center gap-1"
+              >
+                <span>Command Center 🔒</span>
+              </a>
+            </div>
           </div>
         </div>
 

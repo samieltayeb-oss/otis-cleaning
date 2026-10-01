@@ -92,6 +92,15 @@ export const OtisMasterFooter: React.FC<OtisMasterFooterProps> = ({ lang = "en" 
                   <span>{lang === "fr" ? "Demander un Devis →" : "Book Facility Walkthrough →"}</span>
                 </Link>
               </li>
+              <li className="pt-2 border-t border-white/5">
+                <a
+                  href="/internal/command-center"
+                  className="text-slate-400 hover:text-otis-orange font-mono text-[11px] transition-colors inline-flex items-center gap-1.5"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-otis-greenBright" />
+                  <span>Command Center 🔒</span>
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -215,6 +224,49 @@ export const OtisMasterFooter: React.FC<OtisMasterFooterProps> = ({ lang = "en" 
                 Montreal, QC H4B 2T5
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Company Operations & Command Center Hub */}
+        <div className="py-6 border-b border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-otis-greenBright animate-pulse" />
+            <span className="text-xs font-bold uppercase tracking-wider text-white font-mono">
+              {lang === "fr" ? "PORTAIL OPÉRATIONS" : "OPERATIONS HUB"}
+            </span>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-5 sm:gap-6 text-xs font-mono">
+            <a
+              href="/internal/command-center"
+              className="text-otis-orange hover:text-white transition-colors flex items-center gap-1.5 font-bold"
+            >
+              <span>Command Center 🔒</span>
+            </a>
+            <a
+              href="/internal/blueprint"
+              className="text-slate-300 hover:text-otis-orange transition-colors"
+            >
+              Executive Blueprint
+            </a>
+            <a
+              href="/internal/field_app"
+              className="text-slate-300 hover:text-otis-orange transition-colors"
+            >
+              Field App (Crew)
+            </a>
+            <a
+              href="/internal/operator_guide"
+              className="text-slate-300 hover:text-otis-orange transition-colors"
+            >
+              Operator Playbook
+            </a>
+            <a
+              href="/internal/login"
+              className="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-slate-400 hover:text-white transition-colors text-[11px]"
+            >
+              PIN Login (8842)
+            </a>
           </div>
         </div>
 
