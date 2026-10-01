@@ -55,7 +55,7 @@ export const SubpageDetail: React.FC<SubpageDetailProps> = ({ data, relatedPages
     <div className="min-h-screen bg-[#050811] text-slate-100 font-sans selection:bg-otis-orange selection:text-white">
       {/* Top Floating Navigation HUD */}
       <header className="fixed top-0 left-0 right-0 z-50 py-4 bg-[#050811]/90 backdrop-blur-md border-b border-white/10 shadow-2xl transition-all">
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 flex items-center justify-between gap-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-10 flex items-center justify-between gap-4">
           {/* Logo & Live Coordinates */}
           <div className="flex items-center gap-6">
             <Link href="/" className="flex items-center gap-3 group">
@@ -202,25 +202,25 @@ export const SubpageDetail: React.FC<SubpageDetailProps> = ({ data, relatedPages
           </p>
 
           {/* Action Row */}
-          <div className="flex flex-wrap items-center gap-4">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
             <a
               href="#proposal-form"
-              className="inline-flex items-center gap-3 px-6 py-3.5 rounded-full bg-otis-orange text-white text-sm font-mono font-bold uppercase tracking-wider hover:bg-otis-orangeLight transition-all shadow-xl shadow-otis-orange/30"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-6 py-3.5 rounded-full bg-otis-orange text-white text-sm font-mono font-bold uppercase tracking-wider hover:bg-otis-orangeLight transition-all shadow-xl shadow-otis-orange/30 text-center"
             >
               <span>{lang === "fr" ? "Réserver un audit sur place" : "Schedule Facility Walkthrough"}</span>
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="w-4 h-4 shrink-0" />
             </a>
 
             <a
               href="tel:14389359725"
-              className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-sm font-mono text-slate-200 transition-colors"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-sm font-mono text-slate-200 transition-colors text-center"
             >
-              <Phone className="w-4 h-4 text-otis-greenBright" />
+              <Phone className="w-4 h-4 text-otis-greenBright shrink-0" />
               <span>(438) 935-9725</span>
             </a>
 
-            <div className="flex items-center gap-2 text-xs font-mono text-slate-400 pl-2">
-              <ShieldCheck className="w-4 h-4 text-otis-greenBright" />
+            <div className="flex items-center justify-center sm:justify-start gap-2 text-xs font-mono text-slate-400 pt-2 sm:pt-0 sm:pl-2">
+              <ShieldCheck className="w-4 h-4 text-otis-greenBright shrink-0" />
               <span>{lang === "fr" ? "Conforme Décret CPEEP • Assuré 2 M$" : "CPEEP Decree Parity • $2M Insured"}</span>
             </div>
           </div>
@@ -467,7 +467,7 @@ export const SubpageDetail: React.FC<SubpageDetailProps> = ({ data, relatedPages
                       value={formState.name}
                       onChange={e => setFormState({ ...formState, name: e.target.value })}
                       placeholder={lang === "fr" ? "ex: Marc Tremblay" : "e.g. David Vance"}
-                      className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white placeholder-slate-500 text-xs font-mono focus:outline-none focus:border-otis-orange transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white placeholder-slate-500 text-base sm:text-xs font-mono focus:outline-none focus:border-otis-orange transition-colors"
                     />
                   </div>
                   <div>
@@ -480,7 +480,7 @@ export const SubpageDetail: React.FC<SubpageDetailProps> = ({ data, relatedPages
                       value={formState.company}
                       onChange={e => setFormState({ ...formState, company: e.target.value })}
                       placeholder={lang === "fr" ? "ex: Tour Deloitte / Clinique Santé" : "e.g. Place Ville Marie Suite 1400"}
-                      className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white placeholder-slate-500 text-xs font-mono focus:outline-none focus:border-otis-orange transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white placeholder-slate-500 text-base sm:text-xs font-mono focus:outline-none focus:border-otis-orange transition-colors"
                     />
                   </div>
                 </div>
@@ -496,7 +496,7 @@ export const SubpageDetail: React.FC<SubpageDetailProps> = ({ data, relatedPages
                       value={formState.email}
                       onChange={e => setFormState({ ...formState, email: e.target.value })}
                       placeholder="manager@company.ca"
-                      className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white placeholder-slate-500 text-xs font-mono focus:outline-none focus:border-otis-orange transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white placeholder-slate-500 text-base sm:text-xs font-mono focus:outline-none focus:border-otis-orange transition-colors"
                     />
                   </div>
                   <div>
@@ -509,7 +509,7 @@ export const SubpageDetail: React.FC<SubpageDetailProps> = ({ data, relatedPages
                       value={formState.phone}
                       onChange={e => setFormState({ ...formState, phone: e.target.value })}
                       placeholder="(514) 000-0000"
-                      className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white placeholder-slate-500 text-xs font-mono focus:outline-none focus:border-otis-orange transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white placeholder-slate-500 text-base sm:text-xs font-mono focus:outline-none focus:border-otis-orange transition-colors"
                     />
                   </div>
                 </div>
@@ -522,7 +522,7 @@ export const SubpageDetail: React.FC<SubpageDetailProps> = ({ data, relatedPages
                     <select
                       value={formState.sqft}
                       onChange={e => setFormState({ ...formState, sqft: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-[#0a0f1d] border border-white/10 text-white text-xs font-mono focus:outline-none focus:border-otis-orange transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-[#0a0f1d] border border-white/10 text-white text-base sm:text-xs font-mono focus:outline-none focus:border-otis-orange transition-colors"
                     >
                       <option value="">{lang === "fr" ? "Sélectionner la superficie" : "Select square footage"}</option>
                       <option value="under-3000">{"< 3,000 sq ft"}</option>
@@ -538,7 +538,7 @@ export const SubpageDetail: React.FC<SubpageDetailProps> = ({ data, relatedPages
                     <select
                       value={formState.facilityType}
                       onChange={e => setFormState({ ...formState, facilityType: e.target.value })}
-                      className="w-full px-4 py-3 rounded-xl bg-[#0a0f1d] border border-white/10 text-white text-xs font-mono focus:outline-none focus:border-otis-orange transition-colors"
+                      className="w-full px-4 py-3 rounded-xl bg-[#0a0f1d] border border-white/10 text-white text-base sm:text-xs font-mono focus:outline-none focus:border-otis-orange transition-colors"
                     >
                       <option value="">{lang === "fr" ? "Sélectionner la fréquence" : "Select frequency"}</option>
                       <option value="daily">5x - 7x / week (Daily Maintenance)</option>
@@ -562,7 +562,7 @@ export const SubpageDetail: React.FC<SubpageDetailProps> = ({ data, relatedPages
                         ? "Horaires d'accès souhaités, clés/puces, traitement particulier des sols..."
                         : "Keycard access, preferred after-hours entry, sensitive flooring..."
                     }
-                    className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white placeholder-slate-500 text-xs font-mono focus:outline-none focus:border-otis-orange transition-colors"
+                    className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white placeholder-slate-500 text-base sm:text-xs font-mono focus:outline-none focus:border-otis-orange transition-colors"
                   />
                 </div>
 

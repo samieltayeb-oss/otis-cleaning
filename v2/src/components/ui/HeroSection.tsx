@@ -16,7 +16,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   onRequestQuote,
 }) => {
   return (
-    <section className="relative min-h-screen flex flex-col justify-between pt-32 pb-16 px-6 sm:px-12 md:px-20 max-w-7xl mx-auto z-10">
+    <section className="relative min-h-screen flex flex-col justify-between pt-28 sm:pt-32 pb-12 sm:pb-16 px-4 sm:px-12 md:px-20 max-w-7xl mx-auto z-10">
       {/* Top Header Badge */}
       <div className="pt-4">
         <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-otis-orangeMuted border border-otis-orange/30 text-otis-orange text-xs font-mono tracking-widest uppercase backdrop-blur-sm">
@@ -26,23 +26,23 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       </div>
 
       {/* Hero Narrative Core */}
-      <div className="my-auto py-12 max-w-4xl">
-        <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black font-display tracking-tight text-white leading-[1.04] mb-8">
+      <div className="my-auto py-8 sm:py-12 max-w-4xl">
+        <h1 className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black font-display tracking-tight text-white leading-[1.06] mb-6 sm:mb-8 break-words">
           <span>{content.hero.titlePrimary}</span>{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-otis-orange via-amber-400 to-otis-greenBright">
             {content.hero.titleAccent}
           </span>
         </h1>
 
-        <p className="text-base sm:text-lg md:text-xl text-slate-300 font-light max-w-2xl leading-relaxed mb-10 text-balance">
+        <p className="text-sm sm:text-lg md:text-xl text-slate-300 font-light max-w-2xl leading-relaxed mb-8 sm:mb-10 text-balance">
           {content.hero.subtitle}
         </p>
 
         {/* Action Row */}
-        <div className="flex flex-wrap items-center gap-4 sm:gap-6">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-6">
           <button
             onClick={onRequestQuote}
-            className="px-8 py-4 rounded-full bg-otis-orange hover:bg-otis-orangeHover text-white font-semibold text-sm sm:text-base tracking-wide shadow-xl shadow-otis-orange/25 transition-all hover:scale-105 active:scale-95 flex items-center gap-3"
+            className="w-full sm:w-auto px-8 py-4 rounded-full bg-otis-orange hover:bg-otis-orangeHover text-white font-semibold text-sm sm:text-base tracking-wide shadow-xl shadow-otis-orange/25 transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-3"
           >
             <span>{content.hero.ctaPrimary}</span>
             <Building2 className="w-4 h-4" />
@@ -50,7 +50,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
           <button
             onClick={onExploreClick}
-            className="px-6 py-4 rounded-full bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 text-slate-200 text-sm font-medium transition-all hover:border-white/20 flex items-center gap-2"
+            className="w-full sm:w-auto px-6 py-4 rounded-full bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 text-slate-200 text-sm font-medium transition-all hover:border-white/20 flex items-center justify-center gap-2"
           >
             <span>{content.hero.ctaSecondary}</span>
             <ArrowDown className="w-4 h-4 text-slate-400 animate-bounce" />

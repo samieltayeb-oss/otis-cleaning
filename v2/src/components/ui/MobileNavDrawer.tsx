@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 import Link from "next/link";
 import { 
@@ -26,6 +27,25 @@ export const MobileNavDrawer: React.FC<MobileNavDrawerProps> = ({
   onRequestQuote,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+      document.body.style.touchAction = "none";
+    } else {
+      document.body.style.overflow = "";
+      document.body.style.touchAction = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+      document.body.style.touchAction = "";
+    };
+  }, [isOpen]);
 
   const toggleOpen = () => setIsOpen(prev => !prev);
   const close = () => setIsOpen(false);
@@ -43,21 +63,27 @@ export const MobileNavDrawer: React.FC<MobileNavDrawerProps> = ({
         {isOpen ? <X className="w-5 h-5 text-otis-orange" /> : <Menu className="w-5 h-5" />}
       </button>
 
-      {/* Slide-Over Drawer Backdrop */}
-      {isOpen && (
-        <div
-          onClick={close}
-          className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md transition-opacity duration-300 md:hidden"
-          aria-hidden="true"
-        />
-      )}
+      {/* Slide-Over Drawer Portal */}
+      {mounted &&
+        createPortal(
+          <div
+            className={`fixed inset-0 z-[99999] md:hidden transition-all duration-300 ${
+              isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+            }`}
+          >
+            {/* Slide-Over Drawer Backdrop */}
+            <div
+              onClick={close}
+              className="absolute inset-0 bg-black/80 backdrop-blur-md transition-opacity duration-300"
+              aria-hidden="true"
+            />
 
-      {/* Slide-Over Drawer Content */}
-      <div
-        className={`fixed top-0 right-0 bottom-0 z-50 w-[88vw] max-w-sm bg-[#060913] border-l border-white/10 shadow-2xl flex flex-col transition-transform duration-300 ease-out md:hidden overflow-hidden ${
-          isOpen ? "translate-x-0" : "translate-x-full"
-        }`}
-      >
+            {/* Slide-Over Drawer Content */}
+            <div
+              className={`absolute top-0 right-0 bottom-0 h-[100dvh] w-[88vw] max-w-sm bg-[#060913] border-l border-white/10 shadow-2xl flex flex-col transition-transform duration-300 ease-out overflow-hidden ${
+                isOpen ? "translate-x-0" : "translate-x-full"
+              }`}
+            >
         {/* Drawer Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-white/10 shrink-0">
           <Link href="/" onClick={close} className="relative h-8 w-28">
@@ -219,20 +245,23 @@ export const MobileNavDrawer: React.FC<MobileNavDrawerProps> = ({
         </div>
 
         {/* Drawer Bottom CTA */}
-        <div className="p-6 border-t border-white/10 bg-[#04060d] shrink-0">
+        <div className="p-6 pb-8 border-t border-white/10 bg-[#04060d] shrink-0">
           <Link
             href="/contact"
             onClick={() => {
               close();
               if (onRequestQuote) onRequestQuote();
             }}
-            className="w-full py-3.5 rounded-xl bg-otis-orange hover:bg-otis-orangeHover text-white text-xs font-bold font-mono uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-lg shadow-otis-orange/20"
+            className="w-full py-3.5 rounded-xl bg-otis-orange hover:bg-otis-orangeHover text-white text-xs font-bold font-mono uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-lg shadow-otis-orange/20 active:scale-95"
           >
             <span>{lang === "fr" ? "Demander une Soumission" : "Book Facility Audit"}</span>
             <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
       </div>
-    </>
-  );
+    </div>,
+    document.body
+  )}
+</>
+);
 };

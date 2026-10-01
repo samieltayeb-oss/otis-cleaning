@@ -43,7 +43,7 @@ export const NavigationHUD: React.FC<NavigationHUDProps> = ({
             : "py-6 bg-transparent"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 flex items-center justify-between gap-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-10 flex items-center justify-between gap-4">
           {/* Brand Logo & Coordinates */}
           <div className="flex items-center gap-6">
             <Link href="/" className="flex items-center gap-3 group">

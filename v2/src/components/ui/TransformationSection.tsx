@@ -11,9 +11,9 @@ interface TransformationSectionProps {
 
 export const TransformationSection: React.FC<TransformationSectionProps> = ({ content }) => {
   return (
-    <section id="transformation" className="relative py-28 px-6 sm:px-12 md:px-20 max-w-7xl mx-auto z-10">
+    <section id="transformation" className="relative py-16 sm:py-24 lg:py-28 px-4 sm:px-12 md:px-20 max-w-7xl mx-auto z-10">
       {/* Section Header */}
-      <div className="mb-16">
+      <div className="mb-10 sm:mb-16">
         <div className="flex items-center gap-2 text-xs font-mono text-otis-orange uppercase tracking-widest mb-3">
           <Layers className="w-3.5 h-3.5" />
           <span>{content.transformation.actNumber}</span>

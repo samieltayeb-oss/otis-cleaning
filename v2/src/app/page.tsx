@@ -52,8 +52,10 @@ export default function Home() {
         },
       });
 
-      if (!prefersReducedMotion) {
-        // Hero typography dissolves as user enters Act 01
+      const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+
+      if (!prefersReducedMotion && !isMobile) {
+        // Desktop scrub animations
         if (heroWrapperRef.current) {
           gsap.to(heroWrapperRef.current, {
             scrollTrigger: {
@@ -97,6 +99,34 @@ export default function Home() {
               opacity: 1,
               y: 0,
               ease: "none",
+            }
+          );
+        });
+      } else if (!prefersReducedMotion && isMobile) {
+        // Mobile touch devices: keep sections crisp at full opacity without scrub dimming
+        const sections = [
+          transformWrapperRef.current,
+          servicesWrapperRef.current,
+          envWrapperRef.current,
+          trustWrapperRef.current,
+          ctaWrapperRef.current,
+        ];
+
+        sections.forEach((sec) => {
+          if (!sec) return;
+          gsap.fromTo(
+            sec,
+            { opacity: 0.9, y: 20 },
+            {
+              scrollTrigger: {
+                trigger: sec,
+                start: "top 90%",
+                once: true,
+              },
+              opacity: 1,
+              y: 0,
+              duration: 0.6,
+              ease: "power2.out",
             }
           );
         });

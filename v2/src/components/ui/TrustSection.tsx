@@ -10,9 +10,9 @@ interface TrustSectionProps {
 
 export const TrustSection: React.FC<TrustSectionProps> = ({ content }) => {
   return (
-    <section id="compliance" className="relative py-28 px-6 sm:px-12 md:px-20 max-w-7xl mx-auto z-10">
+    <section id="compliance" className="relative py-16 sm:py-24 lg:py-28 px-4 sm:px-12 md:px-20 max-w-7xl mx-auto z-10">
       {/* Section Header */}
-      <div className="mb-20">
+      <div className="mb-12 sm:mb-20">
         <div className="flex items-center gap-2 text-xs font-mono text-otis-orange uppercase tracking-widest mb-3">
           <Scale className="w-3.5 h-3.5" />
           <span>{content.trust.actNumber}</span>
@@ -28,9 +28,9 @@ export const TrustSection: React.FC<TrustSectionProps> = ({ content }) => {
       </div>
 
       {/* 4 Pillars of Legal Compliance & Security */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
         {/* Pillar 1: CPEEP Parity */}
-        <div className="p-8 sm:p-10 rounded-3xl bg-obsidian-900 border border-white/10 hover:border-otis-orange/40 transition-colors shadow-2xl flex flex-col justify-between">
+        <div className="p-6 sm:p-8 lg:p-10 rounded-3xl bg-obsidian-900 border border-white/10 hover:border-otis-orange/40 transition-colors shadow-2xl flex flex-col justify-between">
           <div>
             <div className="w-12 h-12 rounded-2xl bg-otis-orangeMuted border border-otis-orange/30 flex items-center justify-center text-otis-orange mb-6">
               <Scale className="w-6 h-6" />
@@ -49,7 +49,7 @@ export const TrustSection: React.FC<TrustSectionProps> = ({ content }) => {
         </div>
 
         {/* Pillar 2: CNESST */}
-        <div className="p-8 sm:p-10 rounded-3xl bg-obsidian-900 border border-white/10 hover:border-otis-greenBright/40 transition-colors shadow-2xl flex flex-col justify-between">
+        <div className="p-6 sm:p-8 lg:p-10 rounded-3xl bg-obsidian-900 border border-white/10 hover:border-otis-greenBright/40 transition-colors shadow-2xl flex flex-col justify-between">
           <div>
             <div className="w-12 h-12 rounded-2xl bg-otis-greenMuted border border-otis-greenBright/30 flex items-center justify-center text-otis-greenBright mb-6">
               <FileCheck2 className="w-6 h-6" />
@@ -68,7 +68,7 @@ export const TrustSection: React.FC<TrustSectionProps> = ({ content }) => {
         </div>
 
         {/* Pillar 3: Insurance */}
-        <div className="p-8 sm:p-10 rounded-3xl bg-obsidian-900 border border-white/10 hover:border-white/25 transition-colors shadow-2xl flex flex-col justify-between">
+        <div className="p-6 sm:p-8 lg:p-10 rounded-3xl bg-obsidian-900 border border-white/10 hover:border-white/25 transition-colors shadow-2xl flex flex-col justify-between">
           <div>
             <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white mb-6">
               <Shield className="w-6 h-6" />
@@ -87,7 +87,7 @@ export const TrustSection: React.FC<TrustSectionProps> = ({ content }) => {
         </div>
 
         {/* Pillar 4: Security */}
-        <div className="p-8 sm:p-10 rounded-3xl bg-obsidian-900 border border-white/10 hover:border-white/25 transition-colors shadow-2xl flex flex-col justify-between">
+        <div className="p-6 sm:p-8 lg:p-10 rounded-3xl bg-obsidian-900 border border-white/10 hover:border-white/25 transition-colors shadow-2xl flex flex-col justify-between">
           <div>
             <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white mb-6">
               <KeyRound className="w-6 h-6" />

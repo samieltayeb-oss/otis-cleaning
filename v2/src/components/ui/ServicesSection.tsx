@@ -15,9 +15,9 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
   content,
 }) => {
   return (
-    <section id="services" className="relative py-28 px-6 sm:px-12 md:px-20 max-w-7xl mx-auto z-10">
+    <section id="services" className="relative py-16 sm:py-24 lg:py-28 px-4 sm:px-12 md:px-20 max-w-7xl mx-auto z-10">
       {/* Section Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-20">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 sm:gap-8 mb-12 sm:mb-20">
         <div>
           <div className="flex items-center gap-2 text-xs font-mono text-otis-orange uppercase tracking-widest mb-3">
             <Sparkles className="w-3.5 h-3.5" />
@@ -35,7 +35,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({
 
         <Link
           href="/services"
-          className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-mono uppercase tracking-wider text-slate-200 transition-colors shrink-0"
+          className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-mono uppercase tracking-wider text-slate-200 transition-colors shrink-0 w-full sm:w-auto"
         >
           <span>All 7 Capabilities</span>
           <ChevronRight className="w-4 h-4 text-otis-orange" />

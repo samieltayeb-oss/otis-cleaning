@@ -154,7 +154,8 @@ export const ExperienceCanvas: React.FC<ExperienceCanvasProps> = ({ progress }) 
     scene.add(planeMesh);
 
     // 2. Architectural Micro-Particulates
-    const particleCount = prefersReducedMotion ? 120 : 600;
+    const isMobileDevice = typeof window !== "undefined" && window.innerWidth < 768;
+    const particleCount = prefersReducedMotion ? 80 : (isMobileDevice ? 140 : 600);
     const particleGeo = new THREE.BufferGeometry();
     const positions = new Float32Array(particleCount * 3);
     const scales = new Float32Array(particleCount);

@@ -48,7 +48,7 @@ export default function ContactPage() {
     <div className="min-h-screen bg-[#050811] text-slate-100 font-sans selection:bg-otis-orange selection:text-white">
       {/* Top Floating Navigation HUD */}
       <header className="fixed top-0 left-0 right-0 z-50 py-4 bg-[#050811]/90 backdrop-blur-md border-b border-white/10 shadow-2xl transition-all">
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 flex items-center justify-between gap-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-10 flex items-center justify-between gap-4">
           <div className="flex items-center gap-6">
             <Link href="/" className="flex items-center gap-3 group">
               <div className="relative h-9 w-28 sm:w-32 transition-transform duration-300 group-hover:scale-105">
@@ -130,7 +130,7 @@ export default function ContactPage() {
       </header>
 
       {/* Main Content */}
-      <main className="pt-36 pb-24 sm:pt-44 sm:pb-32">
+      <main className="pt-28 pb-16 sm:pt-44 sm:pb-32">
         <div className="max-w-7xl mx-auto px-6 sm:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             {/* Left Column: Direct Info & Territory */}
@@ -218,7 +218,7 @@ export default function ContactPage() {
 
             {/* Right Column: Interactive Proposal & Walkthrough Form */}
             <div className="lg:col-span-7">
-              <div className="p-8 sm:p-12 rounded-3xl bg-[#070b16] border border-white/10 shadow-2xl">
+              <div className="p-5 sm:p-10 lg:p-12 rounded-3xl bg-[#070b16] border border-white/10 shadow-2xl">
                 <div className="mb-8">
                   <h2 className="text-2xl font-light text-white mb-2">
                     {lang === "fr" ? "Formulaire de Visite Technique" : "Commercial Walkthrough Specification"}
@@ -261,7 +261,7 @@ export default function ContactPage() {
                           value={form.name}
                           onChange={e => setForm({ ...form, name: e.target.value })}
                           placeholder="e.g. Marc Tremblay, Property Mgr"
-                          className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white placeholder-slate-500 text-xs font-mono focus:outline-none focus:border-otis-orange transition-colors"
+                          className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white placeholder-slate-500 text-base sm:text-xs font-mono focus:outline-none focus:border-otis-orange transition-colors"
                         />
                       </div>
                       <div>
@@ -274,7 +274,7 @@ export default function ContactPage() {
                           value={form.company}
                           onChange={e => setForm({ ...form, company: e.target.value })}
                           placeholder="e.g. Complexe Desjardins"
-                          className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white placeholder-slate-500 text-xs font-mono focus:outline-none focus:border-otis-orange transition-colors"
+                          className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white placeholder-slate-500 text-base sm:text-xs font-mono focus:outline-none focus:border-otis-orange transition-colors"
                         />
                       </div>
                     </div>
@@ -290,7 +290,7 @@ export default function ContactPage() {
                           value={form.email}
                           onChange={e => setForm({ ...form, email: e.target.value })}
                           placeholder="facility@company.ca"
-                          className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white placeholder-slate-500 text-xs font-mono focus:outline-none focus:border-otis-orange transition-colors"
+                          className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white placeholder-slate-500 text-base sm:text-xs font-mono focus:outline-none focus:border-otis-orange transition-colors"
                         />
                       </div>
                       <div>
@@ -303,7 +303,7 @@ export default function ContactPage() {
                           value={form.phone}
                           onChange={e => setForm({ ...form, phone: e.target.value })}
                           placeholder="(514) 000-0000"
-                          className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white placeholder-slate-500 text-xs font-mono focus:outline-none focus:border-otis-orange transition-colors"
+                          className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white placeholder-slate-500 text-base sm:text-xs font-mono focus:outline-none focus:border-otis-orange transition-colors"
                         />
                       </div>
                     </div>
@@ -317,7 +317,7 @@ export default function ContactPage() {
                         value={form.address}
                         onChange={e => setForm({ ...form, address: e.target.value })}
                         placeholder="e.g. 1000 Rue De La Gauchetière O, Montréal"
-                        className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white placeholder-slate-500 text-xs font-mono focus:outline-none focus:border-otis-orange transition-colors"
+                        className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white placeholder-slate-500 text-base sm:text-xs font-mono focus:outline-none focus:border-otis-orange transition-colors"
                       />
                     </div>
 
@@ -329,7 +329,7 @@ export default function ContactPage() {
                         <select
                           value={form.serviceType}
                           onChange={e => setForm({ ...form, serviceType: e.target.value })}
-                          className="w-full px-4 py-3 rounded-xl bg-[#0a0f1d] border border-white/10 text-white text-xs font-mono focus:outline-none focus:border-otis-orange transition-colors"
+                          className="w-full px-4 py-3 rounded-xl bg-[#0a0f1d] border border-white/10 text-white text-base sm:text-xs font-mono focus:outline-none focus:border-otis-orange transition-colors"
                         >
                           <option value="commercial-cleaning">Commercial Janitorial</option>
                           <option value="office-cleaning">Office Cleaning</option>
@@ -349,7 +349,7 @@ export default function ContactPage() {
                         <select
                           value={form.sqft}
                           onChange={e => setForm({ ...form, sqft: e.target.value })}
-                          className="w-full px-4 py-3 rounded-xl bg-[#0a0f1d] border border-white/10 text-white text-xs font-mono focus:outline-none focus:border-otis-orange transition-colors"
+                          className="w-full px-4 py-3 rounded-xl bg-[#0a0f1d] border border-white/10 text-white text-base sm:text-xs font-mono focus:outline-none focus:border-otis-orange transition-colors"
                         >
                           <option value="">Select sq ft</option>
                           <option value="under-3000">{"< 3,000 sq ft"}</option>
@@ -367,7 +367,7 @@ export default function ContactPage() {
                         <select
                           value={form.frequency}
                           onChange={e => setForm({ ...form, frequency: e.target.value })}
-                          className="w-full px-4 py-3 rounded-xl bg-[#0a0f1d] border border-white/10 text-white text-xs font-mono focus:outline-none focus:border-otis-orange transition-colors"
+                          className="w-full px-4 py-3 rounded-xl bg-[#0a0f1d] border border-white/10 text-white text-base sm:text-xs font-mono focus:outline-none focus:border-otis-orange transition-colors"
                         >
                           <option value="daily">5x - 7x Days / Week</option>
                           <option value="3x-weekly">3x Days / Week</option>
@@ -391,7 +391,7 @@ export default function ContactPage() {
                             ? "Précisez vos heures d'accès, types de sols particuliers, date de début souhaitée..."
                             : "Specify preferred shift timing (after-hours/evening), floor types, anticipated start date..."
                         }
-                        className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white placeholder-slate-500 text-xs font-mono focus:outline-none focus:border-otis-orange transition-colors"
+                        className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white placeholder-slate-500 text-base sm:text-xs font-mono focus:outline-none focus:border-otis-orange transition-colors"
                       />
                     </div>
 

@@ -26,13 +26,13 @@ export const ClosingCTASection: React.FC<ClosingCTASectionProps> = ({
   };
 
   return (
-    <section id="contact" className="relative py-28 px-6 sm:px-12 md:px-20 max-w-7xl mx-auto z-10">
-      <div className="rounded-[2.5rem] overflow-hidden bg-gradient-to-b from-obsidian-900 to-obsidian-950 border border-white/15 p-8 sm:p-14 lg:p-20 shadow-2xl relative">
+    <section id="contact" className="relative py-16 sm:py-24 lg:py-28 px-4 sm:px-12 md:px-20 max-w-7xl mx-auto z-10">
+      <div className="rounded-3xl sm:rounded-[2.5rem] overflow-hidden bg-gradient-to-b from-obsidian-900 to-obsidian-950 border border-white/15 p-6 sm:p-12 lg:p-20 shadow-2xl relative">
         {/* Subtle Ambient Radial Glow */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-otis-orange/10 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-otis-greenBright/10 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
           {/* Left Narrative Column */}
           <div className="lg:col-span-6 flex flex-col gap-6">
             <div className="relative h-12 w-40 mb-2">
@@ -77,7 +77,7 @@ export const ClosingCTASection: React.FC<ClosingCTASectionProps> = ({
           </div>
 
           {/* Right Direct Proposal Request Form */}
-          <div className="lg:col-span-6 bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-3xl p-6 sm:p-10">
+          <div className="lg:col-span-6 bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-3xl p-5 sm:p-8 lg:p-10">
             {submitted ? (
               <div className="py-12 text-center flex flex-col items-center gap-4">
                 <CheckCircle2 className="w-12 h-12 text-otis-greenBright animate-bounce" />
@@ -102,7 +102,7 @@ export const ClosingCTASection: React.FC<ClosingCTASectionProps> = ({
                   <select
                     value={facilityType}
                     onChange={(e) => setFacilityType(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/15 text-white text-sm focus:outline-none focus:border-otis-orange transition-colors"
+                    className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/15 text-white text-base sm:text-sm focus:outline-none focus:border-otis-orange transition-colors"
                   >
                     <option value="Corporate Office">Corporate Office / Commercial Suite</option>
                     <option value="Medical Clinic">Medical / Dental Clinic</option>
@@ -122,7 +122,7 @@ export const ClosingCTASection: React.FC<ClosingCTASectionProps> = ({
                     value={clientEmail}
                     onChange={(e) => setClientEmail(e.target.value)}
                     placeholder="manager@company.com"
-                    className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/15 text-white text-sm focus:outline-none focus:border-otis-orange transition-colors placeholder:text-slate-600"
+                    className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/15 text-white text-base sm:text-sm focus:outline-none focus:border-otis-orange transition-colors placeholder:text-slate-600"
                   />
                 </div>
 
@@ -136,7 +136,7 @@ export const ClosingCTASection: React.FC<ClosingCTASectionProps> = ({
                     value={clientPhone}
                     onChange={(e) => setClientPhone(e.target.value)}
                     placeholder="(514) 000-0000"
-                    className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/15 text-white text-sm focus:outline-none focus:border-otis-orange transition-colors placeholder:text-slate-600"
+                    className="w-full px-4 py-3 rounded-xl bg-black/40 border border-white/15 text-white text-base sm:text-sm focus:outline-none focus:border-otis-orange transition-colors placeholder:text-slate-600"
                   />
                 </div>
 

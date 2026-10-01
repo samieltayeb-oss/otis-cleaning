@@ -56,14 +56,21 @@ export const transitionFragmentShader = `
   }
 
   void main() {
-    vec2 uv = vUv;
+    // Aspect-ratio cover mapping: ensures 16:9 textures maintain realistic proportions on portrait mobile
+    vec2 s = uResolution;
+    vec2 i = vec2(16.0, 9.0);
+    float rs = s.x / s.y;
+    float ri = i.x / i.y;
+    vec2 coverUv = (rs < ri) ? 
+        vec2(vUv.x * (rs / ri) + (1.0 - rs / ri) * 0.5, vUv.y) :
+        vec2(vUv.x, vUv.y * (ri / rs) + (1.0 - ri / rs) * 0.5);
 
     // Center coordinates for vignette
     vec2 st = (gl_FragCoord.xy - 0.5 * uResolution) / min(uResolution.x, uResolution.y);
 
     // Subtle interactive parallax offset
     vec2 mouseOffset = uMouse * 0.005;
-    vec2 baseUv = uv + mouseOffset;
+    vec2 baseUv = coverUv + mouseOffset;
 
     // Minimal organic surface noise (reduced 10x for photographic stability)
     float noise1 = snoise(baseUv * 3.0 + vec2(uTime * 0.03, uTime * 0.015));
