@@ -39,6 +39,7 @@ export default function Home() {
     gsap.registerPlugin(ScrollTrigger);
 
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
 
     const ctx = gsap.context(() => {
       // Master ScrollTrigger tracking overall progress across the narrative
@@ -46,13 +47,11 @@ export default function Home() {
         trigger: containerRef.current,
         start: "top top",
         end: "bottom bottom",
-        scrub: prefersReducedMotion ? false : 1.2,
+        scrub: isMobile ? true : (prefersReducedMotion ? false : 1.2),
         onUpdate: (self) => {
           setScrollProgress(self.progress);
         },
       });
-
-      const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
 
       if (!prefersReducedMotion && !isMobile) {
         // Desktop scrub animations

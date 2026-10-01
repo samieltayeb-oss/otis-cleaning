@@ -12,15 +12,23 @@ export const useLenis = () => {
     gsap.registerPlugin(ScrollTrigger);
 
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReducedMotion) return;
+    // On mobile and touch devices, never hijack native touch scrolling!
+    // Native mobile browsers (iOS Safari, Android Chrome) provide hardware-accelerated 120Hz momentum scrolling.
+    const isTouchDevice =
+      typeof window !== "undefined" &&
+      (window.matchMedia("(pointer: coarse)").matches || window.innerWidth < 1024);
+
+    if (prefersReducedMotion || isTouchDevice) {
+      return;
+    }
 
     const lenis = new Lenis({
-      duration: 1.4,
+      duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,
-      wheelMultiplier: 0.9,
+      wheelMultiplier: 1.0,
     });
     lenisRef.current = lenis;
 

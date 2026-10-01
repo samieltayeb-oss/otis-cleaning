@@ -75,6 +75,8 @@ export const ExperienceCanvas: React.FC<ExperienceCanvasProps> = ({ progress }) 
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
       renderer.setSize(window.innerWidth, window.innerHeight);
       renderer.outputColorSpace = THREE.SRGBColorSpace;
+      renderer.domElement.style.pointerEvents = "none";
+      renderer.domElement.style.touchAction = "pan-y";
       container.appendChild(renderer.domElement);
     } catch (err) {
       console.warn("WebGL initialization skipped:", err);

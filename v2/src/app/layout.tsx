@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark bg-[#050811] text-white selection:bg-amber-500/30 selection:text-amber-200">
       <body
-        className={`${inter.variable} ${syne.variable} font-sans bg-[#050811] text-slate-100 antialiased overflow-x-hidden`}
+        className={`${inter.variable} ${syne.variable} font-sans bg-[#050811] text-slate-100 antialiased overflow-x-clip`}
       >
         {children}
       </body>

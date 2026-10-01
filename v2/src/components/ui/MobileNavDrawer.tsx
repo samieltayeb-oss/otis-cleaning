@@ -36,14 +36,11 @@ export const MobileNavDrawer: React.FC<MobileNavDrawerProps> = ({
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
-      document.body.style.touchAction = "none";
     } else {
       document.body.style.overflow = "";
-      document.body.style.touchAction = "";
     }
     return () => {
       document.body.style.overflow = "";
-      document.body.style.touchAction = "";
     };
   }, [isOpen]);
 
@@ -63,13 +60,11 @@ export const MobileNavDrawer: React.FC<MobileNavDrawerProps> = ({
         {isOpen ? <X className="w-5 h-5 text-otis-orange" /> : <Menu className="w-5 h-5" />}
       </button>
 
-      {/* Slide-Over Drawer Portal */}
-      {mounted &&
+      {/* Slide-Over Drawer Portal (only mounted when open so no invisible layers block touch) */}
+      {mounted && isOpen &&
         createPortal(
           <div
-            className={`fixed inset-0 z-[99999] md:hidden transition-all duration-300 ${
-              isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-            }`}
+            className="fixed inset-0 z-[99999] md:hidden transition-all duration-300 opacity-100 pointer-events-auto"
           >
             {/* Slide-Over Drawer Backdrop */}
             <div
