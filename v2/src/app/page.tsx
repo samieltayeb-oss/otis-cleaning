@@ -145,6 +145,9 @@ export default function Home() {
       {/* Fixed Fullscreen WebGL Canvas (Three.js + GLSL Transitions) */}
       <ExperienceCanvas progress={scrollProgress} />
 
+      {/* Ambient Dark Scrim to ensure crisp typography and zero visual clash */}
+      <div className="fixed inset-0 pointer-events-none z-0 bg-[#050811]/45" aria-hidden="true" />
+
       {/* Precision Navigation HUD with Live Telemetry */}
       <NavigationHUD
         scrollProgress={scrollProgress}

@@ -25,30 +25,32 @@ export const TransformationSection: React.FC<TransformationSectionProps> = ({ co
         </h2>
       </div>
 
-      {/* Grid: Narrative Column + Authentic Photographic Evidence */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        {/* Left Editorial Narrative */}
-        <div className="lg:col-span-5 flex flex-col gap-8">
-          <p className="text-slate-300 text-base sm:text-lg leading-relaxed font-light">
-            {content.transformation.paragraph}
-          </p>
+      {/* Grid: Narrative Card + Authentic Photographic Evidence Card */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
+        {/* Left Editorial Narrative Card */}
+        <div className="lg:col-span-6 flex flex-col justify-between gap-8 rounded-3xl border border-white/15 bg-obsidian-900/90 backdrop-blur-xl p-6 sm:p-8 lg:p-10 shadow-2xl">
+          <div>
+            <p className="text-slate-300 text-base sm:text-lg leading-relaxed font-light mb-8">
+              {content.transformation.paragraph}
+            </p>
 
-          <div className="grid grid-cols-2 gap-6 pt-6 border-t border-white/10">
-            <div>
-              <div className="text-3xl sm:text-4xl font-black font-display text-otis-orange mb-1">
-                {content.transformation.metric1Val}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6 border-t border-white/10">
+              <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.03] border border-white/10">
+                <div className="text-3xl sm:text-4xl font-black font-display text-otis-orange mb-1">
+                  {content.transformation.metric1Val}
+                </div>
+                <div className="text-xs font-mono uppercase tracking-wider text-slate-400">
+                  {content.transformation.metric1Lbl}
+                </div>
               </div>
-              <div className="text-xs font-mono uppercase tracking-wider text-slate-400">
-                {content.transformation.metric1Lbl}
-              </div>
-            </div>
 
-            <div>
-              <div className="text-3xl sm:text-4xl font-black font-display text-otis-greenBright mb-1">
-                {content.transformation.metric2Val}
-              </div>
-              <div className="text-xs font-mono uppercase tracking-wider text-slate-400">
-                {content.transformation.metric2Lbl}
+              <div className="p-4 sm:p-5 rounded-2xl bg-white/[0.03] border border-white/10">
+                <div className="text-2xl sm:text-3xl font-black font-display text-otis-greenBright mb-1 whitespace-nowrap tracking-tight">
+                  {content.transformation.metric2Val}
+                </div>
+                <div className="text-xs font-mono uppercase tracking-wider text-slate-400">
+                  {content.transformation.metric2Lbl}
+                </div>
               </div>
             </div>
           </div>
@@ -62,9 +64,9 @@ export const TransformationSection: React.FC<TransformationSectionProps> = ({ co
         </div>
 
         {/* Right Authentic Photographic Transformation Card */}
-        <div className="lg:col-span-7">
-          <div className="relative rounded-3xl overflow-hidden border border-white/15 bg-obsidian-900 shadow-2xl p-2 sm:p-3">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div className="lg:col-span-6 flex flex-col">
+          <div className="relative rounded-3xl overflow-hidden border border-white/15 bg-obsidian-900 shadow-2xl p-2 sm:p-3 h-full flex flex-col justify-between">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 flex-1">
               {/* Before State */}
               <div className="relative group rounded-2xl overflow-hidden aspect-[4/5] bg-black/60 border border-white/5">
                 <Image
