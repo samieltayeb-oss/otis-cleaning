@@ -39,9 +39,29 @@ export default function ContactPage() {
 
   const content = lang === "fr" ? contactData.fr : contactData.en;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitted(true);
+    try {
+      await fetch('/api/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: form.name,
+          company: form.company,
+          email: form.email,
+          phone: form.phone,
+          address: form.address,
+          service: form.serviceType,
+          size: form.sqft,
+          frequency: form.frequency,
+          notes: form.message,
+          source: 'Contact Page Audit Form'
+        })
+      });
+    } catch (err) {
+      console.warn("Lead dispatch offline / queued:", err);
+    }
   };
 
   return (

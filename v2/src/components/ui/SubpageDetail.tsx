@@ -46,13 +46,51 @@ export const SubpageDetail: React.FC<SubpageDetailProps> = ({ data, relatedPages
     setLang(prev => (prev === "en" ? "fr" : "en"));
   };
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setQuoteSuccess(true);
+    try {
+      await fetch('/api/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formState.name,
+          email: formState.email,
+          phone: formState.phone,
+          company: formState.company,
+          type: formState.facilityType || content.badge,
+          size: formState.sqft,
+          notes: formState.notes,
+          service: content.title,
+          source: `Service Page (${content.badge})`
+        })
+      });
+    } catch (err) {
+      console.warn("Lead dispatch offline / queued:", err);
+    }
   };
+
+  const faqJsonLd = content.faqs && content.faqs.length > 0 ? {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": content.faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  } : null;
 
   return (
     <div className="min-h-screen bg-[#050811] text-slate-100 font-sans selection:bg-otis-orange selection:text-white">
+      {faqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      )}
       {/* Top Floating Navigation HUD */}
       <header className="fixed top-0 left-0 right-0 z-50 py-4 bg-[#050811]/90 backdrop-blur-md border-b border-white/10 shadow-2xl transition-all">
         <div className="max-w-7xl mx-auto px-4 sm:px-10 flex items-center justify-between gap-4">

@@ -2,4 +2,20 @@ User-agent: *
 Disallow: /internal/
 Disallow: /api/internal/
 
-Sitemap: https://www.otiscc.ca/sitemap.xml
+# AI Search Crawlers & Answer Engines (AEO / GEO Optimization)
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://otiscc.ca/sitemap.xml

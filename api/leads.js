@@ -127,8 +127,8 @@ async function sendLeadNotificationEmail(lead) {
               </div>
 
               <div class="btn-group" style="margin-top: 25px;">
-                <a href="https://otis-cleaning.vercel.app/internal/crm" class="btn btn-primary" style="margin-right: 10px;">📊 Open in CRM</a>
-                <a href="https://otis-cleaning.vercel.app/internal/bidding_engine" class="btn btn-secondary">⚡ Price in Bidding Engine</a>
+                <a href="https://otiscc.ca/internal/crm" class="btn btn-primary" style="margin-right: 10px;">📊 Open in CRM</a>
+                <a href="https://otiscc.ca/internal/bidding_engine" class="btn btn-secondary">⚡ Price in Bidding Engine</a>
               </div>
             </div>
             <div class="footer">
@@ -155,7 +155,7 @@ Notes: ${notes}
 
 Source: ${source}
 Timestamp: ${timestamp}
-Review in OTIS CRM: https://otis-cleaning.vercel.app/internal/crm
+Review in OTIS CRM: https://otiscc.ca/internal/crm
       `
     };
 

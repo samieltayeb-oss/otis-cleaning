@@ -22,9 +22,23 @@ export const ClosingCTASection: React.FC<ClosingCTASectionProps> = ({
   const [clientEmail, setClientEmail] = useState("");
   const [clientPhone, setClientPhone] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitted(true);
+    try {
+      await fetch('/api/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: clientEmail,
+          phone: clientPhone,
+          type: facilityType,
+          source: 'Homepage Facility Audit CTA'
+        })
+      });
+    } catch (err) {
+      console.warn("Lead dispatch offline / queued:", err);
+    }
   };
 
   return (
